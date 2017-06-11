@@ -1,0 +1,17 @@
+Make the game simple, encapsulated experience, how to make it an experience within the limited time you have
+AGILE workflow product driven workflow vs Waterfall with ebb and flow workflow in a cycle a push vs a rest
+AGILE micro sprints pushing for this and that deadline and QA test and evaluate after the sprint itself 
+Trello task manager
+Tasks broken down to quater, half, and whole day outside of that are high level tasks that take a lot of time and need to bring them down
+
+Slacker_ online messaging board, ask Artem questions through this!
+
+Github - well of doing collaborative work 
+
+**Boss Fight** Nice to have (may take 3 months)
+Intro animation in the beginning (maybe)
+Complete experience takes priority
+
+use the same version forever per project, DO NOT CHANGE!!!!
+
+Game design with wireframes indicating  where things go 
