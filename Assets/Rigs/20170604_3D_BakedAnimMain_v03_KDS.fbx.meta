@@ -1,0 +1,1008 @@
+fileFormatVersion: 2
+guid: 797b1bb35444b7740a7111373fe79787
+timeCreated: 1496632429
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: be_Ankle_L
+    100004: be_Ankle_R
+    100006: be_Hands_L
+    100008: be_Hands_R
+    100010: be_Toe
+    100012: be_Toe 1
+    100014: be_topHead
+    100016: bn_armBow_L
+    100018: bn_armBow_R
+    100020: bn_Ball_L
+    100022: bn_Ball_R
+    100024: bn_Foot_L
+    100026: bn_Foot_R
+    100028: bn_Head
+    100030: bn_Hip_L
+    100032: bn_Hip_R
+    100034: bn_Knee_L
+    100036: bn_Knee_R
+    100038: bn_lowArm_L
+    100040: bn_lowArm_R
+    100042: bn_Neck
+    100044: bn_Pelvis
+    100046: bn_Shoulder_L
+    100048: bn_Shoulder_R
+    100050: bn_Sternum
+    100052: bne_BIP
+    100054: bne_CenterHip
+    100056: geo_Arm_L
+    100058: geo_Arm_R
+    100060: geo_Chest
+    100062: geo_Foot_L2
+    100064: geo_Foot_R
+    100066: geo_ForeArm_L
+    100068: geo_ForeArm_R
+    100070: geo_GRP
+    100072: geo_Head
+    100074: geo_Hip_L1
+    100076: geo_Hip_R
+    100078: geo_LowLeg_L2
+    100080: geo_LowLeg_R
+    100082: geo_Neck
+    100084: geo_Shoulder_L
+    100086: geo_Shoulder_R
+    100088: geo_Toe_L2
+    100090: geo_Toe_R
+    100092: geo_Waist
+    100094: loc_Hip_L
+    100096: loc_Hip_R
+    100098: loc_Shoulder_L
+    100100: loc_Shoulder_R
+    400000: //RootNode
+    400002: be_Ankle_L
+    400004: be_Ankle_R
+    400006: be_Hands_L
+    400008: be_Hands_R
+    400010: be_Toe
+    400012: be_Toe 1
+    400014: be_topHead
+    400016: bn_armBow_L
+    400018: bn_armBow_R
+    400020: bn_Ball_L
+    400022: bn_Ball_R
+    400024: bn_Foot_L
+    400026: bn_Foot_R
+    400028: bn_Head
+    400030: bn_Hip_L
+    400032: bn_Hip_R
+    400034: bn_Knee_L
+    400036: bn_Knee_R
+    400038: bn_lowArm_L
+    400040: bn_lowArm_R
+    400042: bn_Neck
+    400044: bn_Pelvis
+    400046: bn_Shoulder_L
+    400048: bn_Shoulder_R
+    400050: bn_Sternum
+    400052: bne_BIP
+    400054: bne_CenterHip
+    400056: geo_Arm_L
+    400058: geo_Arm_R
+    400060: geo_Chest
+    400062: geo_Foot_L2
+    400064: geo_Foot_R
+    400066: geo_ForeArm_L
+    400068: geo_ForeArm_R
+    400070: geo_GRP
+    400072: geo_Head
+    400074: geo_Hip_L1
+    400076: geo_Hip_R
+    400078: geo_LowLeg_L2
+    400080: geo_LowLeg_R
+    400082: geo_Neck
+    400084: geo_Shoulder_L
+    400086: geo_Shoulder_R
+    400088: geo_Toe_L2
+    400090: geo_Toe_R
+    400092: geo_Waist
+    400094: loc_Hip_L
+    400096: loc_Hip_R
+    400098: loc_Shoulder_L
+    400100: loc_Shoulder_R
+    4300000: geo_Hip_L1
+    4300002: geo_Hip_R
+    4300004: geo_Arm_R
+    4300006: geo_Shoulder_R
+    4300008: geo_ForeArm_R
+    4300010: geo_Waist
+    4300012: geo_Chest
+    4300014: geo_Neck
+    4300016: geo_Toe_R
+    4300018: geo_Foot_R
+    4300020: geo_LowLeg_R
+    4300022: geo_Toe_L2
+    4300024: geo_Foot_L2
+    4300026: geo_LowLeg_L2
+    4300028: geo_ForeArm_L
+    4300030: geo_Arm_L
+    4300032: geo_Shoulder_L
+    4300034: geo_Head
+    7400000: Walk
+    7400002: Idle
+    7400004: Run
+    7400006: Jump
+    7400008: Land
+    7400010: In Air
+    9500000: //RootNode
+    13700000: geo_Arm_L
+    13700002: geo_Arm_R
+    13700004: geo_Chest
+    13700006: geo_Foot_L2
+    13700008: geo_Foot_R
+    13700010: geo_ForeArm_L
+    13700012: geo_ForeArm_R
+    13700014: geo_Head
+    13700016: geo_Hip_L1
+    13700018: geo_Hip_R
+    13700020: geo_LowLeg_L2
+    13700022: geo_LowLeg_R
+    13700024: geo_Neck
+    13700026: geo_Shoulder_L
+    13700028: geo_Shoulder_R
+    13700030: geo_Toe_L2
+    13700032: geo_Toe_R
+    13700034: geo_Waist
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: bne_BIP
+        weight: 1
+      - path: bne_BIP/bne_CenterHip
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L/bn_Foot_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L/bn_Foot_L/bn_Ball_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L/bn_Foot_L/bn_Ball_L/be_Toe
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R/bn_Foot_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R/bn_Foot_R/bn_Ball_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R/bn_Foot_R/bn_Ball_R/be_Toe
+          1
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Neck
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Neck/bn_Head
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Neck/bn_Head/be_topHead
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L/bn_lowArm_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L/bn_lowArm_L/bn_armBow_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L/bn_lowArm_L/bn_armBow_L/be_Hands_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R/bn_lowArm_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R/bn_lowArm_R/bn_armBow_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R/bn_lowArm_R/bn_armBow_R/be_Hands_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/loc_Shoulder_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/loc_Shoulder_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/loc_Hip_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/loc_Hip_R
+        weight: 1
+      - path: geo_GRP
+        weight: 1
+      - path: geo_GRP/geo_Arm_L
+        weight: 1
+      - path: geo_GRP/geo_Arm_R
+        weight: 1
+      - path: geo_GRP/geo_Chest
+        weight: 1
+      - path: geo_GRP/geo_Foot_L2
+        weight: 1
+      - path: geo_GRP/geo_Foot_R
+        weight: 1
+      - path: geo_GRP/geo_ForeArm_L
+        weight: 1
+      - path: geo_GRP/geo_ForeArm_R
+        weight: 1
+      - path: geo_GRP/geo_Head
+        weight: 1
+      - path: geo_GRP/geo_Hip_L1
+        weight: 1
+      - path: geo_GRP/geo_Hip_R
+        weight: 1
+      - path: geo_GRP/geo_LowLeg_L2
+        weight: 1
+      - path: geo_GRP/geo_LowLeg_R
+        weight: 1
+      - path: geo_GRP/geo_Neck
+        weight: 1
+      - path: geo_GRP/geo_Shoulder_L
+        weight: 1
+      - path: geo_GRP/geo_Shoulder_R
+        weight: 1
+      - path: geo_GRP/geo_Toe_L2
+        weight: 1
+      - path: geo_GRP/geo_Toe_R
+        weight: 1
+      - path: geo_GRP/geo_Waist
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 31.249998
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: bne_BIP
+        weight: 1
+      - path: bne_BIP/bne_CenterHip
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L/bn_Foot_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L/bn_Foot_L/bn_Ball_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L/bn_Foot_L/bn_Ball_L/be_Toe
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R/bn_Foot_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R/bn_Foot_R/bn_Ball_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R/bn_Foot_R/bn_Ball_R/be_Toe
+          1
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Neck
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Neck/bn_Head
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Neck/bn_Head/be_topHead
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L/bn_lowArm_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L/bn_lowArm_L/bn_armBow_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L/bn_lowArm_L/bn_armBow_L/be_Hands_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R/bn_lowArm_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R/bn_lowArm_R/bn_armBow_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R/bn_lowArm_R/bn_armBow_R/be_Hands_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/loc_Shoulder_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/loc_Shoulder_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/loc_Hip_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/loc_Hip_R
+        weight: 1
+      - path: geo_GRP
+        weight: 1
+      - path: geo_GRP/geo_Arm_L
+        weight: 1
+      - path: geo_GRP/geo_Arm_R
+        weight: 1
+      - path: geo_GRP/geo_Chest
+        weight: 1
+      - path: geo_GRP/geo_Foot_L2
+        weight: 1
+      - path: geo_GRP/geo_Foot_R
+        weight: 1
+      - path: geo_GRP/geo_ForeArm_L
+        weight: 1
+      - path: geo_GRP/geo_ForeArm_R
+        weight: 1
+      - path: geo_GRP/geo_Head
+        weight: 1
+      - path: geo_GRP/geo_Hip_L1
+        weight: 1
+      - path: geo_GRP/geo_Hip_R
+        weight: 1
+      - path: geo_GRP/geo_LowLeg_L2
+        weight: 1
+      - path: geo_GRP/geo_LowLeg_R
+        weight: 1
+      - path: geo_GRP/geo_Neck
+        weight: 1
+      - path: geo_GRP/geo_Shoulder_L
+        weight: 1
+      - path: geo_GRP/geo_Shoulder_R
+        weight: 1
+      - path: geo_GRP/geo_Toe_L2
+        weight: 1
+      - path: geo_GRP/geo_Toe_R
+        weight: 1
+      - path: geo_GRP/geo_Waist
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Run
+      takeName: Take 001
+      firstFrame: 63
+      lastFrame: 77.5
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: bne_BIP
+        weight: 1
+      - path: bne_BIP/bne_CenterHip
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L/bn_Foot_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L/bn_Foot_L/bn_Ball_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L/bn_Foot_L/bn_Ball_L/be_Toe
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R/bn_Foot_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R/bn_Foot_R/bn_Ball_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R/bn_Foot_R/bn_Ball_R/be_Toe
+          1
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Neck
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Neck/bn_Head
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Neck/bn_Head/be_topHead
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L/bn_lowArm_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L/bn_lowArm_L/bn_armBow_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L/bn_lowArm_L/bn_armBow_L/be_Hands_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R/bn_lowArm_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R/bn_lowArm_R/bn_armBow_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R/bn_lowArm_R/bn_armBow_R/be_Hands_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/loc_Shoulder_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/loc_Shoulder_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/loc_Hip_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/loc_Hip_R
+        weight: 1
+      - path: geo_GRP
+        weight: 1
+      - path: geo_GRP/geo_Arm_L
+        weight: 1
+      - path: geo_GRP/geo_Arm_R
+        weight: 1
+      - path: geo_GRP/geo_Chest
+        weight: 1
+      - path: geo_GRP/geo_Foot_L2
+        weight: 1
+      - path: geo_GRP/geo_Foot_R
+        weight: 1
+      - path: geo_GRP/geo_ForeArm_L
+        weight: 1
+      - path: geo_GRP/geo_ForeArm_R
+        weight: 1
+      - path: geo_GRP/geo_Head
+        weight: 1
+      - path: geo_GRP/geo_Hip_L1
+        weight: 1
+      - path: geo_GRP/geo_Hip_R
+        weight: 1
+      - path: geo_GRP/geo_LowLeg_L2
+        weight: 1
+      - path: geo_GRP/geo_LowLeg_R
+        weight: 1
+      - path: geo_GRP/geo_Neck
+        weight: 1
+      - path: geo_GRP/geo_Shoulder_L
+        weight: 1
+      - path: geo_GRP/geo_Shoulder_R
+        weight: 1
+      - path: geo_GRP/geo_Toe_L2
+        weight: 1
+      - path: geo_GRP/geo_Toe_R
+        weight: 1
+      - path: geo_GRP/geo_Waist
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Jump
+      takeName: Take 001
+      firstFrame: 78.75
+      lastFrame: 88.75
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: bne_BIP
+        weight: 1
+      - path: bne_BIP/bne_CenterHip
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L/bn_Foot_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L/bn_Foot_L/bn_Ball_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L/bn_Foot_L/bn_Ball_L/be_Toe
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R/bn_Foot_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R/bn_Foot_R/bn_Ball_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R/bn_Foot_R/bn_Ball_R/be_Toe
+          1
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Neck
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Neck/bn_Head
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Neck/bn_Head/be_topHead
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L/bn_lowArm_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L/bn_lowArm_L/bn_armBow_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L/bn_lowArm_L/bn_armBow_L/be_Hands_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R/bn_lowArm_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R/bn_lowArm_R/bn_armBow_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R/bn_lowArm_R/bn_armBow_R/be_Hands_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/loc_Shoulder_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/loc_Shoulder_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/loc_Hip_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/loc_Hip_R
+        weight: 1
+      - path: geo_GRP
+        weight: 1
+      - path: geo_GRP/geo_Arm_L
+        weight: 1
+      - path: geo_GRP/geo_Arm_R
+        weight: 1
+      - path: geo_GRP/geo_Chest
+        weight: 1
+      - path: geo_GRP/geo_Foot_L2
+        weight: 1
+      - path: geo_GRP/geo_Foot_R
+        weight: 1
+      - path: geo_GRP/geo_ForeArm_L
+        weight: 1
+      - path: geo_GRP/geo_ForeArm_R
+        weight: 1
+      - path: geo_GRP/geo_Head
+        weight: 1
+      - path: geo_GRP/geo_Hip_L1
+        weight: 1
+      - path: geo_GRP/geo_Hip_R
+        weight: 1
+      - path: geo_GRP/geo_LowLeg_L2
+        weight: 1
+      - path: geo_GRP/geo_LowLeg_R
+        weight: 1
+      - path: geo_GRP/geo_Neck
+        weight: 1
+      - path: geo_GRP/geo_Shoulder_L
+        weight: 1
+      - path: geo_GRP/geo_Shoulder_R
+        weight: 1
+      - path: geo_GRP/geo_Toe_L2
+        weight: 1
+      - path: geo_GRP/geo_Toe_R
+        weight: 1
+      - path: geo_GRP/geo_Waist
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Land
+      takeName: Take 001
+      firstFrame: 105
+      lastFrame: 119
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: bne_BIP
+        weight: 1
+      - path: bne_BIP/bne_CenterHip
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L/bn_Foot_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L/bn_Foot_L/bn_Ball_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L/bn_Foot_L/bn_Ball_L/be_Toe
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R/bn_Foot_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R/bn_Foot_R/bn_Ball_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R/bn_Foot_R/bn_Ball_R/be_Toe
+          1
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Neck
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Neck/bn_Head
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Neck/bn_Head/be_topHead
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L/bn_lowArm_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L/bn_lowArm_L/bn_armBow_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L/bn_lowArm_L/bn_armBow_L/be_Hands_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R/bn_lowArm_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R/bn_lowArm_R/bn_armBow_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R/bn_lowArm_R/bn_armBow_R/be_Hands_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/loc_Shoulder_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/loc_Shoulder_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/loc_Hip_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/loc_Hip_R
+        weight: 1
+      - path: geo_GRP
+        weight: 1
+      - path: geo_GRP/geo_Arm_L
+        weight: 1
+      - path: geo_GRP/geo_Arm_R
+        weight: 1
+      - path: geo_GRP/geo_Chest
+        weight: 1
+      - path: geo_GRP/geo_Foot_L2
+        weight: 1
+      - path: geo_GRP/geo_Foot_R
+        weight: 1
+      - path: geo_GRP/geo_ForeArm_L
+        weight: 1
+      - path: geo_GRP/geo_ForeArm_R
+        weight: 1
+      - path: geo_GRP/geo_Head
+        weight: 1
+      - path: geo_GRP/geo_Hip_L1
+        weight: 1
+      - path: geo_GRP/geo_Hip_R
+        weight: 1
+      - path: geo_GRP/geo_LowLeg_L2
+        weight: 1
+      - path: geo_GRP/geo_LowLeg_R
+        weight: 1
+      - path: geo_GRP/geo_Neck
+        weight: 1
+      - path: geo_GRP/geo_Shoulder_L
+        weight: 1
+      - path: geo_GRP/geo_Shoulder_R
+        weight: 1
+      - path: geo_GRP/geo_Toe_L2
+        weight: 1
+      - path: geo_GRP/geo_Toe_R
+        weight: 1
+      - path: geo_GRP/geo_Waist
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: In Air
+      takeName: Take 001
+      firstFrame: 90
+      lastFrame: 103.25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: bne_BIP
+        weight: 1
+      - path: bne_BIP/bne_CenterHip
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L/bn_Foot_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L/bn_Foot_L/bn_Ball_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_L/bn_Knee_L/be_Ankle_L/bn_Foot_L/bn_Ball_L/be_Toe
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R/bn_Foot_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R/bn_Foot_R/bn_Ball_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Hip_R/bn_Knee_R/be_Ankle_R/bn_Foot_R/bn_Ball_R/be_Toe
+          1
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Neck
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Neck/bn_Head
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Neck/bn_Head/be_topHead
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L/bn_lowArm_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L/bn_lowArm_L/bn_armBow_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_L/bn_lowArm_L/bn_armBow_L/be_Hands_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R/bn_lowArm_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R/bn_lowArm_R/bn_armBow_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/bn_Shoulder_R/bn_lowArm_R/bn_armBow_R/be_Hands_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/loc_Shoulder_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/bn_Pelvis/bn_Sternum/loc_Shoulder_R
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/loc_Hip_L
+        weight: 1
+      - path: bne_BIP/bne_CenterHip/loc_Hip_R
+        weight: 1
+      - path: geo_GRP
+        weight: 1
+      - path: geo_GRP/geo_Arm_L
+        weight: 1
+      - path: geo_GRP/geo_Arm_R
+        weight: 1
+      - path: geo_GRP/geo_Chest
+        weight: 1
+      - path: geo_GRP/geo_Foot_L2
+        weight: 1
+      - path: geo_GRP/geo_Foot_R
+        weight: 1
+      - path: geo_GRP/geo_ForeArm_L
+        weight: 1
+      - path: geo_GRP/geo_ForeArm_R
+        weight: 1
+      - path: geo_GRP/geo_Head
+        weight: 1
+      - path: geo_GRP/geo_Hip_L1
+        weight: 1
+      - path: geo_GRP/geo_Hip_R
+        weight: 1
+      - path: geo_GRP/geo_LowLeg_L2
+        weight: 1
+      - path: geo_GRP/geo_LowLeg_R
+        weight: 1
+      - path: geo_GRP/geo_Neck
+        weight: 1
+      - path: geo_GRP/geo_Shoulder_L
+        weight: 1
+      - path: geo_GRP/geo_Shoulder_R
+        weight: 1
+      - path: geo_GRP/geo_Toe_L2
+        weight: 1
+      - path: geo_GRP/geo_Toe_R
+        weight: 1
+      - path: geo_GRP/geo_Waist
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: bne_BIP
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
