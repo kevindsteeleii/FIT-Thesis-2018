@@ -7,7 +7,10 @@ public class attack : MonoBehaviour {
 	// Use this for initialization
 	Animator myAnim;
 	Rigidbody myRB;
-	Vector3 curVel;
+
+	[Range (0,2)]
+	public float hitStop = .5f;
+
 	void Awake () {
 		myAnim = GetComponent<Animator> ();
 		myRB = GetComponent <Rigidbody> ();
@@ -19,15 +22,12 @@ public class attack : MonoBehaviour {
 
 		//triggers punch animation while K is pressed
 		if (Input.GetKey ("k")) {
-			myRB.velocity = new Vector3 (0, 0, 0);
-			myAnim.SetBool ("punching", Input.GetKey ("k"));
-		}
+			StartCoroutine (HitStopperPunch());
+			}
 
 
 		//if L is pressed in the air, cancels other animations and starts the slam animation
 		if (myAnim.GetBool ("grounded") == false && Input.GetKeyDown("l")) {
-			curVel = myRB.velocity;
-			myRB.velocity = new Vector3 (0,curVel.y,0);
 			myAnim.SetBool ("slam", true);
 		}
 	}
@@ -36,5 +36,12 @@ public class attack : MonoBehaviour {
 	void OnCollisionEnter (Collision collision){
 		myAnim.SetBool ("slam", false);
 
+	}
+
+	//hitStop coroutine for punch to hold and then stop animation
+	IEnumerator HitStopperPunch (){
+		myAnim.SetBool ("punching", true);
+		yield return new WaitForSeconds(hitStop);
+		myAnim.SetBool ("punching", false);
 	}
 }
