@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class betterJump : MonoBehaviour {
+	//initiates the mario jump where after the peak of jump character's gravity snappily increases
+	//reduces float
+
 	[Range (1,20)]
 	public float fallMultiplier = 2.5f;
 
+	//establishes the lowest jump possible upon quick release of jump button 
 	[Range (1,10)]
 	public float lowJumpMultiplier = 5f;
 	// Use this for initialization
