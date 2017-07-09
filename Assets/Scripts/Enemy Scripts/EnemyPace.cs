@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// replace this entire class functionality with
+// physics velocity, it's faster and is less code...
 public class EnemyPace : MonoBehaviour {
 	[Range(0,2)]
 	public float enemySpeed;
