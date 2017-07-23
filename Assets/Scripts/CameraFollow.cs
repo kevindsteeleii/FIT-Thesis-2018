@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
   
-	//this camera
-	private Camera camera;
 	//player as target
 	public Transform target;
 	//distance b/n camera and player
@@ -14,7 +12,6 @@ public class CameraFollow : MonoBehaviour {
 	public float smoothSpeed = 0.125f;
 
 	void Awake (){
-		camera = GetComponent<Camera> ();
 		offset = Vector3.forward * -7.5f;
 
 	}

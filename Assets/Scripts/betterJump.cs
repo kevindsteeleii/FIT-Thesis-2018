@@ -14,10 +14,8 @@ public class betterJump : MonoBehaviour {
 	public float lowJumpMultiplier = 5f;
 	// Use this for initialization
 	Rigidbody myRB;
-	Animator myAnim;
 	void Awake () {
 		myRB = GetComponent<Rigidbody> ();
-		myAnim = GetComponent<Animator> ();
 	}
 
 //	void Start () {
@@ -31,9 +29,10 @@ public class betterJump : MonoBehaviour {
 			myRB.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier -1) * Time.deltaTime;
 		} 
 
-		else if (myRB.velocity.y > 0 && !Input.GetKey("j")) {
+		else if (myRB.velocity.y > 0 && !Input.GetButton("Jump")) {
 			myRB.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier -1) * Time.deltaTime;
 		} 
 
 	}
+
 }

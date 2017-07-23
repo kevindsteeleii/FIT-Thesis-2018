@@ -5,12 +5,10 @@ using UnityEngine;
 public class death : MonoBehaviour {
 
 	Animator myAnim;
-	Rigidbody myRB;
 
 	// Use this for initialization
 	void Awake () {
 
-		myRB = GetComponent <Rigidbody> ();
 		myAnim = GetComponent <Animator> ();
 
 	}
