@@ -22,7 +22,9 @@ public class attack : MonoBehaviour {
 		if (Input.GetButton ("Punch")) {
 			StartCoroutine (HitStopperPunch());
 			}
-
+		if (myAnim.GetBool ("grounded") == false &&Input.GetButton ("Punch")){
+			StartCoroutine (HitStopperPunch());
+		}
 
 		//if L is pressed in the air, cancels other animations and starts the slam animation
 		if (myAnim.GetBool ("grounded") == false && Input.GetButton("Slam")) {
