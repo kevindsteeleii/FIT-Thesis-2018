@@ -30,5 +30,6 @@ public class AimProxyController : Controller {
             // if it is then end the progress update loop in our model
             model.EndProgressUpdateLoop();
         }
+
     }
 }
