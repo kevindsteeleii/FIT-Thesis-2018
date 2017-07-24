@@ -22,8 +22,8 @@ public class aimAndThrow : MonoBehaviour {
 	private Vector3 endPos;
 
 	//time it takes to move across
-	[Range(0,3)]
-	public float delta = 1.5f;
+	[Range(0,1)]
+	public float delta = 0f;
 
 
 	// Use this for initialization
@@ -58,8 +58,6 @@ public class aimAndThrow : MonoBehaviour {
 		reticule.transform.position = startPos;
 
 		if (Input.GetButtonDown ("Aim")) {
-			//faux code for make reticule visible and whatnot
-			//reticule.makevisible();
 			readyAim ();
 		}
 		if (Input.GetButton ("Throw") && holding) {
@@ -68,16 +66,15 @@ public class aimAndThrow : MonoBehaviour {
 	}
 			//toggles visibility of oscillating aim reticule 
 		public void readyAim(){
-		if (Input.GetButtonDown("Aim")) {
-			reticule.transform.position = Vector3.Slerp(startPos,endPos,delta);
-
+		if (Input.GetButton("Aim")) {
+			reticule.transform.position = Vector3.Slerp(startPos,endPos,delta*Time.deltaTime);
 		}
-		if (Input.GetButtonUp ("Aim") 
-//			&& holding
-		) {
-			tossThrow ();
+//		if (Input.GetButtonUp ("Aim") 
+////			&& holding
+//		) {
+//			tossThrow ();
 //			heldObjects.RemoveAt (heldObjects.Count - 1);
-		}
+//		}
 			
 		}
 
