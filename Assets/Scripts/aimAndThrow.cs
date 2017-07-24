@@ -55,7 +55,7 @@ public class aimAndThrow : MonoBehaviour {
 
 		startPos = new Vector3 (transform.position.x+(distance*leftRight),transform.position.y+heightAdjust,transform.position.z); 
 		endPos = new Vector3 (transform.position.x,transform.position.y+distance,transform.position.z);
-		reticule.transform.position = startPos;
+//		reticule.transform.position = startPos;
 
 		if (Input.GetButtonDown ("Aim")) {
 			readyAim ();
@@ -68,6 +68,7 @@ public class aimAndThrow : MonoBehaviour {
 		public void readyAim(){
 		if (Input.GetButton("Aim")) {
 			reticule.transform.position = Vector3.Slerp(startPos,endPos,delta*Time.deltaTime);
+
 		}
 //		if (Input.GetButtonUp ("Aim") 
 ////			&& holding
