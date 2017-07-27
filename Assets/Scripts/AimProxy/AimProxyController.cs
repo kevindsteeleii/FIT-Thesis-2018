@@ -16,6 +16,7 @@ public class AimProxyController : Controller {
         if (!model) {
             // if it is then get the model attached to the current GameObject
             model = this.gameObject.GetComponent<AimProxyModel>();
+           // model.hideAim();
         }
     }
 
@@ -23,12 +24,16 @@ public class AimProxyController : Controller {
         // Check if the aim button is being pressed down
         if (Input.GetButtonDown("Aim")) {
             // if it is then start the progress update loop in our model
+           // model.revealAim();
             model.StartProgressUpdateLoop();
         }
         // Check if the aim button is being released
         if (Input.GetButtonUp("Aim")) {
             // if it is then end the progress update loop in our model
+           // model.hideAim();
             model.EndProgressUpdateLoop();
+            
+           
         }
 
     }

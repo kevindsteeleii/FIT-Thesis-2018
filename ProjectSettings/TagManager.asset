@@ -8,6 +8,7 @@ TagManager:
   - Death Object
   - CameraTarget
   - AimReticule
+  - Projectile
   layers:
   - Default
   - TransparentFX

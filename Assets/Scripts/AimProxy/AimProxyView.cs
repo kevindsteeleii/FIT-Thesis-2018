@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// A view class for our AnimProxy which requires a Transform
+/// A view class for our AimProxy which requires a Transform
 /// component on the game object it is on in order to work.
 /// </summary>
 [RequireComponent(typeof(Transform), typeof(AimProxyModel), typeof(AimProxyController))]

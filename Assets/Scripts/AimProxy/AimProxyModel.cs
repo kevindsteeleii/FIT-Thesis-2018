@@ -6,6 +6,24 @@ using UnityEngine;
 /// The class which houses all the logic for our AimProxy.
 /// </summary>
 public class AimProxyModel : Model {
+
+    // A Vector 3 that tells the position of the aiming reticle in real time
+    GameObject proxy;
+
+    protected virtual void Start() {
+        proxy = this.gameObject;
+    }
+
+    /// <summary>
+    ///returns the current physical position of the aiming reticle
+    /// </summary>
+    public  Vector3 currentPosition() {
+        Vector3 proxyPosition;
+        proxyPosition = proxy.transform.position;
+        return proxyPosition;
+
+
+}
     /// <summary>
     /// An event which triggers when the animation progress for the AnimProxy is updated.
     /// </summary>
@@ -71,6 +89,18 @@ public class AimProxyModel : Model {
                 onProgressUpdateEnd();
             }
         }
+    }
+
+    ///Hides the aiming Reticle
+    public virtual void hideAim()
+    {
+        proxy.transform.localScale = new Vector3(0, 0, 0);
+    }
+
+    //Unhides the aiming Reticle
+    public virtual void revealAim()
+    {
+        proxy.transform.localScale = new Vector3(1, 1, 1);
     }
 
     /// <summary>
