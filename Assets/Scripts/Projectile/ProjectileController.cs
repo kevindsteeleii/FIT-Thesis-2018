@@ -1,24 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Projectile controller class checks for input to throw
+/// projectile
+/// </summary>
 public class ProjectileController : Controller {
 
 	[SerializeField]
-	private Projectile projectile;
+	private Projectile model;
 
-	[SerializeField]
-	private List <Projectile> ammo;
 	protected virtual void Awake () {
+		//check to see if model variable is empty
+		if (!model) {
+			model = this.gameObject.GetComponent<Projectile>();
+		}
 		//check to see if projectile is there
 	}
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
+
 	// Update is called once per frame
-	void Update () {
-		
+	protected virtual void Update () {
+		//on hold of throw button 
+		if (Input.GetButtonDown ("Throw")) {
+			Debug.Log ("Holding");
+		}
+		else if (Input.GetButtonUp ("Throw")) {
+			//filler to test
+			Debug.Log ("Throwing");
+		}
+
 	}
+
+
+
+
 }
