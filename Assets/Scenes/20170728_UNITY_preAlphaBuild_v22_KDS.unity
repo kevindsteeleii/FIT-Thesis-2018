@@ -386,8 +386,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 0}
-  startRelativePosition: {x: 3.5, y: 0.65, z: -0.8}
-  endRelativePosition: {x: 0.25, y: 3, z: -0.8}
+  startRelativePosition: {x: 3.5, y: 0.65, z: 0}
+  endRelativePosition: {x: 0.25, y: 3, z: 0}
 --- !u!114 &220661257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575,6 +575,19 @@ CapsuleCollider:
   m_Height: 0.28989527
   m_Direction: 1
   m_Center: {x: -0, y: 0.1, z: 0}
+--- !u!114 &1054577878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1054577876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a77990ec0c803d448d6945717513e31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitStop: 0.4
+  player: {fileID: 0}
 --- !u!4 &1054577879 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0fc667a625403ea40813a50581f982a9, type: 3}
@@ -631,7 +644,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a77990ec0c803d448d6945717513e31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitStop: 0.2
+  hitStop: 0.5
+  player: {fileID: 0}
 --- !u!114 &1054577884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,6 +657,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57de5e6ef0be7974a97b53eb6ba66ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1054577885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1054577876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce7f054f5f8d9e3499452ecd20b97cb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  hitStopAir: 0.5
 --- !u!1 &1245123963
 GameObject:
   m_ObjectHideFlags: 0

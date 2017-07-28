@@ -16,7 +16,6 @@ public class betterJump : MonoBehaviour {
 	Rigidbody myRB;
     Animator myAnim;
 
-
     //for jumping player starts suspended above ground by default is not on ground
     [Range(0, 40)]
     public float jumpHeight;
@@ -56,7 +55,6 @@ public class betterJump : MonoBehaviour {
             }
         }
     }
-
 
     protected virtual void Jump()
     {

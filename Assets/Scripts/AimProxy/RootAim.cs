@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Class used to follow player character w/o problematic rotations
 /// or other adjustments to models etc.
+/// Works as inteded do not directly adjust or change
 /// </summary>
 public class RootAim : MonoBehaviour
 {
@@ -37,9 +38,9 @@ public class RootAim : MonoBehaviour
     }
 
     public virtual void flipMe()    {
-        Debug.Log("flipping");
+        //Debug.Log("flipping");
         facesRight = !facesRight;
         transform.Rotate(Vector3.up, 180.0f, Space.World);
     }
-
 }
+
