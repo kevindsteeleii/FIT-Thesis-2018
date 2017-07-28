@@ -21,8 +21,7 @@ public class AimProxyView : View {
     /// </summary>
     [SerializeField]
     protected Vector3 endRelativePosition = new Vector3(0, 0, 0);
-
-
+    
     protected virtual void Awake() {
         // check to see if the model variable is empty
         if (!model) {
@@ -38,8 +37,10 @@ public class AimProxyView : View {
     /// </summary>
     /// <param name="progress">The current progress of the animation</param>
     protected virtual void ChangePosition (float progress) {
-        // Update the position based on a spherical-linear interpolation of the
-        // startRelativePosition, and the endRelativePosition based on where the progress is.
-        this.transform.localPosition = Vector3.Slerp(startRelativePosition, endRelativePosition, progress);
+
+        
+                // Update the position based on a spherical-linear interpolation of the
+                // startRelativePosition, and the endRelativePosition based on where the progress is.
+                this.transform.localPosition = Vector3.Slerp(startRelativePosition, endRelativePosition, progress);
     }
 }

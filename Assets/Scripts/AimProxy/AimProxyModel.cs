@@ -24,6 +24,12 @@ public class AimProxyModel : Model {
 
 
 }
+
+    public virtual void FixedUpdate()
+    {
+
+    }
+
     /// <summary>
     /// An event which triggers when the animation progress for the AnimProxy is updated.
     /// </summary>
@@ -91,17 +97,6 @@ public class AimProxyModel : Model {
         }
     }
 
-    ///Hides the aiming Reticle
-    public virtual void hideAim()
-    {
-        proxy.transform.localScale = new Vector3(0, 0, 0);
-    }
-
-    //Unhides the aiming Reticle
-    public virtual void revealAim()
-    {
-        proxy.transform.localScale = new Vector3(1, 1, 1);
-    }
 
     /// <summary>
     /// An IEnumerator that holds the animation logic for

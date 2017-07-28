@@ -14,9 +14,18 @@ public class betterJump : MonoBehaviour {
 	public float lowJumpMultiplier = 5f;
 	// Use this for initialization
 	Rigidbody myRB;
-	void Awake () {
+    Animator myAnim;
+
+
+    //for jumping player starts suspended above ground by default is not on ground
+    [Range(0, 40)]
+    public float jumpHeight;
+
+    protected virtual void Awake () {
+        jumpHeight = 7f;
 		myRB = GetComponent<Rigidbody> ();
-	}
+        myAnim = GetComponent<Animator>();
+    }
 
 //	void Start () {
 //		
@@ -34,5 +43,39 @@ public class betterJump : MonoBehaviour {
 		} 
 
 	}
+
+    protected virtual void FixedUpdate()
+    {
+        //if false death-state is on all other actions cease
+        if (!myAnim.GetBool("dead"))
+        {
+            //this works but the in air or airborne cycle does not work it strobes
+            if (Input.GetButton("Jump") && myAnim.GetBool("grounded") == true)
+            {
+                Jump();
+            }
+        }
+    }
+
+
+    protected virtual void Jump()
+    {
+        myAnim.SetBool("grounded", false);
+        myRB.velocity = new Vector3(myRB.velocity.x, jumpHeight, 0);
+    }
+    /// <summary>
+    /// Stops the movement of character to allow for animation hitStopping
+    /// </summary>
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+            myAnim.SetBool("grounded", true);
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        if (Mathf.Abs(myRB.velocity.y) > 0)
+            myAnim.SetBool("grounded", false);
+    }
 
 }

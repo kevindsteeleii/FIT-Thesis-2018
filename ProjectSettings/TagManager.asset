@@ -9,6 +9,7 @@ TagManager:
   - CameraTarget
   - AimReticule
   - Projectile
+  - RootAim
   layers:
   - Default
   - TransparentFX
