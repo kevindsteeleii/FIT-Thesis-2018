@@ -9,13 +9,12 @@ using UnityEngine;
 /// </summary>
 public class RootAim : MonoBehaviour
 {
+
     //player as target
     [SerializeField]
     private Transform target;
     private bool facesRight;
-
-
-
+    
     public virtual void Awake()    {
         facesRight = true;
     }
