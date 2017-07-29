@@ -9,8 +9,7 @@ using UnityEngine;
 /// </summary>
 public class RootAim : MonoBehaviour
 {
-
-    //player as target
+        //player as target
     [SerializeField]
     private Transform target;
     private bool facesRight;
