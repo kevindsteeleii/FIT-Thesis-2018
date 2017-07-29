@@ -10,7 +10,7 @@ public class AimProxyController : Controller
     /// A reference to the model class.
     /// </summary>
     [SerializeField]
-    private AimProxyModel model;
+    protected AimProxyModel model;
 
     protected virtual void Awake()
     {
@@ -20,8 +20,22 @@ public class AimProxyController : Controller
             // if it is then get the model attached to the current GameObject
             model = this.gameObject.GetComponent<AimProxyModel>();
         }
+        KeyboardInputObserver.onKeyDown += (KeyboardInputParameters param) => {
+            if (param.keyCode == KeyCode.I) {
+                model.StartProgressUpdateLoop();
+            }
+        };
+        KeyboardInputObserver.onKeyUp += (KeyboardInputParameters param) => {
+            if (param.keyCode == KeyCode.I) {
+                model.EndProgressUpdateLoop();
+            }
+        };
     }
 
+<<<<<<< HEAD
+    protected virtual void Update() {}
+}
+=======
     protected virtual void Update()
     {
         // Check if the aim button is being pressed down
@@ -39,3 +53,4 @@ public class AimProxyController : Controller
 
     }
 }
+>>>>>>> origin/master

@@ -5,8 +5,12 @@ using UnityEngine;
 /// <summary>
 /// The class which houses all the logic for our AimProxy.
 /// </summary>
+<<<<<<< HEAD
+public class AimProxyModel : Model {
+=======
 public class AimProxyModel : Model
 {
+>>>>>>> origin/master
     /// <summary>
     /// An event which triggers when the animation progress for the AnimProxy is updated.
     /// </summary>
