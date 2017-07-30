@@ -10,7 +10,7 @@ public class ThrowController : Controller
 
 	[SerializeField]
 	protected ThrowModel model;
-
+   
 
 	protected virtual void Awake ()
 	{
