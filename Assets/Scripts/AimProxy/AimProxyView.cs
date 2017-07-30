@@ -5,8 +5,7 @@
 /// component on the game object it is on in order to work.
 /// </summary>
 [RequireComponent(typeof(Transform), typeof(AimProxyModel), typeof(AimProxyController))]
-public class AimProxyView : View
-{
+public class AimProxyView : View {
     /// <summary>
     /// A reference to the model class.
     /// </summary>
@@ -24,11 +23,9 @@ public class AimProxyView : View
     protected Vector3 endRelativePosition = new Vector3(0, 0, 0);
 
 
-    protected virtual void Awake()
-    {
+    protected virtual void Awake() {
         // check to see if the model variable is empty
-        if (!model)
-        {
+        if (!model) {
             // if it is then get the model attached to the current GameObject
             model = this.gameObject.GetComponent<AimProxyModel>();
         }
@@ -40,8 +37,7 @@ public class AimProxyView : View
     /// The callback method for the onProgressUpdate event of the model.
     /// </summary>
     /// <param name="progress">The current progress of the animation</param>
-    protected virtual void ChangePosition(float progress)
-    {
+    protected virtual void ChangePosition(float progress) {
         // Update the position based on a spherical-linear interpolation of the
         // startRelativePosition, and the endRelativePosition based on where the progress is.
         this.transform.localPosition = Vector3.Slerp(startRelativePosition, endRelativePosition, progress);
