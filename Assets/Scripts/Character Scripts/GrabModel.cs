@@ -28,10 +28,10 @@ public class GrabModel : MonoBehaviour {
     // Update is called once per frame
     protected virtual void FixedUpdate()
     {
-        myPos = PlayerController.myPos;
+        myPos = playerController.myPos;
 
         //reverses direction of Raycast to either left or right
-        if (!PlayerController.facingRight)
+        if (!playerController.facingRight)
             direction = Vector3.left;
         else
             direction = Vector3.right;

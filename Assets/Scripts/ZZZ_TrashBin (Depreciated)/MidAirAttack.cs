@@ -46,11 +46,9 @@ public class MidAirAttack : MonoBehaviour {
     IEnumerator midAirHitStop () {
         //turns off physics of object for a quick sec to float the attack
         myRB.useGravity = false;
-        myAnim.SetBool("midAirAttack",true);
         Debug.Log("Freeze MidAir");
         yield return new WaitForSeconds(hitStopAir);
         //physics turned back on
-        myAnim.SetBool("midAirAttack", false);
         myRB.useGravity = true;
     }
 
