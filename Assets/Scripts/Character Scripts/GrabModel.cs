@@ -28,10 +28,10 @@ public class GrabModel : MonoBehaviour {
     // Update is called once per frame
     protected virtual void FixedUpdate()
     {
-        myPos = playerController.myPos;
+        myPos = playerControl.myPos;
 
         //reverses direction of Raycast to either left or right
-        if (!playerController.facingRight)
+        if (!playerControl.facingRight)
             direction = Vector3.left;
         else
             direction = Vector3.right;
@@ -46,17 +46,17 @@ public class GrabModel : MonoBehaviour {
 
     protected virtual void grab()
     {
-        //look at Physics.OverlapSphere for detection and tags
-        Debug.Log("The direction is " + direction);
-        //		RaycastHit hit;
-        Vector3 forward = transform.TransformDirection(direction) * 10;
-        //		Debug.DrawRay(myPos,)
+        ////look at Physics.OverlapSphere for detection and tags
+        //Debug.Log("The direction is " + direction);
+        ////		RaycastHit hit;
+        //Vector3 forward = transform.TransformDirection(direction) * 10;
+        ////		Debug.DrawRay(myPos,)
 
-        if (Physics.Raycast(myPos, direction, grabRange))
-        {
-            Debug.Log("Something was HIT!!");
+        //if (Physics.Raycast(myPos, direction, grabRange))
+        //{
+        //    Debug.Log("Something was HIT!!");
 
-        }
+        //}
 
     }
 

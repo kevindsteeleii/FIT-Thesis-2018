@@ -13,26 +13,30 @@ public class RootAim : MonoBehaviour
     [SerializeField]
     private Transform target;
     private bool facesRight;
+
     
     public virtual void Awake()    {
         facesRight = true;
+
     }
 
     // Update is called once per frame
     public virtual void FixedUpdate()    {
+       
         Vector3 desiredPosition = target.position;
-        desiredPosition.z = 0f;
-        transform.position = desiredPosition;
+            desiredPosition.z = 0f;
+            transform.position = desiredPosition;
 
-        float move = Input.GetAxis("Horizontal");
-        if (move > 0 && !facesRight)
-        {
-            flipMe();
-        }
-        else if (move < 0 && facesRight)
-        {
-            flipMe();
-        }
+            float move = Input.GetAxis("Horizontal");
+            if (move > 0 && !facesRight)
+            {
+                flipMe();
+            }
+            else if (move < 0 && facesRight)
+            {
+                flipMe();
+            }
+        
     }
 
     public virtual void flipMe()    {
