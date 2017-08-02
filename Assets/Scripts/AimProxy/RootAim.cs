@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,19 +9,23 @@ using UnityEngine;
 /// </summary>
 public class RootAim : MonoBehaviour
 {
+
+
     //player as target
     [SerializeField]
     private PlayerController target;
-    private bool facesRight;
+    private static bool facesRight;
 
-
-    public virtual void Awake()
-    {
-        facesRight = true;
-        
-
+    public static void turnRight(bool right) {
+        right = facesRight;
     }
 
+    public virtual void Awake()    {
+        target.rightEvent += turnRight;
+        facesRight = true;       
+
+    }
+    
     // Update is called once per frame
     public virtual void FixedUpdate()
     {

@@ -25,6 +25,29 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public static Vector3 myPos;
 
+    /// <summary>
+    /// Delegates used to speed up runtime of checking the parameters and buttons of a resulting
+    /// Animation/Action
+    /// </summary>
+    /// <param name="button"></param>
+    /// <param name="state"></param>
+    /// <param name="flag"></param>
+    /// <returns></returns>
+    public delegate bool ActionTaken(String button, String state, bool flag, Animator myAnim);
+    public delegate bool ComboActionTaken(String button1, String button2, String state, bool flag, Animator myAnim);
+
+    //have the delegates equal two specific generic functions that produce bools based on input and animator parameters
+    ActionTaken takeAction = ActionTook;
+    ComboActionTaken comboAction = ComboActionTake;
+
+    /// <summary>
+    /// If Player changes direction returns true if right, false if left
+    /// /// </summary>
+    /// <returns></returns>
+    public event Action <bool> rightEvent;
+
+
+
     public void Awake()
     {
         myAnim = this.GetComponent<Animator>();
@@ -51,13 +74,19 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
     // Update is called once per physics action
     void FixedUpdate()
     {
+        //updates when facing right or turns what have you
+        rightEvent(facingRight);
 
+        bool undead = takeAction("Respawn", "dead", true, myAnim);
         //if false death-state is on all other actions cease
         if (!myAnim.GetBool("dead"))
         {
+            
+
             float move = Input.GetAxis("Horizontal");
             myAnim.SetFloat("speed", Mathf.Abs(move));
             myRB.velocity = new Vector3(move * data.runSpeed, myRB.velocity.y, 0);
@@ -70,43 +99,32 @@ public class PlayerController : MonoBehaviour
             {
                 Flip();
             }
+            bool puncher = takeAction("Punch", "grounded", true, myAnim);
 
-            if (ActionTook("Punch", "grounded", true, myAnim))
+            if (puncher)
             {
                 StartCoroutine(HitStopperPunch());
             }
-
-            if (ComboActionTake("Punch", "Slam", "grounded", false, myAnim))
+            bool slammer = comboAction("Punch", "Slam", "grounded", false, myAnim);
+            if (slammer)
             {
                 myAnim.SetBool("airborne", false);
                 myAnim.SetBool("slam", true);
             }
-            if (ActionTook("Jump", "grounded", true,myAnim))
+            bool jumper = takeAction("Jump", "grounded", true, myAnim);
+            if (jumper)
             {
                 Jump();
             }
-            
+
         }
-        else if (ActionTook("Respawn", "dead", true, myAnim))
+
+        else if (undead)
         {
             reSpawn();
         }
     }
 
-    /// <summary>
-    /// Delegates used to speed up runtime of checking the parameters and buttons of a resulting
-    /// Animation/Action
-    /// </summary>
-    /// <param name="button"></param>
-    /// <param name="state"></param>
-    /// <param name="flag"></param>
-    /// <returns></returns>
-    public delegate bool ActionTaken (String button, String state, bool flag,Animator myAnim);
-    public delegate bool ComboActionTaken (String button1, String button2, String state, bool flag, Animator myAnim);
-
-
-    ActionTaken takeAction = ActionTook;
-    ComboActionTaken comboAction = ComboActionTake;
 
     /// <summary>
     /// Returns bool based on the button press, and animState ==flag
@@ -161,6 +179,7 @@ public class PlayerController : MonoBehaviour
         //stops movement while punch is animated restarts on end
         myAnim.SetBool("punching", false);
     }
+
 
 
     //declares slam bool false upon ground contact resetting its anim state
