@@ -2,16 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrabModel : MonoBehaviour {
+/// <summary>
+/// A class that represents the physical and visual changes of the 
+/// </summary>
+public class GrabModel : Model {
 
     //range of grab uses slider before cemented into code
     [Range(0f, 3f)]
     public float grabRange;
 
+    //RootAim used to determine location, direction etc
+    GameObject rootAim;
+
 
     //direction of ray and relative position of player
     private Vector3 direction;
     private Vector3 myPos;
+
+
+    private Rigidbody rbHand;
 
     //Game Object being used as grabbing hand/Arm
     [SerializeField]

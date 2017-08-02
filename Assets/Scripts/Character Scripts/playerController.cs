@@ -71,33 +71,48 @@ public class PlayerController : MonoBehaviour
                 Flip();
             }
 
-            if (ActionTook("Punch", "grounded", true))
+            if (ActionTook("Punch", "grounded", true, myAnim))
             {
                 StartCoroutine(HitStopperPunch());
             }
 
-            if (ComboActionTake("Punch", "Slam", "grounded", false))
+            if (ComboActionTake("Punch", "Slam", "grounded", false, myAnim))
             {
                 myAnim.SetBool("airborne", false);
                 myAnim.SetBool("slam", true);
             }
-            if (ActionTook("Jump", "grounded", true))
+            if (ActionTook("Jump", "grounded", true,myAnim))
             {
                 Jump();
             }
-
+            
         }
-        else if (ActionTook("Respawn", "dead", true))
+        else if (ActionTook("Respawn", "dead", true, myAnim))
         {
             reSpawn();
         }
     }
 
     /// <summary>
+    /// Delegates used to speed up runtime of checking the parameters and buttons of a resulting
+    /// Animation/Action
+    /// </summary>
+    /// <param name="button"></param>
+    /// <param name="state"></param>
+    /// <param name="flag"></param>
+    /// <returns></returns>
+    public delegate bool ActionTaken (String button, String state, bool flag,Animator myAnim);
+    public delegate bool ComboActionTaken (String button1, String button2, String state, bool flag, Animator myAnim);
+
+
+    ActionTaken takeAction = ActionTook;
+    ComboActionTaken comboAction = ComboActionTake;
+
+    /// <summary>
     /// Returns bool based on the button press, and animState ==flag
     /// </summary>
 
-    public virtual bool ActionTook(String button, String state, bool flag)
+    public static bool ActionTook(String button, String state, bool flag, Animator myAnim)
     {
         bool acted;
         acted = (Input.GetButton(button) && myAnim.GetBool(state) == flag) ? true : false;
@@ -108,7 +123,7 @@ public class PlayerController : MonoBehaviour
     /// Returns bool based on dual buttons pressed and AnimState ==flag
     /// </summary>
 
-    public virtual bool ComboActionTake(String button1, String button2, String state, bool flag)
+    public static bool ComboActionTake(String button1, String button2, String state, bool flag, Animator myAnim)
     {
         bool acted;
         acted = (Input.GetButton(button1) && Input.GetButton(button2) && myAnim.GetBool(state) == flag);
@@ -128,6 +143,7 @@ public class PlayerController : MonoBehaviour
         myRB.velocity = new Vector3(myRB.velocity.x, data.jumpHeight, 0);
     }
 
+    //false respawn, resets transposition
     public virtual void reSpawn()
     {
         transform.SetPositionAndRotation(respawnPos, rot);

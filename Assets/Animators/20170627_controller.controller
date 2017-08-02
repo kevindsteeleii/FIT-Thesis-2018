@@ -13,37 +13,37 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: grounded
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: punching
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: slam
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: dead
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: airborne
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -620,7 +620,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102792732086265890}
-    m_Position: {x: 324, y: 72, z: 0}
+    m_Position: {x: 312, y: 48, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102261647445338592}
     m_Position: {x: 696, y: 84, z: 0}
@@ -629,7 +629,7 @@ AnimatorStateMachine:
     m_Position: {x: 696, y: 348, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102666754744061084}
-    m_Position: {x: 204, y: 252, z: 0}
+    m_Position: {x: 204, y: 228, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102206346805175654}
     m_Position: {x: 456, y: 288, z: 0}

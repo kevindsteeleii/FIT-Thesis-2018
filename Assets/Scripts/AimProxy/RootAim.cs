@@ -9,37 +9,46 @@ using UnityEngine;
 /// </summary>
 public class RootAim : MonoBehaviour
 {
-        //player as target
+    //player as target
     [SerializeField]
-    private Transform target;
+    private PlayerController target;
     private bool facesRight;
 
-    
-    public virtual void Awake()    {
+
+    public virtual void Awake()
+    {
         facesRight = true;
+        
 
     }
 
     // Update is called once per frame
-    public virtual void FixedUpdate()    {
-       
-        Vector3 desiredPosition = target.position;
-            desiredPosition.z = 0f;
-            transform.position = desiredPosition;
+    public virtual void FixedUpdate()
+    {
 
-            float move = Input.GetAxis("Horizontal");
-            if (move > 0 && !facesRight)
-            {
-                flipMe();
-            }
-            else if (move < 0 && facesRight)
-            {
-                flipMe();
-            }
-        
+        Vector3 desiredPosition = target.transform.position;
+        desiredPosition.z = 0f;
+        transform.position = desiredPosition;
+
+        float move = Input.GetAxis("Horizontal");
+        if (move > 0 && !facesRight)
+        {
+            flipMe();
+        }
+        else if (move < 0 && facesRight)
+        {
+            flipMe();
+        }
+
     }
 
-    public virtual void flipMe()    {
+    public virtual bool RightorLeft()
+    {
+        return true;
+    }
+
+    public virtual void flipMe()
+    {
         //Debug.Log("flipping");
         facesRight = !facesRight;
         transform.Rotate(Vector3.up, 180.0f, Space.World);
