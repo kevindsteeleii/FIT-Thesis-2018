@@ -34,6 +34,10 @@ public class PlayerController : MonoBehaviour
     /// <param name="flag"></param>
     /// <returns></returns>
     public delegate bool ActionTaken(String button, String state, bool flag, Animator myAnim);
+
+    /// <summary>
+    /// Combo Action taken is simply a a two-input version of Action Taken
+    /// </summary>
     public delegate bool ComboActionTaken(String button1, String button2, String state, bool flag, Animator myAnim);
 
     //have the delegates equal two specific generic functions that produce bools based on input and animator parameters

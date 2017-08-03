@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
-	public static bool grabbable = true;
+	public static bool grabbable;
 
 	//allows for adjustment of enemy strength
 	[Range (0,25)]
@@ -13,17 +13,17 @@ public class Enemy : MonoBehaviour {
 	private int fullHP;
 
 	// Use this for initialization
-	protected virtual void Start () {
-		HP = 10;
-		fullHP = HP;
+	protected virtual void Awake () {
+        HP = 10;
 	}
-	
-	// Update is called once per frame
-	protected virtual void Update () {
-		
-		if (grabbable) {canGrab ();		}
 
-	}
+    protected virtual void Update()
+    {
+        if (HP <= HP / 2)
+            { }
+        else
+            { }
+    }
 
 	protected virtual void takeDamage(int dam){
 		
@@ -39,5 +39,22 @@ public class Enemy : MonoBehaviour {
 			canGrab = false;
 		return canGrab;
 	}
+
+    private void OnCollisionEnter(Collision col)
+    {
+        
+    }
+
+    private void OnCollisionStay(Collision col)
+    {
+        
+    }
+
+    private void OnCollisionExit(Collision col)
+    {
+        
+    }
+
+
 
 }
