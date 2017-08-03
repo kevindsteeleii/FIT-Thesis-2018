@@ -9,28 +9,29 @@ using UnityEngine;
 /// </summary>
 public class RootAim : MonoBehaviour
 {
-
+    /// <summary>
+    /// Used as a basis for both the relativeOffset for grab and starting
+    /// Vector3 to figure out the direction of the aimed throw.
+    /// </summary>
+    public event Action<Vector3> aimPosition;
 
     //player as target
     [SerializeField]
-    private PlayerController target;
-    private static bool facesRight;
+    private Transform target;
 
-    public static void turnRight(bool right) {
-        right = facesRight;
-    }
+    public static bool facesRight;
 
+   
     public virtual void Awake()    {
-        target.rightEvent += turnRight;
-        facesRight = true;       
-
+        facesRight = true;
     }
-    
+
+
     // Update is called once per frame
     public virtual void FixedUpdate()
     {
 
-        Vector3 desiredPosition = target.transform.position;
+        Vector3 desiredPosition = target.position;
         desiredPosition.z = 0f;
         transform.position = desiredPosition;
 
@@ -46,16 +47,12 @@ public class RootAim : MonoBehaviour
 
     }
 
-    public virtual bool RightorLeft()
-    {
-        return true;
-    }
-
     public virtual void flipMe()
     {
-        //Debug.Log("flipping");
         facesRight = !facesRight;
+        //Debug.Log("flipping");
         transform.Rotate(Vector3.up, 180.0f, Space.World);
     }
+    
 }
 

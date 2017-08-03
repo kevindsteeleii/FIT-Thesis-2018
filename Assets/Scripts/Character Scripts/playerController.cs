@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     //rigidboday and animator children of the player character 
     Animator myAnim;
     Rigidbody myRB;
-    private bool facingRight;
+    public static bool facingRight;
 
     //respawn position
     Vector3 respawnPos;
@@ -40,14 +40,6 @@ public class PlayerController : MonoBehaviour
     ActionTaken takeAction = ActionTook;
     ComboActionTaken comboAction = ComboActionTake;
 
-    /// <summary>
-    /// If Player changes direction returns true if right, false if left
-    /// /// </summary>
-    /// <returns></returns>
-    public event Action <bool> rightEvent;
-
-
-
     public void Awake()
     {
         myAnim = this.GetComponent<Animator>();
@@ -56,6 +48,7 @@ public class PlayerController : MonoBehaviour
         myAnim.SetBool("grounded", false);
         respawnPos = myRB.transform.position;
         rot = myRB.transform.rotation;
+       
     }
 
     public void Update()
@@ -78,14 +71,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per physics action
     void FixedUpdate()
     {
-        //updates when facing right or turns what have you
-        rightEvent(facingRight);
 
         bool undead = takeAction("Respawn", "dead", true, myAnim);
         //if false death-state is on all other actions cease
         if (!myAnim.GetBool("dead"))
-        {
-            
+        {        
 
             float move = Input.GetAxis("Horizontal");
             myAnim.SetFloat("speed", Mathf.Abs(move));
@@ -188,11 +178,13 @@ public class PlayerController : MonoBehaviour
         myAnim.SetBool("slam", false);
         myAnim.SetBool("airborne", false);
         myAnim.SetBool("grounded", true);
+
         if (collision.gameObject == GameObject.FindGameObjectWithTag("Enemy"))
         {
             //**faux code no declaration or creation of a Damage/Health class as of yet
             //**Damage.applyDamage(float damageAmout);
         }
+
         if (collision.gameObject.tag == "Ground")
         {
             myAnim.SetBool("grounded", true);

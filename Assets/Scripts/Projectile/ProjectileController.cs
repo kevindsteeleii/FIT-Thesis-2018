@@ -21,18 +21,18 @@ public class ProjectileController : Controller {
 	// Update is called once per frame
 	protected virtual void Update () {
         //on hold of throw button 
-        if (Input.GetButton("Throw"))
+        if (Input.GetButton("Grab"))
         {
             if (!model.hasAmmo())
                 Debug.Log("Empty Clip");
             else
                 Debug.Log("Holding");
         }
-        else if (Input.GetButtonUp("Throw") && !model.hasAmmo())
+        else if (Input.GetButtonUp("Grab") && !model.hasAmmo())
         {
                Debug.Log("Empty Clip, Can");
         }
-        else if (Input.GetButtonUp("Throw") && model.hasAmmo())
+        else if (Input.GetButtonUp("Grab") && model.hasAmmo())
         {
             Debug.Log("Throwing");
             model.shootLoad();

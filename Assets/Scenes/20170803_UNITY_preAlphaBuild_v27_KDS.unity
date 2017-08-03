@@ -794,11 +794,11 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.1
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!23 &1941611379
 MeshRenderer:
@@ -875,9 +875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cba1e58e92f81c47bc267f60d460913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabRange: 0
-  speed: 0.5
-  offSet: {x: 1.83, y: 0.6}
+  data: {fileID: 11400000, guid: 89d3926319784f64f885d4d30fbcad6b, type: 2}
   rootAim: {fileID: 1964235336}
 --- !u!1 &1964235335
 GameObject:

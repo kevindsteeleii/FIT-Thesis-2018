@@ -1,71 +1,106 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
 /// A class that represents the physical and visual changes of the 
 /// </summary>
-public class GrabModel : Model {
+public class GrabModel : Model
+{
 
-    //range of grab uses slider before cemented into code
-    [Range(0f, 3f)]
-    public float grabRange;
+    //stroes the data for the GrabModel and saves changes during play mode
+    public GrabData data;
 
-    //RootAim used to determine location, direction etc
-    GameObject rootAim;
+    ////range of grab determined by slider
+    //[Tooltip("How far away he grabs")]
+    //[Range(0f, 10f)]
+    //public float grabRange;
 
+    ////speed variable inverse to actual speed
+    //[Tooltip("Smaller the number the faster it goes")]
+    //[Range(0f, 0.7f)]
+    //public float speed;
+
+    ////distance from origin, the default is pretty good right now
+    //[SerializeField]
+    //protected Vector2 offSet = new Vector2(0.6f, 0.6f);
 
     //direction of ray and relative position of player
-    private Vector3 direction;
-    private Vector3 myPos;
+    public static Vector3 direction;
 
+    Rigidbody myRB;
 
-    private Rigidbody rbHand;
+    Renderer myRender = new Renderer();
 
     //Game Object being used as grabbing hand/Arm
     [SerializeField]
-    private GameObject hand;
+    private RootAim rootAim;
 
     // Use this for initialization
-    protected virtual void Awake()
+    protected virtual void Awake ()
     {
-        if (!hand )        {
-            hand = this.gameObject;
-        }
+        myRB = this.gameObject.GetComponent<Rigidbody>();
+        myRender = this.GetComponent<Renderer>();
+        rootAim = this.GetComponent<RootAim>();
+        Vector3 trueOffSet = new Vector3(data.offSet.x, data.offSet.y, 0);
+        transform.localPosition = trueOffSet;
+
     }
 
-    // Update is called once per frame
-    protected virtual void FixedUpdate()
+    protected virtual void Update()
     {
-        myPos = playerControl.myPos;
-
-        //reverses direction of Raycast to either left or right
-        if (!playerControl.facingRight)
+        if (!RootAim.facesRight)
             direction = Vector3.left;
         else
             direction = Vector3.right;
+    }
 
-        // on grab button attempts to grab
-        if (Input.GetButtonDown("Grab"))
-        {
-            grab();
-        }
+    /// <summary>
+    /// As long as button is pressed down it will propel hand towards maximum Reach
+    /// </summary>
+
+    public void grab()
+    {   //appears whilegrabbing
+        myRender.enabled = true;
+        Vector3 position = transform.localPosition;
+        Vector3 destination = new Vector3(data.grabRange, data.offSet.y, 0);
+        Vector3 velocity = Vector3.zero;
+        transform.localPosition = Vector3.SmoothDamp(position, destination, ref velocity, data.speed);
+    }
+
+
+    public virtual void release()
+    {   //and disappears when you let go
+        myRender.enabled = false;
+        Vector3 trueOffSet = new Vector3(data.offSet.x, data.offSet.y, 0);
+        transform.localPosition = trueOffSet;
+
 
     }
 
-    protected virtual void grab()
+    private void OnCollisionEnter(Collision collision)
     {
-        ////look at Physics.OverlapSphere for detection and tags
-        //Debug.Log("The direction is " + direction);
-        ////		RaycastHit hit;
-        //Vector3 forward = transform.TransformDirection(direction) * 10;
-        ////		Debug.DrawRay(myPos,)
+        //if the object in question is "grabbed" then...
+        if (collision.gameObject.tag == "Projectile")
+        {
 
-        //if (Physics.Raycast(myPos, direction, grabRange))
-        //{
-        //    Debug.Log("Something was HIT!!");
+            /*Imagine a bunch of code that does a couple of things:
+             * triggers the "destruction" of the target, 
+             * the addition of an object
+             * type Projectile to some kind to list
+             * that retains the number of projectiles
+             * up to a predetermined limit
+             * Could also possibly code all that crap into enemies
+             * seems easier
+             */
+        }
+        else
+            return;
 
-        //}
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
 
     }
 
