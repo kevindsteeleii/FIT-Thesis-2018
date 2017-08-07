@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: Default GrabData
   m_EditorClassIdentifier: 
   grabRange: 6.53
-  speed: 0.113
+  speed: 0.102
   offSet: {x: 0.6, y: 0.6}
