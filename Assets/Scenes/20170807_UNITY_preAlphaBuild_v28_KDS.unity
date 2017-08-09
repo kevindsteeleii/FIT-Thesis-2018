@@ -257,7 +257,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 011388774b397d542a086a6e0d2097e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 210649980}
 --- !u!114 &210649980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,7 +268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c36deca142b7bfc4f9153274aa51c09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 210649980}
   reticle: {fileID: 220661258}
   player: {fileID: 1054577876}
 --- !u!1 &212033373 stripped
@@ -604,6 +602,18 @@ MonoBehaviour:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0fc667a625403ea40813a50581f982a9, type: 3}
   m_PrefabInternal: {fileID: 500786934}
+--- !u!114 &1054577880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1054577876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 889d069ef36559d47b8ca7226ea87207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullseye: {fileID: 0}
 --- !u!54 &1054577881
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -877,6 +887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 89d3926319784f64f885d4d30fbcad6b, type: 2}
   rootAim: {fileID: 1964235336}
+  player: {fileID: 0}
 --- !u!1 &1964235335
 GameObject:
   m_ObjectHideFlags: 0

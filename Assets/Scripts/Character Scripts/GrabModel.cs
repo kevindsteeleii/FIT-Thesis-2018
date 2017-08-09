@@ -11,20 +11,6 @@ public class GrabModel : Model
     //stroes the data for the GrabModel and saves changes during play mode
     public GrabData data;
 
-    ////range of grab determined by slider
-    //[Tooltip("How far away he grabs")]
-    //[Range(0f, 10f)]
-    //public float grabRange;
-
-    ////speed variable inverse to actual speed
-    //[Tooltip("Smaller the number the faster it goes")]
-    //[Range(0f, 0.7f)]
-    //public float speed;
-
-    ////distance from origin, the default is pretty good right now
-    //[SerializeField]
-    //protected Vector2 offSet = new Vector2(0.6f, 0.6f);
-
     //direction of ray and relative position of player
     public static Vector3 direction;
 
@@ -36,19 +22,20 @@ public class GrabModel : Model
     [SerializeField]
     private RootAim rootAim;
 
+    [SerializeField]
+    private PlayerController player;
+
     // Use this for initialization
-    protected virtual void Awake ()
-    {
+    protected virtual void Awake ()    {
+        this.gameObject.tag = "Hand";
         myRB = this.gameObject.GetComponent<Rigidbody>();
         myRender = this.GetComponent<Renderer>();
         rootAim = this.GetComponent<RootAim>();
         Vector3 trueOffSet = new Vector3(data.offSet.x, data.offSet.y, 0);
         transform.localPosition = trueOffSet;
-
     }
 
-    protected virtual void Update()
-    {
+    protected virtual void Update()    {
         if (!RootAim.facesRight)
             direction = Vector3.left;
         else
@@ -59,8 +46,8 @@ public class GrabModel : Model
     /// As long as button is pressed down it will propel hand towards maximum Reach
     /// </summary>
 
-    public void grab()
-    {   //appears whilegrabbing
+    public void grab()    {  
+        //appears whilegrabbing
         myRender.enabled = true;
         Vector3 position = transform.localPosition;
         Vector3 destination = new Vector3(data.grabRange, data.offSet.y, 0);
@@ -68,21 +55,18 @@ public class GrabModel : Model
         transform.localPosition = Vector3.SmoothDamp(position, destination, ref velocity, data.speed);
     }
 
-
-    public virtual void release()
-    {   //and disappears when you let go
+    public virtual void release()    {  
+        //and disappears when you let go
         myRender.enabled = false;
         Vector3 trueOffSet = new Vector3(data.offSet.x, data.offSet.y, 0);
         transform.localPosition = trueOffSet;
-
-
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
+    private void OnCollisionEnter(Collision collision)    {
         //if the object in question is "grabbed" then...
-        if (collision.gameObject.tag == "Projectile")
-        {
+        if (collision.gameObject.tag == "Projectile")        {
+            //adds a single object type Projectile to a list of projectiles
+            Ammo.load();
 
             /*Imagine a bunch of code that does a couple of things:
              * triggers the "destruction" of the target, 
@@ -96,11 +80,9 @@ public class GrabModel : Model
         }
         else
             return;
-
     }
 
-    private void OnCollisionExit(Collision collision)
-    {
+    private void OnCollisionExit(Collision collision)    {
 
     }
 

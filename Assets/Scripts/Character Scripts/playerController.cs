@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 /// <summary>
@@ -20,6 +21,8 @@ public class PlayerController : MonoBehaviour
     //respawn rotation
     Quaternion rot;
 
+    public static List<Projectile> ammo = new List<Projectile>();
+
     /// <summary>
     /// keeps position to be referred to outside
     /// </summary>
@@ -29,10 +32,6 @@ public class PlayerController : MonoBehaviour
     /// Delegates used to speed up runtime of checking the parameters and buttons of a resulting
     /// Animation/Action
     /// </summary>
-    /// <param name="button"></param>
-    /// <param name="state"></param>
-    /// <param name="flag"></param>
-    /// <returns></returns>
     public delegate bool ActionTaken(String button, String state, bool flag, Animator myAnim);
 
     /// <summary>
@@ -44,8 +43,7 @@ public class PlayerController : MonoBehaviour
     ActionTaken takeAction = ActionTook;
     ComboActionTaken comboAction = ComboActionTake;
 
-    public void Awake()
-    {
+    public void Awake()    {
         myAnim = this.GetComponent<Animator>();
         myRB = this.GetComponent<Rigidbody>();
         facingRight = true;
@@ -78,54 +76,44 @@ public class PlayerController : MonoBehaviour
 
         bool undead = takeAction("Respawn", "dead", true, myAnim);
         //if false death-state is on all other actions cease
-        if (!myAnim.GetBool("dead"))
-        {        
+        if (!myAnim.GetBool("dead"))        {        
 
             float move = Input.GetAxis("Horizontal");
             myAnim.SetFloat("speed", Mathf.Abs(move));
             myRB.velocity = new Vector3(move * data.runSpeed, myRB.velocity.y, 0);
 
-            if (move > 0 && !facingRight)
-            {
+            if (move > 0 && !facingRight)   {
                 Flip();
             }
-            else if (move < 0 && facingRight)
-            {
+            else if (move < 0 && facingRight)   {
                 Flip();
             }
             bool puncher = takeAction("Punch", "grounded", true, myAnim);
 
-            if (puncher)
-            {
+            if (puncher)    {
                 StartCoroutine(HitStopperPunch());
             }
             bool slammer = comboAction("Punch", "Slam", "grounded", false, myAnim);
-            if (slammer)
-            {
+
+            if (slammer)    {
                 myAnim.SetBool("airborne", false);
                 myAnim.SetBool("slam", true);
             }
             bool jumper = takeAction("Jump", "grounded", true, myAnim);
-            if (jumper)
-            {
+
+            if (jumper) {
                 Jump();
             }
-
         }
-
-        else if (undead)
-        {
+        else if (undead)    {
             reSpawn();
         }
     }
 
-
     /// <summary>
     /// Returns bool based on the button press, and animState ==flag
     /// </summary>
-
-    public static bool ActionTook(String button, String state, bool flag, Animator myAnim)
-    {
+    public static bool ActionTook(String button, String state, bool flag, Animator myAnim)    {
         bool acted;
         acted = (Input.GetButton(button) && myAnim.GetBool(state) == flag) ? true : false;
         return acted;
@@ -134,30 +122,25 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Returns bool based on dual buttons pressed and AnimState ==flag
     /// </summary>
-
-    public static bool ComboActionTake(String button1, String button2, String state, bool flag, Animator myAnim)
-    {
+    public static bool ComboActionTake(String button1, String button2, String state, bool flag, Animator myAnim)    {
         bool acted;
         acted = (Input.GetButton(button1) && Input.GetButton(button2) && myAnim.GetBool(state) == flag);
         return acted;
     }
 
-    void Flip()
-    {
+    void Flip()    {
         facingRight = !facingRight;
         transform.Rotate(Vector3.up, 180.0f, Space.World);
     }
 
-    public virtual void Jump()
-    {
+    public virtual void Jump()    {
         myAnim.SetBool("grounded", false);
         myAnim.SetBool("airborne", true);
         myRB.velocity = new Vector3(myRB.velocity.x, data.jumpHeight, 0);
     }
 
     //false respawn, resets transposition
-    public virtual void reSpawn()
-    {
+    public virtual void reSpawn()    {
         transform.SetPositionAndRotation(respawnPos, rot);
         myAnim.SetBool("dead", false);
         myAnim.SetBool("grounded", true);
@@ -165,8 +148,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //hitStop coroutine for punch to hold and then stop animation
-    IEnumerator HitStopperPunch()
-    {
+    IEnumerator HitStopperPunch()    {
         myAnim.SetBool("punching", true);
         //find better way to hitStop on the punch its jaggy atm
         yield return new WaitForSeconds(myAnim.GetCurrentAnimatorStateInfo(0).length / 5f);
@@ -174,38 +156,35 @@ public class PlayerController : MonoBehaviour
         myAnim.SetBool("punching", false);
     }
 
-
+    public virtual void addProjectile()    {
+        Projectile newProj = new Projectile();
+        ammo.Add(newProj);
+    }
 
     //declares slam bool false upon ground contact resetting its anim state
-    void OnCollisionEnter(Collision collision)
-    {
+    void OnCollisionEnter(Collision collision)    {
         myAnim.SetBool("slam", false);
         myAnim.SetBool("airborne", false);
         myAnim.SetBool("grounded", true);
 
-        if (collision.gameObject == GameObject.FindGameObjectWithTag("Enemy"))
-        {
+        if (collision.gameObject == GameObject.FindGameObjectWithTag("Enemy"))        {
             //**faux code no declaration or creation of a Damage/Health class as of yet
             //**Damage.applyDamage(float damageAmout);
         }
 
-        if (collision.gameObject.tag == "Ground")
-        {
+        if (collision.gameObject.tag == "Ground")        {
             myAnim.SetBool("grounded", true);
             myAnim.SetBool("airborne", false);
         }
 
-        if (collision.gameObject.tag == "Death Object")
-        {
+        if (collision.gameObject.tag == "Death Object")        {
             transform.Rotate(0, 0, 90);
             myAnim.SetBool("dead", true);
         }
     }
 
-    void OnCollisionExit(Collision collision)
-    {
-        if (Mathf.Abs(myRB.velocity.y) > 0)
-        {
+    void OnCollisionExit(Collision collision)    {
+        if (Mathf.Abs(myRB.velocity.y) > 0)        {
             myAnim.SetBool("grounded", false);
             myAnim.SetBool("airborne", true);
         }

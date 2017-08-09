@@ -21,9 +21,12 @@ public class RootAim : MonoBehaviour
 
     public static bool facesRight;
 
+    public static Vector3 reticle;
+
    
     public virtual void Awake()    {
         facesRight = true;
+        reticle = GameObject.FindGameObjectWithTag("AimReticule").transform.position;
     }
 
 
