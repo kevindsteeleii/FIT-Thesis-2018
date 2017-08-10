@@ -66,10 +66,7 @@ public class Ammo : MonoBehaviour {
             ammo.Add(newBullet);
         }
         else
-            Debug.Log("Filled to max capacity! Try throwing one.");
-        
-
-
+            Debug.Log("Filled to max capacity! Try throwing one.");   
     }
 
     /// <summary>

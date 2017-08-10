@@ -17,10 +17,8 @@ public class Throw : MonoBehaviour {
     // Update is called once per frame
     protected virtual void Update () {
         //Mind you the "Grab" button doubles as 
-        if (Input.GetButton("Grab")&&!Ammo.emptyClip)
-        {
+        if (Input.GetButton("Grab")&&!Ammo.emptyClip)   {
             Ammo.shootLoad();
-
         }
     }
 

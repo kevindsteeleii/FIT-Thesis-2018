@@ -5,15 +5,18 @@ using UnityEngine;
 /// Projectile controller class checks for input to throw and the ammo clip
 /// projectile
 /// </summary>
-public class ProjectileController : Controller {
+public class ProjectileController : Controller
+{
 
 
-	protected virtual void Awake () {
+    protected virtual void Awake()
+    {
 
-	}
+    }
 
-	// Update is called once per frame
-	protected virtual void Update () {
+    // Update is called once per frame
+    protected virtual void Update()
+    {
         //on hold of throw button 
         if (Input.GetButton("Grab"))
         {
@@ -24,15 +27,17 @@ public class ProjectileController : Controller {
         }
         else if (Input.GetButtonUp("Grab") && Ammo.emptyClip)
         {
-               Debug.Log("Empty Clip, Can");
+            Debug.Log("Empty Clip, Can");
         }
         else if (Input.GetButtonUp("Grab") && !Ammo.emptyClip)
         {
             Debug.Log("Throwing");
             Ammo.shootLoad();
         }
-        }
+
+    }
+
 
 }
-    
+
 

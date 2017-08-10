@@ -33,7 +33,7 @@ public class RootAim : MonoBehaviour
     // Update is called once per frame
     public virtual void FixedUpdate()
     {
-
+        
         Vector3 desiredPosition = target.position;
         desiredPosition.z = 0f;
         transform.position = desiredPosition;
