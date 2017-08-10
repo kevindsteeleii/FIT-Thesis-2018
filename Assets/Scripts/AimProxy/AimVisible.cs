@@ -7,6 +7,7 @@ public class AimVisible : MonoBehaviour {
 
     public static Vector3 reticlePos;
 
+
     public new Renderer renderer;
     // Use this for initialization
     void Awake () {

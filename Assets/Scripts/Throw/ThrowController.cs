@@ -10,26 +10,44 @@ public class ThrowController : Controller
 
 	[SerializeField]
 	protected ThrowModel model;
-   
 
-	protected virtual void Awake ()
+    [SerializeField]
+    private Ammo ammo;
+
+    Rigidbody myRb;
+
+    protected virtual void Awake ()
 	{
-		if (!model)
-			model = this.gameObject.GetComponent<ThrowModel> ();
-		KeyboardInputObserver.onKeyDown += (KeyboardInputParameters obj) => {
-			if (obj.keyCode == KeyCode.I) {
-				//spawn object
-				model.OnThrowStart();
-			}
-		};
-		KeyboardInputObserver.onKeyUp += (KeyboardInputParameters obj) => {
-			if (obj.keyCode == KeyCode.I) {
-				//throw
-				model.OnThrowEnd();
+        myRb = this.GetComponent<Rigidbody>();
+  //      if (!model)
+		//	model = this.gameObject.GetComponent<ThrowModel> ();
+		//KeyboardInputObserver.onKeyDown += (KeyboardInputParameters obj) => {
+		//	if (obj.keyCode == KeyCode.I) {
+		//		//spawn object
+		//		model.OnThrowStart();
+		//	}
+		//};
+		//KeyboardInputObserver.onKeyUp += (KeyboardInputParameters obj) => {
+		//	if (obj.keyCode == KeyCode.I) {
+		//		//throw
+		//		model.OnThrowEnd();
 
-			}
-		};
+		//	}
+		//};
 
 	}
+
+    protected virtual void Update()
+    {
+        //Mind you the "Grab" button doubles as 
+        if (Input.GetButton("Grab") && !Ammo.emptyClip)
+        {
+            Ammo.shootLoad();
+        }
+    }
+
+    protected void throwAngle()    {
+
+    }
 }
 

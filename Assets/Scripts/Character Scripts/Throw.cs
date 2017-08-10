@@ -9,9 +9,12 @@ public class Throw : MonoBehaviour {
 
     [SerializeField]
     private Ammo ammo;
+
+    Rigidbody myRb;
+
     // Use this for initialization
     protected virtual void Awake () {
-		
+        myRb = this.GetComponent<Rigidbody>();
 	}
 
     // Update is called once per frame

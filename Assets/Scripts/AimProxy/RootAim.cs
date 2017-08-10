@@ -13,7 +13,6 @@ public class RootAim : MonoBehaviour
     /// Used as a basis for both the relativeOffset for grab and starting
     /// Vector3 to figure out the direction of the aimed throw.
     /// </summary>
-    public event Action<Vector3> aimPosition;
 
     //player as target
     [SerializeField]
@@ -21,19 +20,22 @@ public class RootAim : MonoBehaviour
 
     public static bool facesRight;
 
-    public static Vector3 reticle;
+    public static Vector3 aimPos;
+    public static int direction = 1;
 
-   
+
     public virtual void Awake()    {
         facesRight = true;
-        reticle = GameObject.FindGameObjectWithTag("AimReticule").transform.position;
+       
     }
+
+    
 
 
     // Update is called once per frame
     public virtual void FixedUpdate()
     {
-        
+        aimPos = this.transform.position;
         Vector3 desiredPosition = target.position;
         desiredPosition.z = 0f;
         transform.position = desiredPosition;
@@ -53,6 +55,7 @@ public class RootAim : MonoBehaviour
     public virtual void flipMe()
     {
         facesRight = !facesRight;
+        direction *= -1;
         //Debug.Log("flipping");
         transform.Rotate(Vector3.up, 180.0f, Space.World);
     }

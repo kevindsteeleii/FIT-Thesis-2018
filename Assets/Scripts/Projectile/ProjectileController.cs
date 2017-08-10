@@ -8,9 +8,10 @@ using UnityEngine;
 public class ProjectileController : Controller
 {
 
+    [SerializeField]
+    protected Projectile model;
 
-    protected virtual void Awake()
-    {
+    protected virtual void Awake()  {
 
     }
 
@@ -23,16 +24,22 @@ public class ProjectileController : Controller
             if (Ammo.emptyClip)
                 Debug.Log("Empty Clip");
             else
-                Debug.Log("Holding");
+                Debug.Log("Loading");
         }
-        else if (Input.GetButtonUp("Grab") && Ammo.emptyClip)
-        {
-            Debug.Log("Empty Clip, Can");
-        }
-        else if (Input.GetButtonUp("Grab") && !Ammo.emptyClip)
-        {
-            Debug.Log("Throwing");
-            Ammo.shootLoad();
+        if (!Ammo.emptyClip)
+        { 
+            if (Input.GetButtonUp("Throw"))
+            {
+                Debug.Log("Throwing");
+                model.throwing();
+                Ammo.shootLoad();
+            }
+
+            else if (Input.GetButton("Throw") && Input.GetButton("Aim")) {
+                Debug.Log("Aimed Throw");
+                model.shooting();
+                Ammo.shootLoad();
+            }
         }
 
     }

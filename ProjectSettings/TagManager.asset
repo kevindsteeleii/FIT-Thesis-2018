@@ -11,6 +11,7 @@ TagManager:
   - Projectile
   - RootAim
   - Enemy
+  - Hand
   layers:
   - Default
   - TransparentFX

@@ -1,20 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 /// <summary>
 /// Handles transform and positioning data
 /// </summary>
+[RequireComponent(typeof (Projectile),typeof (ProjectileController ))]
 public class ProjectileView : View {
 
     //used as reference point in place of 
-    GameObject player;
+    [SerializeField]
+    private Projectile model;
+
+
 	// Use this for initialization
 	protected virtual void Awake () {
-        player = GameObject.FindGameObjectWithTag("RootAim");
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    protected virtual void shooting()   {
+
+    }
 }
