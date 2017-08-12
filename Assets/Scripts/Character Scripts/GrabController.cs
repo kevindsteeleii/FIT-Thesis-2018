@@ -21,11 +21,13 @@ public class GrabController : Controller {
 	// Physics Changes
 	void FixedUpdate ()
     {
-		if (Input.GetButton("Grab")&&Ammo.emptyClip) {
+		if (Input.GetButton("Grab")&&!Ammo.fullCap) {
+
             handModel.grab();
+            Ammo.load();
         }
 
-        if (!Input.GetButton("Grab") && Ammo.emptyClip) {
+        if (!Input.GetButton("Grab") && Ammo.fullCap) {
             handModel.release();
         }
     }

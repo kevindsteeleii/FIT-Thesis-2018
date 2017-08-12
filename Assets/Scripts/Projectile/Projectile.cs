@@ -8,38 +8,54 @@ using UnityEngine;
 public class Projectile : Model
 {
     //damage the projectile causes
-    public static float damage;
+    public float damage;
 
     [Range(0.1f,10f)]
     public float power;
 
-    [SerializeField]
-    protected AimProxyModel reticle;
-
-    [SerializeField]
-    private GameObject player;
-
     Rigidbody myRb;
+
+    bool right = true;
+    int isRight = 1;
+
+    [Range(0.1f, 12f)]
+    float throwForce;
+    //rootAim is the approximate position of origin and aimProx is the
+    //position of the aiming reticle
+    Vector3 rootAim;
+    Vector3 aimProx;
+    Vector3 direction;
 
     private void Awake()    {
         myRb = this.GetComponent<Rigidbody>();
+        aimProx = AimVisible.reticlePos;
+        rootAim = RootAim.aimPos;
     }
 
-    protected Vector3 projectilePos;
+    // Update is called once per frame
+    protected virtual void FixedUpdate()
+    {
+        right = RootAim.facesRight;
+        aimProx = AimVisible.reticlePos;
+        rootAim = RootAim.aimPos;
+        isRight = (right) ? 1 : -1;
+        direction = rootAim - aimProx;
+    }
 
     /// <summary>
-    /// Throwing without aiming.
+    /// Throw at the angle of the aiming reticle
     /// </summary>
-    public void throwing()  {
-        myRb.AddForce(Vector3.right * RootAim.direction, ForceMode.VelocityChange);
+    public void throwAngle()
+    {
+        myRb.AddForceAtPosition(direction * throwForce, rootAim, ForceMode.Acceleration);
     }
+
     /// <summary>
-    /// Aimed throwing
+    /// Throw straight when prompted
     /// </summary>
-    public void shooting()  {
-        Vector3 force;
-        force = (AimVisible.reticlePos - RootAim.aimPos );
-        myRb.AddForce(force * power, ForceMode.VelocityChange);       
+    public void throwStraight()
+    {
+        myRb.AddForceAtPosition(Vector3.right * isRight * throwForce, rootAim);
     }
 
 

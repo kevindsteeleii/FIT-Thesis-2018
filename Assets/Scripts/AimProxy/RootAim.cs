@@ -23,33 +23,30 @@ public class RootAim : MonoBehaviour
     public static Vector3 aimPos;
     public static int direction = 1;
 
+    [Range (0f,3f)]
+    public float vertAdjustment;
+
 
     public virtual void Awake()    {
         facesRight = true;
        
     }
-
     
-
-
     // Update is called once per frame
-    public virtual void FixedUpdate()
-    {
+    public virtual void FixedUpdate()    {
         aimPos = this.transform.position;
         Vector3 desiredPosition = target.position;
+        desiredPosition.y = vertAdjustment+target.position.y;
         desiredPosition.z = 0f;
         transform.position = desiredPosition;
 
         float move = Input.GetAxis("Horizontal");
-        if (move > 0 && !facesRight)
-        {
+        if (move > 0 && !facesRight)        {
             flipMe();
         }
-        else if (move < 0 && facesRight)
-        {
+        else if (move < 0 && facesRight)        {
             flipMe();
         }
-
     }
 
     public virtual void flipMe()

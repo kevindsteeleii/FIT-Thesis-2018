@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 ///	Takes input for ThrowModel
@@ -15,6 +13,7 @@ public class ThrowController : Controller
     private Ammo ammo;
 
     Rigidbody myRb;
+
 
     protected virtual void Awake ()
 	{

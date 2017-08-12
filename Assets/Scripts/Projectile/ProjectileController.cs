@@ -8,15 +8,18 @@ using UnityEngine;
 public class ProjectileController : Controller
 {
 
-    [SerializeField]
-    protected Projectile model;
+    //it instantiates a projectile to be shot
+    Projectile model;
 
-    protected virtual void Awake()  {
+
+
+    protected virtual void Awake()
+    {
 
     }
 
     // Update is called once per frame
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
         //on hold of throw button 
         if (Input.GetButton("Grab"))
@@ -26,18 +29,21 @@ public class ProjectileController : Controller
             else
                 Debug.Log("Loading");
         }
-        if (!Ammo.emptyClip)
-        { 
+        while (!Ammo.emptyClip)
+        {
             if (Input.GetButtonUp("Throw"))
             {
                 Debug.Log("Throwing");
-                model.throwing();
+                model = Instantiate(Resources.Load("Prefabs", typeof(Projectile)) as Projectile);
+                model.throwStraight();
                 Ammo.shootLoad();
             }
 
-            else if (Input.GetButton("Throw") && Input.GetButton("Aim")) {
+            else if (Input.GetButton("Throw") && Input.GetButton("Aim"))
+            {
                 Debug.Log("Aimed Throw");
-                model.shooting();
+                model = Instantiate(Resources.Load("Prefabs", typeof(Projectile)) as Projectile);
+                model.throwAngle();
                 Ammo.shootLoad();
             }
         }

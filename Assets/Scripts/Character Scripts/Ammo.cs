@@ -4,24 +4,21 @@ using System.Collections.Generic;
 /// <summary>
 /// Used to manage projectiles as a list holds its data and not much else
 /// </summary>
-public class Ammo : MonoBehaviour {
+public class Ammo : MonoBehaviour
+{
 
     //List used to describe the ammo/banana clip
     public static List<Projectile> ammo;
 
-    //rootAim used to get the origin of throw
-    [SerializeField]
-    private RootAim bullseye;
+    public static int bullets;
 
-    [SerializeField]
-    private static int bullets;
 
-    [Range(1, 6)]
-    private static int capacity;
+    public static int capacity = 6;
+
 
     //bool used to describe whether or not any ammo is available
     public static bool emptyClip;
-
+    public static bool fullCap;
     public static int Bullets
     {
         get
@@ -38,9 +35,11 @@ public class Ammo : MonoBehaviour {
 
 
     // Use this for initialization
-    void Awake () {
-        emptyClip = true;
-	}
+    void Awake()    {
+
+        emptyClip = false;
+        fullCap = false;
+    }
 
     protected virtual void FixedUpdate()
     {
@@ -49,24 +48,33 @@ public class Ammo : MonoBehaviour {
         {
             Bullets = ammo.Count;
             emptyClip = false;
+            if (capacity == ammo.Count)
+            {
+                fullCap = true;
+            }
+            else
+                fullCap = false;
         }
         else
         {
             emptyClip = true;
+            fullCap = false;
         }
-
+        
     }
 
 
     //adds another projectile to populate the list
-    public static void load()    {
+    public static void load()
+    {
         Projectile newBullet = new Projectile();
-        if (capacity<Bullets)
+
+        if (!fullCap)
         {
             ammo.Add(newBullet);
         }
         else
-            Debug.Log("Filled to max capacity! Try throwing one.");   
+            Debug.Log("Filled to max capacity! Try throwing one.");
     }
 
     /// <summary>

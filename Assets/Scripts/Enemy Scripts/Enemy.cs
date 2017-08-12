@@ -8,9 +8,6 @@ public class Enemy : MonoBehaviour {
     [SerializeField]
     public static GameObject body;
 
-    [SerializeField]
-    private static Ammo ammo;
-
 	//allows for adjustment of enemy strength
 	[Range (0,25)]
 	public static int HP;
@@ -20,6 +17,7 @@ public class Enemy : MonoBehaviour {
 	// Use this for initialization
 	protected virtual void Awake () {
         body = this.gameObject;
+        grabbable = false;
         fullHP = HP;
         HP = 10;
         this.gameObject.tag = "Enemy";
@@ -29,6 +27,7 @@ public class Enemy : MonoBehaviour {
         //checks the current HP vs. fullHP and if current is <= half of full HP change
         if (HP <= fullHP / 2)   {
             this.gameObject.tag = "Projectile";
+            grabbable = true;
         }
         else  { }
 
@@ -47,9 +46,13 @@ public class Enemy : MonoBehaviour {
     }
 
     private void OnCollisionEnter(Collision col)    {
-        if (col.gameObject.tag == "Hand")   {
-            becomeProjectile();
+        if (grabbable) {
+            if (col.gameObject.tag == "Hand")
+            {
+                becomeProjectile();
+            }
         }
+        
         
     }
 
