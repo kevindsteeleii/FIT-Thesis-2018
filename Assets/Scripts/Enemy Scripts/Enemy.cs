@@ -29,14 +29,14 @@ public class Enemy : MonoBehaviour {
             this.gameObject.tag = "Projectile";
             grabbable = true;
         }
-        else  { }
-
+        else  {
+            grabbable = false;
+        }
     }
 
 	protected virtual void takeDamage(int dam)  {		
 		HP -= dam;
 	}
-
 
     /// <summary>
     /// Changes the tag of the enemy and transforming the body into a projectile.
@@ -47,13 +47,10 @@ public class Enemy : MonoBehaviour {
 
     private void OnCollisionEnter(Collision col)    {
         if (grabbable) {
-            if (col.gameObject.tag == "Hand")
-            {
+            if (col.gameObject.tag == "Hand")   {
                 becomeProjectile();
             }
-        }
-        
-        
+        }     
     }
 
     private void OnCollisionStay(Collision col)    {

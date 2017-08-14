@@ -10,11 +10,8 @@ public class ProjectileController : Controller
 
     //it instantiates a projectile to be shot
     Projectile model;
-
-
-
-    protected virtual void Awake()
-    {
+    
+    protected virtual void Awake()  {
 
     }
 
@@ -47,10 +44,7 @@ public class ProjectileController : Controller
                 Ammo.shootLoad();
             }
         }
-
     }
-
-
 }
 
 

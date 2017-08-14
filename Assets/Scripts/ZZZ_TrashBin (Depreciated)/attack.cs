@@ -11,7 +11,6 @@ public class attack : MonoBehaviour
 
     // Use this for initialization
     Animator myAnim;
-    Rigidbody myRB;
 
     [Range(0, 2)]
     public float hitStop = 0.4f;
@@ -24,7 +23,6 @@ public class attack : MonoBehaviour
 
         player = this.gameObject;
         myAnim = player.GetComponent<Animator>();
-        myRB = player.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -51,24 +49,22 @@ public class attack : MonoBehaviour
         myAnim.SetBool("slam", false);
         myAnim.SetBool("airborne", false);
         myAnim.SetBool("grounded",true);
-        if (collision.gameObject == GameObject.FindGameObjectWithTag("Enemy"))
-        {
+        if (collision.gameObject == GameObject.FindGameObjectWithTag("Enemy"))  {
             //**faux code no declaration or creation of a Damage/Health class as of yet
             //**Damage.applyDamage(float damageAmout);
         }
     }
 
     //fixes the slam logic for button combination
-    bool Slamming()
-    {
+    bool Slamming()    {
         if (Input.GetButton("Punch") && Input.GetButton("Slam"))
             return true;
         else
             return false;
     }
+
     //hitStop coroutine for punch to hold and then stop animation
-    IEnumerator HitStopperPunch()
-    {
+    IEnumerator HitStopperPunch()    {
         myAnim.SetBool("punching", true);
         //find better way to hitStop on the punch its jaggy atm
         yield return new WaitForSeconds(myAnim.GetCurrentAnimatorStateInfo(0).length / 5f);

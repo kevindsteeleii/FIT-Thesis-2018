@@ -33,8 +33,7 @@ public class Projectile : Model
     }
 
     // Update is called once per frame
-    protected virtual void FixedUpdate()
-    {
+    protected virtual void FixedUpdate()    {
         right = RootAim.facesRight;
         aimProx = AimVisible.reticlePos;
         rootAim = RootAim.aimPos;
