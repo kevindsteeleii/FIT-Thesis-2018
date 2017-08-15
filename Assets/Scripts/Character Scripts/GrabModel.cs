@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -15,15 +15,10 @@ public class GrabModel : Model  {
 
     Renderer myRender = new Renderer();
 
-    //Game Object being used as grabbing hand/Arm
-    [SerializeField]
-    private RootAim rootAim;
-
     // Use this for initialization
     protected virtual void Awake ()    {
         this.gameObject.tag = "Hand";
         myRender = this.GetComponent<Renderer>();
-        rootAim = this.GetComponent<RootAim>();
         Vector3 trueOffSet = new Vector3(data.offSet.x, data.offSet.y, 0);
         transform.localPosition = trueOffSet;
     }

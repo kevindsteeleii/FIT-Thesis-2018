@@ -6,8 +6,8 @@
 public class ThrowController : Controller
 {
 
-	//[SerializeField]
-	//protected ThrowModel model;
+    [SerializeField]
+    protected Throw model;
 
     protected virtual void Awake ()	{
         
@@ -23,7 +23,10 @@ public class ThrowController : Controller
     }
 
     protected void throwAngle()    {
-
+        if (Input.GetButton("Grab") && !Ammo.emptyClip && Input.GetButton("Aim"))
+        {
+            Ammo.shootLoad();
+        }
     }
 }
 
