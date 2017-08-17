@@ -6,19 +6,25 @@ using System.Collections.Generic;
 /// </summary>
 public class Ammo : MonoBehaviour
 {
+    /*Two float variables used to adjust mock bullets loaded in the start function*/
+    [Range(0.1f, 12f)]
+    public static float throwForce;
+    [Range(0.1f, 10f)]
+    public static float power;
+    [Range(0.1f, 10f)]
+    public static float damage;
 
     //List used to describe the ammo/banana clip
     public static List<Projectile> ammo;
 
     public static int bullets;
 
-
     public static int capacity = 6;
-
 
     //bool used to describe whether or not any ammo is available
     public static bool emptyClip;
     public static bool fullCap;
+
     public static int Bullets
     {
         get
@@ -32,13 +38,20 @@ public class Ammo : MonoBehaviour
         }
     }
 
-
-
     // Use this for initialization
     void Awake()    {
 
         emptyClip = false;
         fullCap = false;
+    }
+
+    /*Used to intiate a test clip of projectiles*/
+    private void Start()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            load();
+        }
     }
 
     protected virtual void FixedUpdate()
@@ -60,14 +73,12 @@ public class Ammo : MonoBehaviour
             emptyClip = true;
             fullCap = false;
         }
-        
     }
 
-
     //adds another projectile to populate the list
-    public static void load()
-    {
-        Projectile newBullet = new Projectile();
+    public static void load()   {
+
+        Projectile newBullet = new Projectile(power,throwForce,damage);
 
         if (!fullCap)
         {
@@ -78,18 +89,27 @@ public class Ammo : MonoBehaviour
     }
 
     /// <summary>
-    /// deletes last indexed projectile
+    /// Deletes last indexed projectile and launches different throwing
     /// </summary>
 	public static void shootLoad()
     {
-        if (ammo.Count >= 1)
-        {
-            ammo.RemoveAt(ammo.Count - 1);
-            Debug.Log("There are now " + ammo.Count + "shots left");
-        }
-        else
+        if (Input.GetButton("Throw") && ammo == null)
             Debug.Log("No Ammo");
+
+        else if (Input.GetButton("Throw") && !Input.GetButton("Aim"))
+        {
+            ammo[ammo.Count - 1].throwStraight();
+        }
+        else if (Input.GetButton("Throw") && Input.GetButton("Aim"))
+        {
+            ammo[ammo.Count - 1].throwAngle();
+        }
+
+        ammo.RemoveAt(ammo.Count - 1);
+        Debug.Log("There are now " + ammo.Count + "shots left");
+
     }
+
 
 
 }

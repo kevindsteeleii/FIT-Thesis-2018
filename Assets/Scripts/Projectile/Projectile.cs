@@ -7,6 +7,14 @@ using UnityEngine;
 /// </summary>
 public class Projectile : Model
 {
+   public Projectile(float pwr,float frce,float dmg)
+    {
+        pwr = power;
+        frce = throwForce;
+        dmg = damage;
+
+    }
+
     //damage the projectile causes
     public float damage;
 
@@ -33,7 +41,7 @@ public class Projectile : Model
     }
 
     // Update is called once per frame
-    protected virtual void FixedUpdate()    {
+    protected virtual void Update()    {
         right = RootAim.facesRight;
         aimProx = AimVisible.reticlePos;
         rootAim = RootAim.aimPos;
@@ -44,19 +52,14 @@ public class Projectile : Model
     /// <summary>
     /// Throw at the angle of the aiming reticle
     /// </summary>
-    public void throwAngle()
-    {
+    public void throwAngle()    {
         myRb.AddForceAtPosition(direction * throwForce, rootAim, ForceMode.Acceleration);
     }
 
     /// <summary>
     /// Throw straight when prompted
     /// </summary>
-    public void throwStraight()
-    {
+    public void throwStraight()    {
         myRb.AddForceAtPosition(Vector3.right * isRight * throwForce, rootAim);
-    }
-
-
-
+    }    
 }

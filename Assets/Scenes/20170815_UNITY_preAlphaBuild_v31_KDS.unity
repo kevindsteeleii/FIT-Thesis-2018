@@ -213,7 +213,6 @@ GameObject:
   m_Component:
   - component: {fileID: 210649977}
   - component: {fileID: 210649980}
-  - component: {fileID: 210649979}
   - component: {fileID: 210649978}
   m_Layer: 0
   m_Name: Projectile
@@ -243,19 +242,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 210649976}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b58d1ec02bf1954cb1c630fb9a9fc8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  model: {fileID: 0}
---- !u!114 &210649979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 210649976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 011388774b397d542a086a6e0d2097e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 1413955338ae1744ca10e915fe374a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &210649980
@@ -269,8 +256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c36deca142b7bfc4f9153274aa51c09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  power: 0
+  damage: 10
+  power: 4.27
 --- !u!1 &212033373 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1712321330835926, guid: d3d11c0a38698734c80149a6645a3caf,
@@ -788,9 +775,6 @@ GameObject:
   - component: {fileID: 1941611378}
   - component: {fileID: 1941611383}
   - component: {fileID: 1941611382}
-  - component: {fileID: 1941611386}
-  - component: {fileID: 1941611385}
-  - component: {fileID: 1941611384}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Hand
@@ -876,7 +860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b5e3c80a1770842b4dcccf1afe8317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handModel: {fileID: 0}
+  handModel: {fileID: 1941611383}
 --- !u!114 &1941611383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -889,43 +873,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 89d3926319784f64f885d4d30fbcad6b, type: 2}
---- !u!114 &1941611384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1941611377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd0e6c450c8d4b84199b0b1b168313cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  model: {fileID: 0}
---- !u!114 &1941611385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1941611377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed854f85b19392498f2c35e4d0fcb40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: 3
-  forceMode: 0
---- !u!114 &1941611386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1941611377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9635c0fddcc275438145ab2d52389ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  model: {fileID: 0}
 --- !u!1 &1964235335
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,9 +882,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1964235337}
   - component: {fileID: 1964235336}
-  - component: {fileID: 1964235340}
-  - component: {fileID: 1964235339}
   - component: {fileID: 1964235338}
+  - component: {fileID: 1964235339}
   m_Layer: 0
   m_Name: RootAim
   m_TagString: RootAim
@@ -957,7 +903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1054577879}
-  vertAdjustment: 0
+  vertAdjustment: 0.3
 --- !u!4 &1964235337
 Transform:
   m_ObjectHideFlags: 0
@@ -982,10 +928,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1964235335}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b58d1ec02bf1954cb1c630fb9a9fc8e, type: 3}
+  m_Script: {fileID: 11500000, guid: a9635c0fddcc275438145ab2d52389ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 0}
 --- !u!114 &1964235339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -994,22 +939,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1964235335}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 011388774b397d542a086a6e0d2097e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 889d069ef36559d47b8ca7226ea87207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1964235340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1964235335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c36deca142b7bfc4f9153274aa51c09a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  power: 5.83
 --- !u!1 &1986555959
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class ProjectileController : Controller
     }
 
     // Update is called once per frame
-    protected virtual void FixedUpdate()
+    protected virtual void Update()
     {
         //on hold of throw button 
         if (Input.GetButton("Grab"))

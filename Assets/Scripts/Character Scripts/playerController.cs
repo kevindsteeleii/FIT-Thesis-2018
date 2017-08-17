@@ -156,11 +156,6 @@ public class PlayerController : MonoBehaviour
         myAnim.SetBool("punching", false);
     }
 
-    public virtual void addProjectile()    {
-        Projectile newProj = new Projectile();
-        ammo.Add(newProj);
-    }
-
     //declares slam bool false upon ground contact resetting its anim state
     void OnCollisionEnter(Collision collision)    {
         myAnim.SetBool("slam", false);

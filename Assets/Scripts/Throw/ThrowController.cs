@@ -6,27 +6,15 @@
 public class ThrowController : Controller
 {
 
-    [SerializeField]
-    protected Throw model;
-
-    protected virtual void Awake ()	{
-        
-	}
-
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
-        //Mind you the "Grab" button doubles as 
-        if (Input.GetButton("Grab") && !Ammo.emptyClip)
-        {
+        /*Uses Throw to trigger a branching nest of conditionals that will either throw a projectile
+         at an angle or straight, or returns a debug log*/
+        if (Input.GetButton("Throw"))   {
             Ammo.shootLoad();
         }
     }
 
-    protected void throwAngle()    {
-        if (Input.GetButton("Grab") && !Ammo.emptyClip && Input.GetButton("Aim"))
-        {
-            Ammo.shootLoad();
-        }
-    }
+
 }
 

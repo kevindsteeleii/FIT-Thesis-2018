@@ -6,8 +6,7 @@ using UnityEngine;
 /// </summary>
 public class Throw : MonoBehaviour {
 
-    [SerializeField]
-    private Ammo ammo;
+
 
     Rigidbody myRb;
     bool right = true;

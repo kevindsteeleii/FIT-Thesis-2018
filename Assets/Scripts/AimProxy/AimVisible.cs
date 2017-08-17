@@ -16,7 +16,7 @@ public class AimVisible : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
         reticlePos = this.gameObject.transform.position;
         if (!Input.GetButton("Aim"))
         {
