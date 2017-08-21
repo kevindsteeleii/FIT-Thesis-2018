@@ -7,13 +7,7 @@ using UnityEngine;
 /// </summary>
 public class Projectile : Model
 {
-   public Projectile(float pwr,float frce,float dmg)
-    {
-        pwr = power;
-        frce = throwForce;
-        dmg = damage;
 
-    }
 
     //damage the projectile causes
     public float damage;
