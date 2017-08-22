@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 0}
-  startRelativePosition: {x: 3.5, y: 0.65, z: 0}
+  startRelativePosition: {x: 3.5, y: 0, z: 0}
   endRelativePosition: {x: 0.25, y: 3, z: 0}
 --- !u!114 &220661257
 MonoBehaviour:
@@ -536,17 +536,6 @@ MonoBehaviour:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0fc667a625403ea40813a50581f982a9, type: 3}
   m_PrefabInternal: {fileID: 500786934}
---- !u!114 &1054577880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1054577876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 889d069ef36559d47b8ca7226ea87207, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &1054577881
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -830,6 +819,7 @@ GameObject:
   - component: {fileID: 1964235336}
   - component: {fileID: 1964235338}
   - component: {fileID: 1964235339}
+  - component: {fileID: 1964235340}
   m_Layer: 0
   m_Name: RootAim
   m_TagString: RootAim
@@ -876,10 +866,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9635c0fddcc275438145ab2d52389ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testBullet: {fileID: 1967322751113368, guid: 6c2d62670ee276346a51bd50a04eb635, type: 2}
-  rootAim: {fileID: 1964235335}
-  aimReticle: {fileID: 220661251}
-  tempForce: 900
 --- !u!114 &1964235339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -891,6 +877,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 889d069ef36559d47b8ca7226ea87207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testLoad: 3
+  capacity: 6
+--- !u!114 &1964235340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1964235335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e1d24b633176e94eadbe4ac665cea27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testBullet: {fileID: 1967322751113368, guid: 6c2d62670ee276346a51bd50a04eb635, type: 2}
+  rootAim: {fileID: 1964235335}
+  aimReticle: {fileID: 0}
+  throwForce: 800
+  aimThrowSpeed: 0.382
 --- !u!1 &1986555959
 GameObject:
   m_ObjectHideFlags: 0

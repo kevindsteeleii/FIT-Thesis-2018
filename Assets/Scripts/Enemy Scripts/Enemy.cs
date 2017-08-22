@@ -2,6 +2,7 @@
 
 public class Enemy : MonoBehaviour {
 
+    public bool grabNow;
 	public static bool grabbable;
 
     //the physical body of the enemy itself
@@ -21,6 +22,7 @@ public class Enemy : MonoBehaviour {
         fullHP = HP;
         HP = 10;
         this.gameObject.tag = "Enemy";
+        grabbable = grabNow;
 	}
 
     protected virtual void FixedUpdate()    {

@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -55,7 +53,7 @@ public class GrabModel : Model  {
         if (collision.gameObject.tag == "Projectile")        {
             //adds a single object type Projectile to a list of projectiles
             Ammo.load();
-
+            Debug.Log(collision.gameObject.tag);
             /*Imagine a bunch of code that does a couple of things:
              * triggers the "destruction" of the target, the addition of an object
              * type Projectile to some kind to list that retains the number of projectiles

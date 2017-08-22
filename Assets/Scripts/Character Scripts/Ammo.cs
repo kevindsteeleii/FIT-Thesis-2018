@@ -6,34 +6,24 @@ using System.Collections.Generic;
 /// </summary>
 public class Ammo : MonoBehaviour
 {
-
     //number of bullets
     public static int bullets;
 
-    public static int capacity = 6;
+    [Tooltip("Choose between 0 and 6 'Bullets' to preload Ammo class")]
+    [Range(0,6)]
+    public int testLoad;
+    public int capacity = 6;
 
     //bool used to describe whether or not any ammo is available
     public static bool emptyClip;
     public static bool fullCap;
-
-    public static int Bullets
-    {
-        get
-        {
-            return bullets;
-        }
-
-        set
-        {
-            bullets = value;
-        }
-    }
-
+    
     // Use this for initialization
     void Awake()    {
 
         emptyClip = false;
         fullCap = false;
+        bullets = testLoad;
     }
 
     /*Used to intiate a test clip of projectiles*/
@@ -42,8 +32,10 @@ public class Ammo : MonoBehaviour
  
     }
 
+    //checks the veracity of full, empty, or loaded states of ammo class 
     protected virtual void Update()
     {
+        
         //updates the ammo count
         if (bullets >=0)
         {
