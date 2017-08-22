@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour {
         grabbable = grabNow;
 	}
 
-    protected virtual void FixedUpdate()    {
+    protected virtual void Update()    {
         //checks the current HP vs. fullHP and if current is <= half of full HP change
         if (HP <= fullHP / 2)   {
             this.gameObject.tag = "Projectile";
@@ -33,6 +33,10 @@ public class Enemy : MonoBehaviour {
         }
         else  {
             grabbable = false;
+        }
+        if (grabbable)
+        {
+
         }
     }
 
@@ -48,11 +52,11 @@ public class Enemy : MonoBehaviour {
     }
 
     private void OnCollisionEnter(Collision col)    {
-        if (grabbable) {
-            if (col.gameObject.tag == "Hand")   {
+
+            if (col.gameObject.tag == "Hand" && grabbable)   {
                 becomeProjectile();
             }
-        }     
+           
     }
 
     private void OnCollisionStay(Collision col)    {
