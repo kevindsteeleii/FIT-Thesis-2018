@@ -24,6 +24,7 @@ public class ThrowModel : Model {
     static Vector3 myPos,right,direction;
 
     static GameObject testBulletProxy, rootAimProxy,aimReticleProxy;
+
     // Use this for initialization
     void Awake () {
         testBulletProxy = testBullet;

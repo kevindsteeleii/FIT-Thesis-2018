@@ -71,13 +71,16 @@ public class Ammo : MonoBehaviour
     /// </summary>
 	public static void shootLoad()
     {
-        if (Input.GetButton("Throw") && bullets <=0 )
+        if (Input.GetButton("Throw") && bullets <= 0)
             Debug.Log("No Ammo, Empty Clip");
 
-        else if (Input.GetButton("Throw") && bullets >= 0)   {
-            bullets --;
-            Debug.Log("Shots fired! Only "+bullets+" shots left!");
-        }      
+        else if (Input.GetButton("Throw") && bullets >= 0)
+        {
+            bullets--;
+            Debug.Log("Shots fired! Only " + bullets + " shots left!");
+        }
+        else
+            return;
     }
 
 

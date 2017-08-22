@@ -727,7 +727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a0429c1cef67bd49845b6be7a3f72fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabNow: 1
+  HP: 14
 --- !u!23 &1647951309
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -903,6 +903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 89d3926319784f64f885d4d30fbcad6b, type: 2}
+  damage: 10
 --- !u!1 &1964235335
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,7 +973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 889d069ef36559d47b8ca7226ea87207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testLoad: 6
+  testLoad: 5
   capacity: 6
 --- !u!114 &1964235340
 MonoBehaviour:

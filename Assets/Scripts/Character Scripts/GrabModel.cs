@@ -11,7 +11,13 @@ public class GrabModel : Model  {
     //direction of ray and relative position of player
     public static Vector3 direction;
 
+    //renderer used to make the "hand" disappear 
     Renderer myRender = new Renderer();
+
+    //determines damage done by failed grab
+    [Tooltip("Determines damge hand does to enemy on failed grab attempt")]
+    [Range(0, 15)]
+    public int damage;
 
     // Use this for initialization
     protected virtual void Awake ()    {
@@ -48,9 +54,9 @@ public class GrabModel : Model  {
         transform.localPosition = trueOffSet;
     }
 
-    private void OnCollisionEnter(Collision collision)    {
+    public void OnCollisionEnter(Collision collision)    {
         //if the object in question is "grabbed" then...
-        if (collision.gameObject.tag == "Projectile")        {
+        if (collision.gameObject.CompareTag("Projectile"))  {
             //adds a single object type Projectile to a list of projectiles
             Ammo.load();
             Debug.Log(collision.gameObject.tag);
@@ -62,10 +68,5 @@ public class GrabModel : Model  {
         }
         else
             return;
-    }
-
-    private void OnCollisionExit(Collision collision)    {
-
-    }
-
+    }    
 }

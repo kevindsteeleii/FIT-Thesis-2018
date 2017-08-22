@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// Class used to follow player character w/o problematic rotations
@@ -40,15 +38,13 @@ public class RootAim : MonoBehaviour
         desiredPosition.z = 0f;
         transform.position = desiredPosition;
         float move = Input.GetAxis("Horizontal");
-        if (move > 0 && !facesRight)
-        {
-            flipMe();
-        }
-        else if (move < 0 && facesRight)
-        {
-            flipMe();
-        }
 
+        if (move > 0 && !facesRight)    {
+            flipMe();
+        }
+        else if (move < 0 && facesRight)    {
+            flipMe();
+        }
     }
 
     public virtual void flipMe()

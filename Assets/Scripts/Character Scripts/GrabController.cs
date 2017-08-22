@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 /// <summary>
 /// Class to take in input that effects hand model 
 /// </summary>
@@ -22,7 +20,6 @@ public class GrabController : Controller {
 	void FixedUpdate ()
     {
 		if (Input.GetButton("Grab")) {
-
             handModel.grab();
         }
 
