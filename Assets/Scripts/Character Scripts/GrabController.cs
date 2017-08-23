@@ -23,9 +23,10 @@ public class GrabController : Controller {
             handModel.grab();
         }
 
-        else if (Input.GetButtonUp("Grab")) {
+        else   {
             handModel.release();
         }
+       
     }
 
 }

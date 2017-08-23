@@ -17,7 +17,6 @@ public class Enemy : MonoBehaviour {
 	protected virtual void Awake () {
         body = this.gameObject;
         grabbable = false;
-        grabbable = false;
         saveHP = HP;
 	}
 
@@ -40,25 +39,23 @@ public class Enemy : MonoBehaviour {
     /// <summary>
     /// Changes the tag of the enemy and transforming the body into a projectile.
     /// </summary>
-    protected static void becomeProjectile()    {
+    protected virtual void becomeProjectile()    {
         Destroy(body);
+        Ammo.load();
     }
 
     private void OnCollisionEnter(Collision col)    {
 
         if (col.gameObject.CompareTag("Hand") && grabbable)   {
-            becomeProjectile();
-            Ammo.load();            
+            becomeProjectile();           
         }
 
-        else if (col.gameObject.CompareTag("Hand") && !grabbable)    {
-            GrabModel hand = col.gameObject.GetComponent<GrabModel>();
-            takeDamage(hand.damage);
+        else if (col.gameObject.CompareTag("Hand") && !grabbable)    {            
+            takeDamage(col.gameObject.GetComponent<GrabModel>().damage);
         }
 
-        else if (col.gameObject.CompareTag("Projectile")) {
-            Projectile bullet = col.gameObject.GetComponent<Projectile>();
-            takeDamage(bullet.damage);
+        else if (col.gameObject.CompareTag("Projectile")) {            
+            takeDamage(col.gameObject.GetComponent<Projectile>().damage);
         }           
     } 
 }

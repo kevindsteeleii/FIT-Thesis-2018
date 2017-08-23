@@ -11,7 +11,9 @@ public class Projectile : Model
   
     private void OnCollisionEnter(Collision col)    {
         if (col.gameObject.CompareTag("Enemy")) {
+            col.gameObject.GetComponent<Enemy>().takeDamage(damage);
             Destroy(this.gameObject);
+            
         }
     }
 
