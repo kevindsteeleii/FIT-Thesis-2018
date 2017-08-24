@@ -21,8 +21,6 @@ public class PlayerController : MonoBehaviour
     //respawn rotation
     Quaternion rot;
 
-    public static List<Projectile> ammo = new List<Projectile>();
-
     /// <summary>
     /// keeps position to be referred to outside
     /// </summary>

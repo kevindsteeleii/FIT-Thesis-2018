@@ -2,7 +2,7 @@
 
 public class Enemy : MonoBehaviour {
 
-	public static bool grabbable;
+	public bool grabbable;
 
     //the physical body of the enemy itself
     [SerializeField]
@@ -14,13 +14,14 @@ public class Enemy : MonoBehaviour {
     int saveHP;
 
 	// Use this for initialization
-	protected virtual void Awake () {
+	void Start () {
         body = this.gameObject;
-        grabbable = false;
+        //grabbable = false;
         saveHP = HP;
+        grabbable = false;
 	}
 
-    protected virtual void Update()    {
+    void Update()    {
         //checks the current HP vs. fullHP and if current is <= half of full HP change
         if (HP <= saveHP / 2)   {
             this.gameObject.tag = "Projectile";
@@ -29,7 +30,6 @@ public class Enemy : MonoBehaviour {
         else  {
             grabbable = false;
         }
-        Debug.Log(HP);
     }
 
 	public void takeDamage(int dam)  {		
@@ -39,23 +39,24 @@ public class Enemy : MonoBehaviour {
     /// <summary>
     /// Changes the tag of the enemy and transforming the body into a projectile.
     /// </summary>
-    protected virtual void becomeProjectile()    {
-        Destroy(body);
+    public void becomeProjectile()    {
         Ammo.load();
+        Destroy(body);
+
+    }
+    
+    void OnCollisionEnter(Collision col)    {
+        //Debug.Log("Collision");
+
+        //if (col.gameObject.tag == "Hand" && grabbable)
+        //{
+        //    becomeProjectile();
+        //}
+
+        //else if (col.gameObject.tag == "Hand" && !grabbable)
+        //{
+        //    takeDamage(col.gameObject.GetComponent<GrabModel>().damage);
+        //}
     }
 
-    private void OnCollisionEnter(Collision col)    {
-
-        if (col.gameObject.CompareTag("Hand") && grabbable)   {
-            becomeProjectile();           
-        }
-
-        else if (col.gameObject.CompareTag("Hand") && !grabbable)    {            
-            takeDamage(col.gameObject.GetComponent<GrabModel>().damage);
-        }
-
-        else if (col.gameObject.CompareTag("Projectile")) {            
-            takeDamage(col.gameObject.GetComponent<Projectile>().damage);
-        }           
-    } 
 }

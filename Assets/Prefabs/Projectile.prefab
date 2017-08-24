@@ -21,8 +21,9 @@ GameObject:
   - component: {fileID: 4107927622725340}
   - component: {fileID: 33625625473807078}
   - component: {fileID: 23697724957322796}
-  - component: {fileID: 54990655350737222}
   - component: {fileID: 114833612711058048}
+  - component: {fileID: 135333148540070252}
+  - component: {fileID: 54123805912881162}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Projectile
@@ -82,7 +83,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1967322751113368}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54990655350737222
+--- !u!54 &54123805912881162
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -95,8 +96,8 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 1
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &114833612711058048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,3 +110,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+--- !u!135 &135333148540070252
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1967322751113368}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
