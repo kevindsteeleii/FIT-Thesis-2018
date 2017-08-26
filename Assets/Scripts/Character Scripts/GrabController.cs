@@ -2,31 +2,36 @@
 /// <summary>
 /// Class to take in input that effects hand model 
 /// </summary>
-public class GrabController : Controller {
+public class GrabController : Controller
+{
 
     //The GrabModel, and it's collider, may add or subtract based on what the final rig entails 
     [SerializeField]
     GrabModel handModel;
 
-	// Use this for initialization
-	void Awake () {
+    // Use this for initialization
+    void Awake()
+    {
         // check to see if the model variable is empty
-        if (!handModel)        {
+        if (!handModel)
+        {
             handModel = this.gameObject.GetComponent<GrabModel>();
         }
     }
-	
-	// Physics Changes
-	void FixedUpdate ()
+
+    // Physics Changes
+    void FixedUpdate()
     {
-		if (Input.GetButton("Grab")) {
+        if (Input.GetButton("Grab"))
+        {
             handModel.grab();
         }
 
-        else   {
+        else
+        {
             handModel.release();
         }
-       
+
     }
 
 }

@@ -9,22 +9,4 @@ public class Projectile : Model
     [Range (0,15)]
     public int damage;
   
-    //private void OnCollisionEnter(Collision col)    {
-    //    if (col.gameObject.CompareTag("Enemy")) {
-    //        col.gameObject.GetComponent<Enemy>().takeDamage(damage);
-    //        Destroy(this.gameObject);
-            
-    //    }
-    //}
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Enemy")
-        {
-            other.gameObject.GetComponent<Enemy>().takeDamage(damage);
-            Debug.Log("Hit");
-            Destroy(this.gameObject);
-        }
-    }
-
 }

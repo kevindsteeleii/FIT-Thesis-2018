@@ -27,6 +27,7 @@ public class GrabModel : Model
         myRender = this.GetComponent<Renderer>();
         Vector3 trueOffSet = new Vector3(data.offSet.x, data.offSet.y, 0);
         transform.localPosition = trueOffSet;
+        this.GetComponent<SphereCollider>().enabled = false;
     }
 
     protected virtual void Update()
@@ -38,12 +39,14 @@ public class GrabModel : Model
     }
 
     /// <summary>
-    /// As long as button is pressed down it will propel hand towards maximum Reach
+    /// As long as button is pressed down it will propel hand towards maximum Reach.
+    /// Additionally, it sets the collider to active on grab and activates the renderer to make it visible as well
     /// </summary>
 
     public void grab()
     {
         //appears whilegrabbing
+        this.GetComponent<SphereCollider>().enabled = true;
         myRender.enabled = true;
         Vector3 position = transform.localPosition;
         Vector3 destination = new Vector3(data.grabRange, data.offSet.y, 0);
@@ -51,6 +54,10 @@ public class GrabModel : Model
         transform.localPosition = Vector3.SmoothDamp(position, destination, ref velocity, data.speed);
     }
 
+    /// <summary>
+    /// Upon release of the grab button the collider deactivates as well as the renderer
+    /// making it invisible as well
+    /// </summary>
     public void release()
     {
         //and disappears when you let go
@@ -58,27 +65,6 @@ public class GrabModel : Model
         Vector3 trueOffSet = new Vector3(data.offSet.x, data.offSet.y, 0);
         transform.localPosition = trueOffSet;
         myRender.enabled = false;
+        this.GetComponent<SphereCollider>().enabled = false;
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Enemy")
-        {
-            if (other.gameObject.GetComponent<Enemy>().grabbable)
-            {
-                other.gameObject.GetComponent<Enemy>().becomeProjectile();
-                Debug.Log("Grab");
-            }
-
-
-            else if (!other.gameObject.GetComponent<Enemy>().grabbable)
-            {
-                other.gameObject.GetComponent<Enemy>().takeDamage(damage);
-                Debug.Log("Grab At");
-            }
-        }
-    }
-
-
-
 }
