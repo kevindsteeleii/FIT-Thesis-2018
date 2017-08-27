@@ -12,6 +12,7 @@ TagManager:
   - RootAim
   - Enemy
   - Hand
+  - PickUp
   layers:
   - Default
   - TransparentFX

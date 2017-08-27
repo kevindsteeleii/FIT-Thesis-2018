@@ -1,30 +1,49 @@
-﻿using System;
+﻿using UnityEngine;
 using System.Collections;
-using UnityEngine;
-public class PlayerHealth : MonoBehaviour
-{
+
+/// <summary>
+/// Class that stores and manages player stats with some additional functions
+/// </summary>
+public class PlayerStats : MonoBehaviour {
 
     [Tooltip("Sets Player Health")]
     [Range(1, 100)]
+    public int maxHP = 30;
+
     public int currentHP;
 
-    public static int maxHP;
+    bool dead;
 
-    public bool dead;
     bool invincible;
     PlayerController player;
 
     [Tooltip("Seconds of IFrames indicated by blinking")]
     [Range(2, 8)]
-    public float waitTime;
+    public float waitTime = 6;
 
     Renderer rendy;
+
+    //Money/In-game currency counting and energy min and maxes
+
+    int wallet, energy;
+    [Range (0,10000)]
+    public int maxMoney,maxEnergy;
+
+    [Tooltip("Percentage of money to take away upon death")]
+    [Range(0,30)]
+    public int percentDeduction;
+
+
+    public delegate void AddStat(int current, int amount, int max);
+    AddStat addThisStat = AddNewStat;
+
+
 
     // Use this for initialization
     void Awake()
     {
         player = this.GetComponent<PlayerController>();
-        maxHP = currentHP;
+        currentHP = maxHP;
         invincible = false;
     }
 
@@ -48,19 +67,13 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-
-    public void addHealth(int heal)
-    {
-        if (currentHP + heal >= maxHP)
-        {
-            currentHP = maxHP;
-        }
-
+    //Adds stat (health, money, energy) on pickup
+    public static void AddNewStat(int current, int amt, int max) {
+        if (current + amt >= max) { current = max; }
         else
-        {
-            currentHP += heal;
-        }
+            current += amt;
     }
+    
 
 
     /// <summary>
@@ -74,7 +87,7 @@ public class PlayerHealth : MonoBehaviour
         Color newColor = new Color(255, 255, 255, 0);
         rendy = this.gameObject.GetComponent<Renderer>();
         oldColor = rendy.material.color;
-        for (int i = 0; i < waitTime *5; i++)
+        for (int i = 0; i < waitTime * 5; i++)
         {
             rendy.material.color = newColor;
             yield return new WaitForSecondsRealtime(.1f);
@@ -93,10 +106,28 @@ public class PlayerHealth : MonoBehaviour
             StartCoroutine(iFrames());
             takeDamage(col.gameObject.GetComponent<Enemy>().damage);
             Debug.Log("I've been hit!");
-            
+
         }
 
-        if (col.gameObject.tag =="Health") { }
+        if (col.gameObject.tag == "PickUp") {
+            PickUp item;
+            item = col.GetComponent<PickUp>();         
+            
+            switch (item.pickup)
+            {
+                case PickUp.PickupType.Health:
+                    addThisStat(currentHP, item.amount, maxHP);
+                    Destroy(item.gameObject);
+                    break;
+                case PickUp.PickupType.Energy:
+                    addThisStat(energy, item.amount, maxEnergy);
+                    break;
+                case PickUp.PickupType.Money:
+                    addThisStat(wallet, item.amount, maxMoney);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
-
 }
