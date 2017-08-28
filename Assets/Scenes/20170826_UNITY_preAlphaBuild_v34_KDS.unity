@@ -882,6 +882,7 @@ GameObject:
   - component: {fileID: 1803554713}
   - component: {fileID: 1803554712}
   - component: {fileID: 1803554717}
+  - component: {fileID: 1803554718}
   m_Layer: 8
   m_Name: PickUp
   m_TagString: PickUp
@@ -902,7 +903,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickup: 0
   amount: 0
-  randomDrop: 0
+  randomDrop: 1
 --- !u!23 &1803554713
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -982,6 +983,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!114 &1803554718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1803554711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a1874bfe539994c94fb933b0180f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickup: 0
+  amount: 0
+  randomDrop: 0
 --- !u!1 &1941611377
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,7 +1191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 889d069ef36559d47b8ca7226ea87207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testLoad: 5
+  testLoad: 4
   capacity: 6
 --- !u!114 &1964235340
 MonoBehaviour:

@@ -49,8 +49,8 @@ public class PickUp : MonoBehaviour {
     void RandomDrop()
     {
        float dropWeight;
-        dropWeight =UnityEngine.Random.Range(1.0f, 300.0f);
-        if (dropWeight>=50 && dropWeight <101) { pickup = PickupType.Health; }
+        dropWeight = Random.Range(1.0f, 100f);
+        if (dropWeight>=50 && dropWeight <91) { pickup = PickupType.Health; }
         else if( dropWeight>=21 && dropWeight<49) { pickup = PickupType.Money; }
         else if (dropWeight<=20) { pickup = PickupType.Energy; }
 
