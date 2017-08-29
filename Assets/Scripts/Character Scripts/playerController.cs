@@ -14,11 +14,12 @@ public class PlayerController : MonoBehaviour
     Animator myAnim;
     Rigidbody myRB;
     public static bool facingRight;
-
     //respawn position
     Vector3 respawnPos;
     //respawn rotation
     Quaternion rot;
+    
+    
 
     /// <summary>
     /// keeps position to be referred to outside

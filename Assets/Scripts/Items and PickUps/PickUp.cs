@@ -4,7 +4,7 @@ using UnityEngine;
 public class PickUp : MonoBehaviour {
 
     //enum used to switch what type of pickup 
-    public enum PickupType  {Health=0,Energy,Money};
+    public enum PickupType  {Health,Energy,Money};
     // Use this for initialization
     public PickupType pickup;
     //amount to be added to specific type of player stat
