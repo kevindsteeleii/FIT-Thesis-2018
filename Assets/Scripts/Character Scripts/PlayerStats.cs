@@ -4,7 +4,8 @@ using System.Collections;
 /// <summary>
 /// Class that stores and manages player stats with some additional functions
 /// </summary>
-public class PlayerStats : MonoBehaviour {
+public class PlayerStats : MonoBehaviour
+{
 
     [Tooltip("Sets Player Health")]
     [Range(1, 100)]
@@ -26,18 +27,18 @@ public class PlayerStats : MonoBehaviour {
     //Money/In-game currency counting and energy min and maxes
 
     int wallet, energy;
-    [Range (0,10000)]
-    public int maxMoney,maxEnergy;
+    [Range(0, 10000)]
+    public int maxMoney, maxEnergy;
 
     [Tooltip("Percentage of money to take away upon death")]
-    [Range(0,30)]
+    [Range(0, 30)]
     public int percentDeduction;
 
 
+    /*delegate used to addstats of various kinds based on a switch w/n
+     OnTriggerEnter*/
     public delegate void AddStat(int current, int amount, int max);
     AddStat addThisStat = AddNewStat;
-
-
 
     // Use this for initialization
     void Awake()
@@ -45,6 +46,8 @@ public class PlayerStats : MonoBehaviour {
         player = this.GetComponent<PlayerController>();
         currentHP = maxHP;
         invincible = false;
+        wallet = 0;
+        energy = maxEnergy;
     }
 
 
@@ -63,18 +66,16 @@ public class PlayerStats : MonoBehaviour {
             {
                 invincible = true;
             }
-
         }
     }
 
     //Adds stat (health, money, energy) on pickup
-    public static void AddNewStat(int current, int amt, int max) {
+    public static void AddNewStat(int current, int amt, int max)
+    {
         if (current + amt >= max) { current = max; }
         else
             current += amt;
     }
-    
-
 
     /// <summary>
     /// Handles I-Frames as blinking character to indicate invincibility status
@@ -106,24 +107,24 @@ public class PlayerStats : MonoBehaviour {
             StartCoroutine(iFrames());
             takeDamage(col.gameObject.GetComponent<Enemy>().damage);
             Debug.Log("I've been hit!");
-
         }
 
-        if (col.gameObject.tag == "PickUp") {
+        if (col.gameObject.tag == "PickUp")
+        {
             PickUp item;
-            item = col.GetComponent<PickUp>();         
-            
+            item = col.GetComponent<PickUp>();
+
             switch (item.pickup)
             {
                 case PickUp.PickupType.Health:
-                    addThisStat(currentHP, item.amount, maxHP);
+                    addThisStat(currentHP, item.determineAmount(maxHP), maxHP);
                     Destroy(item.gameObject);
                     break;
                 case PickUp.PickupType.Energy:
-                    addThisStat(energy, item.amount, maxEnergy);
+                    addThisStat(energy, item.determineAmount(maxEnergy), maxEnergy);
                     break;
                 case PickUp.PickupType.Money:
-                    addThisStat(wallet, item.amount, maxMoney);
+                    addThisStat(wallet, item.determineAmount(maxMoney), maxMoney);
                     break;
                 default:
                     break;

@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
     /// keeps position to be referred to outside
     /// </summary>
     public static Vector3 myPos;
-    PlayerHealth health;
     /// <summary>
     /// Delegates used to speed up runtime of checking the parameters and buttons of a resulting
     /// Animation/Action
@@ -41,9 +40,9 @@ public class PlayerController : MonoBehaviour
     ActionTaken takeAction = ActionTook;
     ComboActionTaken comboAction = ComboActionTake;
 
+    //establishes defaults and initiates variables/placeholders
     public void Awake()
     {
-        health = this.GetComponent<PlayerHealth>();
         myAnim = this.GetComponent<Animator>();
         myRB = this.GetComponent<Rigidbody>();
         facingRight = true;
@@ -51,25 +50,26 @@ public class PlayerController : MonoBehaviour
         respawnPos = myRB.transform.position;
         rot = myRB.transform.rotation;
         myHealth = this.gameObject.GetComponent<PlayerHealth>();
-
-
-
     }
+
+    //used to trigger specific reactions at behest of certain states illustrated in the Actions enum
+    enum Actions  {Dead, Slam, Punch, Grab, Aim, Throw};
+    Actions Action;
 
     public void Update()
     {
         myPos = myRB.transform.position;
 
         //checks if rigidbody is descending and increases rate of drop for snappier jump does not accelerate tthe same if slamming down
-        if (myRB.velocity.y < 0)
-        {
-            myRB.velocity += Vector3.up * Physics.gravity.y * (data.fallMultiplier - 1) * Time.deltaTime;
-        }
+        //if (myRB.velocity.y < 0)
+        //{
+        //    myRB.velocity += Vector3.up * Physics.gravity.y * (data.fallMultiplier - 1) * Time.deltaTime;
+        //}
 
-        else if (myRB.velocity.y > 0 && !Input.GetButton("Jump"))
-        {
-            myRB.velocity += Vector3.up * Physics.gravity.y * (data.lowJumpMultiplier - 1) * Time.deltaTime;
-        }
+        //else if (myRB.velocity.y > 0 && !Input.GetButton("Jump"))
+        //{
+        //    myRB.velocity += Vector3.up * Physics.gravity.y * (data.lowJumpMultiplier - 1) * Time.deltaTime;
+        //}
 
     }
 
@@ -81,6 +81,16 @@ public class PlayerController : MonoBehaviour
         //if false death-state is on all other actions cease
         if (!myAnim.GetBool("dead") )
         {
+            //checks if rigidbody is descending and increases rate of drop for snappier jump does not accelerate tthe same if slamming down
+            if (myRB.velocity.y < 0)
+            {
+                myRB.velocity += Vector3.up * Physics.gravity.y * (data.fallMultiplier - 1) * Time.deltaTime;
+            }
+
+            else if (myRB.velocity.y > 0 && !Input.GetButton("Jump"))
+            {
+                myRB.velocity += Vector3.up * Physics.gravity.y * (data.lowJumpMultiplier - 1) * Time.deltaTime;
+            }
 
 
             float move = Input.GetAxis("Horizontal");

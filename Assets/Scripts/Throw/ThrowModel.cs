@@ -21,9 +21,15 @@ public class ThrowModel : Model {
     public float aimThrowSpeed;
     static float aimThrowSpeedProxy;
 
-    static Vector3 myPos,right,direction;
+    [Tooltip("Determines height offset of the beginning of throw ")]
+    [Range(0.1f, 4f)]
+    public float throwHeightOffset;
+    static float throwOffset;
+
+    static Vector3 myPos,right,direction,up;
 
     static GameObject testBulletProxy, rootAimProxy,aimReticleProxy;
+    
 
     // Use this for initialization
     void Awake () {
@@ -37,6 +43,8 @@ public class ThrowModel : Model {
 	void FixedUpdate () {
         myPos = transform.position;
         right = transform.right;
+        throwOffset = throwHeightOffset;
+        up = transform.up;
         aimReticleProxy = aimReticle;
         rootAimProxy = rootAim;
        direction = aimReticleProxy.transform.position - rootAimProxy.transform.position;
@@ -60,6 +68,21 @@ public class ThrowModel : Model {
         Rigidbody tempRB;
         tempRB = bullet.GetComponent<Rigidbody>();        
         tempRB.AddForceAtPosition(direction * throwForceProxy *aimThrowSpeedProxy, myPos);
+        Ammo.shootLoad();
+        Destroy(bullet, 10.0f);
+    }
+
+    //unplugged vertical throw , yet to be assigned inputs
+    public static void throwUp()
+    {
+        GameObject bullet;
+        bullet = Instantiate(testBulletProxy, rootAimProxy.transform.position, rootAimProxy.transform.rotation) as GameObject;
+        Rigidbody tempRB;
+        tempRB = bullet.GetComponent<Rigidbody>();
+        tempRB.AddForce(up * throwForceProxy);
+        Vector3 pos = myPos;
+        pos.y += throwOffset;
+        tempRB.AddForceAtPosition(up * throwForceProxy, pos, ForceMode.VelocityChange);
         Ammo.shootLoad();
         Destroy(bullet, 10.0f);
     }
