@@ -52,25 +52,13 @@ public class PlayerController : MonoBehaviour
         myHealth = this.gameObject.GetComponent<PlayerHealth>();
     }
 
-    //used to trigger specific reactions at behest of certain states illustrated in the Actions enum
+    //**used to trigger specific reactions at behest of certain states illustrated in the Actions enum
     enum Actions  {Dead, Slam, Punch, Grab, Aim, Throw};
     Actions Action;
 
     public void Update()
     {
         myPos = myRB.transform.position;
-
-        //checks if rigidbody is descending and increases rate of drop for snappier jump does not accelerate tthe same if slamming down
-        //if (myRB.velocity.y < 0)
-        //{
-        //    myRB.velocity += Vector3.up * Physics.gravity.y * (data.fallMultiplier - 1) * Time.deltaTime;
-        //}
-
-        //else if (myRB.velocity.y > 0 && !Input.GetButton("Jump"))
-        //{
-        //    myRB.velocity += Vector3.up * Physics.gravity.y * (data.lowJumpMultiplier - 1) * Time.deltaTime;
-        //}
-
     }
 
     // Update is called once per physics action
@@ -131,19 +119,17 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
         else if (undead)
         {
             reSpawn();
             myHealth.currentHP = PlayerHealth.maxHP;
         }
-
-
     }
 
     /// <summary>
     /// Returns bool based on the button press, and animState ==flag
     /// </summary>
+
     public static bool ActionTook(String button, String state, bool flag, Animator myAnim)
     {
         bool acted;

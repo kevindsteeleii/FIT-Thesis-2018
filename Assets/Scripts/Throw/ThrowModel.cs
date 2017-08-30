@@ -6,83 +6,73 @@
 public class ThrowModel : Model {
     [Tooltip("The projectile prefab")]
     public GameObject testBullet;
+
     [Tooltip("The empty gameObject used as source or origin of aim")]
     public GameObject rootAim;
+
     [Tooltip("The aim reticle")]
     public GameObject aimReticle;
 
     [Tooltip("Intensity of throw")]
-    [Range(400f, 3000f)]
+    [Range(400f, 1000f)]
     public float throwForce;
-    static float throwForceProxy;
 
     [Tooltip("Decreases speed of aimed throw")]
     [Range(0f, 0.9f)]
     public float aimThrowSpeed;
-    static float aimThrowSpeedProxy;
 
     [Tooltip("Determines height offset of the beginning of throw ")]
     [Range(0.1f, 4f)]
     public float throwHeightOffset;
-    static float throwOffset;
 
-    static Vector3 myPos,right,direction,up;
-
-    static GameObject testBulletProxy, rootAimProxy,aimReticleProxy;
+    Vector3 right,direction,up;
     
-
     // Use this for initialization
     void Awake () {
-        testBulletProxy = testBullet;
-        
-        throwForceProxy = throwForce;
-        aimThrowSpeedProxy = aimThrowSpeed;
+        right = transform.right;
+        up = transform.up;
     }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        myPos = transform.position;
-        right = transform.right;
-        throwOffset = throwHeightOffset;
-        up = transform.up;
-        aimReticleProxy = aimReticle;
-        rootAimProxy = rootAim;
-       direction = aimReticleProxy.transform.position - rootAimProxy.transform.position;
+       direction = aimReticle.transform.position - rootAim.transform.position;
     }
 
-    public static void throwStraight()
+    public void throwStraight()
     {
         GameObject bullet;
-        bullet = Instantiate(testBulletProxy, rootAimProxy.transform.position, rootAimProxy.transform.rotation) as GameObject;
+        bullet = Instantiate(testBullet, rootAim.transform.position, rootAim.transform.rotation) as GameObject;
         Rigidbody tempRB;
         tempRB = bullet.GetComponent<Rigidbody>();
-        tempRB.AddForce(right * throwForceProxy);
+        tempRB.AddForce(right * throwForce);
         Ammo.shootLoad();
         Destroy(bullet, 10.0f);
     }
 
-    public static void throwAngle()
+    public void throwAngle()
     {
         GameObject bullet;
-        bullet = Instantiate(testBulletProxy, rootAimProxy.transform.position, rootAimProxy.transform.rotation) as GameObject;
+        bullet = Instantiate(testBullet, rootAim.transform.position, rootAim.transform.rotation) as GameObject;
         Rigidbody tempRB;
         tempRB = bullet.GetComponent<Rigidbody>();        
-        tempRB.AddForceAtPosition(direction * throwForceProxy *aimThrowSpeedProxy, myPos);
+        tempRB.AddForceAtPosition(direction * throwForce * aimThrowSpeed, transform.position);
         Ammo.shootLoad();
         Destroy(bullet, 10.0f);
     }
 
-    //unplugged vertical throw , yet to be assigned inputs
-    public static void throwUp()
+    /// <summary>
+    /// Vertical throw with a plugged in offset expressed as a float
+    /// </summary>
+    public void throwUp()
     {
         GameObject bullet;
-        bullet = Instantiate(testBulletProxy, rootAimProxy.transform.position, rootAimProxy.transform.rotation) as GameObject;
+        bullet = Instantiate(testBullet, rootAim.transform.position, rootAim.transform.rotation) as GameObject;
         Rigidbody tempRB;
         tempRB = bullet.GetComponent<Rigidbody>();
-        tempRB.AddForce(up * throwForceProxy);
-        Vector3 pos = myPos;
-        pos.y += throwOffset;
-        tempRB.AddForceAtPosition(up * throwForceProxy, pos, ForceMode.VelocityChange);
+        tempRB.AddForce(up * throwForce);
+        Vector3 pos = transform.position;
+        pos.y += throwHeightOffset;
+        tempRB.AddForceAtPosition(up * throwForce, pos, ForceMode.VelocityChange);
         Ammo.shootLoad();
         Destroy(bullet, 10.0f);
     }

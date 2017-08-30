@@ -3,6 +3,7 @@ using UnityEngine;
 
 /// <summary>
 /// Class used to compartmentalize the purpose of pickup of items of various types
+/// it is to be attached to a prefab to be instantiated by destroying enemy types
 /// </summary>
 public class PickUp : MonoBehaviour
 {
@@ -11,10 +12,13 @@ public class PickUp : MonoBehaviour
     public enum PickupType { Health, Energy, Money };
     // Use this for initialization
     public PickupType pickup;
-
+    
     //bool used to indicate if particular drop is set or random upon destruction of its holder
     public bool randomDrop;
 
+    [Tooltip("The amount of money to be picked up upon trigger event/collison")]
+    [Range(25, 500)]
+    public int purse = 50;
 
     //determines the amount returned to add from pickUp of given stat
     public int determineAmount(int stat)
@@ -26,7 +30,7 @@ public class PickUp : MonoBehaviour
                 amount = Mathf.RoundToInt(.25f * (stat));
                 break;
             case PickupType.Money:
-                amount = 50;
+                amount = purse;
                 break;
             case PickupType.Energy:
                 amount = Mathf.RoundToInt(.15f * (stat));

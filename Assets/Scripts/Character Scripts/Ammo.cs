@@ -22,26 +22,17 @@ public class Ammo : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-
         emptyClip = false;
         fullCap = false;
         bullets = testLoad;
     }
 
-    /*Used to intiate a test clip of projectiles*/
-    private void Start()
-    {
-
-    }
-
     //checks the veracity of full, empty, or loaded states of ammo class 
     protected virtual void Update()
     {
-
         //updates the ammo count
         if (bullets >= 0)
         {
-
             emptyClip = false;
             if (capacity == bullets)
             {
@@ -61,7 +52,6 @@ public class Ammo : MonoBehaviour
     //adds another projectile to populate the list
     public static void load()
     {
-
         if (!fullCap)
         {
             bullets++;
@@ -71,7 +61,7 @@ public class Ammo : MonoBehaviour
     }
 
     /// <summary>
-    /// Deletes last indexed projectile and launches different throwing
+    /// Deletes from bullet int and launches different throwing
     /// </summary>
 	public static void shootLoad()
     {
@@ -86,7 +76,4 @@ public class Ammo : MonoBehaviour
         else
             return;
     }
-
-
-
 }
