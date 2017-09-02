@@ -3,8 +3,7 @@
 public class Enemy : MonoBehaviour
 {
 
-    public bool grabbable;
-
+    bool grabbable;
     //the physical body of the enemy itself
     [SerializeField]
     public static GameObject body;
@@ -16,12 +15,11 @@ public class Enemy : MonoBehaviour
 
     [Range(0, 25)]
     public int damage;
-
+    
     // Use this for initialization
     void Start()
     {
         body = this.gameObject;
-        //grabbable = false;
         saveHP = HP;
         grabbable = false;
     }
@@ -56,13 +54,9 @@ public class Enemy : MonoBehaviour
     {
         Ammo.load();
         Destroy(body);
-
     }
 
-    void OnCollisionEnter(Collision col)
-    {
-
-    }
+    void SpawnPickUp() { }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -84,7 +78,6 @@ public class Enemy : MonoBehaviour
             takeDamage(other.gameObject.GetComponent<GrabModel>().damage);
             Debug.Log("Grope");
         }
-
     }
 
 }

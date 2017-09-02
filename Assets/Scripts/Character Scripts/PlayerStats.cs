@@ -6,50 +6,39 @@ using System.Collections;
 /// </summary>
 public class PlayerStats : MonoBehaviour
 {
+    [SerializeField]
+    StatsData stats;
 
-    [Tooltip("Sets Player Health")]
-    [Range(1, 100)]
-    public int maxHP = 30;
-
-    public int currentHP;
-
-    bool dead;
-
+    int currentHP;
     bool invincible;
-    PlayerController player;
 
-    [Tooltip("Seconds of IFrames indicated by blinking")]
-    [Range(2, 8)]
-    public float waitTime = 6;
+    PlayerController player;
 
     Renderer rendy;
 
-    //Money/In-game currency counting and energy min and maxes
-
     int wallet, energy;
-    [Range(0, 10000)]
-    public int maxMoney, maxEnergy;
-
-    [Tooltip("Percentage of money to take away upon death")]
-    [Range(0, 30)]
-    public int percentDeduction;
-
-
-    /*delegate used to addstats of various kinds based on a switch w/n
-     OnTriggerEnter*/
-    public delegate void AddStat(int current, int amount, int max);
-    AddStat addThisStat = AddNewStat;
 
     // Use this for initialization
     void Awake()
     {
         player = this.GetComponent<PlayerController>();
-        currentHP = maxHP;
+        currentHP = stats.maxHP;
         invincible = false;
         wallet = 0;
-        energy = maxEnergy;
+        energy = stats.maxEnergy;
     }
 
+    void Update()
+    {
+        //debugger 
+        Debug.Log("Stats are as follows: " + "HP is " + currentHP + "/" + stats.maxHP
+            + " Scrap :" + wallet + " Energy is: " + energy + " / " + stats.maxEnergy);
+        //makes sure the pickups addition to stat does not exceed the stat max itself
+        if (currentHP > stats.maxHP) { currentHP = stats.maxHP; }
+        if (wallet > stats.maxMoney) { wallet = stats.maxMoney; }
+        if (energy > stats.maxEnergy) { energy = stats.maxEnergy; }
+
+    }
 
     //handles damage taken by player character and its effects
     public void takeDamage(int dmg)
@@ -67,14 +56,7 @@ public class PlayerStats : MonoBehaviour
                 invincible = true;
             }
         }
-    }
 
-    //Adds stat (health, money, energy) on pickup
-    public static void AddNewStat(int current, int amt, int max)
-    {
-        if (current + amt >= max) { current = max; }
-        else
-            current += amt;
     }
 
     /// <summary>
@@ -88,7 +70,7 @@ public class PlayerStats : MonoBehaviour
         Color newColor = new Color(255, 255, 255, 0);
         rendy = this.gameObject.GetComponent<Renderer>();
         oldColor = rendy.material.color;
-        for (int i = 0; i < waitTime * 5; i++)
+        for (int i = 0; i < stats.waitTime * 5; i++)
         {
             rendy.material.color = newColor;
             yield return new WaitForSecondsRealtime(.1f);
@@ -99,8 +81,7 @@ public class PlayerStats : MonoBehaviour
         // yield return null;
     }
 
-
-    private void OnTriggerEnter(Collider col)
+    void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Enemy")
         {
@@ -109,26 +90,35 @@ public class PlayerStats : MonoBehaviour
             Debug.Log("I've been hit!");
         }
 
+        //logic that makes sure pickup affects the numbers of the stats
         if (col.gameObject.tag == "PickUp")
         {
-            PickUp item;
-            item = col.GetComponent<PickUp>();
+            int amount;
 
-            switch (item.pickup)
+            if (col.GetComponent<PickUp>().pickup == PickUp.PickupType.Energy)
             {
-                case PickUp.PickupType.Health:
-                    addThisStat(currentHP, item.determineAmount(maxHP), maxHP);
-                    Destroy(item.gameObject);
-                    break;
-                case PickUp.PickupType.Energy:
-                    addThisStat(energy, item.determineAmount(maxEnergy), maxEnergy);
-                    break;
-                case PickUp.PickupType.Money:
-                    addThisStat(wallet, item.determineAmount(maxMoney), maxMoney);
-                    break;
-                default:
-                    break;
+                amount = Mathf.RoundToInt(.25f * (stats.maxEnergy));
+                energy += amount;
             }
+
+            else if (col.GetComponent<PickUp>().pickup == PickUp.PickupType.Health)
+            {
+                amount = Mathf.RoundToInt(.25f * (stats.maxHP));
+                currentHP += amount;
+            }
+
+            else if (col.GetComponent<PickUp>().pickup == PickUp.PickupType.Money)
+            {
+                amount = col.GetComponent<PickUp>().purse;
+                wallet += amount;
+            }
+
+
+            Debug.Log("The type of pick up is " + col.GetComponent<PickUp>().pickup);
+            Destroy(col.gameObject);
+
         }
     }
 }
+
+

@@ -167,7 +167,6 @@ public class PlayerController : MonoBehaviour
         myAnim.SetBool("dead", false);
         myAnim.SetBool("grounded", true);
         facingRight = true;
-        myHealth.dead = false;
     }
 
     public void die()

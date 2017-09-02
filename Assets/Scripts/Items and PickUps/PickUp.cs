@@ -13,49 +13,43 @@ public class PickUp : MonoBehaviour
     // Use this for initialization
     public PickupType pickup;
     
-    //bool used to indicate if particular drop is set or random upon destruction of its holder
+    //add randomness to create a range to be controlled on object attached not script itself
+    [Tooltip ("The amount added")]
+    [Range (0,1000)]
+    public int purse = 250;
+
+    [Tooltip("Bool that functions as an on-off for random drop per button press")]
     public bool randomDrop;
-
-    [Tooltip("The amount of money to be picked up upon trigger event/collison")]
-    [Range(25, 500)]
-    public int purse = 50;
-
-    //determines the amount returned to add from pickUp of given stat
-    public int determineAmount(int stat)
-    {
-        int amount = 0;
-        switch (pickup)
-        {
-            case PickupType.Health:
-                amount = Mathf.RoundToInt(.25f * (stat));
-                break;
-            case PickupType.Money:
-                amount = purse;
-                break;
-            case PickupType.Energy:
-                amount = Mathf.RoundToInt(.15f * (stat));
-                break;
-                //default:
-                //    break;
-        }
-        return amount;
-    }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (randomDrop)
+        {
             RandomDrop();
+            randomDrop = false ;
+        }
     }
 
     //weighted probability drop of health, energy, or game currency at the current settings 
     void RandomDrop()
     {
+        Debug.Log("Pick Up became "+pickup);
         float dropWeight;
         dropWeight = Random.Range(1.0f, 100f);
-        if (dropWeight >= 50 && dropWeight < 91) { pickup = PickupType.Health; }
-        else if (dropWeight >= 21 && dropWeight < 49) { pickup = PickupType.Money; }
-        else if (dropWeight <= 20) { pickup = PickupType.Energy; }
+        if (dropWeight >= 60 && dropWeight < 91) { pickup = PickupType.Health; }
+        else if (dropWeight >= 21 && dropWeight < 59) { pickup = PickupType.Money; }
+        else if (dropWeight <= 20 ) { pickup = PickupType.Energy; }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            Destroy(this);
+        }
+
     }
 
 

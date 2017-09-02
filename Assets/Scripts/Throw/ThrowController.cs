@@ -29,6 +29,7 @@ public class ThrowController : Controller
             canon.throwAngle();
         }
 
+        //change Slam to the button for Up, w and set it as Above or something
         else if (Input.GetButtonDown("Throw") && Input.GetButtonDown("Slam") && !Input.GetButton("Aim") && Ammo.bullets > 0)
         {
             canon.throwUp();

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerDataAsset  {
 
-    [MenuItem("Assets/Create/YourClass")]
+    [MenuItem("Assets/Create/PlayerData")]
     public static void CreateAsset()
     {
         ScriptableObjectUtility.CreateAsset<PlayerData>();
