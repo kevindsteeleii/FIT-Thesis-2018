@@ -11,6 +11,7 @@ public class PlayerStats : MonoBehaviour
 
     int currentHP;
     bool invincible;
+    public static int cash, hp;
 
     PlayerController player;
 
@@ -30,6 +31,8 @@ public class PlayerStats : MonoBehaviour
 
     void Update()
     {
+        cash = wallet;
+        hp = currentHP;
         //debugger 
         Debug.Log("Stats are as follows: " + "HP is " + currentHP + "/" + stats.maxHP
             + " Scrap :" + wallet + " Energy is: " + energy + " / " + stats.maxEnergy);

@@ -7,9 +7,9 @@ using System.Collections.Generic;
 public class Ammo : MonoBehaviour
 {
     //number of bullets
-
+   
     public static int bullets;
-
+    
     [Tooltip("Choose between 0 and 6 'Bullets' to preload Ammo class")]
     [Range(0, 6)]
     public int testLoad;
