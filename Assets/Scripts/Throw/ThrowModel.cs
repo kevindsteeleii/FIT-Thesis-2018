@@ -25,6 +25,7 @@ public class ThrowModel : Model {
     [Range(0.1f, 4f)]
     public float throwHeightOffset;
 
+    int facing = 1;
     Vector3 right,direction,up;
     
     // Use this for initialization
@@ -33,8 +34,10 @@ public class ThrowModel : Model {
         up = transform.up;
     }
 	
+
 	// Update is called once per frame
 	void FixedUpdate () {
+        facing = (PlayerController.facingRight) ?1:-1;
        direction = aimReticle.transform.position - rootAim.transform.position;
     }
 
@@ -44,7 +47,7 @@ public class ThrowModel : Model {
         bullet = Instantiate(testBullet, rootAim.transform.position, rootAim.transform.rotation) as GameObject;
         Rigidbody tempRB;
         tempRB = bullet.GetComponent<Rigidbody>();
-        tempRB.AddForce(right * throwForce);
+        tempRB.AddForce(facing*right * throwForce);
         Ammo.shootLoad();
         Destroy(bullet, 10.0f);
     }
