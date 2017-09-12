@@ -17,9 +17,7 @@ public class PlayerController : MonoBehaviour
     //respawn position
     Vector3 respawnPos;
     //respawn rotation
-    Quaternion rot;
-    
-    
+    Quaternion rot;      
 
     /// <summary>
     /// keeps position to be referred to outside
@@ -53,8 +51,8 @@ public class PlayerController : MonoBehaviour
     }
 
     //**used to trigger specific reactions at behest of certain states illustrated in the Actions enum
-    enum Actions  {Dead, Slam, Punch, Grab, Aim, Throw};
-    Actions Action;
+    //enum Actions  {Dead, Slam, Punch, Grab, Aim, Throw};
+    //Actions Action;
 
     public void Update()
     {
