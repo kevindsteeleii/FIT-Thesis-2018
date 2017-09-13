@@ -17,7 +17,9 @@ public class PlayerController : MonoBehaviour
     //respawn position
     Vector3 respawnPos;
     //respawn rotation
-    Quaternion rot;      
+    Quaternion rot;
+
+    
 
     /// <summary>
     /// keeps position to be referred to outside

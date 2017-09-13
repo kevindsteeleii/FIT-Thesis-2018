@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using System.Collections;
 
 /// <summary>
 /// Class used as empty model that generates the instantiated bullet to be shot
@@ -62,21 +64,5 @@ public class ThrowModel : Model {
         Ammo.shootLoad();
         Destroy(bullet, 10.0f);
     }
-
-    /// <summary>
-    /// Vertical throw with a plugged in offset expressed as a float
-    /// </summary>
-    public void throwUp()
-    {
-        GameObject bullet;
-        bullet = Instantiate(testBullet, rootAim.transform.position, rootAim.transform.rotation) as GameObject;
-        Rigidbody tempRB;
-        tempRB = bullet.GetComponent<Rigidbody>();
-        tempRB.AddForce(up * throwForce);
-        Vector3 pos = transform.position;
-        pos.y += throwHeightOffset;
-        tempRB.AddForceAtPosition(up * throwForce, pos, ForceMode.VelocityChange);
-        Ammo.shootLoad();
-        Destroy(bullet, 10.0f);
-    }
+    
 }
