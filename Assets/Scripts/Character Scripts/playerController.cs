@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour
     //respawn rotation
     Quaternion rot;
 
-    
+    //used to resolve the button horizontal vs joystick problem
+    public static float moving;    
 
     /// <summary>
     /// keeps position to be referred to outside
@@ -59,6 +60,7 @@ public class PlayerController : MonoBehaviour
     public void Update()
     {
         myPos = myRB.transform.position;
+  
     }
 
     // Update is called once per physics action
@@ -78,21 +80,33 @@ public class PlayerController : MonoBehaviour
             else if (myRB.velocity.y > 0 && !Input.GetButton("Jump"))
             {
                 myRB.velocity += Vector3.up * Physics.gravity.y * (data.lowJumpMultiplier - 1) * Time.deltaTime;
-            }
-
+            }            
 
             float move = Input.GetAxis("Horizontal");
             myAnim.SetFloat("speed", Mathf.Abs(move));
             myRB.velocity = new Vector3(move * data.runSpeed, myRB.velocity.y, 0);
 
-            if (move > 0 && !facingRight)
+            float otherMove = Input.GetAxis("JoystickHorizontal");
+            myAnim.SetFloat("speed", Mathf.Abs(otherMove));
+            myRB.velocity = new Vector3(otherMove * data.runSpeed, myRB.velocity.y, 0);
+
+            if (moving > 0 && !facingRight)
             {
                 Flip();
             }
-            else if (move < 0 && facingRight)
+            else if (moving < 0 && facingRight)
             {
                 Flip();
             }
+            else if (otherMove > 0 && !facingRight)
+            {
+                Flip();
+            }
+            else if (otherMove < 0 && facingRight)
+            {
+                Flip();
+            }
+
             bool puncher = takeAction("Punch", "grounded", true, myAnim);
 
             if (puncher)
@@ -103,6 +117,18 @@ public class PlayerController : MonoBehaviour
 
             if (slammer)
             {
+                myAnim.SetBool("airborne", false);
+                myAnim.SetBool("slam", true);
+            }
+
+            //FIX NEEDED -> pressing down does not work atm
+            float vertical = Input.GetAxis("JoystickVertical");
+            Debug.Log("Vertical is the following "+ Input.GetAxis("Joystick"));
+
+
+            if (vertical == -1 && Input.GetButton("Punch") )
+            {
+                Debug.Log("SlamTown USA!!");
                 myAnim.SetBool("airborne", false);
                 myAnim.SetBool("slam", true);
             }

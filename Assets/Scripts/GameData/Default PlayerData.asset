@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: Default PlayerData
   m_EditorClassIdentifier: 
   runSpeed: 6
-  fallMultiplier: 9
-  lowJumpMultiplier: 3.72
+  fallMultiplier: 4.89
+  lowJumpMultiplier: 3.74
   jumpHeight: 7

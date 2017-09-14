@@ -38,11 +38,20 @@ public class RootAim : MonoBehaviour
         desiredPosition.z = 0f;
         transform.position = desiredPosition;
         float move = Input.GetAxis("Horizontal");
+        float mover = Input.GetAxis("JoystickHorizontal");
 
-        if (move > 0 && !facesRight)    {
+
+        if (move > 0 && !facesRight) {
             flipMe();
         }
-        else if (move < 0 && facesRight)    {
+        else if (move < 0 && facesRight) {
+            flipMe();
+        }
+        else if (mover < 0 && facesRight) {
+            flipMe();
+        }
+        else if (mover > 0 && !facesRight)
+        {
             flipMe();
         }
     }

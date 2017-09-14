@@ -58,8 +58,13 @@ public class PlayerStats : MonoBehaviour
             {
                 invincible = true;
             }
-        }
 
+            if (currentHP > stats.maxHP)
+            {
+                currentHP = stats.maxHP;
+            }
+
+        }
     }
 
     /// <summary>
@@ -107,7 +112,7 @@ public class PlayerStats : MonoBehaviour
             else if (col.GetComponent<PickUp>().pickup == PickUp.PickupType.Health)
             {
                 amount = Mathf.RoundToInt(.25f * (stats.maxHP));
-                currentHP += amount;
+                currentHP = (currentHP + amount > stats.maxHP) ? stats.maxHP :currentHP + amount; 
             }
 
             else if (col.GetComponent<PickUp>().pickup == PickUp.PickupType.Money)
@@ -115,7 +120,6 @@ public class PlayerStats : MonoBehaviour
                 amount = col.GetComponent<PickUp>().purse;
                 wallet += amount;
             }
-
 
             Debug.Log("The type of pick up is " + col.GetComponent<PickUp>().pickup);
             Destroy(col.gameObject);
