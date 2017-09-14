@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
             {
                 StartCoroutine(HitStopperPunch());
             }
-            bool slammer = comboAction("Punch", "Slam", "grounded", false, myAnim);
+            bool slammer = comboAction("Punch", "Slam", "airborne", true, myAnim);
 
             if (slammer)
             {
@@ -122,16 +122,21 @@ public class PlayerController : MonoBehaviour
             }
 
             //FIX NEEDED -> pressing down does not work atm
-            float vertical = Input.GetAxis("JoystickVertical");
-            Debug.Log("Vertical is the following "+ Input.GetAxis("Joystick"));
+            //float vertical = Input.GetAxis("JoystickVertical");
+            //Debug.Log("Vertical is the following "+ Input.GetAxis("Joystick"));
 
+            if (Input.GetButton("Slam") && Input.GetButton("Punch")) { Debug.Log("SlamPunch!"); }
+            //if (Input.GetAxisRaw("JoystickVertical") == -1 && Input.GetButton("Punch") )
+            //{
+            //    Debug.Log("SlamTown USA!!");
+            //    myAnim.SetBool("airborne", false);
+            //    myAnim.SetBool("slam", true);
+            //}
+            //if (Input.GetAxisRaw("JoystickVertical")!= 0)
+            //{
+            //    Debug.Log("Y Axis Pressed");
+            //}
 
-            if (vertical == -1 && Input.GetButton("Punch") )
-            {
-                Debug.Log("SlamTown USA!!");
-                myAnim.SetBool("airborne", false);
-                myAnim.SetBool("slam", true);
-            }
             bool jumper = takeAction("Jump", "grounded", true, myAnim);
 
             if (jumper)
@@ -232,7 +237,8 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-        if (Mathf.Abs(myRB.velocity.y) > 0)
+        if (Mathf.Abs(myRB.velocity.y) > 0 //|| collision.gameObject.tag=="Ground"
+            )
         {
             myAnim.SetBool("grounded", false);
             myAnim.SetBool("airborne", true);
