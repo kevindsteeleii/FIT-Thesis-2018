@@ -28,12 +28,11 @@ public class ThrowModel : Model {
     public float throwHeightOffset;
 
     int facing = 1;
-    Vector3 right,direction,up;
+    Vector3 right,direction;
     
     // Use this for initialization
     void Awake () {
         right = transform.right;
-        up = transform.up;
     }
 	
 

@@ -13,6 +13,7 @@ TagManager:
   - Enemy
   - Hand
   - PickUp
+  - PC
   layers:
   - Default
   - TransparentFX

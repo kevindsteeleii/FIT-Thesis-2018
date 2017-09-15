@@ -9,24 +9,33 @@ public class PlayerStats : MonoBehaviour
     [SerializeField]
     StatsData stats;
 
+    //gets the mesh renderers for the separate body parts, pending change upon completion of beta+ mesh
+    MeshRenderer [] myRender;
+
     int currentHP;
     bool invincible;
-    public static int cash, hp;
+    public static int cash, hp, maxHP;
 
     PlayerController player;
-
-    Renderer rendy;
-
     int wallet, energy;
+
+    //wait time is length of single wait b/n visible/invisible and duration is total lenght of time
+    [Tooltip("Wait Time describes the intervals between visible and invisible")]
+    [Range(0,1)]
+    public float waitTime;
+    //[Tooltip("Duration is length of i-frames")]
+    //public int duration;
 
     // Use this for initialization
     void Awake()
     {
         player = this.GetComponent<PlayerController>();
         currentHP = stats.maxHP;
+        maxHP = stats.maxHP;
         invincible = false;
         wallet = 0;
         energy = stats.maxEnergy;
+        myRender = this.gameObject.GetComponentsInChildren<MeshRenderer>();   
     }
 
     void Update()
@@ -40,7 +49,47 @@ public class PlayerStats : MonoBehaviour
         if (currentHP > stats.maxHP) { currentHP = stats.maxHP; }
         if (wallet > stats.maxMoney) { wallet = stats.maxMoney; }
         if (energy > stats.maxEnergy) { energy = stats.maxEnergy; }
+        Mathf.Clamp(currentHP, 0, stats.maxHP);
 
+        if (invincible)
+        {
+            StartCoroutine(IFramer());
+            Debug.Log("Now Mortal");
+        }
+    }
+
+    //renders the array of MeshRenderers invisible
+    void blinkOff()
+    {
+        foreach (MeshRenderer mRender in myRender)
+        {
+            mRender.enabled = false;
+            Debug.Log("Invincible");
+        }
+    }
+
+    //renders the array of MeshRenderers visible
+    void blinkOn()
+    {
+        foreach (MeshRenderer mRender in myRender)
+        {
+            mRender.enabled = true;
+            Debug.Log("still Invincible");
+        }
+    }
+
+    //turns off the mesh renderers on and off to show damaged/invincibility state
+    IEnumerator IFramer()
+    {
+        for (int i = 0; i <6; i++)
+        {
+            blinkOff();
+            yield return new WaitForSeconds(waitTime);
+            blinkOn();
+            yield return new WaitForSeconds(waitTime );
+        }
+        invincible = false;
+        yield return null;        
     }
 
     //handles damage taken by player character and its effects
@@ -51,7 +100,6 @@ public class PlayerStats : MonoBehaviour
             currentHP -= dmg;
             if (currentHP <= 0)
             {
-                currentHP = 0;
                 player.die();
             }
             else
@@ -59,41 +107,18 @@ public class PlayerStats : MonoBehaviour
                 invincible = true;
             }
 
-            if (currentHP > stats.maxHP)
-            {
-                currentHP = stats.maxHP;
-            }
-
         }
     }
 
-    /// <summary>
-    /// Handles I-Frames as blinking character to indicate invincibility status
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator iFrames()
+    public void resetState()
     {
-        //still need a way to make the model flicker adn not just the surface application will fix later
-        Color oldColor;
-        Color newColor = new Color(255, 255, 255, 0);
-        rendy = this.gameObject.GetComponent<Renderer>();
-        oldColor = rendy.material.color;
-        for (int i = 0; i < stats.waitTime * 5; i++)
-        {
-            rendy.material.color = newColor;
-            yield return new WaitForSecondsRealtime(.1f);
-            rendy.material.color = oldColor;
-            yield return new WaitForSecondsRealtime(.1f);
-        }
-        invincible = false;
-        // yield return null;
+        currentHP = stats.maxHP;
     }
 
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Enemy")
         {
-            StartCoroutine(iFrames());
             takeDamage(col.gameObject.GetComponent<Enemy>().damage);
             Debug.Log("I've been hit!");
         }

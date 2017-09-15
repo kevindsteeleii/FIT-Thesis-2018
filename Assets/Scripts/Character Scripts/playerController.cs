@@ -8,7 +8,8 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
     public PlayerData data;
-    PlayerHealth myHealth;
+
+    PlayerStats stats;
 
     //rigidboday and animator children of the player character 
     Animator myAnim;
@@ -47,14 +48,13 @@ public class PlayerController : MonoBehaviour
         myAnim.SetBool("grounded", false);
         respawnPos = myRB.transform.position;
         rot = myRB.transform.rotation;
-        myHealth = this.gameObject.GetComponent<PlayerHealth>();
+        stats = this.GetComponent<PlayerStats>();
     }
 
 
     public void Update()
     {
         myPos = myRB.transform.position;
-
     }
 
     // Update is called once per physics action
@@ -65,32 +65,26 @@ public class PlayerController : MonoBehaviour
         //if false death-state is on all other actions cease
         if (!myAnim.GetBool("dead"))
         {
-            //float move = Input.GetAxis("Horizontal");
-            //myAnim.SetFloat("speed", Mathf.Abs(move));
-            //myRB.velocity = new Vector3(move * data.runSpeed, myRB.velocity.y, 0);
 
-            //float otherMove = Input.GetAxis("JoystickHorizontal");
-            //myAnim.SetFloat("speed", Mathf.Abs(otherMove));
-            ////Debug.Log("Joystick Horizontal at " + otherMove);
-            //myRB.velocity = new Vector3(otherMove * data.runSpeed, myRB.velocity.y, 0);
-
-            ////Changes direction if either move velocity and facing direction are at odds
-            //if (!facingRight)
-            //{
-            //    if (move > 0 || otherMove > 0) { Flip(); }
-            //}
-            //else if (facingRight)
-            //{
-            //    if (move < 0 || otherMove < 0) { Flip(); }
-            //}
-
-            //ATTENTION!! it half works it won't walk or turn left wierd huh??
-            float move = Mover(Input.GetAxis("Horizontal"), Input.GetAxis("JoystickHorizontal"));
+            float move = 0;
+            if (Mathf.Abs(Input.GetAxis("Horizontal"))>0)
+            {
+                move = Input.GetAxis("Horizontal");
+            }
+            if (Mathf.Abs(Input.GetAxis("JoystickHorizontal")) > 0)
+            {
+                move = Input.GetAxis("JoystickHorizontal");
+            }
+;
             myAnim.SetFloat("speed", Mathf.Abs(move));
+           // Debug.Log("Speed "+ myAnim.GetFloat("speed"));
+
+
             myRB.velocity = new Vector3(move * data.runSpeed, myRB.velocity.y, 0);
             if (move > 0 && !facingRight) { Flip(); }
             else if (move < 0 && facingRight) { Flip(); }
 
+            //Debug.Log("Horizontal Input is this number -> "+Input.GetAxis("JoystickHorizontal"));
 
             bool puncher = takeAction("Punch", "grounded", true, myAnim);
 
@@ -116,7 +110,7 @@ public class PlayerController : MonoBehaviour
         else if (undead)
         {
             reSpawn();
-            myHealth.currentHP = PlayerHealth.maxHP;
+            
         }
     }
 
@@ -163,6 +157,7 @@ public class PlayerController : MonoBehaviour
         myAnim.SetBool("dead", false);
         myAnim.SetBool("grounded", true);
         facingRight = true;
+        stats.resetState();
     }
 
     public void die()
@@ -180,7 +175,6 @@ public class PlayerController : MonoBehaviour
         //stops movement while punch is animated restarts on end
         myAnim.SetBool("punching", false);
     }
-    public float airAttackWaitTime = .3f;
 
     //declares slam bool false upon ground contact resetting its anim state
     void OnCollisionEnter(Collision collision)

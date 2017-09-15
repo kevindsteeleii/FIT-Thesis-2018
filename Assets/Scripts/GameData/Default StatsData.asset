@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Default StatsData
   m_EditorClassIdentifier: 
   maxHP: 30
-  waitTime: 6
+  waitTime: 2.3
   maxMoney: 10000
   maxEnergy: 300
   percentDeduction: 12

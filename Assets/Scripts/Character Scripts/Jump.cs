@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
 
 public class Jump : MonoBehaviour {
@@ -17,11 +16,7 @@ public class Jump : MonoBehaviour {
         myHealth = this.gameObject.GetComponent<PlayerHealth>();
         myRB = this.GetComponent<Rigidbody>();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
     private void FixedUpdate()
     {
         if (!myAnim.GetBool("dead"))
@@ -64,5 +59,4 @@ public class Jump : MonoBehaviour {
         myAnim.SetBool("airborne", true);
         myRB.velocity = new Vector3(myRB.velocity.x, data.jumpHeight, 0);
     }
-
 }
