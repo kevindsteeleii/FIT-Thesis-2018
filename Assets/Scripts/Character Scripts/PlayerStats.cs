@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 /// <summary>
 /// Class that stores and manages player stats with some additional functions
@@ -25,23 +26,32 @@ public class PlayerStats : MonoBehaviour
     public float waitTime;
     //[Tooltip("Duration is length of i-frames")]
     //public int duration;
+	
+	//instantiates the mainSlider, which is our healthbar
+	public Slider mainSlider;
 
     // Use this for initialization
     void Awake()
     {
         player = this.GetComponent<PlayerController>();
+		
         currentHP = stats.maxHP;
         maxHP = stats.maxHP;
         invincible = false;
         wallet = 0;
         energy = stats.maxEnergy;
-        myRender = this.gameObject.GetComponentsInChildren<MeshRenderer>();   
+        myRender = this.gameObject.GetComponentsInChildren<MeshRenderer>(); 
+		/*sets the minimum and maximum values for the health slider*/
+		mainSlider.minValue = 0;
+		mainSlider.maxValue = maxHP;
     }
 
     void Update()
     {
         cash = wallet;
         hp = currentHP;
+		//updating HP value for the slider
+		mainSlider.value = currentHP;
         //debugger 
         Debug.Log("Stats are as follows: " + "HP is " + currentHP + "/" + stats.maxHP
             + " Scrap :" + wallet + " Energy is: " + energy + " / " + stats.maxEnergy);
