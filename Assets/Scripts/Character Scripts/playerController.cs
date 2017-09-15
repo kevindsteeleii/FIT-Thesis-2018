@@ -19,9 +19,6 @@ public class PlayerController : MonoBehaviour
     //respawn rotation
     Quaternion rot;
 
-    //used to resolve the button horizontal vs joystick problem
-    public static float moving;    
-
     /// <summary>
     /// keeps position to be referred to outside
     /// </summary>
@@ -53,14 +50,11 @@ public class PlayerController : MonoBehaviour
         myHealth = this.gameObject.GetComponent<PlayerHealth>();
     }
 
-    //**used to trigger specific reactions at behest of certain states illustrated in the Actions enum
-    //enum Actions  {Dead, Slam, Punch, Grab, Aim, Throw};
-    //Actions Action;
 
     public void Update()
     {
         myPos = myRB.transform.position;
-  
+
     }
 
     // Update is called once per physics action
@@ -69,43 +63,34 @@ public class PlayerController : MonoBehaviour
 
         bool undead = takeAction("Respawn", "dead", true, myAnim);
         //if false death-state is on all other actions cease
-        if (!myAnim.GetBool("dead") )
+        if (!myAnim.GetBool("dead"))
         {
-            //checks if rigidbody is descending and increases rate of drop for snappier jump does not accelerate tthe same if slamming down
-            if (myRB.velocity.y < 0)
-            {
-                myRB.velocity += Vector3.up * Physics.gravity.y * (data.fallMultiplier - 1) * Time.deltaTime;
-            }
+            //float move = Input.GetAxis("Horizontal");
+            //myAnim.SetFloat("speed", Mathf.Abs(move));
+            //myRB.velocity = new Vector3(move * data.runSpeed, myRB.velocity.y, 0);
 
-            else if (myRB.velocity.y > 0 && !Input.GetButton("Jump"))
-            {
-                myRB.velocity += Vector3.up * Physics.gravity.y * (data.lowJumpMultiplier - 1) * Time.deltaTime;
-            }            
+            //float otherMove = Input.GetAxis("JoystickHorizontal");
+            //myAnim.SetFloat("speed", Mathf.Abs(otherMove));
+            ////Debug.Log("Joystick Horizontal at " + otherMove);
+            //myRB.velocity = new Vector3(otherMove * data.runSpeed, myRB.velocity.y, 0);
 
-            float move = Input.GetAxis("Horizontal");
+            ////Changes direction if either move velocity and facing direction are at odds
+            //if (!facingRight)
+            //{
+            //    if (move > 0 || otherMove > 0) { Flip(); }
+            //}
+            //else if (facingRight)
+            //{
+            //    if (move < 0 || otherMove < 0) { Flip(); }
+            //}
+
+            //ATTENTION!! it half works it won't walk or turn left wierd huh??
+            float move = Mover(Input.GetAxis("Horizontal"), Input.GetAxis("JoystickHorizontal"));
             myAnim.SetFloat("speed", Mathf.Abs(move));
             myRB.velocity = new Vector3(move * data.runSpeed, myRB.velocity.y, 0);
+            if (move > 0 && !facingRight) { Flip(); }
+            else if (move < 0 && facingRight) { Flip(); }
 
-            float otherMove = Input.GetAxis("JoystickHorizontal");
-            myAnim.SetFloat("speed", Mathf.Abs(otherMove));
-            myRB.velocity = new Vector3(otherMove * data.runSpeed, myRB.velocity.y, 0);
-
-            if (moving > 0 && !facingRight)
-            {
-                Flip();
-            }
-            else if (moving < 0 && facingRight)
-            {
-                Flip();
-            }
-            else if (otherMove > 0 && !facingRight)
-            {
-                Flip();
-            }
-            else if (otherMove < 0 && facingRight)
-            {
-                Flip();
-            }
 
             bool puncher = takeAction("Punch", "grounded", true, myAnim);
 
@@ -120,34 +105,12 @@ public class PlayerController : MonoBehaviour
                 myAnim.SetBool("airborne", false);
                 myAnim.SetBool("slam", true);
             }
-
-            //FIX NEEDED -> pressing down does not work atm
-            //float vertical = Input.GetAxis("JoystickVertical");
-            //Debug.Log("Vertical is the following "+ Input.GetAxis("Joystick"));
-
-            if (Input.GetButton("Slam") && Input.GetButton("Punch")) { Debug.Log("SlamPunch!"); }
-            //if (Input.GetAxisRaw("JoystickVertical") == -1 && Input.GetButton("Punch") )
-            //{
-            //    Debug.Log("SlamTown USA!!");
-            //    myAnim.SetBool("airborne", false);
-            //    myAnim.SetBool("slam", true);
-            //}
-            //if (Input.GetAxisRaw("JoystickVertical")!= 0)
-            //{
-            //    Debug.Log("Y Axis Pressed");
-            //}
-
-            bool jumper = takeAction("Jump", "grounded", true, myAnim);
-
-            if (jumper)
+            else if (Input.GetAxisRaw("JoystickVertical") == 1 && Input.GetButton("Punch"))
             {
-                Jump();
-            }
-            if (Mathf.Abs(myRB.velocity.y) == 0)
-            {
-                myAnim.SetBool("grounded", true);
                 myAnim.SetBool("airborne", false);
+                myAnim.SetBool("slam", true);
             }
+
         }
 
         else if (undead)
@@ -157,6 +120,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //funnels the digital/analog horizontal axis inputs
+    float Mover (float digital, float analog)
+    {
+        float mover = 0;
+        if (digital > 0) { mover = digital;}
+        else if (analog > 0) { mover = analog; }
+        return mover;
+    }
+   
     /// <summary>
     /// Returns bool based on the button press, and animState ==flag
     /// </summary>
@@ -164,7 +136,7 @@ public class PlayerController : MonoBehaviour
     public static bool ActionTook(String button, String state, bool flag, Animator myAnim)
     {
         bool acted;
-        acted = (Input.GetButton(button) && myAnim.GetBool(state) == flag) ? true : false;
+        acted = (Input.GetButtonDown(button) && myAnim.GetBool(state) == flag) ? true : false;
         return acted;
     }
 
@@ -182,13 +154,6 @@ public class PlayerController : MonoBehaviour
     {
         facingRight = !facingRight;
         transform.Rotate(Vector3.up, 180.0f, Space.World);
-    }
-
-    public virtual void Jump()
-    {
-        myAnim.SetBool("grounded", false);
-        myAnim.SetBool("airborne", true);
-        myRB.velocity = new Vector3(myRB.velocity.x, data.jumpHeight, 0);
     }
 
     //false respawn, resets transposition
@@ -215,6 +180,7 @@ public class PlayerController : MonoBehaviour
         //stops movement while punch is animated restarts on end
         myAnim.SetBool("punching", false);
     }
+    public float airAttackWaitTime = .3f;
 
     //declares slam bool false upon ground contact resetting its anim state
     void OnCollisionEnter(Collision collision)
@@ -237,7 +203,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-        if (Mathf.Abs(myRB.velocity.y) > 0 //|| collision.gameObject.tag=="Ground"
+        if (Mathf.Abs(myRB.velocity.y) > 0 || collision.gameObject.tag=="Ground"
             )
         {
             myAnim.SetBool("grounded", false);
