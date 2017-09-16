@@ -11,7 +11,11 @@ public class StatsData : ScriptableObject {
 
     [Tooltip("Seconds of IFrames indicated by blinking")]
     [Range(2, 8)]
-    public float waitTime = 6;
+    public int duration = 6;
+
+    [Tooltip("Wait Time describes the intervals between visible and invisible")]
+    [Range(0, 1)]
+    public float waitTime;
 
     [Tooltip(" Sets Upper limit of in-game currency or 'scrap' ")]
     [Range(0, 10000)]
@@ -24,5 +28,7 @@ public class StatsData : ScriptableObject {
     [Tooltip("Percentage of money to take away upon death")]
     [Range(0, 30)]
     public int percentDeduction;
+
+
 
 }

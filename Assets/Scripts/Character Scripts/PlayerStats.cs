@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 
+public enum PlayerState { Alive, Dead, Invincible};
 /// <summary>
 /// Class that stores and manages player stats with some additional functions
 /// </summary>
@@ -10,48 +10,42 @@ public class PlayerStats : MonoBehaviour
     [SerializeField]
     StatsData stats;
 
-    //gets the mesh renderers for the separate body parts, pending change upon completion of beta+ mesh
-    MeshRenderer [] myRender;
+    //camera needed to obscure/mask the player on separate layer by itself to simulate the transparency oscillation of the invincibility frames of older games
+    [SerializeField]
+    Camera camera;
+
+    
+
+    /*number of intervals to be calculated by duration and wait time total*/
+    int intervals = 0;
 
     int currentHP;
     bool invincible;
-    public static int cash, hp, maxHP;
+    public static int cash, hp;
 
+    PlayerState myState;
     PlayerController player;
     int wallet, energy;
-
-    //wait time is length of single wait b/n visible/invisible and duration is total lenght of time
-    [Tooltip("Wait Time describes the intervals between visible and invisible")]
-    [Range(0,1)]
-    public float waitTime;
-    //[Tooltip("Duration is length of i-frames")]
-    //public int duration;
-	
-	//instantiates the mainSlider, which is our healthbar
-	public Slider mainSlider;
 
     // Use this for initialization
     void Awake()
     {
         player = this.GetComponent<PlayerController>();
-		
         currentHP = stats.maxHP;
-        maxHP = stats.maxHP;
         invincible = false;
         wallet = 0;
         energy = stats.maxEnergy;
-        myRender = this.gameObject.GetComponentsInChildren<MeshRenderer>(); 
-		/*sets the minimum and maximum values for the health slider*/
-		mainSlider.minValue = 0;
-		mainSlider.maxValue = maxHP;
+    }
+
+    public void Start()
+    {
+        myState = PlayerState.Alive;
     }
 
     void Update()
     {
         cash = wallet;
         hp = currentHP;
-		//updating HP value for the slider
-		mainSlider.value = currentHP;
         //debugger 
         Debug.Log("Stats are as follows: " + "HP is " + currentHP + "/" + stats.maxHP
             + " Scrap :" + wallet + " Energy is: " + energy + " / " + stats.maxEnergy);
@@ -63,43 +57,49 @@ public class PlayerStats : MonoBehaviour
 
         if (invincible)
         {
-            StartCoroutine(IFramer());
-            Debug.Log("Now Mortal");
+            myState = PlayerState.Invincible;
+            intervals = Mathf.RoundToInt( (stats.duration*( 1/stats.waitTime))/2);
+            //If damage is taken
+            if (invincible)
+            {
+                StartCoroutine(IFramez());
+                //Debug.Log("Now Mortal Again!!");
+                invincible = false;
+            }
         }
+        else
+        { myState = PlayerState.Alive; }
     }
 
-    //renders the array of MeshRenderers invisible
-    void blinkOff()
+    public void resetState()
     {
-        foreach (MeshRenderer mRender in myRender)
-        {
-            mRender.enabled = false;
-            Debug.Log("Invincible");
-        }
+        currentHP = stats.maxHP;
+        myState = PlayerState.Alive;
     }
 
-    //renders the array of MeshRenderers visible
-    void blinkOn()
+    //culls the layer that holds player from game render view (layer 9)
+    void CullOn()
     {
-        foreach (MeshRenderer mRender in myRender)
-        {
-            mRender.enabled = true;
-            Debug.Log("still Invincible");
-        }
+        camera.cullingMask &= ~(1<<9);
+    }
+    //reveals the layer that holds the player in game render view
+    void CullOff()
+    {
+        camera.cullingMask |= (1<<9);
     }
 
-    //turns off the mesh renderers on and off to show damaged/invincibility state
-    IEnumerator IFramer()
+    IEnumerator IFramez()
     {
-        for (int i = 0; i <6; i++)
+        for (int i = 0; i <intervals; i++)
         {
-            blinkOff();
-            yield return new WaitForSeconds(waitTime);
-            blinkOn();
-            yield return new WaitForSeconds(waitTime );
+            CullOn();
+            //Debug.Log("Culling");
+            yield return new WaitForSeconds(stats.waitTime/2);
+            CullOff();
+            yield return new WaitForSeconds(stats.waitTime/2);
+           // Debug.Log("Not Culling");
         }
-        invincible = false;
-        yield return null;        
+        //yield return null;
     }
 
     //handles damage taken by player character and its effects
@@ -111,30 +111,25 @@ public class PlayerStats : MonoBehaviour
             if (currentHP <= 0)
             {
                 player.die();
+                myState = PlayerState.Dead;
             }
             else
             {
                 invincible = true;
             }
-
         }
-    }
-
-    public void resetState()
-    {
-        currentHP = stats.maxHP;
     }
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Enemy")
+        if (col.gameObject.tag == "Enemy"&& !invincible)
         {
             takeDamage(col.gameObject.GetComponent<Enemy>().damage);
             Debug.Log("I've been hit!");
         }
 
         //logic that makes sure pickup affects the numbers of the stats
-        if (col.gameObject.tag == "PickUp")
+        if (col.gameObject.tag == "PickUp" && myState != PlayerState.Dead)
         {
             int amount;
 
@@ -158,7 +153,14 @@ public class PlayerStats : MonoBehaviour
 
             Debug.Log("The type of pick up is " + col.GetComponent<PickUp>().pickup);
             Destroy(col.gameObject);
+        }
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Death Object")
+        {
+            currentHP = 0;
         }
     }
 }

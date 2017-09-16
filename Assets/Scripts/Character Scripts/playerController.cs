@@ -51,6 +51,10 @@ public class PlayerController : MonoBehaviour
         stats = this.GetComponent<PlayerStats>();
     }
 
+    private void Start()
+    {
+    }
+
 
     public void Update()
     {
@@ -77,7 +81,7 @@ public class PlayerController : MonoBehaviour
             }
 ;
             myAnim.SetFloat("speed", Mathf.Abs(move));
-           // Debug.Log("Speed "+ myAnim.GetFloat("speed"));
+            Debug.Log("Speed "+ myAnim.GetFloat("speed"));
 
 
             myRB.velocity = new Vector3(move * data.runSpeed, myRB.velocity.y, 0);

@@ -11,8 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e564fed5d77ad1468922ee898aae832, type: 3}
   m_Name: Default StatsData
   m_EditorClassIdentifier: 
-  maxHP: 30
-  waitTime: 2.3
+  maxHP: 40
+  duration: 3
+  waitTime: 0.125
   maxMoney: 10000
   maxEnergy: 300
   percentDeduction: 12
