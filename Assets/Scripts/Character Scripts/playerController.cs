@@ -5,9 +5,11 @@ using System.Collections;
 /// <summary>
 /// New and Improved consolidated Player Controller that handles movements, jumps, attacks and whatnot.
 /// </summary>
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
     public PlayerData data;
+
+    PlayerController instance;
 
     PlayerStats stats;
 
@@ -49,12 +51,8 @@ public class PlayerController : MonoBehaviour
         respawnPos = myRB.transform.position;
         rot = myRB.transform.rotation;
         stats = this.GetComponent<PlayerStats>();
+        instance = this;
     }
-
-    private void Start()
-    {
-    }
-
 
     public void Update()
     {
@@ -67,11 +65,12 @@ public class PlayerController : MonoBehaviour
 
         bool undead = takeAction("Respawn", "dead", true, myAnim);
         //if false death-state is on all other actions cease
-        if (!myAnim.GetBool("dead"))
-        {
 
+        if (// GameManager.instance.gameState == GameState.inGame && 
+            !myAnim.GetBool("dead"))
+        {
             float move = 0;
-            if (Mathf.Abs(Input.GetAxis("Horizontal"))>0)
+            if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0)
             {
                 move = Input.GetAxis("Horizontal");
             }
@@ -79,9 +78,9 @@ public class PlayerController : MonoBehaviour
             {
                 move = Input.GetAxis("JoystickHorizontal");
             }
-;
+
             myAnim.SetFloat("speed", Mathf.Abs(move));
-            Debug.Log("Speed "+ myAnim.GetFloat("speed"));
+            //Debug.Log("Speed "+ myAnim.GetFloat("speed"));
 
 
             myRB.velocity = new Vector3(move * data.runSpeed, myRB.velocity.y, 0);
@@ -108,25 +107,23 @@ public class PlayerController : MonoBehaviour
                 myAnim.SetBool("airborne", false);
                 myAnim.SetBool("slam", true);
             }
-
         }
 
         else if (undead)
         {
             reSpawn();
-            
         }
     }
 
     //funnels the digital/analog horizontal axis inputs
-    float Mover (float digital, float analog)
+    float Mover(float digital, float analog)
     {
         float mover = 0;
-        if (digital > 0) { mover = digital;}
+        if (digital > 0) { mover = digital; }
         else if (analog > 0) { mover = analog; }
         return mover;
     }
-   
+
     /// <summary>
     /// Returns bool based on the button press, and animState ==flag
     /// </summary>
@@ -201,7 +198,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-        if (Mathf.Abs(myRB.velocity.y) > 0 || collision.gameObject.tag=="Ground"
+        if (Mathf.Abs(myRB.velocity.y) > 0 || collision.gameObject.tag == "Ground"
             )
         {
             myAnim.SetBool("grounded", false);

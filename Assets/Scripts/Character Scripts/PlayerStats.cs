@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum PlayerState { Alive, Dead, Invincible};
 /// <summary>
 /// Class that stores and manages player stats with some additional functions
 /// </summary>
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : Singleton<PlayerStats>
 {
     [SerializeField]
     StatsData stats;
@@ -14,8 +13,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField]
     Camera camera;
 
-    
-
+    PlayerStats instance;
     /*number of intervals to be calculated by duration and wait time total*/
     int intervals = 0;
 
@@ -23,27 +21,24 @@ public class PlayerStats : MonoBehaviour
     bool invincible;
     public static int cash, hp;
 
-    PlayerState myState;
     PlayerController player;
     int wallet, energy;
 
     // Use this for initialization
     void Awake()
     {
+        instance = this;
         player = this.GetComponent<PlayerController>();
         currentHP = stats.maxHP;
+        hp = currentHP;
         invincible = false;
         wallet = 0;
         energy = stats.maxEnergy;
     }
 
-    public void Start()
-    {
-        myState = PlayerState.Alive;
-    }
-
     void Update()
     {
+        Debug.Log("Invincible state is " + invincible);
         cash = wallet;
         hp = currentHP;
         //debugger 
@@ -57,47 +52,41 @@ public class PlayerStats : MonoBehaviour
 
         if (invincible)
         {
-            myState = PlayerState.Invincible;
-            intervals = Mathf.RoundToInt( (stats.duration*( 1/stats.waitTime))/2);
-            //If damage is taken
-            if (invincible)
-            {
-                StartCoroutine(IFramez());
-                //Debug.Log("Now Mortal Again!!");
-                invincible = false;
-            }
+            intervals = Mathf.RoundToInt((stats.duration * (1 / stats.waitTime)) / 2);
+
+            StartCoroutine(IFramez());
+            //Debug.Log("Now Mortal Again!!");
         }
-        else
-        { myState = PlayerState.Alive; }
+
     }
 
     public void resetState()
     {
         currentHP = stats.maxHP;
-        myState = PlayerState.Alive;
     }
 
     //culls the layer that holds player from game render view (layer 9)
     void CullOn()
     {
-        camera.cullingMask &= ~(1<<9);
+        camera.cullingMask &= ~(1 << 9);
     }
     //reveals the layer that holds the player in game render view
     void CullOff()
     {
-        camera.cullingMask |= (1<<9);
+        camera.cullingMask |= (1 << 9);
     }
 
     IEnumerator IFramez()
     {
-        for (int i = 0; i <intervals; i++)
+        for (int i = 0; i < intervals; i++)
         {
             CullOn();
             //Debug.Log("Culling");
-            yield return new WaitForSeconds(stats.waitTime/2);
+            yield return new WaitForSeconds(stats.waitTime / 2);
             CullOff();
-            yield return new WaitForSeconds(stats.waitTime/2);
-           // Debug.Log("Not Culling");
+            yield return new WaitForSeconds(stats.waitTime / 2);
+            invincible = false;
+            // Debug.Log("Not Culling");
         }
         //yield return null;
     }
@@ -111,7 +100,6 @@ public class PlayerStats : MonoBehaviour
             if (currentHP <= 0)
             {
                 player.die();
-                myState = PlayerState.Dead;
             }
             else
             {
@@ -122,30 +110,24 @@ public class PlayerStats : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Enemy"&& !invincible)
+        if (col.gameObject.tag == "Enemy" && !invincible)
         {
             takeDamage(col.gameObject.GetComponent<Enemy>().damage);
             Debug.Log("I've been hit!");
         }
 
         //logic that makes sure pickup affects the numbers of the stats
-        if (col.gameObject.tag == "PickUp" && myState != PlayerState.Dead)
+        if (col.gameObject.tag == "PickUp")
         {
-            int amount;
+            int amount  = 0;
 
-            if (col.GetComponent<PickUp>().pickup == PickUp.PickupType.Energy)
-            {
-                amount = Mathf.RoundToInt(.25f * (stats.maxEnergy));
-                energy += amount;
-            }
-
-            else if (col.GetComponent<PickUp>().pickup == PickUp.PickupType.Health)
+            if (col.GetComponent<PickUp>().pickup == PickupType.Health)
             {
                 amount = Mathf.RoundToInt(.25f * (stats.maxHP));
-                currentHP = (currentHP + amount > stats.maxHP) ? stats.maxHP :currentHP + amount; 
+                currentHP = (currentHP + amount > stats.maxHP) ? stats.maxHP : currentHP + amount;
             }
 
-            else if (col.GetComponent<PickUp>().pickup == PickUp.PickupType.Money)
+            else if (col.GetComponent<PickUp>().pickup == PickupType.Money)
             {
                 amount = col.GetComponent<PickUp>().purse;
                 wallet += amount;

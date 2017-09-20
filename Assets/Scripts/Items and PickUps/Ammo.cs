@@ -4,12 +4,12 @@ using System.Collections.Generic;
 /// <summary>
 /// Used to manage projectiles ammo count
 /// </summary>
-public class Ammo : MonoBehaviour
+public class Ammo : Singleton<Ammo>
 {
     //number of bullets
-   
+
     public static int bullets;
-    
+
     [Tooltip("Choose between 0 and 6 'Bullets' to preload Ammo class")]
     [Range(0, 6)]
     public int testLoad;
@@ -19,12 +19,15 @@ public class Ammo : MonoBehaviour
     public static bool emptyClip;
     public static bool fullCap;
 
+    //creates Ammo as a singleton, the manager for Ammo may incorporate into PlayerStats in future...maybe
+    Ammo ammo;
     // Use this for initialization
     void Awake()
     {
         emptyClip = false;
         fullCap = false;
         bullets = testLoad;
+        ammo = this;
     }
 
     //checks the veracity of full, empty, or loaded states of ammo class 

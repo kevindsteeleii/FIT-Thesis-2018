@@ -11,11 +11,13 @@ public class Platforms : MonoBehaviour {
     GameObject platform;
 
     /// <summary>
-    /// enum used to establish the behavior state of the platform the default is normal
+    /// enum used to establish the behavior state of the platform the 
+    /// default is normal and upon 
     /// </summary>
     public enum PlatformBehavior { Normal,Disappearing,Moving,Falling};
     PlatformBehavior behavior;
 
+    
     // Use this for initialization
     private void Awake()
     {
@@ -33,7 +35,7 @@ public class Platforms : MonoBehaviour {
                 //choose an obstacle/platform behavior
                 break;
             case PlatformBehavior.Normal:
-                //choose an obstacle/platform behavior
+                //does nothing, supports weight and platforming
                 break;
 
             case PlatformBehavior.Moving:
@@ -46,10 +48,11 @@ public class Platforms : MonoBehaviour {
                 break;
         }
     }
-	
-	
-	// Update is called once per frame
-	void Update () {
+
+
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 }

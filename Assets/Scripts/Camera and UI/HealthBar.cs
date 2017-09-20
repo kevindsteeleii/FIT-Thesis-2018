@@ -1,45 +1,48 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// Singleton/One-off for the health bar of the character in game
-/// </summary>
-public class HealthBar : MonoBehaviour {
+public class HealthBar : MonoBehaviour
+{
 
-    /*instantiates the mainSlider, which is our healthbar*/
-    [SerializeField]
+    /*instantiates the mainSlider, which is our healthbar, the data
+     asset that saves information of parameters as asset data, the canvas group for
+     the visual changes to be made to the fill rect*/
+
     Slider mainSlider;
 
     [SerializeField]
     StatsData data;
 
+    /*The Canvas group to be made invisible upon death and visible upon respawn etc*/
+    [SerializeField]
+    CanvasGroup sliderGroup;
+    //Animator myAnim;
 
     // Use this for initialization
-    void Awake () {
+    void Awake()
+    {
         /*sets the minimum and maximum values for the health slider*/
-        mainSlider.minValue = 1;
+        mainSlider = this.GetComponent<Slider>();
+        mainSlider.minValue = 0;
         mainSlider.maxValue = data.maxHP;
     }
-	
-	// Update is called once per frame
-	void Update () {
-        //updating HP value for the slider
 
+    // Update is called once per frame
+    void Update()
+    {
+        //updating HP value for the slider
+        Debug.Log("Player HP is " + PlayerStats.hp);
         mainSlider.value = PlayerStats.hp;
+
         if (PlayerStats.hp <= 0)
         {
-            OnDeath();
+            sliderGroup.alpha = 0;
         }
-        else if (mainSlider.enabled==false && PlayerStats.hp > 0)
+        else if (Input.GetButton("Respawn"))
         {
-            //mainSlider.enabled = true;
+            sliderGroup.alpha = 1;
         }
+
     }
- 
-    /*Deals with the player death*/
-    private void OnDeath()
-    {
-        mainSlider.value = 0;
-        mainSlider.enabled = false;
-    }
+
 }
