@@ -2048,7 +2048,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c623cbbe2449a418cdbc2c71b74c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: f9fd7e032d8b56a4894beb1399d12e67, type: 2}
 --- !u!224 &1054577879
 RectTransform:
   m_ObjectHideFlags: 0
