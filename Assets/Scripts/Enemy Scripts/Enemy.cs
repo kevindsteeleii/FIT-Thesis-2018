@@ -3,7 +3,7 @@
 public class Enemy : MonoBehaviour
 {
     //sets default
-    bool grabbable,becameAmmo = false;
+    bool grabbable;
     //the physical body of the enemy itself
     [SerializeField]
     public static GameObject body;
@@ -11,9 +11,12 @@ public class Enemy : MonoBehaviour
     //allows for adjustment of enemy health points
     [Range(0, 25)]
     public int HP;
-    public bool randomDrop = false;
-    int saveHP;
+    public bool randomDrop = false ;
+    bool becameAmmo;
 
+    //used to save max HP info for enemy
+    int saveHP;
+    
     [Range(0, 25)]
     public int damage;
     // Use this for initialization
@@ -21,11 +24,14 @@ public class Enemy : MonoBehaviour
     {
         body = this.gameObject;
         saveHP = HP;
+        grabbable = false;
+        becameAmmo = false;
     }
 
     protected virtual void Update()
     {
         Mathf.Clamp(HP, 0, 25);
+        Debug.Log("Enemy turned into ammo statement is "+ becameAmmo);
         //checks the current HP vs. fullHP and if current is <= half of full HP change
         if (HP <= saveHP / 2 && HP > 0)
         {
@@ -53,7 +59,6 @@ public class Enemy : MonoBehaviour
     public void BecomeProjectile()
     {
         Ammo.instance.load();
-        becameAmmo = true;
         Destroy(body);
     }
 
@@ -62,11 +67,11 @@ public class Enemy : MonoBehaviour
      mutually inclusive*/
     public void BecomePickUp()
     {
-        if (randomDrop)
+        if (randomDrop )
         {
             LootGenerator.lootGen.makeRandomLoot(transform.position, transform.rotation);
         }
-        else
+        else if (!randomDrop )
         {
             LootGenerator.lootGen.makeThisLoot(transform.position, transform.rotation, PickupType.Health);
         }
@@ -75,7 +80,9 @@ public class Enemy : MonoBehaviour
     //re-write if a derived class is made for a boss enemy
     private void OnDestroy()
     {
-        if (!becameAmmo)
+        //bool test = false;
+        //if (drop)
+        if(!becameAmmo)
         {
             BecomePickUp();            
         }
@@ -93,6 +100,7 @@ public class Enemy : MonoBehaviour
         else if (other.gameObject.tag == "Hand" && grabbable)
         {
             BecomeProjectile();
+            becameAmmo = true;
             Debug.Log("Grabbed");
         }
 

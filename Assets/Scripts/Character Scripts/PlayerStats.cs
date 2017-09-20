@@ -13,42 +13,36 @@ public class PlayerStats : Singleton<PlayerStats>
     [SerializeField]
     Camera camera;
 
-    PlayerStats instance;
+    public static PlayerStats instance;
     /*number of intervals to be calculated by duration and wait time total*/
     int intervals = 0;
 
-    int currentHP;
+
     bool invincible;
-    public static int cash, hp;
+    public int wallet, hp;
 
     PlayerController player;
-    int wallet, energy;
 
     // Use this for initialization
-    void Awake()
+    new void Awake()
     {
         instance = this;
         player = this.GetComponent<PlayerController>();
-        currentHP = stats.maxHP;
-        hp = currentHP;
+        hp = stats.maxHP;
         invincible = false;
         wallet = 0;
-        energy = stats.maxEnergy;
     }
 
     void Update()
     {
         //Debug.Log("Invincible state is " + invincible);
-        cash = wallet;
-        hp = currentHP;
         //debugger 
-        Debug.Log("Stats are as follows: " + "HP is " + currentHP + "/" + stats.maxHP
-            + " Scrap :" + wallet + " Energy is: " + energy + " / " + stats.maxEnergy);
+        Debug.Log("Stats are as follows: " + "HP is " + hp + "/" + stats.maxHP
+            + " Scrap :" + wallet);
         //makes sure the pickups addition to stat does not exceed the stat max itself
-        if (currentHP > stats.maxHP) { currentHP = stats.maxHP; }
+        if (hp > stats.maxHP) { hp = stats.maxHP; }
         if (wallet > stats.maxMoney) { wallet = stats.maxMoney; }
-        if (energy > stats.maxEnergy) { energy = stats.maxEnergy; }
-        Mathf.Clamp(currentHP, 0, stats.maxHP);
+        Mathf.Clamp(hp, 0, stats.maxHP);
 
         if (invincible)
         {
@@ -62,7 +56,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     public void resetState()
     {
-        currentHP = stats.maxHP;
+        hp = stats.maxHP;
     }
 
     //culls the layer that holds player from game render view (layer 9)
@@ -74,6 +68,11 @@ public class PlayerStats : Singleton<PlayerStats>
     void CullOff()
     {
         camera.cullingMask |= (1 << 9);
+    }
+
+    public void addMoney(int amount)
+    {
+        wallet += amount;
     }
 
     IEnumerator IFramez()
@@ -96,8 +95,8 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         if (!invincible)
         {
-            currentHP -= dmg;
-            if (currentHP <= 0)
+            hp -= dmg;
+            if (hp <= 0)
             {
                 player.die();
             }
@@ -124,7 +123,7 @@ public class PlayerStats : Singleton<PlayerStats>
             if (col.GetComponent<PickUp>().pickup == PickupType.Health)
             {
                 amount = Mathf.RoundToInt(.25f * (stats.maxHP));
-                currentHP = (currentHP + amount > stats.maxHP) ? stats.maxHP : currentHP + amount;
+                hp = (hp + amount > stats.maxHP) ? stats.maxHP : hp + amount;
             }
 
             else if (col.GetComponent<PickUp>().pickup == PickupType.Money)
@@ -142,7 +141,7 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         if (collision.gameObject.tag == "Death Object")
         {
-            currentHP = 0;
+            hp = 0;
         }
     }
 }

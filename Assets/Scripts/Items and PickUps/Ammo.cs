@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 
 /// <summary>
 /// Used to manage projectiles ammo count
@@ -14,16 +13,12 @@ public class Ammo : Singleton<Ammo>
     public int testLoad;
     public int capacity = 6;
 
-    //bool used to describe whether or not any ammo is available
-    bool fullCap;
-
     //creates Ammo as a singleton, the manager for Ammo may incorporate into PlayerStats in future...maybe
     public static new Ammo instance;
 
     // Use this for initialization
     new void Awake()
     {
-        fullCap = false;
         bullets = testLoad;
         instance = this;
     }

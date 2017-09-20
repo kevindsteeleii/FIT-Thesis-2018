@@ -25,16 +25,17 @@ public class HealthBar : MonoBehaviour
         mainSlider = this.GetComponent<Slider>();
         mainSlider.minValue = 0;
         mainSlider.maxValue = data.maxHP;
+        sliderGroup.alpha = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
         //updating HP value for the slider
-        Debug.Log("Player HP is " + PlayerStats.hp);
-        mainSlider.value = PlayerStats.hp;
+        Debug.Log("Player HP is " + PlayerStats.instance.hp);
+        mainSlider.value = PlayerStats.instance.hp;
 
-        if (PlayerStats.hp <= 0)
+        if (PlayerStats.instance.hp <= 0)
         {
             sliderGroup.alpha = 0;
         }

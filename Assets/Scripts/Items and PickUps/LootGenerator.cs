@@ -44,6 +44,7 @@ public class LootGenerator : Singleton<LootGenerator>
                 itemDropped = null;
                 break;
         };
+
         if (itemIs == PickupType.Health || itemIs == PickupType.Money)
         {
             spawnObject = Instantiate(itemDropped, dropSpot, rot);

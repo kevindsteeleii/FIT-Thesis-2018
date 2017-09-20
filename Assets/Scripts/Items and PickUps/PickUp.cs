@@ -28,7 +28,7 @@ public class PickUp : MonoBehaviour
 
     IEnumerator DestroyAfterTime()
     {
-        yield return new WaitForSecondsRealtime(5.0f/2);
+        yield return new WaitForSecondsRealtime(5.0f);
         Destroy(this.gameObject);
         yield return null;
     }

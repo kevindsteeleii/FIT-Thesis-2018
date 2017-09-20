@@ -5,11 +5,9 @@ using System.Collections;
 /// <summary>
 /// New and Improved consolidated Player Controller that handles movements, jumps, attacks and whatnot.
 /// </summary>
-public class PlayerController : Singleton<PlayerController>
+public class PlayerController : MonoBehaviour
 {
     public PlayerData data;
-
-    PlayerController instance;
 
     PlayerStats stats;
 
@@ -51,7 +49,6 @@ public class PlayerController : Singleton<PlayerController>
         respawnPos = myRB.transform.position;
         rot = myRB.transform.rotation;
         stats = this.GetComponent<PlayerStats>();
-        instance = this;
     }
 
     public void Update()
@@ -62,7 +59,7 @@ public class PlayerController : Singleton<PlayerController>
     // Update is called once per physics action
     void FixedUpdate()
     {
-
+        
         bool undead = takeAction("Respawn", "dead", true, myAnim);
         //if false death-state is on all other actions cease
 
@@ -70,17 +67,19 @@ public class PlayerController : Singleton<PlayerController>
             !myAnim.GetBool("dead"))
         {
             float move = 0;
+
             if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0)
             {
                 move = Input.GetAxis("Horizontal");
             }
-            if (Mathf.Abs(Input.GetAxis("JoystickHorizontal")) > 0)
+            else if (Mathf.Abs(Input.GetAxis("JoystickHorizontal")) > 0)
             {
                 move = Input.GetAxis("JoystickHorizontal");
             }
 
             myAnim.SetFloat("speed", Mathf.Abs(move));
-            //Debug.Log("Speed "+ myAnim.GetFloat("speed"));
+            Debug.Log("Move is " + move);
+            Debug.Log("Speed "+ myAnim.GetFloat("speed"));
 
 
             myRB.velocity = new Vector3(move * data.runSpeed, myRB.velocity.y, 0);
