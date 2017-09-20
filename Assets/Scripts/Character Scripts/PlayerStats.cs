@@ -38,7 +38,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     void Update()
     {
-        Debug.Log("Invincible state is " + invincible);
+        //Debug.Log("Invincible state is " + invincible);
         cash = wallet;
         hp = currentHP;
         //debugger 

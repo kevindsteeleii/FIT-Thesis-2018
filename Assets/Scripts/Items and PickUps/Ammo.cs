@@ -8,54 +8,30 @@ public class Ammo : Singleton<Ammo>
 {
     //number of bullets
 
-    public static int bullets;
-
+    public int bullets;
     [Tooltip("Choose between 0 and 6 'Bullets' to preload Ammo class")]
     [Range(0, 6)]
     public int testLoad;
     public int capacity = 6;
 
     //bool used to describe whether or not any ammo is available
-    public static bool emptyClip;
-    public static bool fullCap;
+    bool fullCap;
 
     //creates Ammo as a singleton, the manager for Ammo may incorporate into PlayerStats in future...maybe
-    Ammo ammo;
+    public static new Ammo instance;
+
     // Use this for initialization
-    void Awake()
+    new void Awake()
     {
-        emptyClip = false;
         fullCap = false;
         bullets = testLoad;
-        ammo = this;
-    }
-
-    //checks the veracity of full, empty, or loaded states of ammo class 
-    protected virtual void Update()
-    {
-        //updates the ammo count
-        if (bullets >= 0)
-        {
-            emptyClip = false;
-            if (capacity == bullets)
-            {
-                fullCap = true;
-            }
-            else
-                fullCap = false;
-        }
-        else
-        {
-            emptyClip = true;
-            fullCap = false;
-        }
-        testLoad = bullets;
+        instance = this;
     }
 
     //adds another projectile to populate the list
-    public static void load()
+    public virtual void load()
     {
-        if (!fullCap)
+        if (bullets<capacity)
         {
             bullets++;
         }
@@ -66,9 +42,9 @@ public class Ammo : Singleton<Ammo>
     /// <summary>
     /// Deletes from bullet int and launches different throwing
     /// </summary>
-	public static void shootLoad()
+	public virtual void shootLoad()
     {
-        if (Input.GetButton("Throw") && bullets <= 0)
+        if (Input.GetButton("Throw") && bullets<=0)
             Debug.Log("No Ammo, Empty Clip");
 
         else if (Input.GetButton("Throw") && bullets >= 0)

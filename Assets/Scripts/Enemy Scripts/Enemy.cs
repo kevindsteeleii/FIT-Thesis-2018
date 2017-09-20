@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void BecomeProjectile()
     {
-        Ammo.load();
+        Ammo.instance.load();
         becameAmmo = true;
         Destroy(body);
     }
