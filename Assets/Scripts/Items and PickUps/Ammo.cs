@@ -3,43 +3,51 @@
 /// <summary>
 /// Used to manage projectiles ammo count
 /// </summary>
-public class Ammo : Singleton<Ammo>
+public class Ammo : MonoBehaviour
 {
     //number of bullets
 
-    public int bullets;
+    public static int bullets;
     [Tooltip("Choose between 0 and 6 'Bullets' to preload Ammo class")]
     [Range(0, 6)]
     public int testLoad;
     public int capacity = 6;
-
-    //creates Ammo as a singleton, the manager for Ammo may incorporate into PlayerStats in future...maybe
-    public static new Ammo instance;
+    static int cap;
 
     // Use this for initialization
-    new void Awake()
+    void Awake()
     {
         bullets = testLoad;
-        instance = this;
+        cap = capacity;
     }
 
-    //adds another projectile to populate the list
-    public virtual void load()
+    private void Update()
     {
-        if (bullets<capacity)
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            bullets++;
+
+            load();
         }
-        else
+        Debug.Log("Bullets number in "+bullets);
+    }
+
+
+    public static void load()
+    {
+        bullets++;
+        if (bullets >= cap)
+        {
+            bullets = cap;
             Debug.Log("Filled to max capacity! Try throwing one.");
+        }
     }
 
     /// <summary>
     /// Deletes from bullet int and launches different throwing
     /// </summary>
-	public virtual void shootLoad()
+	public static void shootLoad()
     {
-        if (Input.GetButton("Throw") && bullets<=0)
+        if (Input.GetButton("Throw") && bullets <= 0)
             Debug.Log("No Ammo, Empty Clip");
 
         else if (Input.GetButton("Throw") && bullets >= 0)

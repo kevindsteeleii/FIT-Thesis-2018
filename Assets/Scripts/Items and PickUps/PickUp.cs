@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections;
 
 //enum used to switch what type of pickup 
-public enum PickupType { Health, Money, Nothing};
+public enum PickupType { Health, Money, Nothing };
 
 /// <summary>
 /// Class used to compartmentalize the purpose of pickup of items of various types
@@ -32,7 +32,7 @@ public class PickUp : MonoBehaviour
         Destroy(this.gameObject);
         yield return null;
     }
-    
+
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")

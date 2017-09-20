@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// As the name indicates, it creates Loot items to be dropped upon enemy death
 /// provided enemy was not turned into ammunition.
 /// </summary>
-public class LootGenerator : Singleton<LootGenerator>
+public class LootGenerator : MonoBehaviour
 {
     PickupType itemType = PickupType.Health;
 

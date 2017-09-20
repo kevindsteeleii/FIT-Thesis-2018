@@ -37,8 +37,8 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         //Debug.Log("Invincible state is " + invincible);
         //debugger 
-        Debug.Log("Stats are as follows: " + "HP is " + hp + "/" + stats.maxHP
-            + " Scrap :" + wallet);
+        //Debug.Log("Stats are as follows: " + "HP is " + hp + "/" + stats.maxHP
+           // + " Scrap :" + wallet);
         //makes sure the pickups addition to stat does not exceed the stat max itself
         if (hp > stats.maxHP) { hp = stats.maxHP; }
         if (wallet > stats.maxMoney) { wallet = stats.maxMoney; }
@@ -112,7 +112,7 @@ public class PlayerStats : Singleton<PlayerStats>
         if (col.gameObject.tag == "Enemy" && !invincible)
         {
             takeDamage(col.gameObject.GetComponent<Enemy>().damage);
-            Debug.Log("I've been hit!");
+            //Debug.Log("I've been hit!");
         }
 
         //logic that makes sure pickup affects the numbers of the stats

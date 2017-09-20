@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     [Range(0, 25)]
     public int HP;
     public bool randomDrop = false ;
-    bool becameAmmo;
+    bool becameAmmo, wasDestroyed;
 
     //used to save max HP info for enemy
     int saveHP;
@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
         saveHP = HP;
         grabbable = false;
         becameAmmo = false;
+        wasDestroyed = false;
     }
 
     protected virtual void Update()
@@ -43,7 +44,6 @@ public class Enemy : MonoBehaviour
         }
         else if (HP <= 0)
         {
-            HP = 0;
             Destroy(body);
         }
     }
@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void BecomeProjectile()
     {
-        Ammo.instance.load();
+        Ammo.load();
         Destroy(body);
     }
 
@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour
     {
         //bool test = false;
         //if (drop)
-        if(!becameAmmo)
+        if(!becameAmmo&& wasDestroyed)
         {
             BecomePickUp();            
         }
@@ -94,13 +94,13 @@ public class Enemy : MonoBehaviour
         {
             takeDamage(other.gameObject.GetComponent<Projectile>().damage);
             Debug.Log("Hit");
-            Destroy(other.GetComponent<GameObject>());
         }
 
         else if (other.gameObject.tag == "Hand" && grabbable)
         {
-            BecomeProjectile();
             becameAmmo = true;
+            wasDestroyed = true;
+            BecomeProjectile();
             Debug.Log("Grabbed");
         }
 

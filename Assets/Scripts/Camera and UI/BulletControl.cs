@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class BulletControl : MonoBehaviour {
 	public Sprite[] Shots;
     public Image BulletImage;
-	float test;
 	
 	void Update(){
-		BulletImage.sprite = Shots[Ammo.instance.bullets];
+       // Debug.Log("Bullets available "+ Ammo.bullets);
+		BulletImage.sprite = Shots[Ammo.bullets];
 	}
 }
