@@ -9,4 +9,12 @@ public class Projectile : Model
     [Range (0,15)]
     public int damage;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
 }

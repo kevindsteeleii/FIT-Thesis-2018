@@ -2,8 +2,7 @@
 
 public class Enemy : MonoBehaviour
 {
-    //sets default
-    bool grabbable;
+
     //the physical body of the enemy itself
     [SerializeField]
     public static GameObject body;
@@ -11,12 +10,11 @@ public class Enemy : MonoBehaviour
     //allows for adjustment of enemy health points
     [Range(0, 25)]
     public int HP;
-    public bool randomDrop = false ;
-    bool becameAmmo, wasDestroyed;
+    public bool randomDrop = false;
 
     //used to save max HP info for enemy
     int saveHP;
-    
+
     [Range(0, 25)]
     public int damage;
     // Use this for initialization
@@ -24,28 +22,18 @@ public class Enemy : MonoBehaviour
     {
         body = this.gameObject;
         saveHP = HP;
-        grabbable = false;
-        becameAmmo = false;
-        wasDestroyed = false;
     }
 
     protected virtual void Update()
     {
         Mathf.Clamp(HP, 0, 25);
-        Debug.Log("Enemy turned into ammo statement is "+ becameAmmo);
-        //checks the current HP vs. fullHP and if current is <= half of full HP change
-        if (HP <= saveHP / 2 && HP > 0)
+
+        if (HP<=0)
         {
-            grabbable = true;
+            HP = 0;
         }
-        else if (HP > saveHP / 2)
-        {
-            grabbable = false;
-        }
-        else if (HP <= 0)
-        {
-            Destroy(body);
-        }
+
+        //Debug.Log("Enemy HP is " + HP);
     }
 
     public virtual void takeDamage(int dam)
@@ -60,6 +48,7 @@ public class Enemy : MonoBehaviour
     {
         Ammo.load();
         Destroy(body);
+        Debug.Log("Became Projectile!!");
     }
 
     /*creates a pickUp item upon destruction if and only if
@@ -67,24 +56,14 @@ public class Enemy : MonoBehaviour
      mutually inclusive*/
     public void BecomePickUp()
     {
-        if (randomDrop )
+        Destroy(body);
+        if (randomDrop)
         {
             LootGenerator.lootGen.makeRandomLoot(transform.position, transform.rotation);
         }
-        else if (!randomDrop )
+        else if (!randomDrop)
         {
             LootGenerator.lootGen.makeThisLoot(transform.position, transform.rotation, PickupType.Health);
-        }
-    }
-
-    //re-write if a derived class is made for a boss enemy
-    private void OnDestroy()
-    {
-        //bool test = false;
-        //if (drop)
-        if(!becameAmmo&& wasDestroyed)
-        {
-            BecomePickUp();            
         }
     }
 
@@ -93,25 +72,35 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.tag == "Projectile")
         {
             takeDamage(other.gameObject.GetComponent<Projectile>().damage);
+            if (HP <= saveHP/2)
+            {
+                BecomePickUp();
+            }
             Debug.Log("Hit");
-        }
-
-        else if (other.gameObject.tag == "Hand" && grabbable)
-        {
-            becameAmmo = true;
-            wasDestroyed = true;
-            BecomeProjectile();
-            Debug.Log("Grabbed");
-        }
-
-        else if (other.gameObject.tag == "Hand" && !grabbable)
-        {
-            takeDamage(other.gameObject.GetComponent<GrabModel>().damage);
-            Debug.Log("Grope");
+            Destroy(other.gameObject);
         }
         
+        /*In this block, if the object in contact is the hand it automatically does damage,
+         then sorts out what happens based on comparing the max HP w/ the new adjusted amount and 
+         outputs results accordingly*/
+
+        else if (other.gameObject.tag == "Hand")
+        {
+            takeDamage(other.gameObject.GetComponent<GrabModel>().damage);
+
+            if (HP <= saveHP/2)
+            {
+                BecomeProjectile();
+                Debug.Log("Grabbed");
+            }
+            else
+            {
+                Debug.Log("Grope!");
+            }
+        }
+
         /*Add cases for a punch or slam attack modeled after the
-         prior conditional statements here*/
+         prior conditional statements here later on*/
     }
 
 }

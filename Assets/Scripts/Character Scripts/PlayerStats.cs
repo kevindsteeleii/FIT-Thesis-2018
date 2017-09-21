@@ -20,6 +20,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     bool invincible;
     public int wallet, hp;
+    public static int playerHP;
 
     PlayerController player;
 
@@ -35,8 +36,8 @@ public class PlayerStats : Singleton<PlayerStats>
 
     void Update()
     {
+        playerHP = hp;
         //Debug.Log("Invincible state is " + invincible);
-        //debugger 
         //Debug.Log("Stats are as follows: " + "HP is " + hp + "/" + stats.maxHP
            // + " Scrap :" + wallet);
         //makes sure the pickups addition to stat does not exceed the stat max itself
@@ -47,7 +48,6 @@ public class PlayerStats : Singleton<PlayerStats>
         if (invincible)
         {
             intervals = Mathf.RoundToInt((stats.duration * (1 / stats.waitTime)) / 2);
-
             StartCoroutine(IFramez());
             //Debug.Log("Now Mortal Again!!");
         }

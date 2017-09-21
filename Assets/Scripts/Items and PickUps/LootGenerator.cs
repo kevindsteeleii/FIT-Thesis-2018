@@ -74,8 +74,12 @@ public class LootGenerator : MonoBehaviour
             currentTypeofItem = PickupType.Nothing;
         }
 
+        if (currentTypeofItem != PickupType.Nothing)
+        {
+            makeThisLoot(dropSpot, rot, currentTypeofItem);
+        }
+
         Debug.Log("Pick Up became " + currentTypeofItem+ " !!");
 
-        makeThisLoot(dropSpot, rot, currentTypeofItem);
     }
 }

@@ -41,9 +41,15 @@ public class ThrowModel : Model
     // Update is called once per frame
     void FixedUpdate()
     {
+        //facing is used to determine the direction the character is facing and uses a multiplier to affect trajectory of projectile
+        //assignmentParameter = (outcomeOfConditional) ? a:b; // it equals a if the outcome is true and b if false
         facing = (PlayerController.facingRight) ? 1 : -1;
         direction = aimReticle.transform.position - rootAim.transform.position;
     }
+
+    /*Creates an object variable that when assigned is passed as a prefab for the projectile.
+     In turn, a rigidbody variable is created, then assigned the rigidbody inside of the prefab.
+     Then force is applied, Ammo class decrements the ammo count, and the bullet is destroyed after a set amount of time*/
 
     public void throwStraight()
     {
@@ -53,7 +59,7 @@ public class ThrowModel : Model
         tempRB = bullet.GetComponent<Rigidbody>();
         tempRB.AddForce(facing * right * throwForce);
         Ammo.shootLoad();
-        Destroy(bullet, 10.0f);
+        Destroy(bullet, 5.0f);
     }
 
     public void throwAngle()
@@ -64,7 +70,7 @@ public class ThrowModel : Model
         tempRB = bullet.GetComponent<Rigidbody>();
         tempRB.AddForceAtPosition(direction * throwForce * aimThrowSpeed, transform.position);
         Ammo.shootLoad();
-        Destroy(bullet, 10.0f);
+        Destroy(bullet, 5.0f);
     }
 
     private void OnTriggerEnter(Collider other)

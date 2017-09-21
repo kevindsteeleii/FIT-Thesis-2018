@@ -78,8 +78,8 @@ public class PlayerController : MonoBehaviour
             }
 
             myAnim.SetFloat("speed", Mathf.Abs(move));
-            Debug.Log("Move is " + move);
-            Debug.Log("Speed "+ myAnim.GetFloat("speed"));
+            //Debug.Log("Move is " + move);
+            //Debug.Log("Speed "+ myAnim.GetFloat("speed"));
 
 
             myRB.velocity = new Vector3(move * data.runSpeed, myRB.velocity.y, 0);

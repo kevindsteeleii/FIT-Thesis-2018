@@ -21,20 +21,10 @@ public class Ammo : MonoBehaviour
         cap = capacity;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-
-            load();
-        }
-        Debug.Log("Bullets number in "+bullets);
-    }
-
-
     public static void load()
     {
         bullets++;
+
         if (bullets >= cap)
         {
             bullets = cap;
