@@ -33,7 +33,7 @@ public class HealthBar : MonoBehaviour
     {
         //updating HP value for the slider
         //Debug.Log("Player HP is " + PlayerStats.instance.hp);
-        mainSlider.value = PlayerStats.playerHP;
+        mainSlider.value = PlayerStats.instance.hp;
 
         if (PlayerStats.instance.hp <= 0)
         {

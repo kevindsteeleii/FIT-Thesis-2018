@@ -58,7 +58,7 @@ public class ThrowModel : Model
         Rigidbody tempRB;
         tempRB = bullet.GetComponent<Rigidbody>();
         tempRB.AddForce(facing * right * throwForce);
-        Ammo.shootLoad();
+        Ammo.instance.shootLoad();
         Destroy(bullet, 5.0f);
     }
 
@@ -69,7 +69,7 @@ public class ThrowModel : Model
         Rigidbody tempRB;
         tempRB = bullet.GetComponent<Rigidbody>();
         tempRB.AddForceAtPosition(direction * throwForce * aimThrowSpeed, transform.position);
-        Ammo.shootLoad();
+        Ammo.instance.shootLoad();
         Destroy(bullet, 5.0f);
     }
 

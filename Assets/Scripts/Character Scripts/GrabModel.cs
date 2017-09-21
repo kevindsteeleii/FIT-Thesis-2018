@@ -6,8 +6,10 @@ using UnityEngine;
 public class GrabModel : Model
 {
 
-    //stroes the data for the GrabModel and saves changes during play mode
+    //stores the data for the GrabModel and saves changes during play mode
     public GrabData data;
+
+
 
     //direction of ray and relative position of player
     public static Vector3 direction;
@@ -61,7 +63,6 @@ public class GrabModel : Model
     public void release()
     {
         //and disappears when you let go
-
         Vector3 trueOffSet = new Vector3(data.offSet.x, data.offSet.y, 0);
         transform.localPosition = trueOffSet;
         myRender.enabled = false;

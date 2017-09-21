@@ -12,22 +12,22 @@ public class PlayerStats : Singleton<PlayerStats>
     //camera needed to obscure/mask the player on separate layer by itself to simulate the transparency oscillation of the invincibility frames of older games
     [SerializeField]
     Camera camera;
-
-    public static PlayerStats instance;
+    
     /*number of intervals to be calculated by duration and wait time total*/
     int intervals = 0;
 
 
     bool invincible;
-    public int wallet, hp;
-    public static int playerHP;
+
+    public int wallet;
+    public int hp { get; set; }
+
 
     PlayerController player;
 
     // Use this for initialization
-    new void Awake()
+    void Start()
     {
-        instance = this;
         player = this.GetComponent<PlayerController>();
         hp = stats.maxHP;
         invincible = false;
@@ -36,11 +36,6 @@ public class PlayerStats : Singleton<PlayerStats>
 
     void Update()
     {
-        playerHP = hp;
-        //Debug.Log("Invincible state is " + invincible);
-        //Debug.Log("Stats are as follows: " + "HP is " + hp + "/" + stats.maxHP
-           // + " Scrap :" + wallet);
-        //makes sure the pickups addition to stat does not exceed the stat max itself
         if (hp > stats.maxHP) { hp = stats.maxHP; }
         if (wallet > stats.maxMoney) { wallet = stats.maxMoney; }
         Mathf.Clamp(hp, 0, stats.maxHP);

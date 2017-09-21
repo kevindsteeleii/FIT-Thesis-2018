@@ -2078,7 +2078,6 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: c792e6d9aecff7841bbb946d0679ab86, type: 2}
   camera: {fileID: 1245123967}
   wallet: 0
-  hp: 0
 --- !u!54 &1054577881
 Rigidbody:
   m_ObjectHideFlags: 0

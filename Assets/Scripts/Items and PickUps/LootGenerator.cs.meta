@@ -1,10 +1,14 @@
 fileFormatVersion: 2
 guid: bcd0bc8465d969f45ac31903ed01d518
-timeCreated: 1505880813
+timeCreated: 1506016855
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - healthPickUp: {fileID: 1278930696587250, guid: 9ec57dd514d6dfb42bb3d9317ca9290c,
+      type: 2}
+  - moneyPickUp: {fileID: 1278930696587250, guid: 303d02b3fa0a87640959fc5577034822,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

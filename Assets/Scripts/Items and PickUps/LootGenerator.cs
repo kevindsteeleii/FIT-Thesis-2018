@@ -4,11 +4,9 @@
 /// As the name indicates, it creates Loot items to be dropped upon enemy death
 /// provided enemy was not turned into ammunition.
 /// </summary>
-public class LootGenerator : MonoBehaviour
+public class LootGenerator : Singleton<LootGenerator>
 {
     PickupType itemType = PickupType.Health;
-
-    public static LootGenerator lootGen;
 
     [Tooltip("The health item prefab")]
     public GameObject healthPickUp;
@@ -19,11 +17,6 @@ public class LootGenerator : MonoBehaviour
     PickupType currentTypeofItem;
     GameObject itemDropped;
 
-    // Use this for initialization
-    void Awake()
-    {
-        lootGen = this;
-    }
 
 
     public void makeThisLoot(Vector3 dropSpot, Quaternion rot, PickupType itemIs)
@@ -53,7 +46,7 @@ public class LootGenerator : MonoBehaviour
         {
             Debug.Log("Nothing for you");
         }
-        
+
     }
 
     public void makeRandomLoot(Vector3 dropSpot, Quaternion rot)
@@ -69,7 +62,7 @@ public class LootGenerator : MonoBehaviour
         {
             currentTypeofItem = PickupType.Money;
         }
-        else if (dropWeight>= 0 && dropWeight < 20)
+        else
         {
             currentTypeofItem = PickupType.Nothing;
         }
@@ -79,7 +72,7 @@ public class LootGenerator : MonoBehaviour
             makeThisLoot(dropSpot, rot, currentTypeofItem);
         }
 
-        Debug.Log("Pick Up became " + currentTypeofItem+ " !!");
+        Debug.Log("Pick Up became " + currentTypeofItem + " !!");
 
     }
 }

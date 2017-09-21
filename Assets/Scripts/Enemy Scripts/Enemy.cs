@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void BecomeProjectile()
     {
-        Ammo.load();
+        Ammo.instance.load();
         Destroy(body);
         Debug.Log("Became Projectile!!");
     }
@@ -59,11 +59,11 @@ public class Enemy : MonoBehaviour
         Destroy(body);
         if (randomDrop)
         {
-            LootGenerator.lootGen.makeRandomLoot(transform.position, transform.rotation);
+            LootGenerator.instance.makeRandomLoot(transform.position, transform.rotation);
         }
         else if (!randomDrop)
         {
-            LootGenerator.lootGen.makeThisLoot(transform.position, transform.rotation, PickupType.Health);
+            LootGenerator.instance.makeThisLoot(transform.position, transform.rotation, PickupType.Health);
         }
     }
 
