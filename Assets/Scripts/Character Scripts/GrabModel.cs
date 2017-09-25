@@ -9,8 +9,6 @@ public class GrabModel : Model
     //stores the data for the GrabModel and saves changes during play mode
     public GrabData data;
 
-
-
     //direction of ray and relative position of player
     public static Vector3 direction;
 

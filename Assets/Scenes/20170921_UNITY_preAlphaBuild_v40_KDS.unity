@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 13390612}
   - component: {fileID: 13390611}
   - component: {fileID: 13390615}
+  - component: {fileID: 13390616}
   m_Layer: 0
   m_Name: Death Cube
   m_TagString: Death Object
@@ -202,8 +203,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4895a4afdaf36499789a717e845fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpeed: 2
+  speed: 0.405
+  rb: {fileID: 0}
   delta: 1.5
+--- !u!54 &13390616
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 13390610}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &17331014
 GameObject:
   m_ObjectHideFlags: 0
@@ -2955,6 +2972,7 @@ GameObject:
   - component: {fileID: 1647951311}
   - component: {fileID: 1647951309}
   - component: {fileID: 1647951308}
+  - component: {fileID: 1647951315}
   - component: {fileID: 1647951310}
   - component: {fileID: 1647951313}
   - component: {fileID: 1647951314}
@@ -3056,7 +3074,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!135 &1647951314
 SphereCollider:
@@ -3070,6 +3088,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1647951315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1647951307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed8149c010eca04d8a4f5a429cf0536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  speed: 1.1
+  pathLength: 27.4
 --- !u!1 &1650210917
 GameObject:
   m_ObjectHideFlags: 0
@@ -4056,6 +4088,7 @@ GameObject:
   - component: {fileID: 1995698023}
   - component: {fileID: 1995698022}
   - component: {fileID: 1995698021}
+  - component: {fileID: 1995698020}
   m_Layer: 0
   m_Name: DeathZone
   m_TagString: Death Object
@@ -4063,6 +4096,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!54 &1995698020
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1995698019}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!23 &1995698021
 MeshRenderer:
   m_ObjectHideFlags: 0
