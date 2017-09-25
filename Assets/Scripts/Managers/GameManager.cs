@@ -9,8 +9,6 @@ public enum GameState { pause, win, gameOver, inGame, menu };
 public class GameManager : Singleton<GameManager>
 {
 
-    GameManager instance;
-
     //money, hp and the like are all handled in different singletons
     public float levelStartDelay = 2f;
     private int level = 1;
@@ -21,18 +19,12 @@ public class GameManager : Singleton<GameManager>
     public GameState gameState = GameState.menu;
 
     // Use this for initialization
-    void Awake()
+    void Start()
     {
-        instance = this;
         DontDestroyOnLoad(gameObject);
         gameState = GameState.inGame;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     void SetGameState(GameState newGameState)
     {
         /*different gameStates should prompt the visibility of pertinent canvases
