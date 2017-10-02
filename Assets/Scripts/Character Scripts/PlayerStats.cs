@@ -19,7 +19,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     bool invincible;
 
-    public int wallet;
+    public static int wallet;
     public int hp { get; set; }
 
 
