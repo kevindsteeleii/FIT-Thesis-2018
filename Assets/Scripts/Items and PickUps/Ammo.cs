@@ -16,6 +16,7 @@ public class Ammo : Singleton<Ammo>
     public int capacity = 6;
     int cap;
 
+    /*To make parameter accessible outside of Singleton set up as a get and set parameter like so*/
     public int bullets { get; set; }
 
     // Use this for initialization

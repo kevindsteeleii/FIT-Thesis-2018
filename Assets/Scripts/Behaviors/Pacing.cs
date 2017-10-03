@@ -4,7 +4,7 @@
 /// Class used as a component to make objects, obstacles, and hovering enemies move back and forth on a set path horizontally
 /// note: you need a rigid body for it to work and is designed to use it 
 /// </summary>
-[RequireComponent(typeof (Rigidbody))]
+[RequireComponent(typeof(Rigidbody))]
 public class Pacing : MonoBehaviour
 {
     //rigidbody used to move through velocity
@@ -27,10 +27,7 @@ public class Pacing : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        if (rb == null)
-        {
-            rb = this.GetComponent<Rigidbody>();
-        }
+        rb = this.GetComponent<Rigidbody>();
         pos = this.transform.position;
     }
 

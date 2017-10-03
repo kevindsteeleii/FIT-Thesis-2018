@@ -19,7 +19,9 @@ public class PlayerStats : Singleton<PlayerStats>
 
     bool invincible;
 
-    public static int wallet;
+    /*To make parameter accessible outside of Singleton set up as a get and set parameter like so*/
+    public int wallet { get; set; }
+    /*To make parameter accessible outside of Singleton set up as a get and set parameter like so*/
     public int hp { get; set; }
 
 

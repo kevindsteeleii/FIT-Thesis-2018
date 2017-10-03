@@ -14,7 +14,7 @@ public class MoneyUi : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		dosh = PlayerStats.wallet;
+		dosh = PlayerStats.instance.wallet;
 		MoneyText.text = ""+dosh;
 	}
 }
