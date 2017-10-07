@@ -1,6 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 //enum used to switch what type of pickup 
 public enum PickupType { Health, Money, Nothing };
@@ -30,6 +30,9 @@ public class PickUp : MonoBehaviour
     //destroys after N-seconds with a blinker to illustrate time running out
     IEnumerator DestroyAfterTime()
     {
+        /*Using this commentation to test instantiation of 
+         pickUp item on enemy destruction*/
+
         yield return new WaitForSeconds(3.0f);
         for (int i = 0; i < 10; i++)
         {
@@ -48,8 +51,8 @@ public class PickUp : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            Debug.Log("Destroy " + this.gameObject.name);
             Destroy(this);
         }
     }
-
 }

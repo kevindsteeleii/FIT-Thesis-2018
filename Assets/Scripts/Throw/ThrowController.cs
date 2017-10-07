@@ -15,7 +15,7 @@ public class ThrowController : Controller
         }
     }
 
-    protected virtual void FixedUpdate()
+    protected virtual void LateUpdate()
     {
         /*Uses Throw to trigger a branching nest of conditionals that will either throw a projectile
          at an angle or straight, or returns a debug log*/

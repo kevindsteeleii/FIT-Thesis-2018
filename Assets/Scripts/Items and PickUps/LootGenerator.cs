@@ -1,12 +1,17 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 /// As the name indicates, it creates Loot items to be dropped upon enemy death
 /// provided enemy was not turned into ammunition.
 /// </summary>
+
 public class LootGenerator : Singleton<LootGenerator>
 {
     PickupType itemType = PickupType.Health;
+
+    protected static Dictionary<PickupType, GameObject> lootIndex = new Dictionary<PickupType, GameObject>();
 
     [Tooltip("The health item prefab")]
     public GameObject healthPickUp;
@@ -17,36 +22,35 @@ public class LootGenerator : Singleton<LootGenerator>
     PickupType currentTypeofItem;
     GameObject itemDropped;
 
-
+    //on awake populates dictionary 
+    protected override void Awake()
+    {
+        base.Awake();
+        PopulateList();
+    }
 
     public void makeThisLoot(Vector3 dropSpot, Quaternion rot, PickupType itemIs)
     {
         GameObject spawnObject;
 
-        switch (itemIs)
+        if (lootIndex.TryGetValue(itemIs, out spawnObject))
         {
-            case PickupType.Health:
-                itemDropped = healthPickUp;
-                break;
-            case PickupType.Money:
-                itemDropped = moneyPickUp;
-                break;
-            case PickupType.Nothing:
-                itemDropped = null;
-                break;
-        };
+            GameObject objToSpawn = Instantiate(spawnObject,dropSpot,rot);
 
-        if (itemIs == PickupType.Health || itemIs == PickupType.Money)
-        {
-            spawnObject = Instantiate(itemDropped, dropSpot, rot);
             Rigidbody tempRB = spawnObject.GetComponent<Rigidbody>();
-            Debug.Log(" The drop is a " + itemIs + " !!");
-        }
-        else
+            print ("Item is "+ itemIs);
+        } else
         {
-            Debug.Log("Nothing for you");
+            // do a thing here if item doesn't exist
+            print("Nothing available here!");
         }
+    }
 
+    public void PopulateList()
+    {
+        lootIndex.Add(PickupType.Health, healthPickUp);
+        lootIndex.Add(PickupType.Money, moneyPickUp);
+        lootIndex.Add(PickupType.Nothing, null);
     }
 
     public void makeRandomLoot(Vector3 dropSpot, Quaternion rot)
@@ -73,6 +77,5 @@ public class LootGenerator : Singleton<LootGenerator>
         }
 
         Debug.Log("Pick Up became " + currentTypeofItem + " !!");
-
     }
 }
