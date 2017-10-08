@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 /// Class used as empty model that generates the instantiated bullet to be shot
@@ -27,6 +27,8 @@ public class ThrowModel : Model
     [Tooltip("Determines height offset of the beginning of throw ")]
     [Range(0.1f, 4f)]
     public float throwHeightOffset;
+    
+
 
     int facing = 1;
     Vector3 right, direction;
