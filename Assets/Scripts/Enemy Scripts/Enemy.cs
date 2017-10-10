@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
 
     [Range(0, 25)]
     public int damage;
+   
     // Use this for initialization
     void Start()
     {
@@ -46,7 +47,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void BecomeProjectile()
     {
-        Ammo.instance.load();
+        Ammo.instance.Load();
         Destroy(body);
         Debug.Log("Became Projectile!!");
     }

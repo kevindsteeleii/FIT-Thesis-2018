@@ -16,7 +16,6 @@ public class Platforms : MonoBehaviour {
     /// </summary>
     public enum PlatformBehavior { Normal,Disappearing,Moving,Falling};
     PlatformBehavior behavior;
-
     
     // Use this for initialization
     private void Awake()
@@ -25,9 +24,8 @@ public class Platforms : MonoBehaviour {
         behavior = PlatformBehavior.Normal;
         location = this.transform;
         collider = this.GetComponent<Collider>();
-
-
     }
+
     void Start() {
         switch (behavior)
         {
@@ -48,8 +46,6 @@ public class Platforms : MonoBehaviour {
                 break;
         }
     }
-
-
 
     // Update is called once per frame
     void Update () {

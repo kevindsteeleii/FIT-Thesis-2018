@@ -4,7 +4,8 @@ using UnityEngine;
 using System;
 
 //T is generic type that will be used later 
-public class Pool<T> : Singleton<Pool<T>> where T: MonoBehaviour{
+public class Pool<T> : Singleton<Pool<T>> where T: MonoBehaviour
+{
     public int poolStartSize  = 12;
     public readonly Vector3 hidden = new Vector3(1000, 1000, 1000);
     protected List<T> pool = new List<T>();

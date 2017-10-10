@@ -197,13 +197,10 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-        if (Mathf.Abs(myRB.velocity.y) > 0 || collision.gameObject.tag == "Ground"
-            )
+        if (Mathf.Abs(myRB.velocity.y) > 0 || collision.gameObject.tag == "Ground")
         {
             myAnim.SetBool("grounded", false);
             myAnim.SetBool("airborne", true);
         }
     }
 }
-
-

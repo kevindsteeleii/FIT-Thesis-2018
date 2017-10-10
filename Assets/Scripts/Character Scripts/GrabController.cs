@@ -4,7 +4,6 @@
 /// </summary>
 public class GrabController : Controller
 {
-
     //The GrabModel, and it's collider, may add or subtract based on what the final rig entails 
     [SerializeField]
     GrabModel handModel;
@@ -31,6 +30,5 @@ public class GrabController : Controller
         {
             handModel.release();
         }
-
     }
 }

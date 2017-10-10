@@ -8,18 +8,17 @@ using System.Collections.Generic;
 /// </summary>
 public class Ammo : Singleton<Ammo>
 {
+
+    //the bullet or single projectile to be "loaded" into the PoolList known as ammoList
+    public GameObject bullet;
     //creation of collection to handle pooling of ammo, as opposed to instantiating and destroying and using up lots of memory allocation to do so
     //at this scope its harmless but its best practice
-    public static Dictionary<int, Queue<GameObject>> poolAmmo = new Dictionary<int, Queue<GameObject>>();
-    //capacity of ammo/bullets as a constant/read only integer
-    private const int constCap = 6;
-
-
 
     [Tooltip("Choose between 0 and 6 'Bullets' to preload Ammo class")]
     [Range(0, 6)]
     public int testLoad;
-    //both are bullet capacity, one is private though
+
+    //both are bullet capacity, one is private though for internal use
     public int capacity = 6;
     int cap;
 
@@ -31,10 +30,11 @@ public class Ammo : Singleton<Ammo>
     {
         bullets = testLoad;
         cap = capacity;
+        //creates the pool List of bullets
+
     }
 
-
-    public void load()
+    public void Load()
     {
         bullets++;
         Mathf.Clamp(bullets, 0, cap);
@@ -51,7 +51,7 @@ public class Ammo : Singleton<Ammo>
     /// <summary>
     /// Deletes from bullet int and launches different throwing
     /// </summary>
-    public void shootLoad()
+    public void ShootLoad()
     {
         bullets--;
         Mathf.Clamp(bullets, 0, cap);
@@ -64,8 +64,8 @@ public class Ammo : Singleton<Ammo>
 
         else if (Input.GetButton("Throw") && bullets >= 0)
         {
-
             Debug.Log("Shots fired! Only " + bullets + " shots left!");
+            
         }
         else
             return;
