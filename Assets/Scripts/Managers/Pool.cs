@@ -44,9 +44,9 @@ public class Pool<T> : Singleton<Pool<T>> where T: MonoBehaviour
         item.transform.position = hidden;
     }
 
-    public void Fill (Func<T> createNew)
+    public void Fill ( Func<T> create)
     {
-        this.create = createNew;
+        this.create = create;
         for (int i = 0; i < poolStartSize; i++)
         {
             T item = create();
@@ -55,5 +55,4 @@ public class Pool<T> : Singleton<Pool<T>> where T: MonoBehaviour
             pool.Add(item);
         }
     }
-
 }

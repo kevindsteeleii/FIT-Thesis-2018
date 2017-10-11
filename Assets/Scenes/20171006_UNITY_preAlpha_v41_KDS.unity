@@ -4755,8 +4755,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1967322751113368, guid: 6c2d62670ee276346a51bd50a04eb635, type: 2}
-  testLoad: 4
+  testLoad: 6
   capacity: 6
+  ammoList: []
 --- !u!114 &1964235340
 MonoBehaviour:
   m_ObjectHideFlags: 0

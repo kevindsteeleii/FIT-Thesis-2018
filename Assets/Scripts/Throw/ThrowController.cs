@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System;
+using System.Linq;
+using System.Collections.Generic;
 /// <summary>
 ///	Takes input for ThrowModel 
 /// </summary>
 public class ThrowController : Controller
 {
-    ThrowModel canon;
-    
-    public Pool<ThrowModel> bulletPool;
+   ThrowModel canon;
+
     protected virtual void Start()
     {
         if (canon == null)
@@ -23,12 +24,13 @@ public class ThrowController : Controller
          at an angle or straight, or returns a debug log*/
         if (Input.GetButtonDown("Throw") && !Input.GetButton("Aim") && Ammo.instance.bullets > 0)
         {
-            bulletPool.pull.throwStraight();
+            //ThrowModel bullet = bulletPool.GetPooledObject().GetComponent<ThrowModel>();
+            canon.ThrowStraight();
         }
 
         else if (Input.GetButtonDown("Throw") && Input.GetButton("Aim") && Ammo.instance.bullets > 0)
         {
-            canon.throwAngle();
+            canon.ThrowAngle();
         }
 
         else if (Input.GetButtonDown("Throw") && Ammo.instance.bullets <= 0)

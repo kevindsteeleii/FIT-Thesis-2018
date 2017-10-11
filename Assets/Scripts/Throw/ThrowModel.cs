@@ -31,8 +31,6 @@ public class ThrowModel : Model
     int facing = 1;
     Vector3 right, direction;
 
-
-
     // Use this for initialization
     void Awake()
     {
@@ -52,36 +50,44 @@ public class ThrowModel : Model
      In turn, a rigidbody variable is created, then assigned the rigidbody inside of the prefab.
      Then force is applied, Ammo class decrements the ammo count, and the bullet is destroyed after a set amount of time*/
 
-    public void throwStraight()
+    public void ThrowStraight()
     {
-        //GameObject bullet;
-        //bullet = Instantiate(testBullet, rootAim.transform.position, rootAim.transform.rotation) as GameObject;
-        Rigidbody tempRB;
-        //tempRB = bullet.GetComponent<Rigidbody>();
-        tempRB = this.GetComponent<Rigidbody>();
-        tempRB.AddForce(facing * right * throwForce);
-        Ammo.instance.ShootLoad();
-        //Destroy(bullet, 5.0f);
+        //GameObject bullet = Ammo.instance.GetPooledObject();
+        if (Ammo.instance.bullets>0)
+        {
+            GameObject bullet = Ammo.instance.GetPooledObject(rootAim.transform.position);
+            //Rigidbody tempRB;
+
+            bullet.GetComponent<Rigidbody>().AddForce(facing * right * throwForce);
+            Ammo.instance.ShootLoad();
+        }
+        else
+            print("Ran out of bullets");
     }
 
-    public void throwAngle()
+    public void ThrowAngle()
     {
-        GameObject bullet;
-        bullet = Instantiate(testBullet, rootAim.transform.position, rootAim.transform.rotation) as GameObject;
-        Rigidbody tempRB;
-        tempRB = bullet.GetComponent<Rigidbody>();
-        tempRB.AddForceAtPosition(direction * throwForce * aimThrowSpeed, transform.position);
-        Ammo.instance.ShootLoad();
-        Destroy(bullet, 5.0f);
+        if (Ammo.instance.bullets > 0)
+        {
+            GameObject bullet = Ammo.instance.GetPooledObject(rootAim.transform.position);
+            Rigidbody tempRB;
+            tempRB = bullet.GetComponent<Rigidbody>();
+            tempRB.AddForceAtPosition(direction * throwForce * aimThrowSpeed, transform.position);
+            Ammo.instance.ShootLoad();
+            //Destroy(bullet, 5.0f);
+        }
+        else
+            print("Ran out of bullets");
     }
 
     private void OnTriggerEnter(Collider other)
-    {       
-            Destroy(this.gameObject);
+    {
+        //this.gameObject.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Destroy(this.gameObject);
+        //this.gameObject.SetActive(false);
     }
+
 }
