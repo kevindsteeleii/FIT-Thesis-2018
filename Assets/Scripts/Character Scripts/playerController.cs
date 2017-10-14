@@ -9,8 +9,6 @@ public class PlayerController : MonoBehaviour
 {
     public PlayerData data;
 
-    PlayerStats stats;
-
     //rigidboday and animator children of the player character 
     Animator myAnim;
     Rigidbody myRB;
@@ -48,7 +46,6 @@ public class PlayerController : MonoBehaviour
         myAnim.SetBool("grounded", false);
         respawnPos = myRB.transform.position;
         rot = myRB.transform.rotation;
-        stats = this.GetComponent<PlayerStats>();
     }
 
     public void Update()
@@ -59,12 +56,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per physics action
     void FixedUpdate()
     {
-        
+
         bool undead = takeAction("Respawn", "dead", true, myAnim);
         //if false death-state is on all other actions cease
 
-        if (// GameManager.instance.gameState == GameState.inGame && 
-            !myAnim.GetBool("dead"))
+        if (!GameManager.instance.isDead
+            // &&
+            //!myAnim.GetBool("dead")
+            )
         {
             float move = 0;
 
@@ -80,7 +79,6 @@ public class PlayerController : MonoBehaviour
             myAnim.SetFloat("speed", Mathf.Abs(move));
             //Debug.Log("Move is " + move);
             //Debug.Log("Speed "+ myAnim.GetFloat("speed"));
-
 
             myRB.velocity = new Vector3(move * data.runSpeed, myRB.velocity.y, 0);
             if (move > 0 && !facingRight) { Flip(); }
@@ -110,7 +108,7 @@ public class PlayerController : MonoBehaviour
 
         else if (undead)
         {
-            reSpawn();
+            ReSpawn();
         }
     }
 
@@ -151,16 +149,17 @@ public class PlayerController : MonoBehaviour
     }
 
     //false respawn, resets transposition
-    public virtual void reSpawn()
+    public void ReSpawn()
     {
         transform.SetPositionAndRotation(respawnPos, rot);
         myAnim.SetBool("dead", false);
         myAnim.SetBool("grounded", true);
         facingRight = true;
-        stats.resetState();
+        //stats.ResetHP();
+        PlayerStats.instance.ResetHP();
     }
 
-    public void die()
+    public void Die()
     {
         transform.Rotate(0, 0, 90);
         myAnim.SetBool("dead", true);
@@ -191,7 +190,7 @@ public class PlayerController : MonoBehaviour
 
         else if (collision.gameObject.tag == "Death Object")
         {
-            die();
+            Die();
         }
     }
 

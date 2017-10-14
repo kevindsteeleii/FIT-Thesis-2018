@@ -38,7 +38,7 @@ public class PlayerHealth : MonoBehaviour
             if (currentHP <= 0)
             {
                 currentHP = 0;
-                player.die();
+                GameManager.instance.GameOver();
             }
             else
             {
@@ -95,8 +95,5 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("I've been hit!");
             
         }
-
-        if (col.gameObject.tag =="Health") { }
     }
-
 }

@@ -78,7 +78,7 @@ public class Enemy : MonoBehaviour
                 BecomePickUp();
             }
             Debug.Log("Hit");
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
         }
         
         /*In this block, if the object in contact is the hand it automatically does damage,

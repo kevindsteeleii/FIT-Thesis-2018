@@ -12,7 +12,7 @@ public class PlayerStats : Singleton<PlayerStats>
     //camera needed to obscure/mask the player on separate layer by itself to simulate the transparency oscillation of the invincibility frames of older games
     [SerializeField]
     Camera camera;
-    
+
     /*number of intervals to be calculated by duration and wait time total*/
     int intervals = 0;
 
@@ -24,13 +24,9 @@ public class PlayerStats : Singleton<PlayerStats>
     /*To make parameter accessible outside of Singleton set up as a get and set parameter like so*/
     public int hp { get; set; }
 
-
-    PlayerController player;
-
     // Use this for initialization
     void Start()
     {
-        player = this.GetComponent<PlayerController>();
         hp = stats.maxHP;
         invincible = false;
         wallet = 0;
@@ -51,7 +47,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     }
 
-    public void resetState()
+    public void ResetHP()
     {
         hp = stats.maxHP;
     }
@@ -95,7 +91,7 @@ public class PlayerStats : Singleton<PlayerStats>
             hp -= dmg;
             if (hp <= 0)
             {
-                player.die();
+                GameManager.instance.GameOver();
             }
             else
             {
@@ -115,7 +111,7 @@ public class PlayerStats : Singleton<PlayerStats>
         //logic that makes sure pickup affects the numbers of the stats
         if (col.gameObject.tag == "PickUp")
         {
-            int amount  = 0;
+            int amount = 0;
 
             if (col.GetComponent<PickUp>().pickup == PickupType.Health)
             {
@@ -138,7 +134,7 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         if (collision.gameObject.tag == "Death Object")
         {
-            hp = 0;
+            GameManager.instance.GameOver();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,16 @@ public class BulletControl : MonoBehaviour
 
     void Update()
     {
-        // Debug.Log("Bullets available "+ Ammo.bullets);
-        BulletImage.sprite = Shots[Ammo.instance.bullets];
+        try
+        {
+            // Debug.Log("Bullets available "+ Ammo.bullets);
+            BulletImage.sprite = Shots[Ammo.instance.bullets];
+        }
+        catch (IndexOutOfRangeException e)
+        {
+
+            throw new Exception ("No more bullets");
+        }
+       
     }
 }

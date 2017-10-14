@@ -35,11 +35,12 @@ public class LootGenerator : Singleton<LootGenerator>
 
         if (lootIndex.TryGetValue(itemIs, out spawnObject))
         {
-            GameObject objToSpawn = Instantiate(spawnObject,dropSpot,rot);
+            GameObject objToSpawn = Instantiate(spawnObject, dropSpot, rot);
 
             Rigidbody tempRB = spawnObject.GetComponent<Rigidbody>();
-            print ("Item is "+ itemIs);
-        } else
+            print("Item is " + itemIs);
+        }
+        else
         {
             // do a thing here if item doesn't exist
             print("Nothing available here!");

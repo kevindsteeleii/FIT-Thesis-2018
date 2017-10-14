@@ -13,7 +13,7 @@ public class Projectile : Model
     {
         if (other.gameObject.tag == "Enemy")
         {
-            Destroy(this.gameObject);
+           // Destroy(this.gameObject);
         }
     }
 

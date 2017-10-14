@@ -61,7 +61,7 @@ public class Ammo : Singleton<Ammo>
             {
                 ammoList[i].SetActive(true);
                 ammoList[i].transform.position = position;
-                //Debug.Log("Number " + i + " bullet");
+                Debug.Log("Number " + i + " bullet");
                 return ammoList[i];
             }
         }
@@ -98,7 +98,7 @@ public class Ammo : Singleton<Ammo>
             Debug.Log("Loading...Now you have " + bullets + " bullets!!");
             Reuse();
         }
-           
+
     }
     void Reuse()
     {

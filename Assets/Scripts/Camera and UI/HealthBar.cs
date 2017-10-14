@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class HealthBar : Singleton<HealthBar>
 {
 
     /*instantiates the mainSlider, which is our healthbar, the data
@@ -39,11 +39,10 @@ public class HealthBar : MonoBehaviour
         {
             sliderGroup.alpha = 0;
         }
-        else if (Input.GetButton("Respawn"))
+        else if (PlayerStats.instance.hp > 0)
+
         {
             sliderGroup.alpha = 1;
         }
-
     }
-
 }

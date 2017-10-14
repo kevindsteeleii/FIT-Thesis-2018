@@ -24,8 +24,17 @@ public class ThrowController : Controller
          at an angle or straight, or returns a debug log*/
         if (Input.GetButtonDown("Throw") && !Input.GetButton("Aim") && Ammo.instance.bullets > 0)
         {
-            //ThrowModel bullet = bulletPool.GetPooledObject().GetComponent<ThrowModel>();
-            canon.ThrowStraight();
+            try
+            {
+
+                //ThrowModel bullet = bulletPool.GetPooledObject().GetComponent<ThrowModel>();
+                canon.ThrowStraight();
+            }
+            catch (IndexOutOfRangeException e)
+            {
+
+                throw new Exception("Out of Ammo");
+            }
         }
 
         else if (Input.GetButtonDown("Throw") && Input.GetButton("Aim") && Ammo.instance.bullets > 0)
