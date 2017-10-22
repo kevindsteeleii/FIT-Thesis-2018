@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 /// <summary>
 /// Class that stores and manages player stats with some additional functions
@@ -16,6 +17,16 @@ public class PlayerStats : Singleton<PlayerStats>
     /*number of intervals to be calculated by duration and wait time total*/
     int intervals = 0;
 
+    /// <summary>
+    /// Event used to Monitor HP of player and broadcasts to game manager
+    /// for appropriate response to hp dropping at or below zero
+    /// </summary>
+    public event Action<int> HpChanged;
+
+    /// <summary>
+    /// Event triggered upon contact with a death object
+    /// </summary>
+    public event Action TouchDeath;
 
     bool invincible;
 
@@ -45,6 +56,10 @@ public class PlayerStats : Singleton<PlayerStats>
             //Debug.Log("Now Mortal Again!!");
         }
 
+        if (HpChanged != null)
+        {
+            HpChanged(hp);
+        }
     }
 
     public void ResetHP()
@@ -91,7 +106,7 @@ public class PlayerStats : Singleton<PlayerStats>
             hp -= dmg;
             if (hp <= 0)
             {
-                GameManager.instance.GameOver();
+                //GameManager.instance.GameOver();
             }
             else
             {
@@ -134,7 +149,12 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         if (collision.gameObject.tag == "Death Object")
         {
-            GameManager.instance.GameOver();
+            //if event has a subscriber...
+            if (TouchDeath != null)
+            {
+                TouchDeath();
+            }
+            //GameManager.instance.GameOver();
         }
     }
 }

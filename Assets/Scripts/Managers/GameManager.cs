@@ -5,7 +5,6 @@ public enum GameState { pause, win, gameOver, inGame, menu , reset };
 
 public class GameManager : Singleton<GameManager>
 {
-
     //stats, player movement and death state are handled in separate singletons
     public float levelStartDelay = 2f;
     private int level = 1;
@@ -22,7 +21,13 @@ public class GameManager : Singleton<GameManager>
         DontDestroyOnLoad(gameObject);
         StartGame();
         isDead = false;
+        //death upon health at zero
+        PlayerStats.instance.HpChanged += GameOverSub;
+        //death upon touching a insta-kill object
+        PlayerStats.instance.TouchDeath += GameOver;
     }
+
+
 
     public GameState GetState()
     {
@@ -68,10 +73,21 @@ public class GameManager : Singleton<GameManager>
         PlayerStats.instance.ResetHP();
     }
 
+    //death sate renders hp to zero
     public void GameOver()
     {
         SetGameState(GameState.gameOver);
         PlayerStats.instance.hp = 0;
+        PlayerController.instance.Die();
+    }
+
+    //Subscriber used to trigger the death state
+    void GameOverSub(int health)
+    {
+        if (health <= 0)
+        {
+            GameOver();
+        }
     }
 
     public void BackToMenu()

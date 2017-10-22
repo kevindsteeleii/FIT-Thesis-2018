@@ -15,7 +15,6 @@ public class ThrowController : Controller
         {
             canon = this.GetComponent<ThrowModel>();
         }
-
     }
 
     protected virtual void LateUpdate()
@@ -26,13 +25,11 @@ public class ThrowController : Controller
         {
             try
             {
-
                 //ThrowModel bullet = bulletPool.GetPooledObject().GetComponent<ThrowModel>();
                 canon.ThrowStraight();
             }
             catch (IndexOutOfRangeException e)
             {
-
                 throw new Exception("Out of Ammo");
             }
         }

@@ -98,7 +98,6 @@ public class Ammo : Singleton<Ammo>
             Debug.Log("Loading...Now you have " + bullets + " bullets!!");
             Reuse();
         }
-
     }
     void Reuse()
     {

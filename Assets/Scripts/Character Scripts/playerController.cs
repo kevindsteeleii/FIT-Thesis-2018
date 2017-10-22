@@ -5,7 +5,7 @@ using System.Collections;
 /// <summary>
 /// New and Improved consolidated Player Controller that handles movements, jumps, attacks and whatnot.
 /// </summary>
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
     public PlayerData data;
 
@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     Vector3 respawnPos;
     //respawn rotation
     Quaternion rot;
+
+    //event used to broadcast the state 
 
     /// <summary>
     /// keeps position to be referred to outside
@@ -105,7 +107,7 @@ public class PlayerController : MonoBehaviour
                 myAnim.SetBool("slam", true);
             }
         }
-
+        /*needs to be replaced by a state-driven, menu selected, continue of sorts*/
         else if (undead)
         {
             ReSpawn();
@@ -156,7 +158,7 @@ public class PlayerController : MonoBehaviour
         myAnim.SetBool("grounded", true);
         facingRight = true;
         //stats.ResetHP();
-        PlayerStats.instance.ResetHP();
+        //PlayerStats.instance.ResetHP();
     }
 
     public void Die()

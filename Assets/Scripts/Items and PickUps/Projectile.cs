@@ -16,5 +16,4 @@ public class Projectile : Model
            // Destroy(this.gameObject);
         }
     }
-
 }
