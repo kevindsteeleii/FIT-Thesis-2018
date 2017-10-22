@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
 
-public enum GameState { pause, win, gameOver, inGame, menu , reset };
+public enum GameState { pause, win, gameOver, inGame, menu};
 
 public class GameManager : Singleton<GameManager>
 {
@@ -21,13 +21,19 @@ public class GameManager : Singleton<GameManager>
         DontDestroyOnLoad(gameObject);
         StartGame();
         isDead = false;
+
         //death upon health at zero
-        PlayerStats.instance.HpChanged += GameOverSub;
+        //PlayerStats.instance.HpChanged += GameOverSub;
+
         //death upon touching a insta-kill object
         PlayerStats.instance.TouchDeath += GameOver;
+
+        //Used to alert the GameOver 
+        PlayerStats.instance.HPisZero += GameOver;
+
+        //upon respawned
+        //PlayerController.instance.ReSpawned += ResetGame;
     }
-
-
 
     public GameState GetState()
     {
@@ -53,9 +59,6 @@ public class GameManager : Singleton<GameManager>
                 break;
             case GameState.win:
                 break;
-
-            case GameState.reset:
-                break;
         }
         gameState = newGameState;
         PrintState();
@@ -65,12 +68,15 @@ public class GameManager : Singleton<GameManager>
     {
         SetGameState(GameState.inGame);
         Time.timeScale = 1;
+        isDead = false;
     }
 
     public void ResetGame()
     {
-        SetGameState(GameState.reset);
+        SetGameState(GameState.inGame);
         PlayerStats.instance.ResetHP();
+        PlayerController.instance.ReSpawn();
+        isDead = false;
     }
 
     //death sate renders hp to zero
@@ -78,17 +84,17 @@ public class GameManager : Singleton<GameManager>
     {
         SetGameState(GameState.gameOver);
         PlayerStats.instance.hp = 0;
-        PlayerController.instance.Die();
+        isDead = true;
     }
 
     //Subscriber used to trigger the death state
-    void GameOverSub(int health)
-    {
-        if (health <= 0)
-        {
-            GameOver();
-        }
-    }
+    //void GameOverSub(int health)
+    //{
+    //    if (health <= 0)
+    //    {
+    //        GameOver();
+    //    }
+    //}
 
     public void BackToMenu()
     {

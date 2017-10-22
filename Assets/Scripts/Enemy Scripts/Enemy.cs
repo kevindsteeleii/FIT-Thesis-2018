@@ -2,7 +2,6 @@
 
 public class Enemy : MonoBehaviour
 {
-
     //the physical body of the enemy itself
     [SerializeField]
     public static GameObject body;
@@ -103,5 +102,4 @@ public class Enemy : MonoBehaviour
         /*Add cases for a punch or slam attack modeled after the
          prior conditional statements here later on*/
     }
-
 }

@@ -5,7 +5,7 @@ using System.Collections;
 /// <summary>
 /// New and Improved consolidated Player Controller that handles movements, jumps, attacks and whatnot.
 /// </summary>
-public class PlayerController : Singleton<PlayerController>
+public class PlayerController :Singleton<PlayerController>
 {
     public PlayerData data;
 
@@ -18,7 +18,8 @@ public class PlayerController : Singleton<PlayerController>
     //respawn rotation
     Quaternion rot;
 
-    //event used to broadcast the state 
+    //event used to broadcast the state of death
+    public event Action ReSpawned;
 
     /// <summary>
     /// keeps position to be referred to outside
@@ -62,10 +63,10 @@ public class PlayerController : Singleton<PlayerController>
         bool undead = takeAction("Respawn", "dead", true, myAnim);
         //if false death-state is on all other actions cease
 
-        if (!GameManager.instance.isDead
+        if (GameManager.instance.isDead == false)
             // &&
             //!myAnim.GetBool("dead")
-            )
+            
         {
             float move = 0;
 
@@ -108,9 +109,10 @@ public class PlayerController : Singleton<PlayerController>
             }
         }
         /*needs to be replaced by a state-driven, menu selected, continue of sorts*/
-        else if (undead)
+        else if (GameManager.instance.isDead == true)
         {
-            ReSpawn();
+            if (undead)
+                ReSpawn();
         }
     }
 
@@ -157,6 +159,13 @@ public class PlayerController : Singleton<PlayerController>
         myAnim.SetBool("dead", false);
         myAnim.SetBool("grounded", true);
         facingRight = true;
+
+        //if respawned has a subscriber...go
+        if (ReSpawned != null)
+        {
+            ReSpawned();
+        }
+
         //stats.ResetHP();
         //PlayerStats.instance.ResetHP();
     }

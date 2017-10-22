@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BulletControl : MonoBehaviour
+public class BulletControl :Singleton<BulletControl>
 {
     public Sprite[] Shots;
     public Image BulletImage;
@@ -18,9 +18,7 @@ public class BulletControl : MonoBehaviour
         }
         catch (IndexOutOfRangeException e)
         {
-
             throw new Exception ("No more bullets");
         }
-       
     }
 }

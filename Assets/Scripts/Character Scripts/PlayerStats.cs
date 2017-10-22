@@ -21,7 +21,12 @@ public class PlayerStats : Singleton<PlayerStats>
     /// Event used to Monitor HP of player and broadcasts to game manager
     /// for appropriate response to hp dropping at or below zero
     /// </summary>
-    public event Action<int> HpChanged;
+    //public event Action<int> HpChanged;
+
+    /// <summary>
+    /// When Hp reaches zero, talk to subscriber
+    /// </summary>
+    public event Action HPisZero;
 
     /// <summary>
     /// Event triggered upon contact with a death object
@@ -46,7 +51,9 @@ public class PlayerStats : Singleton<PlayerStats>
     void Update()
     {
         if (hp > stats.maxHP) { hp = stats.maxHP; }
+
         if (wallet > stats.maxMoney) { wallet = stats.maxMoney; }
+
         Mathf.Clamp(hp, 0, stats.maxHP);
 
         if (invincible)
@@ -56,10 +63,10 @@ public class PlayerStats : Singleton<PlayerStats>
             //Debug.Log("Now Mortal Again!!");
         }
 
-        if (HpChanged != null)
-        {
-            HpChanged(hp);
-        }
+        //if (HpChanged != null)
+        //{
+        //    HpChanged(hp);
+        //}
     }
 
     public void ResetHP()
@@ -72,6 +79,7 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         camera.cullingMask &= ~(1 << 9);
     }
+
     //reveals the layer that holds the player in game render view
     void CullOff()
     {
@@ -107,6 +115,10 @@ public class PlayerStats : Singleton<PlayerStats>
             if (hp <= 0)
             {
                 //GameManager.instance.GameOver();
+                if (HPisZero != null)
+                {
+                    HPisZero();
+                }
             }
             else
             {
