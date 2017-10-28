@@ -18,12 +18,6 @@ public class PlayerStats : Singleton<PlayerStats>
     int intervals = 0;
 
     /// <summary>
-    /// Event used to Monitor HP of player and broadcasts to game manager
-    /// for appropriate response to hp dropping at or below zero
-    /// </summary>
-    //public event Action<int> HpChanged;
-
-    /// <summary>
     /// When Hp reaches zero, talk to subscriber
     /// </summary>
     public event Action HPisZero;
@@ -31,7 +25,7 @@ public class PlayerStats : Singleton<PlayerStats>
     /// <summary>
     /// Event triggered upon contact with a death object
     /// </summary>
-    public event Action TouchDeath;
+    //public event Action TouchDeath;
 
     bool invincible;
 
@@ -51,6 +45,19 @@ public class PlayerStats : Singleton<PlayerStats>
     void Update()
     {
         if (hp > stats.maxHP) { hp = stats.maxHP; }
+        //if hp is  0 or less broadcasts the event that hp is zero to game manager to start gameover
+        if (hp <= 0)
+        {
+            if (HPisZero != null)
+            {
+                HPisZero();
+            }
+        }
+        //
+        else
+        {
+            
+        }
 
         if (wallet > stats.maxMoney) { wallet = stats.maxMoney; }
 
@@ -62,11 +69,6 @@ public class PlayerStats : Singleton<PlayerStats>
             StartCoroutine(IFramez());
             //Debug.Log("Now Mortal Again!!");
         }
-
-        //if (HpChanged != null)
-        //{
-        //    HpChanged(hp);
-        //}
     }
 
     public void ResetHP()
@@ -114,11 +116,10 @@ public class PlayerStats : Singleton<PlayerStats>
             hp -= dmg;
             if (hp <= 0)
             {
-                //GameManager.instance.GameOver();
-                if (HPisZero != null)
-                {
-                    HPisZero();
-                }
+                //if (HPisZero != null)
+                //{
+                //    HPisZero();
+                //}
             }
             else
             {
@@ -161,12 +162,13 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         if (collision.gameObject.tag == "Death Object")
         {
+            hp = 0;
             //if event has a subscriber...
-            if (TouchDeath != null)
-            {
-                TouchDeath();
-            }
-            //GameManager.instance.GameOver();
+            //if (TouchDeath != null)
+            //{
+
+            //    TouchDeath();
+            //}
         }
     }
 }

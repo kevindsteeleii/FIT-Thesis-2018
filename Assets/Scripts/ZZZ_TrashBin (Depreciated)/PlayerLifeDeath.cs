@@ -26,16 +26,16 @@ public class PlayerLifeDeath : MonoBehaviour {
 
 
     // Update is called once per frame
-    void FixedUpdate () {
-		if (GameManager.instance.isDead)
-        {
+ //   void FixedUpdate () {
+	//	if (GameManager.instance.isDead)
+ //       {
 
-        }
-        else
-        {
+ //       }
+ //       else
+ //       {
 
-        }
-	}
+ //       }
+	//}
 
     
 }

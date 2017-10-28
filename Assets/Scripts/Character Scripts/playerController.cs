@@ -1,11 +1,12 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
+using System;
+using System.Collections.Generic;
 
 /// <summary>
 /// New and Improved consolidated Player Controller that handles movements, jumps, attacks and whatnot.
 /// </summary>
-public class PlayerController :Singleton<PlayerController>
+public class PlayerController : Singleton<PlayerController>
 {
     public PlayerData data;
 
@@ -18,13 +19,17 @@ public class PlayerController :Singleton<PlayerController>
     //respawn rotation
     Quaternion rot;
 
-    //event used to broadcast the state of death
-    public event Action ReSpawned;
+
+    /// <summary>
+    /// Event used to broadcast in the event that character respawns
+    /// </summary>
+    public event Action Respawned;
 
     /// <summary>
     /// keeps position to be referred to outside
     /// </summary>
     public static Vector3 myPos;
+
     /// <summary>
     /// Delegates used to speed up runtime of checking the parameters and buttons of a resulting
     /// Animation/Action
@@ -40,8 +45,8 @@ public class PlayerController :Singleton<PlayerController>
     ActionTaken takeAction = ActionTook;
     ComboActionTaken comboAction = ComboActionTake;
 
-    //establishes defaults and initiates variables/placeholders
-    public void Awake()
+    //establishes defaults and initiates variables/placeholders use Start over Awake for all singletons
+    public void Start()
     {
         myAnim = this.GetComponent<Animator>();
         myRB = this.GetComponent<Rigidbody>();
@@ -63,10 +68,7 @@ public class PlayerController :Singleton<PlayerController>
         bool undead = takeAction("Respawn", "dead", true, myAnim);
         //if false death-state is on all other actions cease
 
-        if (GameManager.instance.isDead == false)
-            // &&
-            //!myAnim.GetBool("dead")
-            
+        if (GameManager.instance.GetState() == GameState.inGame)
         {
             float move = 0;
 
@@ -90,39 +92,35 @@ public class PlayerController :Singleton<PlayerController>
             //Debug.Log("Horizontal Input is this number -> "+Input.GetAxis("JoystickHorizontal"));
 
             bool puncher = takeAction("Punch", "grounded", true, myAnim);
+            bool slammer = comboAction("Punch", "Slam", "airborne", true, myAnim);
 
             if (puncher)
             {
                 StartCoroutine(HitStopperPunch());
             }
-            bool slammer = comboAction("Punch", "Slam", "airborne", true, myAnim);
 
             if (slammer)
             {
                 myAnim.SetBool("airborne", false);
                 myAnim.SetBool("slam", true);
             }
-            else if (Input.GetAxisRaw("JoystickVertical") == 1 && Input.GetButton("Punch"))
-            {
-                myAnim.SetBool("airborne", false);
-                myAnim.SetBool("slam", true);
-            }
+            //else if (Input.GetAxisRaw("JoystickVertical") == 1 && Input.GetButton("Punch"))
+            //{
+            //    myAnim.SetBool("airborne", false);
+            //    myAnim.SetBool("slam", true);
+            //}
         }
         /*needs to be replaced by a state-driven, menu selected, continue of sorts*/
-        else if (GameManager.instance.isDead == true)
+        else if (GameManager.instance.GetState() == GameState.gameOver)
         {
             if (undead)
-                ReSpawn();
+            {
+                if (Respawned != null)
+                {
+                    Respawned();
+                }
+            }
         }
-    }
-
-    //funnels the digital/analog horizontal axis inputs
-    float Mover(float digital, float analog)
-    {
-        float mover = 0;
-        if (digital > 0) { mover = digital; }
-        else if (analog > 0) { mover = analog; }
-        return mover;
     }
 
     /// <summary>
@@ -152,22 +150,13 @@ public class PlayerController :Singleton<PlayerController>
         transform.Rotate(Vector3.up, 180.0f, Space.World);
     }
 
-    //false respawn, resets transposition
+    //respawns transform and animation info
     public void ReSpawn()
     {
         transform.SetPositionAndRotation(respawnPos, rot);
         myAnim.SetBool("dead", false);
         myAnim.SetBool("grounded", true);
         facingRight = true;
-
-        //if respawned has a subscriber...go
-        if (ReSpawned != null)
-        {
-            ReSpawned();
-        }
-
-        //stats.ResetHP();
-        //PlayerStats.instance.ResetHP();
     }
 
     public void Die()
