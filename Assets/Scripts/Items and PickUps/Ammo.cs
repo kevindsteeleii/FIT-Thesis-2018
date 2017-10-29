@@ -68,20 +68,10 @@ public class Ammo : Singleton<Ammo>
         return null;
     }
 
-    public void Reuse(Vector3 position, Quaternion rotation)
-    {
-        GameObject obj;
-        for (int i = 0; i < bullets; i++)
-        {
-            if (!ammoList[i].activeInHierarchy)
-            {
-                obj = ammoList[i];
-            }
-            else
-                obj = bullet;
-        }
-    }
-
+    /// <summary>
+    /// As the name suggests it increments the bullet count just
+    /// as the player collides w/ ammo type loot and collects it on contact
+    /// </summary>
     public void Load()
     {
         bullets++;
@@ -99,6 +89,10 @@ public class Ammo : Singleton<Ammo>
             Reuse();
         }
     }
+
+    /// <summary>
+    /// Used to "increase" available ammo by recycling the oldest active member and recycling it in the object pool
+    /// </summary>
     void Reuse()
     {
         for (int i = 0; i < capacity; i++)

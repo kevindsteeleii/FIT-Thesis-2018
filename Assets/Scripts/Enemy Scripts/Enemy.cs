@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
-
+using System;
 public class Enemy : MonoBehaviour
 {
     //the physical body of the enemy itself
     [SerializeField]
     public static GameObject body;
+
+    public event Action BecomeAmmo;
 
     //allows for adjustment of enemy health points
     [Range(0, 25)]

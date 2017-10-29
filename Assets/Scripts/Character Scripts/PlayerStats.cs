@@ -56,7 +56,7 @@ public class PlayerStats : Singleton<PlayerStats>
         //
         else
         {
-            
+            // ¯\_(ツ)_/¯
         }
 
         if (wallet > stats.maxMoney) { wallet = stats.maxMoney; }
