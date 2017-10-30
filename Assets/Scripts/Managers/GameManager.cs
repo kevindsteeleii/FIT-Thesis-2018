@@ -11,10 +11,7 @@ public class GameManager : Singleton<GameManager>
     public bool isPaused = false;
     public bool inputAllowed = true;
     //public bool isDead { get; set;}
-	
-	//for the game over menu
-	public GameObject UDied;
-	
+
     //default state of game is the opening menu, incoming
     public GameState gameState = GameState.menu;
 
@@ -32,9 +29,7 @@ public class GameManager : Singleton<GameManager>
 
         //upon respawned
         PlayerController.instance.Respawned += ResetGame;
-		
-		//makes the game over menu hiden
-		UDied.SetActive(true);
+
     }
 
     private void Update()
@@ -87,7 +82,6 @@ public class GameManager : Singleton<GameManager>
     //death sate renders hp to zero
     public void GameOver()
     {
-		UDied.SetActive(true);
         SetGameState(GameState.gameOver);
         //PlayerStats.instance.hp = 0;
     }
