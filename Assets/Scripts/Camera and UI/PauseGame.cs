@@ -6,6 +6,7 @@ public class PauseGame : Singleton<PauseGame> {
 	public bool visable;
 
     //DON'T FUCK WITH TIME!!
+	//I WILL FUCK WITH TIME! ... I Will...
 	public void unpause(){
 		Debug.Log("Clicked");
 		visable=false;
