@@ -1,9 +1,26 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseGame : Singleton<PauseGame> {
 	public GameObject menu;
 	public bool visable;
+
+	private void Awake () {
+		ThesisDebuggingTools.ProxyController.onControllerKeyUp += (ThesisDebuggingTools.KeyPressed key) => {
+			if (key == ThesisDebuggingTools.KeyPressed.start) {
+				// create a method to toggle between pause & unpause
+				Debug.Log("key press up: " + key.ToString());
+
+				if (visable) {
+					unpause();
+				} else {
+					visable = true;
+					GameManager.instance.Pause();
+				}
+			}
+		};
+	}
 
     //DON'T FUCK WITH TIME!!
 	//I WILL FUCK WITH TIME! ... I Will...
@@ -13,6 +30,8 @@ public class PauseGame : Singleton<PauseGame> {
 		menu.SetActive(false);
         GameManager.instance.StartGame();
 	}
+
+
 	public void Restart(){
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         GameManager.instance.StartGame();
