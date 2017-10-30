@@ -29,6 +29,7 @@ public class GameManager : Singleton<GameManager>
 
         //upon respawned
         PlayerController.instance.Respawned += ResetGame;
+
     }
 
     private void Update()
