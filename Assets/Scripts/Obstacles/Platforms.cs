@@ -18,16 +18,24 @@ public enum MovementType { None, Vertical, Horizontal, Diagonal, Path };
 /// Class used to create platforms and manage their behavior
 /// </summary>
 public class Platforms : MonoBehaviour
+
 {
     //collider to be used with the the platformbehavior enum
     Collider collider;
     GameObject platform;
 
     // points for the enemy patrol "paths" on singular platforms when generated randomly center point is the center of the object itself used for calculations and the like
-    public Vector3 startPatrol, endPatrol;
+    //public Vector3 startPatrol, endPatrol;
 
     //center point is the center of the object itself used for calculations and the like
     Vector3 centerPoint;
+    [SerializeField]
+    Transform endPoint;
+
+    /// <summary>
+    /// The absolute value distance from the center to either edge of the platform
+    /// </summary>
+    public float delta;
 
     /// <summary>
     /// Enumeration that assigns default behavior of platform
@@ -35,7 +43,7 @@ public class Platforms : MonoBehaviour
     public PlatformBehavior behavior = PlatformBehavior.Normal;
 
     // Use this for initialization
-    private void Awake()
+    private void Start()
     {
         if (collider == null)
         {
@@ -43,11 +51,12 @@ public class Platforms : MonoBehaviour
         }
 
         platform = this.gameObject;
-    }
 
-    void Start()
-    {
+        delta = collider.bounds.extents.x;
 
+        // just for debugging
+        // remove later
+        PlatformSpawner.instance.SpawnNewPlatformAt(endPoint.position);
     }
 
     //switches the type of behavior on the fly if necessary later
@@ -73,7 +82,6 @@ public class Platforms : MonoBehaviour
         }
         behavior = newBehavior;
         Debug.Log("WARNING!! This is a " + behavior + " type of Platform.");
-
     }
 
     public PlatformBehavior GetBehavior()
@@ -90,7 +98,7 @@ public class Platforms : MonoBehaviour
         float width = collider.bounds.extents.x;
 
         //this will have to be changed for non-boxy platforms/obstacles in the future
-        startPatrol = new Vector3(centerPoint.x - width, centerPoint.y, centerPoint.z);
-        endPatrol = new Vector3(centerPoint.x + width, centerPoint.y, centerPoint.z);
+        //startPatrol = new Vector3(centerPoint.x - width, centerPoint.y, centerPoint.z);
+        //endPatrol = new Vector3(centerPoint.x + width, centerPoint.y, centerPoint.z);
     }
 }

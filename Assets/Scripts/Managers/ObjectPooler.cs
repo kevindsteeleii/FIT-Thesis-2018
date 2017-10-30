@@ -2,11 +2,11 @@
 using UnityEngine;
 using System;
 
-/*this class is never in and of itself used, it is a Manger
- used by others, any class using this object Pooler 
-needs a public or serializable variable type 
-GameObject */
-
+/// <summary>
+/// this class is never in and of itself used, it is a Manger
+/// used by others, any class using this object Pooler
+/// needs a public or serializable variable type GameObject
+/// </summary>
 public class ObjectPooler : Singleton<ObjectPooler>
 {
     /*Creates implementation of object pool 

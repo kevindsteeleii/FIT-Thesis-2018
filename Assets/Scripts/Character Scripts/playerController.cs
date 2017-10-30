@@ -19,7 +19,6 @@ public class PlayerController : Singleton<PlayerController>
     //respawn rotation
     Quaternion rot;
 
-
     /// <summary>
     /// Event used to broadcast in the event that character respawns
     /// </summary>
@@ -28,7 +27,7 @@ public class PlayerController : Singleton<PlayerController>
     /// <summary>
     /// keeps position to be referred to outside
     /// </summary>
-    public static Vector3 myPos;
+    public Vector3 myPos;
 
     /// <summary>
     /// Delegates used to speed up runtime of checking the parameters and buttons of a resulting
@@ -58,7 +57,7 @@ public class PlayerController : Singleton<PlayerController>
 
     public void Update()
     {
-        myPos = myRB.transform.position;
+        myPos = transform.position;
     }
 
     // Update is called once per physics action
