@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 114131353308748396}
   m_Layer: 0
   m_Name: Platform_L
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,4 +167,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endPoint: {fileID: 4414487140891884}
   delta: 0
+  isRandomMovement: 0
   behavior: 0
+  platformMovement: 0

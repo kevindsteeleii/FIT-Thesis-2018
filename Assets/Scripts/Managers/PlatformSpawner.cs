@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class PlatformSpawner : Singleton<PlatformSpawner> {
 
-    //Array of platforms used for generator
+    //Array of platforms used as pool for platform spawner
     public GameObject[] platforms;
 
-    //Vector3 spawnPosition;
-    //height at which 
+    //Height ranges to spawn at
     float bottom = -.5f;
     float top = 3.8f;
 
-    [Range (-1.7f,5.4f)]
-    float heightGeneratedAt = 0f;
+    //[Range (-1.7f,5.4f)]
+    //float heightGeneratedAt = 0f;
+
     float previousHeight, nextHeight;
     int cap = 5;
 
@@ -29,6 +29,12 @@ public class PlatformSpawner : Singleton<PlatformSpawner> {
         SpawnNewPlatformAt(Vector3.zero);
     }
 
+    /// <summary>
+    /// returns random float
+    /// </summary>
+    /// <param name="lower"></param>
+    /// <param name="upper"></param>
+    /// <returns></returns>
     float RandFloat (float lower, float upper)
     {
         float randFloat = 0f;
@@ -36,26 +42,48 @@ public class PlatformSpawner : Singleton<PlatformSpawner> {
         return randFloat;
     }
 
+    /// <summary>
+    /// returns random int
+    /// </summary>
+    /// <param name="lower"></param>
+    /// <param name="upper"></param>
+    /// <returns></returns>
     int RandInt(int lower, int upper)
     {
         int randInt = 0;
-        randInt = Random.Range(lower, upper);
+        randInt = (int) RandFloat(lower, upper);
         return randInt;
     }
 
     public void SpawnNewPlatformAt(Vector3 pos)
     {
-        previousHeight = nextHeight;
-
         // just for debugging
-        // remove later
+        // remove later, the cap part
         if (cap < 0)
         {
             return;
         }
         cap--;
-        float randFloat = RandFloat(bottom, top);
-        pos.y = randFloat;
+
+        //prevents same height instantiations of platforms spawned, loops back if same
+        do
+        {
+            float randFloat = RandFloat(bottom, top);
+            nextHeight = randFloat;
+            pos.y = randFloat;
+        }
+
+        while (nextHeight == previousHeight);
+
+        //prevents too much space between next generated platform to allow a jumpable height
+        if (Mathf.Abs(previousHeight - nextHeight)>3.6)
+        {
+            float dif = Mathf.Abs(previousHeight - nextHeight);
+            nextHeight -= 1;
+        }
+        //assigns previous to next height as to set up comparison for next go around in the do-while loop
+        previousHeight = nextHeight;
+
         GameObject tempPlatform = Instantiate(platforms[RandInt(0, platforms.Length - 1)], pos, Quaternion.identity);
     }
 }

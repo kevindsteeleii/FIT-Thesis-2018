@@ -19,27 +19,39 @@ public class HealthBar : Singleton<HealthBar>
     //Animator myAnim;
 
     // Use this for initialization
-    void Awake()
+    void Start()
     {
         /*sets the minimum and maximum values for the health slider*/
         mainSlider = this.GetComponent<Slider>();
         mainSlider.minValue = 0;
         mainSlider.maxValue = data.maxHP;
         sliderGroup.alpha = 1;
+
+        //GetHPBar listens for the event of HPAmount changing
+        PlayerStats.instance.HPAmount += GetHPBar;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        //updating HP value for the slider
-        //Debug.Log("Player HP is " + PlayerStats.instance.hp);
-        mainSlider.value = PlayerStats.instance.hp;
+    //void Update()
+    //{
+    //    //updating HP value for the slider
+    //    //Debug.Log("Player HP is " + PlayerStats.instance.hp);
+    //    NewMethod();
+    //}
 
-        if (PlayerStats.instance.hp <= 0)
+    /// <summary>
+    /// HP is updated by the event HPAmount from PlayerStats
+    /// </summary>
+    /// <param name="hp"></param>
+    void GetHPBar(int hp)
+    {
+        mainSlider.value = hp;
+
+        if (hp <= 0)
         {
             sliderGroup.alpha = 0;
         }
-        else if (PlayerStats.instance.hp > 0)
+        else if (hp > 0)
 
         {
             sliderGroup.alpha = 1;

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
+
 /// <summary>
 /// Used to manage projectiles ammo count
 /// any reference made to Ammo singleton follow this example
@@ -23,10 +25,15 @@ public class Ammo : Singleton<Ammo>
     int cap;
 
     /*To make parameter accessible outside of Singleton set up as a get and set parameter like so*/
-    public int bullets { get; set; }
+    public int bullets { get; private set; }
 
     public List<GameObject> ammoList;
     Vector3 hidden = new Vector3(1000f, 1000f, 1000f);
+
+    /// <summary>
+    /// Event that passest the amount of bullets left in ammo
+    /// </summary>
+    public event Action<int> MyAmmo; 
 
     // Use this for initialization
     void Start()
@@ -35,6 +42,14 @@ public class Ammo : Singleton<Ammo>
         cap = capacity;
         ammoList = new List<GameObject>();
         Populate();
+    }
+
+    void Update()
+    {
+        if (MyAmmo != null)
+        {
+            MyAmmo(bullets);
+        }
     }
 
     /// <summary>

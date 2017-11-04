@@ -12,7 +12,7 @@ public enum PlatformBehavior { Normal, Disappearing, Moving, Falling };
 /// <summary>
 /// Enumeration that handles the kind of movement the platform performs if its behavior enumeration = moving and defaults to none if any other type of behavior
 /// </summary>
-public enum MovementType { None, Vertical, Horizontal, Diagonal, Path };
+public enum MovementType { None = 0, Vertical, Horizontal, Diagonal};
 
 /// <summary>
 /// Class used to create platforms and manage their behavior
@@ -38,9 +38,15 @@ public class Platforms : MonoBehaviour
     public float delta;
 
     /// <summary>
+    /// If true makes the Platform 
+    /// </summary>
+    public bool isRandomMovement;
+
+    /// <summary>
     /// Enumeration that assigns default behavior of platform
     /// </summary>
     public PlatformBehavior behavior = PlatformBehavior.Normal;
+    public MovementType platformMovement = MovementType.None;
 
     // Use this for initialization
     private void Start()
@@ -57,6 +63,11 @@ public class Platforms : MonoBehaviour
         // just for debugging
         // remove later
         PlatformSpawner.instance.SpawnNewPlatformAt(endPoint.position);
+
+        if (isRandomMovement)
+        {
+            RandBehavior();
+        }
     }
 
     //switches the type of behavior on the fly if necessary later
@@ -89,6 +100,28 @@ public class Platforms : MonoBehaviour
         return this.behavior;
     }
 
+    public void RandBehavior ()
+    {
+        int myBehavior = UnityEngine.Random.Range(0, 3);
+        switch (myBehavior)
+        {
+            case 0:
+                platformMovement = MovementType.None;
+                break;
+            case 1:
+                platformMovement = MovementType.Vertical;
+                break;
+            case 2:
+                platformMovement = MovementType.Horizontal;
+                break;
+            case 3:
+                platformMovement = MovementType.Diagonal;
+                break;
+
+            default :
+                break;
+        }
+    }
     //deals with the positional data of the particular platform obstacle
     void FixedUpdate()
     {

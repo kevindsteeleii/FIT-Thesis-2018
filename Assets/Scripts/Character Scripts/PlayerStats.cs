@@ -23,6 +23,16 @@ public class PlayerStats : Singleton<PlayerStats>
     public event Action HPisZero;
 
     /// <summary>
+    /// Event that transmits the HP amount to a subscriber to listen for.
+    /// </summary>
+    public event Action<int> HPAmount;
+
+    /// <summary>
+    /// Event that transmits the Monetary amount to a subscriber to listen for.
+    /// </summary>
+    public event Action<int> MoneyAmount;
+
+    /// <summary>
     /// Event triggered upon contact with a death object
     /// </summary>
     //public event Action TouchDeath;
@@ -30,9 +40,9 @@ public class PlayerStats : Singleton<PlayerStats>
     bool invincible;
 
     /*To make parameter accessible outside of Singleton set up as a get and set parameter like so*/
-    public int wallet { get; set; }
+    public int wallet { get; private set; }
     /*To make parameter accessible outside of Singleton set up as a get and set parameter like so*/
-    public int hp { get; set; }
+    public int hp { get; private set; }
 
     // Use this for initialization
     void Start()
@@ -68,6 +78,16 @@ public class PlayerStats : Singleton<PlayerStats>
             intervals = Mathf.RoundToInt((stats.duration * (1 / stats.waitTime)) / 2);
             StartCoroutine(IFramez());
             //Debug.Log("Now Mortal Again!!");
+        }
+
+        if (HPAmount != null)
+        {
+            HPAmount(hp);
+        }
+
+        if (MoneyAmount != null)
+        {
+            MoneyAmount(wallet);
         }
     }
 

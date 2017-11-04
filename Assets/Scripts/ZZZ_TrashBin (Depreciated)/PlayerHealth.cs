@@ -38,7 +38,7 @@ public class PlayerHealth : MonoBehaviour
             if (currentHP <= 0)
             {
                 currentHP = 0;
-                GameManager.instance.GameOver();
+                //GameManager.instance.GameOver();
             }
             else
             {

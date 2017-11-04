@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 
 public enum GameState { pause, win, gameOver, inGame, menu};
@@ -8,9 +9,7 @@ public class GameManager : Singleton<GameManager>
     //stats, player movement and death state are handled in separate singletons
     public float levelStartDelay = 2f;
     private int level = 1;
-    public bool isPaused = false;
     public bool inputAllowed = true;
-    //public bool isDead { get; set;}
 
     //default state of game is the opening menu, incoming
     public GameState gameState = GameState.menu;
@@ -30,6 +29,9 @@ public class GameManager : Singleton<GameManager>
         //upon respawned
         PlayerController.instance.Respawned += ResetGame;
 
+        //subscribes the pause game inputs to game state setting methods
+        PauseGame.instance.Paused += Pause;
+        PauseGame.instance.Unpause += UnPause;
     }
 
     private void Update()
@@ -66,13 +68,13 @@ public class GameManager : Singleton<GameManager>
         //PrintState();
     }
 
-    public void StartGame()
+    protected void StartGame()
     {
         SetGameState(GameState.inGame);
         Time.timeScale = 1;
     }
 
-    public void ResetGame()
+    protected void ResetGame()
     {
         SetGameState(GameState.inGame);
         PlayerStats.instance.ResetHP();
@@ -80,25 +82,49 @@ public class GameManager : Singleton<GameManager>
     }
 
     //death sate renders hp to zero
-    public void GameOver()
+    protected void GameOver()
     {
+        PauseUnpause();
         SetGameState(GameState.gameOver);
         //PlayerStats.instance.hp = 0;
     }
 
-    public void BackToMenu()
+    protected void BackToMenu()
     {
         SetGameState(GameState.menu);
     }
 
-    public void Pause()
+    protected void Pause()
     {
+        PauseUnpause();
         SetGameState(GameState.pause);
-        Time.timeScale = 0;
     }
 
-    void PrintState()
+    protected void UnPause ()
+    {
+        PauseUnpause();
+        SetGameState(GameState.inGame);
+    }
+
+    protected void PrintState()
     {
         Debug.Log("Current State is "+gameState);
     }
+
+    /// <summary>
+    /// Private method used to toggle in-game time exclusively here no REPEATS!!!
+    /// Houses all gamestate and time logic here!!
+    /// </summary>
+    protected void PauseUnpause()
+    {
+        if (Time.timeScale == 0 && gameState == GameState.gameOver || gameState == GameState.pause)
+        {
+            Time.timeScale = 1;
+        }
+        else if (Time.timeScale == 1 &&  gameState == GameState.inGame)
+        {
+            Time.timeScale = 0;
+        }
+    }
 }
+
