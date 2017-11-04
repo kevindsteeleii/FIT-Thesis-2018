@@ -65,7 +65,7 @@ public class PlatformSpawner : Singleton<PlatformSpawner> {
         }
         cap--;
 
-        //prevents same height instantiations of platforms spawned, loops back if same
+        //prevents same height instantiations of platforms spawned, loops back if same goes at least once before checking loop condition
         do
         {
             float randFloat = RandFloat(bottom, top);

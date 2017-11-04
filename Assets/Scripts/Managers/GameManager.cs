@@ -8,21 +8,20 @@ public class GameManager : Singleton<GameManager>
 {
     //stats, player movement and death state are handled in separate singletons
     public float levelStartDelay = 2f;
-    private int level = 1;
+    //private int level = 1;
     public bool inputAllowed = true;
 
     //default state of game is the opening menu, incoming
     public GameState gameState = GameState.menu;
 
+    /// <summary>
+    /// Event that broadcasts upon restart after death.
+    /// </summary>
+    public event Action Restarting;
+
     // Use this for initialization
-    void Start()
+    protected virtual void Start()
     {
-        DontDestroyOnLoad(gameObject);
-        StartGame();
-
-        //death upon touching a insta-kill object
-        //PlayerStats.instance.TouchDeath += GameOver;
-
         //Used to alert the GameOver 
         PlayerStats.instance.HPisZero += GameOver;
 
@@ -31,10 +30,14 @@ public class GameManager : Singleton<GameManager>
 
         //subscribes the pause game inputs to game state setting methods
         PauseGame.instance.Paused += Pause;
-        PauseGame.instance.Unpause += UnPause;
+        PauseGame.instance.Unpaused += UnPause;
+        PauseGame.instance.Restarted += StartGame;
+
+        StartGame();
+        DontDestroyOnLoad(this);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         Debug.Log("Current State is " + gameState);
     }
@@ -44,7 +47,7 @@ public class GameManager : Singleton<GameManager>
         return gameState;
     }
 
-    void SetGameState(GameState newGameState)
+    protected virtual void SetGameState(GameState newGameState)
     {
         /*different gameStates should prompt the visibility of pertinent canvases
          and invisibility of all others/obscure them*/
@@ -68,63 +71,54 @@ public class GameManager : Singleton<GameManager>
         //PrintState();
     }
 
-    protected void StartGame()
+    //game at initialization
+    protected virtual void StartGame()
     {
-        SetGameState(GameState.inGame);
         Time.timeScale = 1;
+        SetGameState(GameState.inGame);
     }
 
-    protected void ResetGame()
+    /// <summary>
+    /// Upon Reset an event is launched to pertinent listeners.
+    /// </summary>
+    protected virtual void ResetGame()
     {
         SetGameState(GameState.inGame);
-        PlayerStats.instance.ResetHP();
-        PlayerController.instance.ReSpawn();
+        if (Restarting != null)
+        {
+            Restarting();
+        }
     }
 
     //death sate renders hp to zero
-    protected void GameOver()
+    protected virtual void GameOver()
     {
-        PauseUnpause();
+        Time.timeScale = 0;
         SetGameState(GameState.gameOver);
         //PlayerStats.instance.hp = 0;
     }
 
-    protected void BackToMenu()
-    {
-        SetGameState(GameState.menu);
-    }
+    //protected void BackToMenu()
+    //{
+    //    SetGameState(GameState.menu);
+    //}
 
-    protected void Pause()
+    //will refactor the pause and unpause methods later, going to sleep < Kev note
+    protected virtual void Pause()
     {
-        PauseUnpause();
+        Time.timeScale = 0;
         SetGameState(GameState.pause);
     }
 
-    protected void UnPause ()
+    protected virtual void UnPause ()
     {
-        PauseUnpause();
+        Time.timeScale = 1;
         SetGameState(GameState.inGame);
     }
 
     protected void PrintState()
     {
         Debug.Log("Current State is "+gameState);
-    }
-
-    /// <summary>
-    /// Private method used to toggle in-game time exclusively here no REPEATS!!!
-    /// Houses all gamestate and time logic here!!
-    /// </summary>
-    protected void PauseUnpause()
-    {
-        if (Time.timeScale == 0 && gameState == GameState.gameOver || gameState == GameState.pause)
-        {
-            Time.timeScale = 1;
-        }
-        else if (Time.timeScale == 1 &&  gameState == GameState.inGame)
-        {
-            Time.timeScale = 0;
-        }
     }
 }
 

@@ -50,6 +50,8 @@ public class PlayerStats : Singleton<PlayerStats>
         hp = stats.maxHP;
         invincible = false;
         wallet = 0;
+        //assigns ResetHP() as subscriber of Restarting event
+        GameManager.instance.Restarting += ResetHP;
     }
 
     void Update()
@@ -91,7 +93,10 @@ public class PlayerStats : Singleton<PlayerStats>
         }
     }
 
-    public void ResetHP()
+    /// <summary>
+    /// Part of a group of methods called at reset of game after death.
+    /// </summary>
+    void ResetHP()
     {
         hp = stats.maxHP;
     }

@@ -45,7 +45,7 @@ public class PlayerController : Singleton<PlayerController>
     ComboActionTaken comboAction = ComboActionTake;
 
     //establishes defaults and initiates variables/placeholders use Start over Awake for all singletons
-    public void Start()
+    protected virtual void Start()
     {
         myAnim = this.GetComponent<Animator>();
         myRB = this.GetComponent<Rigidbody>();
@@ -53,21 +53,25 @@ public class PlayerController : Singleton<PlayerController>
         myAnim.SetBool("grounded", false);
         respawnPos = myRB.transform.position;
         rot = myRB.transform.rotation;
+
+        //assigns ResetHP() as subscriber of Restarting event
+        GameManager.instance.Restarting += ReSpawn;
     }
 
-    public void Update()
+    protected virtual void Update()
     {
         myPos = transform.position;
     }
 
     // Update is called once per physics action
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
 
         bool undead = takeAction("Respawn", "dead", true, myAnim);
         //if false death-state is on all other actions cease
 
         if (GameManager.instance.GetState() == GameState.inGame)
+
         {
             float move = 0;
 
@@ -126,7 +130,7 @@ public class PlayerController : Singleton<PlayerController>
     /// Returns bool based on the button press, and animState ==flag
     /// </summary>
 
-    public static bool ActionTook(String button, String state, bool flag, Animator myAnim)
+    protected static bool ActionTook(String button, String state, bool flag, Animator myAnim)
     {
         bool acted;
         acted = (Input.GetButtonDown(button) && myAnim.GetBool(state) == flag) ? true : false;
@@ -136,21 +140,22 @@ public class PlayerController : Singleton<PlayerController>
     /// <summary>
     /// Returns bool based on dual buttons pressed and AnimState ==flag
     /// </summary>
-    public static bool ComboActionTake(String button1, String button2, String state, bool flag, Animator myAnim)
+    protected static bool ComboActionTake(String button1, String button2, String state, bool flag, Animator myAnim)
     {
         bool acted;
         acted = (Input.GetButton(button1) && Input.GetButton(button2) && myAnim.GetBool(state) == flag);
         return acted;
     }
 
-    void Flip()
+    //flips character when velocity changes from positive to negative and facing the wrong way
+    protected virtual void Flip()
     {
         facingRight = !facingRight;
         transform.Rotate(Vector3.up, 180.0f, Space.World);
     }
 
     //respawns transform and animation info
-    public void ReSpawn()
+    protected virtual void ReSpawn()
     {
         transform.SetPositionAndRotation(respawnPos, rot);
         myAnim.SetBool("dead", false);
@@ -158,7 +163,7 @@ public class PlayerController : Singleton<PlayerController>
         facingRight = true;
     }
 
-    public void Die()
+    protected virtual void Die()
     {
         transform.Rotate(0, 0, 90);
         myAnim.SetBool("dead", true);
