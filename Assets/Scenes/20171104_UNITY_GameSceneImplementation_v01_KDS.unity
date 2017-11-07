@@ -480,6 +480,11 @@ Prefab:
       value: 
       objectReference: {fileID: 4425979668050814, guid: e65b188c7b8748844970234dae6a7281,
         type: 2}
+    - target: {fileID: 114663021368084314, guid: 11626e1f4c462f942a57097ac30ac708,
+        type: 2}
+      propertyPath: respawnVertOffset
+      value: 0.306
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11626e1f4c462f942a57097ac30ac708, type: 2}
   m_IsPrefabParent: 0

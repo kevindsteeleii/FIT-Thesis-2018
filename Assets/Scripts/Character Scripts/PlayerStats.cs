@@ -7,6 +7,7 @@ using System;
 /// </summary>
 public class PlayerStats : Singleton<PlayerStats>
 {
+    //Scriptable Object/asset used to store and transmit default stats data and limits
     [SerializeField]
     StatsData stats;
 
@@ -32,48 +33,45 @@ public class PlayerStats : Singleton<PlayerStats>
     /// </summary>
     public event Action<int> MoneyAmount;
 
-    /// <summary>
-    /// Event triggered upon contact with a death object
-    /// </summary>
-    //public event Action TouchDeath;
-
     bool invincible;
 
     /*To make parameter accessible outside of Singleton set up as a get and set parameter like so*/
-    public int wallet { get; private set; }
+    public int Wallet { get; private set; }
+
     /*To make parameter accessible outside of Singleton set up as a get and set parameter like so*/
-    public int hp { get; private set; }
+    public int HP { get; set; }
 
     // Use this for initialization
     void Start()
     {
-        hp = stats.maxHP;
+        HP = stats.maxHP;
         invincible = false;
-        wallet = 0;
+        Wallet = 0;
         //assigns ResetHP() as subscriber of Restarting event
         GameManager.instance.Restarting += ResetHP;
     }
 
     void Update()
     {
-        if (hp > stats.maxHP) { hp = stats.maxHP; }
+        /*clamps the hp and money values between 0 and the max set 
+        by the scriptable object*/
+        Mathf.Clamp(HP, 0, stats.maxHP);
+        Mathf.Clamp(Wallet, 0, stats.maxMoney);
+
+        //if (hp > stats.maxHP) { hp = stats.maxHP; }
         //if hp is  0 or less broadcasts the event that hp is zero to game manager to start gameover
-        if (hp <= 0)
+        if (HP <= 0)
         {
             if (HPisZero != null)
             {
                 HPisZero();
             }
         }
-        //
+
         else
-        {
-            // ¯\_(ツ)_/¯
-        }
+        {   /*  ¯\_(ツ)_/¯ */     }
 
-        if (wallet > stats.maxMoney) { wallet = stats.maxMoney; }
-
-        Mathf.Clamp(hp, 0, stats.maxHP);
+        //if (wallet > stats.maxMoney) { wallet = stats.maxMoney; }
 
         if (invincible)
         {
@@ -84,12 +82,12 @@ public class PlayerStats : Singleton<PlayerStats>
 
         if (HPAmount != null)
         {
-            HPAmount(hp);
+            HPAmount(HP);
         }
 
         if (MoneyAmount != null)
         {
-            MoneyAmount(wallet);
+            MoneyAmount(Wallet);
         }
     }
 
@@ -98,7 +96,7 @@ public class PlayerStats : Singleton<PlayerStats>
     /// </summary>
     void ResetHP()
     {
-        hp = stats.maxHP;
+        HP = stats.maxHP;
     }
 
     //culls the layer that holds player from game render view (layer 9)
@@ -113,10 +111,10 @@ public class PlayerStats : Singleton<PlayerStats>
         camera.cullingMask |= (1 << 9);
     }
 
-    public void addMoney(int amount)
-    {
-        wallet += amount;
-    }
+    //public void addMoney(int amount)
+    //{
+    //    wallet += amount;
+    //}
 
     IEnumerator IFramez()
     {
@@ -138,15 +136,8 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         if (!invincible)
         {
-            hp -= dmg;
-            if (hp <= 0)
-            {
-                //if (HPisZero != null)
-                //{
-                //    HPisZero();
-                //}
-            }
-            else
+            HP -= dmg;
+            if (HP > 0)
             {
                 invincible = true;
             }
@@ -169,13 +160,13 @@ public class PlayerStats : Singleton<PlayerStats>
             if (col.GetComponent<PickUp>().pickup == PickupType.Health)
             {
                 amount = Mathf.RoundToInt(.25f * (stats.maxHP));
-                hp = (hp + amount > stats.maxHP) ? stats.maxHP : hp + amount;
+                HP = (HP + amount > stats.maxHP) ? stats.maxHP : HP + amount;
             }
 
             else if (col.GetComponent<PickUp>().pickup == PickupType.Money)
             {
                 amount = col.GetComponent<PickUp>().purse;
-                wallet += amount;
+                Wallet += amount;
             }
 
             Debug.Log("The type of pick up is " + col.GetComponent<PickUp>().pickup);
@@ -187,7 +178,7 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         if (collision.gameObject.tag == "Death Object")
         {
-            hp = 0;
+            HP = 0;
             //if event has a subscriber...
             //if (TouchDeath != null)
             //{

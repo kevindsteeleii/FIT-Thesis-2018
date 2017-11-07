@@ -19,8 +19,13 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public event Action Restarting;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        //DontDestroyOnLoad(this);
+    }
     // Use this for initialization
-    protected virtual void Start()
+    public virtual void Start()
     {
         //Used to alert the GameOver 
         PlayerStats.instance.HPisZero += GameOver;
@@ -29,15 +34,14 @@ public class GameManager : Singleton<GameManager>
         PlayerController.instance.Respawned += ResetGame;
 
         //subscribes the pause game inputs to game state setting methods
-        PauseGame.instance.Paused += Pause;
-        PauseGame.instance.Unpaused += UnPause;
-        PauseGame.instance.Restarted += StartGame;
+        GUIManager.instance.Paused += Pause;
+        GUIManager.instance.Unpaused += UnPause;
+        GUIManager.instance.Restarted += StartGame;
 
         StartGame();
-        DontDestroyOnLoad(this);
     }
 
-    protected virtual void Update()
+    public virtual void Update()
     {
         Debug.Log("Current State is " + gameState);
     }
@@ -47,24 +51,28 @@ public class GameManager : Singleton<GameManager>
         return gameState;
     }
 
-    protected virtual void SetGameState(GameState newGameState)
+    public virtual void SetGameState(GameState newGameState)
     {
         /*different gameStates should prompt the visibility of pertinent canvases
          and invisibility of all others/obscure them*/
-
+        bool wePlay = false;
         switch (newGameState)
         {
             //write the associated functions/methods later
             case GameState.inGame:
+                wePlay = true;
                 //setup Unity scene for inGame state
                 break;
             case GameState.gameOver:
+                wePlay = false;
                 //setup Unity scene for gameOver state
                 break;
             case GameState.pause:
+                wePlay = false;
                 //setup Unity scene for pause state
                 break;
             case GameState.win:
+                wePlay = false;
                 break;
         }
         gameState = newGameState;
@@ -72,7 +80,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     //game at initialization
-    protected virtual void StartGame()
+   void StartGame()
     {
         Time.timeScale = 1;
         SetGameState(GameState.inGame);
@@ -81,7 +89,7 @@ public class GameManager : Singleton<GameManager>
     /// <summary>
     /// Upon Reset an event is launched to pertinent listeners.
     /// </summary>
-    protected virtual void ResetGame()
+    public virtual void ResetGame()
     {
         SetGameState(GameState.inGame);
         if (Restarting != null)
@@ -91,32 +99,32 @@ public class GameManager : Singleton<GameManager>
     }
 
     //death sate renders hp to zero
-    protected virtual void GameOver()
+    public virtual void GameOver()
     {
         Time.timeScale = 0;
         SetGameState(GameState.gameOver);
         //PlayerStats.instance.hp = 0;
     }
 
-    //protected void BackToMenu()
+    //public void BackToMenu()
     //{
     //    SetGameState(GameState.menu);
     //}
 
     //will refactor the pause and unpause methods later, going to sleep < Kev note
-    protected virtual void Pause()
+    public virtual void Pause()
     {
         Time.timeScale = 0;
         SetGameState(GameState.pause);
     }
 
-    protected virtual void UnPause ()
+    public virtual void UnPause ()
     {
         Time.timeScale = 1;
         SetGameState(GameState.inGame);
     }
 
-    protected void PrintState()
+    public void PrintState()
     {
         Debug.Log("Current State is "+gameState);
     }

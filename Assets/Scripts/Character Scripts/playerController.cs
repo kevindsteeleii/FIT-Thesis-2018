@@ -24,6 +24,11 @@ public class PlayerController : Singleton<PlayerController>
     /// </summary>
     public event Action Respawned;
 
+    /// <summary> **FindMe**
+    /// Event that broadcasts a reference point for the platform spawner
+    /// </summary>
+    public event Action<Vector3> PosReSpawnAt;
+
     /// <summary>
     /// keeps position to be referred to outside
     /// </summary>
@@ -56,6 +61,13 @@ public class PlayerController : Singleton<PlayerController>
 
         //assigns ResetHP() as subscriber of Restarting event
         GameManager.instance.Restarting += ReSpawn;
+        GUIManager.instance.Restarted += ReSpawn;
+
+        //broadcasts the position of player
+        if (PosReSpawnAt != null)
+        {
+            PosReSpawnAt(respawnPos);
+        }
     }
 
     protected virtual void Update()

@@ -11,6 +11,10 @@ public class PlatformSpawner : Singleton<PlatformSpawner> {
     float bottom = -.5f;
     float top = 3.8f;
 
+    //[Tooltip("Ranged slider that determines how low the initial platform will be relative to players respawn point")]
+    //[Range(0, 2)]
+    //public float respawnVertOffset = 0.1f;
+
     //[Range (-1.7f,5.4f)]
     //float heightGeneratedAt = 0f;
 
@@ -20,6 +24,9 @@ public class PlatformSpawner : Singleton<PlatformSpawner> {
     //offset used as buffer between player and spawner offscreen
     public Vector2 offset = new Vector2 (2f,0f);
 
+    //respawn Location
+    //private Vector3 respawnPos;
+
     // Use this for initialization
     void Start ()
     {
@@ -27,7 +34,26 @@ public class PlatformSpawner : Singleton<PlatformSpawner> {
         an offset that then keeps ahead of the player to a certain extent 
         while generating platforms*/
         SpawnNewPlatformAt(Vector3.zero);
+        //DontDestroyOnLoad(this.gameObject);
+        GameManager.instance.Restarting += ReSpawn;
+        GUIManager.instance.Restarted += ReSpawn;
+        //PlayerController.instance.PosReSpawnAt += SpawnPos;
     }
+
+    void ReSpawn()
+    {
+        Debug.Log(" Platforms are supposed to Respawn Here!!");
+
+        cap = 5;
+        //SpawnNewPlatformAt(respawnPos);
+        SpawnNewPlatformAt(Vector3.zero);
+
+    }
+
+    //void SpawnPos(Vector3 pos)
+    //{
+    //    pos.y -= respawnVertOffset;
+    //}
 
     /// <summary>
     /// returns random float

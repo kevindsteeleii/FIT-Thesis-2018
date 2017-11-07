@@ -13,6 +13,10 @@ public class CameraFollow : MonoBehaviour {
 
 	void Awake (){
 		offset = Vector3.forward * -7.5f;
+        if (target == null)
+        {
+            target = FindObjectOfType<PlayerController>().transform;
+        }
 
 	}
 	// Update is called once per frame after Update
