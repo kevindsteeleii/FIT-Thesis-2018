@@ -1,6 +1,7 @@
 ﻿
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState { pause, win, gameOver, inGame, menu};
 
@@ -25,7 +26,7 @@ public class GameManager : Singleton<GameManager>
         //DontDestroyOnLoad(this);
     }
     // Use this for initialization
-    public virtual void Start()
+    protected virtual void Start()
     {
         //Used to alert the GameOver 
         PlayerStats.instance.HPisZero += GameOver;

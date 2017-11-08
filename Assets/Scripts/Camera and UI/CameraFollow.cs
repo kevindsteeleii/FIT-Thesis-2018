@@ -9,6 +9,9 @@ public class CameraFollow : MonoBehaviour {
 	//distance b/n camera and player
 	public Vector3 offset ;
 
+    private Vector3 camRespawnPos;
+    private Quaternion camRespawnAngle;
+
 	public float smoothSpeed = 0.125f;
 
 	void Awake (){
@@ -18,9 +21,25 @@ public class CameraFollow : MonoBehaviour {
             target = FindObjectOfType<PlayerController>().transform;
         }
 
+
 	}
-	// Update is called once per frame after Update
-	void FixedUpdate () {
+
+    protected void Start()
+    {
+        camRespawnPos = this.transform.position;
+        camRespawnAngle = this.transform.rotation;
+    }
+
+    /// <summary>
+    /// Resets the camera to default postion
+    /// </summary>
+    protected void ResetCam()
+    {
+        this.transform.position = camRespawnPos;
+        this.transform.rotation = camRespawnAngle;
+    }
+    // Update is called once per frame after Update
+    void FixedUpdate () {
 		Vector3 desiredPosition = target.position + offset;
 		Vector3 smoothedPosition = Vector3.Lerp (transform.position,desiredPosition,smoothSpeed);
 		transform.position = smoothedPosition;

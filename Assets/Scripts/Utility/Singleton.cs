@@ -27,10 +27,10 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T> {
     protected virtual void Awake () {
 		if (reference != null) {
             Debug.LogErrorFormat("Trying to instantiate a second instance of singleton class {0}", GetType().Name);
-            DestroyImmediate(gameObject);
+            //DestroyImmediate(gameObject);
         } else {
 			reference = (T) this;
-            DontDestroyOnLoad(gameObject);
+           // DontDestroyOnLoad(gameObject);
         }
     }
 

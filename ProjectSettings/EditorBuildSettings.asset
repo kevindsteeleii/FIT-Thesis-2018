@@ -8,3 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Preloader.unity
     guid: 037732272f2079748bb4c6064b9cb014
+  - enabled: 1
+    path: Assets/Scenes/20171104_UNITY_GameSceneImplementation_v01_KDS.unity
+    guid: fee87e68e0eb473439b1f242af9711b0
+  - enabled: 1
+    path: Assets/Scenes/UI/UI_Standalone_fixed(noRestartYet...)_11-04-17_KDS.unity
+    guid: b734f97212a723d4fa85a82afa51fc14
+  - enabled: 1
+    path: Assets/Scenes/DebuggingTools/ProxyController.unity
+    guid: 656e297b46398f348b1ffa5076fc9b1e
+  - enabled: 1
+    path: Assets/Scenes/Lighting.unity
+    guid: 6cbe4ebd75518dd4a83258f516a93a16

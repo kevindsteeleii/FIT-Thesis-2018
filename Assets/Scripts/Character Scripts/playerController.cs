@@ -68,6 +68,7 @@ public class PlayerController : Singleton<PlayerController>
         {
             PosReSpawnAt(respawnPos);
         }
+
     }
 
     protected virtual void Update()

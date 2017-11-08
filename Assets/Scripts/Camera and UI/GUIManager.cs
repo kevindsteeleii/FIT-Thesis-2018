@@ -15,10 +15,12 @@ public class GUIManager : Singleton<GUIManager> {
     /// Paused event transmits when pause button is pressed
     /// </summary>
     public event Action Paused;
+
     /// <summary>
     /// Unpaused is transmitted when pause is exited and game is to resume
     /// </summary>
     public event Action Unpaused;
+
     /// <summary>
     /// Restarted is transmitted upon the restarting of the level/ game loop
     /// </summary>
@@ -27,9 +29,6 @@ public class GUIManager : Singleton<GUIManager> {
     protected override void Awake()
     {
         base.Awake();
-        //DontDestroyOnLoad(this);
-        DontDestroyOnLoad(menu);
-        DontDestroyOnLoad(gameOverScreen);
     }
 
     public virtual void Continue()
@@ -46,14 +45,15 @@ public class GUIManager : Singleton<GUIManager> {
     Mind you this is still a WIP gimme a minute... <Kev Note*/
     public virtual void Restart()
     {
-        //	//ok, we need a better way to reset the scene, because right now the reset button is going to reload the 
-        //current scene, and as a standalone scene the scene that will be reset is the standalone UI
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         if (Restarted != null)
         {
             Restarted();
             Continue();
         }
+        //Loads the main/active scene asynchronously (the one with camera and player)
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        //Loads the scene with scene manager in additive mode right after but at time its called
+        SceneManager.LoadScene(sceneBuildIndex: 2, mode: LoadSceneMode.Additive);
     }
 
     // Update is called once per frame
@@ -67,22 +67,14 @@ public class GUIManager : Singleton<GUIManager> {
             visible = true;
         }
 
-        //if the game is paused, and the pause button is pressed, hide the pause menu and unpause the game <coops's note
-        //else if (ButtonPressed() && GameManager.instance.gameState == GameState.pause && Unpaused != null)
-        //{
-        //    Unpaused();
-        //    visible = false;
-        //}
-
         menu.SetActive(visible);
         gameOverScreen.SetActive(dead);
     }
+
     //checks to see if the pause button is pressed and returns if the key pressed was true or false <coops's note
     public virtual bool ButtonPressed()
     {
         bool pressed;
         return pressed = (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Space)) ? true : false;
     }
-
-
 }
