@@ -86,6 +86,8 @@ public class PlayerController : Singleton<PlayerController>
         if (GameManager.instance.GetState() == GameState.inGame)
 
         {
+
+            #region Horizontal Movement
             float move = 0;
 
             if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0)
@@ -104,6 +106,7 @@ public class PlayerController : Singleton<PlayerController>
             myRB.velocity = new Vector3(move * data.runSpeed, myRB.velocity.y, 0);
             if (move > 0 && !facingRight) { Flip(); }
             else if (move < 0 && facingRight) { Flip(); }
+            #endregion
 
             //Debug.Log("Horizontal Input is this number -> "+Input.GetAxis("JoystickHorizontal"));
 
@@ -114,17 +117,18 @@ public class PlayerController : Singleton<PlayerController>
             {
                 StartCoroutine(HitStopperPunch());
             }
-
+            //slammer checks if the punch and down is pressed at the same time on keyboard
             if (slammer)
             {
                 myAnim.SetBool("airborne", false);
                 myAnim.SetBool("slam", true);
             }
-            //else if (Input.GetAxisRaw("JoystickVertical") == 1 && Input.GetButton("Punch"))
-            //{
-            //    myAnim.SetBool("airborne", false);
-            //    myAnim.SetBool("slam", true);
-            //}
+            //this is the alternative inputs for the slam on controller
+            else if (Input.GetAxisRaw("JoystickVertical") == 1 && Input.GetButton("Punch"))
+            {
+                myAnim.SetBool("airborne", false);
+                myAnim.SetBool("slam", true);
+            }
         }
         /*needs to be replaced by a state-driven, menu selected, continue of sorts*/
         else if (GameManager.instance.GetState() == GameState.gameOver)

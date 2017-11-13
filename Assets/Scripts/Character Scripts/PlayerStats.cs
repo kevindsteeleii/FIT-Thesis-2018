@@ -157,19 +157,19 @@ public class PlayerStats : Singleton<PlayerStats>
         {
             int amount = 0;
 
-            if (col.GetComponent<PickUp>().pickup == PickupType.Health)
+            if (col.GetComponent<PickUpType>().pickup == PickupType.Health)
             {
                 amount = Mathf.RoundToInt(.25f * (stats.maxHP));
                 HP = (HP + amount > stats.maxHP) ? stats.maxHP : HP + amount;
             }
 
-            else if (col.GetComponent<PickUp>().pickup == PickupType.Money)
+            else if (col.GetComponent<PickUpType>().pickup == PickupType.Money)
             {
-                amount = col.GetComponent<PickUp>().purse;
+                amount = col.GetComponent<PickUpType>().purse;
                 Wallet += amount;
             }
 
-            Debug.Log("The type of pick up is " + col.GetComponent<PickUp>().pickup);
+            Debug.Log("The type of pick up is " + col.GetComponent<PickUpType>().pickup);
             Destroy(col.gameObject);
         }
     }

@@ -6,7 +6,20 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     public static GameObject body;
 
-    public event Action BecomeAmmo;
+    /// <summary>
+    /// Event that transmits from Enemy to trigger ammo stocking 
+    /// </summary>
+    public event Action BecomeAmmo; //need to assign subscriber < Kev Note
+
+    /// <summary>
+    /// Event that transmits when the enemy becomes random loot on "destruction"
+    /// </summary>
+    public event Action<Vector3, Quaternion> RandomLootDropped;
+
+    /// <summary>
+    /// Event that transmits when the enemy becomes the default loot upon "destruction"
+    /// </summary>
+    public event Action<Vector3,Quaternion,PickupType> DefaultLootDrop;
 
     //allows for adjustment of enemy health points
     [Range(0, 25)]
@@ -48,8 +61,13 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void BecomeProjectile()
     {
-        Ammo.instance.Load();
-        Destroy(body);
+        //transmits to Ammo handling manager as a subject of subscription
+        if (BecomeAmmo != null)
+        {
+            BecomeAmmo();
+        }
+        //Ammo.instance.Load();
+        Destroy(body); //needs implementation of a enemy spawner/ manager class to "disappear" enemies < Kev Note
         Debug.Log("Became Projectile!!");
     }
 
@@ -59,13 +77,15 @@ public class Enemy : MonoBehaviour
     public void BecomePickUp()
     {
         Destroy(body);
-        if (randomDrop)
+        if (randomDrop && RandomLootDropped != null)
         {
-            LootGenerator.instance.makeRandomLoot(transform.position, transform.rotation);
+            RandomLootDropped(transform.position, transform.rotation);
+            //LootGenerator.instance.MakeRandomLoot(transform.position, transform.rotation);
         }
-        else if (!randomDrop)
+        else if (!randomDrop && DefaultLootDrop != null)
         {
-            LootGenerator.instance.makeThisLoot(transform.position, transform.rotation, PickupType.Health);
+            DefaultLootDrop(transform.position, transform.rotation, PickupType.Health);
+            //LootGenerator.instance.MakeThisLoot(transform.position, transform.rotation, PickupType.Health);
         }
     }
 

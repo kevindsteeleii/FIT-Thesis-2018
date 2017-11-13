@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 /// <summary>
 /// As the name indicates, it creates Loot items to be dropped upon enemy death
@@ -9,7 +10,6 @@ using System.Collections.Generic;
 
 public class LootGenerator : Singleton<LootGenerator>
 {
-    PickupType itemType = PickupType.Health;
 
     protected static Dictionary<PickupType, GameObject> lootIndex = new Dictionary<PickupType, GameObject>();
 
@@ -20,16 +20,40 @@ public class LootGenerator : Singleton<LootGenerator>
     public GameObject moneyPickUp;
 
     PickupType currentTypeofItem;
-    GameObject itemDropped;
+
+    //Collection that populates with all enemies present to be implemented in an enemy manager class later
+    private Enemy [] enemiesPresent;
 
     //on awake populates dictionary 
     protected override void Awake()
     {
         base.Awake();
-        PopulateList();
     }
 
-    public void makeThisLoot(Vector3 dropSpot, Quaternion rot, PickupType itemIs)
+    protected void Start()
+    {
+        PopulateList();
+        enemiesPresent = FindObjectsOfType<Enemy>();
+
+        //assigns LootGenerator as subscriber if enemies are present will refactor < Kev Note
+        if (enemiesPresent != null)
+        {
+            foreach (Enemy enemy in enemiesPresent)
+            {
+                enemy.RandomLootDropped += MakeRandomLootNow;
+                enemy.DefaultLootDrop += MakeThisLoot;
+            }
+        }
+        
+    }
+
+    //function that takes passed params from event to generate random loot drop
+    protected void MakeRandomLootNow(Vector3 pos, Quaternion rot)
+    {
+        MakeRandomLoot(pos, rot);
+    }
+
+    public void MakeThisLoot(Vector3 dropSpot, Quaternion rot, PickupType itemIs)
     {
         GameObject spawnObject;
 
@@ -47,17 +71,32 @@ public class LootGenerator : Singleton<LootGenerator>
         }
     }
 
-    public void PopulateList()
+    /// <summary>
+    /// Adds the pickups to the list to set active/inactive as objects being pooled
+    /// </summary>
+    protected virtual void PopulateList()
     {
-        lootIndex.Add(PickupType.Health, healthPickUp);
-        lootIndex.Add(PickupType.Money, moneyPickUp);
-        lootIndex.Add(PickupType.Nothing, null);
+        if (lootIndex != null)
+        {
+            return;
+        }
+        else
+        {
+            lootIndex.Add(PickupType.Health, healthPickUp);
+            lootIndex.Add(PickupType.Money, moneyPickUp);
+            lootIndex.Add(PickupType.Nothing, null);
+        }
     }
 
-    public void makeRandomLoot(Vector3 dropSpot, Quaternion rot)
+    /// <summary>
+    /// Makes random loot drop when enemy is destroyed
+    /// </summary>
+    /// <param name="dropSpot"></param>
+    /// <param name="rot"></param>
+    protected void MakeRandomLoot(Vector3 dropSpot, Quaternion rot)
     {
         float dropWeight;
-        dropWeight = Random.Range(1.0f, 100f);
+        dropWeight = UnityEngine.Random.Range(1.0f, 100f);
 
         if (dropWeight >= 60 && dropWeight < 91)
         {
@@ -74,7 +113,7 @@ public class LootGenerator : Singleton<LootGenerator>
 
         if (currentTypeofItem != PickupType.Nothing)
         {
-            makeThisLoot(dropSpot, rot, currentTypeofItem);
+            MakeThisLoot(dropSpot, rot, currentTypeofItem);
         }
 
         Debug.Log("Pick Up became " + currentTypeofItem + " !!");

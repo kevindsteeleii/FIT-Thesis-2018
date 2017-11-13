@@ -31,6 +31,7 @@ public class PlatformSpawner : Singleton<PlatformSpawner> {
         GUIManager.instance.Restarted += ReSpawn;
     }
 
+    //
     void ReSpawn()
     {
         Debug.Log(" Platforms are supposed to Respawn Here!!");

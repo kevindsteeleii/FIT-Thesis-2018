@@ -33,7 +33,10 @@ public class Ammo : Singleton<Ammo>
     /// <summary>
     /// Event that passest the amount of bullets left in ammo
     /// </summary>
-    public event Action<int> MyAmmo; 
+    public event Action<int> MyAmmo;
+
+    //Collection that populates with all enemies present to be implemented in an enemy manager class later
+    private Enemy[] enemiesPresent;
 
     // Use this for initialization
     void Start()
@@ -41,6 +44,18 @@ public class Ammo : Singleton<Ammo>
         bullets = testLoad;
         cap = capacity;
         ammoList = new List<GameObject>();
+
+        enemiesPresent = FindObjectsOfType<Enemy>();
+
+        //assigns Ammo as subscriber if enemies are present will refactor < Kev Note
+        if (enemiesPresent != null)
+        {
+            foreach (Enemy enemy in enemiesPresent)
+            {
+                enemy.BecomeAmmo += Load;
+            }
+        }
+
         Populate();
     }
 

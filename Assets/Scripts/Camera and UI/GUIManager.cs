@@ -5,30 +5,32 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// Houses logic, functions, etc. for the pause menu, game over, etc
 /// </summary>
-public class GUIManager : Singleton<GUIManager> {
+public class GUIManager : Singleton<GUIManager>
+{
 
     public GameObject menu, gameOverScreen;
-    public bool visible;
-    public bool dead = false;
+    public bool visible { get; private set; }
+    public bool isDead { get; private set; }
 
     /// <summary>
-    /// Paused event transmits when pause button is pressed
+    /// Paused event transmits from GUI Manager when pause button is pressed
     /// </summary>
     public event Action Paused;
 
     /// <summary>
-    /// Unpaused is transmitted when pause is exited and game is to resume
+    /// Unpaused is transmitted from GUI Manager when pause is exited and game is to resume
     /// </summary>
     public event Action Unpaused;
 
     /// <summary>
-    /// Restarted is transmitted upon the restarting of the level/ game loop
+    /// Restarted is transmitted from GUI Manager upon the restarting of the level/ game loop
     /// </summary>
     public event Action Restarted;
 
     protected override void Awake()
     {
         base.Awake();
+        isDead = false;
     }
 
     public virtual void Continue()
@@ -36,14 +38,14 @@ public class GUIManager : Singleton<GUIManager> {
         Debug.Log("RESUME");
         visible = false;
         gameOverScreen.SetActive(false);
-        menu.SetActive(false);
+        //menu.SetActive(false);
         Unpaused();
     }
 
     /*Restart logic needs to reside in the Game Manager you only need to worry 
     about type void methods that uses a subscribed event as input or a trigger
     Mind you this is still a WIP gimme a minute... <Kev Note*/
-    public virtual void Restart()
+    protected virtual void Restart()
     {
         if (Restarted != null)
         {
@@ -57,24 +59,41 @@ public class GUIManager : Singleton<GUIManager> {
     }
 
     // Update is called once per frame
-    public virtual void Update()
+    protected virtual void Update()
     {
         /*checks the gameState and the button presses to make sure things work 
          * dependent of the current game state of the GameManager <Kev Note*/
-        if (ButtonPressed() && GameManager.instance.GetState() == GameState.inGame && Paused != null)
+        if (ButtonPressed("Start") || ButtonPressed() && GameManager.instance.GetState() == GameState.inGame && Paused != null)
         {
             Paused();
             visible = true;
         }
+        else if (ButtonPressed("Start") || ButtonPressed() && GameManager.instance.GetState() == GameState.pause && Paused != null)
+        {
+            Continue();
+        }
+
+        if (ButtonPressed("Start"))
+        {
+            Debug.Log("Pressed Start Button");
+        }
 
         menu.SetActive(visible);
-        gameOverScreen.SetActive(dead);
+        gameOverScreen.SetActive(isDead);
+        //Debug.Log("The input pressed is "+Input.inputString);
     }
 
     //checks to see if the pause button is pressed and returns if the key pressed was true or false <coops's note
-    public virtual bool ButtonPressed()
+    protected virtual bool ButtonPressed()
     {
         bool pressed;
         return pressed = (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Space)) ? true : false;
     }
+
+    protected virtual bool ButtonPressed(string button)
+    {
+        bool pressed;
+        return pressed = (Input.GetButton(button)) ? true : false;
+    }
+
 }

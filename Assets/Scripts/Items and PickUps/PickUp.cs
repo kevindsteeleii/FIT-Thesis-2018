@@ -9,7 +9,7 @@ public enum PickupType { Health, Money, Nothing };
 /// Class used to compartmentalize the purpose of pickup of items of various types
 /// it is to be attached to a prefab to be instantiated by destroying enemy types
 /// </summary>
-public class PickUp : MonoBehaviour
+public class PickUpType : MonoBehaviour
 {
     // Use this for initialization making enum public allows for easier use outside of this class 
     public PickupType pickup;

@@ -21,27 +21,30 @@ public class ThrowController : Controller
     {
         /*Uses Throw to trigger a branching nest of conditionals that will either throw a projectile
          at an angle or straight, or returns a debug log*/
-        if (Input.GetButtonDown("Throw") && !Input.GetButton("Aim") && Ammo.instance.bullets > 0)
+         if (GameManager.instance.GetState() == GameState.inGame)
         {
-            try
+            if (Input.GetButtonDown("Throw") && !Input.GetButton("Aim") && Ammo.instance.bullets > 0)
             {
-                //ThrowModel bullet = bulletPool.GetPooledObject().GetComponent<ThrowModel>();
-                canon.ThrowStraight();
+                try
+                {
+                    //ThrowModel bullet = bulletPool.GetPooledObject().GetComponent<ThrowModel>();
+                    canon.ThrowStraight();
+                }
+                catch (IndexOutOfRangeException e)
+                {
+                    throw new Exception("Out of Ammo");
+                }
             }
-            catch (IndexOutOfRangeException e)
+
+            else if (Input.GetButtonDown("Throw") && Input.GetButton("Aim") && Ammo.instance.bullets > 0)
             {
-                throw new Exception("Out of Ammo");
+                canon.ThrowAngle();
             }
-        }
 
-        else if (Input.GetButtonDown("Throw") && Input.GetButton("Aim") && Ammo.instance.bullets > 0)
-        {
-            canon.ThrowAngle();
-        }
-
-        else if (Input.GetButtonDown("Throw") && Ammo.instance.bullets <= 0)
-        {
-            Ammo.instance.ShootLoad();
+            else if (Input.GetButtonDown("Throw") && Ammo.instance.bullets <= 0)
+            {
+                Ammo.instance.ShootLoad();
+            }
         }
     }
 }
