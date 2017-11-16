@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System;
-using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 /// enum used to establish the behavior state of the platform the 
@@ -29,6 +29,7 @@ public class Platforms : MonoBehaviour
 
     //center point is the center of the object itself used for calculations and the like
     Vector3 centerPoint;
+
     [SerializeField]
     Transform endPoint;
 
@@ -41,6 +42,7 @@ public class Platforms : MonoBehaviour
     /// If true makes the Platform 
     /// </summary>
     public bool isRandomMovement;
+    
 
     /// <summary>
     /// Enumeration that assigns default behavior of platform
@@ -122,6 +124,16 @@ public class Platforms : MonoBehaviour
                 break;
         }
     }
+
+    /// <summary>
+    /// Returns the center point of platform
+    /// </summary>
+    /// <returns></returns>
+    public Vector3 GetCenter()
+    {
+        return centerPoint;
+    }
+
     //deals with the positional data of the particular platform obstacle
     void FixedUpdate()
     {

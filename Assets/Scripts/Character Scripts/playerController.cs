@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.ObjectModel;
 using System;
-using System.Collections.Generic;
 
 /// <summary>
 /// New and Improved consolidated Player Controller that handles movements, jumps, attacks and whatnot.
@@ -68,7 +67,6 @@ public class PlayerController : Singleton<PlayerController>
         {
             PosReSpawnAt(respawnPos);
         }
-
     }
 
     protected virtual void Update()
@@ -146,7 +144,6 @@ public class PlayerController : Singleton<PlayerController>
     /// <summary>
     /// Returns bool based on the button press, and animState ==flag
     /// </summary>
-
     protected static bool ActionTook(String button, String state, bool flag, Animator myAnim)
     {
         bool acted;
@@ -187,7 +184,7 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     //hitStop coroutine for punch to hold and then stop animation
-    IEnumerator HitStopperPunch()
+    System.Collections.IEnumerator HitStopperPunch()
     {
         myAnim.SetBool("punching", true);
         //find better way to hitStop on the punch its jaggy atm

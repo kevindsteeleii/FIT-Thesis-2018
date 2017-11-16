@@ -105,11 +105,6 @@ public class GameManager : Singleton<GameManager>
         //PlayerStats.instance.hp = 0;
     }
 
-    //public void BackToMenu()
-    //{
-    //    SetGameState(GameState.menu);
-    //}
-
     //will refactor the pause and unpause methods later, going to sleep < Kev note
     public virtual void Pause()
     {

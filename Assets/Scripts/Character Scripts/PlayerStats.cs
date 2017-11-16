@@ -111,10 +111,7 @@ public class PlayerStats : Singleton<PlayerStats>
         camera.cullingMask |= (1 << 9);
     }
 
-    //public void addMoney(int amount)
-    //{
-    //    wallet += amount;
-    //}
+    
 
     IEnumerator IFramez()
     {
@@ -179,12 +176,6 @@ public class PlayerStats : Singleton<PlayerStats>
         if (collision.gameObject.tag == "Death Object")
         {
             HP = 0;
-            //if event has a subscriber...
-            //if (TouchDeath != null)
-            //{
-
-            //    TouchDeath();
-            //}
         }
     }
 }

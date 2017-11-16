@@ -1,8 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Platforms))]
+/// <summary>
+/// Class that handles the enemy patrol behavior
+/// </summary>
 public class EnemyPatrol : MonoBehaviour
 {
     // the platform the enemy is perched upon
@@ -12,22 +15,21 @@ public class EnemyPatrol : MonoBehaviour
     [Range(0f, 1f)]
     public float xOffset = 0.05f;
 
-    //yOffset from the center of the platform to adjust height placement
-    [Range(0f, 1f)]
-    public float yOffset = 0.05f;
-
     //speed relative to Time.time of the patrolling/pacing enemy
     [Range(0.01f, 1f)]
     public float speed = 0.02f;
 
-    //used to effect velocity of oscillation of patrolling enemy
-    Rigidbody rb;
-
-    //vectors used to get the beginning and end of the platform to be patrolled
-    //Vector3 startPatrolling, endPatrolling;
-
-    //sets default type of movement pattern here more to be added onto this later
-    //public MovementType enemyMoves = MovementType.Horizontal;
+    //bool that determines whether or not the enemy is patrolling
+    bool patrolling = false;
+    
+    /// <summary>
+    /// Sets up the platform's info that the 
+    /// </summary>
+    /// <param name="platform"></param>
+    void SetUpPatrolObject (Platforms platform)
+    {
+        enemyPost = platform;
+    }
 
     // Use this for initialization
     void Start()
@@ -35,17 +37,47 @@ public class EnemyPatrol : MonoBehaviour
         //assigns the beginning and end of the collider of the platform the enemy will be patrolling upon
         //startPatrolling = enemyPost.startPatrol;
         //endPatrolling = enemyPost.endPatrol;
+        this.gameObject.GetComponent<Enemy>().SendBehavior += PatrolBehave;
+        this.gameObject.GetComponent<Enemy>().EnPlatformIs += PlatformGet;
+    }
+
+    void PlatformGet(Platforms obj)
+    {
+        enemyPost = obj;
+    }
+
+    /// <summary>
+    /// Function that is subscriber of the Enemy Event SendBehavior. This should be the template for future behavior components.
+    /// </summary>
+    /// <param name="obj"></param>
+    public void PatrolBehave(EnemyBehavior obj)
+    {
+        if (obj != EnemyBehavior.Patrolling)
+        {
+            patrolling = false;
+        }
+
+        else
+        {
+            patrolling = true;
+        }
     }
 
     void Update()
     {
         Vector3 pos = enemyPost.transform.position;
-        pos.y = enemyPost.transform.position.y + yOffset;
-
         float distance = enemyPost.delta - xOffset;
 
-        //oscillates between either extreme with an offset with specified timing
-        pos.x += distance * Mathf.Sin(Time.time * speed);
-        transform.position = pos;
+        if (!patrolling)
+        {
+            return;
+        }
+        else
+        {
+            //oscillates between either extreme with an offset with specified timing
+            pos.x += distance * Mathf.Sin(Time.time * speed);
+            transform.position = pos;
+        }
+        
     }
 }

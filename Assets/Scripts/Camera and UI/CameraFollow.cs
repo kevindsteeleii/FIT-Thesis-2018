@@ -14,20 +14,21 @@ public class CameraFollow : MonoBehaviour {
 
 	public float smoothSpeed = 0.125f;
 
-	void Awake (){
+	void Awake ()
+    {
 		offset = Vector3.forward * -7.5f;
-        if (target == null)
-        {
-            target = FindObjectOfType<PlayerController>().transform;
-        }
-
-
 	}
 
     protected void Start()
     {
         camRespawnPos = this.transform.position;
         camRespawnAngle = this.transform.rotation;
+
+        if (target == null)
+        {
+            //if target is null/ in other scene then find object with the tag player
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
     }
 
     /// <summary>

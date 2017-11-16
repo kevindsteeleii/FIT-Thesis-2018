@@ -376,7 +376,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1900038833049090, guid: 81d2cd696ca6b714a8d9b46d0c412c13, type: 2}
-  yOffset: 1.73
+  yOffset: 0.469
+  TempPlatforms: {fileID: 0}
 --- !u!4 &1222540771
 Transform:
   m_ObjectHideFlags: 0

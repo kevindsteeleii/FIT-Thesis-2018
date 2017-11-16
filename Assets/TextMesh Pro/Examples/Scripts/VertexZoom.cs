@@ -51,7 +51,7 @@ namespace TMPro.Examples
         /// Method to animate vertex colors of a TMP Text object.
         /// </summary>
         /// <returns></returns>
-        IEnumerator AnimateVertexColors()
+        System.Collections.IEnumerator AnimateVertexColors()
         {
 
             // We force an update of the text object since it would only be updated at the end of the frame. Ie. before this code is executed on the first frame.

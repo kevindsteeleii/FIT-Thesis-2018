@@ -24,7 +24,6 @@ public class LootGenerator : Singleton<LootGenerator>
     //Collection that populates with all enemies present to be implemented in an enemy manager class later
     private Enemy [] enemiesPresent;
 
-    //on awake populates dictionary 
     protected override void Awake()
     {
         base.Awake();
@@ -47,12 +46,22 @@ public class LootGenerator : Singleton<LootGenerator>
         
     }
 
-    //function that takes passed params from event to generate random loot drop
+    /// <summary>
+    /// Function that takes passed params from event to generate random loot drop
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <param name="rot"></param>
     protected void MakeRandomLootNow(Vector3 pos, Quaternion rot)
     {
         MakeRandomLoot(pos, rot);
     }
 
+    /// <summary>
+    /// Makes loot of type pickuptype specified, at specific location and quaternion rotation
+    /// </summary>
+    /// <param name="dropSpot"></param>
+    /// <param name="rot"></param>
+    /// <param name="itemIs"></param>
     public void MakeThisLoot(Vector3 dropSpot, Quaternion rot, PickupType itemIs)
     {
         GameObject spawnObject;

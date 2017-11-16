@@ -36,12 +36,19 @@ public class ObjectPooler : Singleton<ObjectPooler>
         }
     }
 
+    /// <summary>
+    /// Returns the GameObject that's not active in hierarchy.
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <param name="position"></param>
+    /// <param name="rotation"></param>
+    /// <returns></returns>
     public GameObject Get(GameObject obj, Vector3 position, Quaternion rotation)
     {
         GameObject tempObj;
 
         int idKey = obj.GetInstanceID();
-        if (objectsPooled.ContainsKey(idKey))
+        if (objectsPooled.ContainsKey(idKey) && !obj.activeInHierarchy)
         {
             tempObj = objectsPooled [idKey].Dequeue();
             tempObj.SetActive(true);

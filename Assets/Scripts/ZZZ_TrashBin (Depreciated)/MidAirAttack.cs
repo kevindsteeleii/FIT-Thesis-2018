@@ -42,8 +42,7 @@ public class MidAirAttack : MonoBehaviour {
 		
 	}
 
-    //Coroutine for midAir Hit Stop
-    IEnumerator midAirHitStop () {
+    System.Collections.IEnumerator midAirHitStop () {
         //turns off physics of object for a quick sec to float the attack
         myRB.useGravity = false;
         Debug.Log("Freeze MidAir");

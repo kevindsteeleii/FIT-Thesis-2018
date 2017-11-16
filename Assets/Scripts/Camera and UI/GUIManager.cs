@@ -45,7 +45,7 @@ public class GUIManager : Singleton<GUIManager>
     /*Restart logic needs to reside in the Game Manager you only need to worry 
     about type void methods that uses a subscribed event as input or a trigger
     Mind you this is still a WIP gimme a minute... <Kev Note*/
-    protected virtual void Restart()
+    public virtual void Restart()
     {
         if (Restarted != null)
         {
