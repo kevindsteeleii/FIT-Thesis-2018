@@ -110,7 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPost: {fileID: 0}
   xOffset: 0.57
-  speed: 0.824
+  speed: 1
 --- !u!114 &114952977122860556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,6 +126,6 @@ MonoBehaviour:
   enPlatform: {fileID: 0}
   HP: 10
   randomDrop: 0
-  randomBehavior: 0
+  randomBehavior: 1
   enBehavior: 1
   damage: 3

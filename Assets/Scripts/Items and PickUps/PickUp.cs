@@ -28,7 +28,7 @@ public class PickUpType : MonoBehaviour
     }
 
     //destroys after N-seconds with a blinker to illustrate time running out
-    System.Collections.IEnumerator DestroyAfterTime()
+    IEnumerator DestroyAfterTime()
     {
         /*Using this commentation to test instantiation of 
          pickUp item on enemy destruction*/

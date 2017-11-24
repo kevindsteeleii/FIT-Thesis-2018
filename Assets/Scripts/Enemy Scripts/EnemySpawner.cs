@@ -42,11 +42,6 @@ public class EnemySpawner : Singleton<EnemySpawner>
             tempObj.transform.SetParent(this.gameObject.transform);
         }
 
-        //Instantiate(enemy, platPos,Quaternion.identity);
-        //Debug.Log(platPos + " is the location of a platform \n");
-        //GameObject tempObj = Instantiate(enemy, platPos, Quaternion.identity);
-        //tempObj.transform.SetParent(this.gameObject.transform);
-
         return;
     }
 
