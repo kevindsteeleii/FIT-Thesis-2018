@@ -78,6 +78,5 @@ public class EnemyPatrol : MonoBehaviour
             pos.x += distance * Mathf.Sin(Time.time * speed);
             transform.position = pos;
         }
-        
     }
 }

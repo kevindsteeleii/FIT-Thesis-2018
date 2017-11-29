@@ -8,7 +8,7 @@ public enum EnemyBehavior { None, Patrolling, Turret, Floating, total };
 /// <summary>
 /// Enemy base class used to determine basic information and behavior of enemy class
 /// </summary>
-[RequireComponent(typeof (EnemyPatrol))]
+[RequireComponent(typeof (EnemyPatrol), typeof (EnemyTurret))]
 public class Enemy : MonoBehaviour
 {
 
@@ -63,7 +63,9 @@ public class Enemy : MonoBehaviour
     [Range(0, 25)]
     public int damage;
 
-    #endregion
+    //int used to print out debug log that tells what behavior the enemy is exhibiting
+    int printOuts = 0;
+        #endregion
 
     // Use this for initialization
     void Start()
@@ -92,22 +94,6 @@ public class Enemy : MonoBehaviour
         {
             EnPlatformIs(enPlatform);
         }
-        #region Behavior Switch Block
-        //switch (enBehavior)
-        //{
-        //    case EnemyBehavior.None:
-        //        break;
-        //    case EnemyBehavior.Patrolling:
-        //        OnPatrol();
-        //        break;
-        //    case EnemyBehavior.Turret:
-        //        break;
-        //    case EnemyBehavior.Floating:
-        //        break;
-        //    default:
-        //        break;
-        //}
-        #endregion
 
         //if random behavior is toggled it randomly assigns the behavior type
         if (randomBehavior)
@@ -118,7 +104,11 @@ public class Enemy : MonoBehaviour
             randomBehavior = false;
         }
 
-        Debug.Log("The exhibited behavior is "+ enBehavior);
+        if (printOuts < 1)
+        {
+            Debug.Log("The exhibited behavior is " + enBehavior);
+            printOuts++;
+        }
 
         //Debug.Log("Enemy HP is " + HP);
     }

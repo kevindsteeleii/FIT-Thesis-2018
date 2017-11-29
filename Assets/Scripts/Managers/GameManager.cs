@@ -20,6 +20,11 @@ public class GameManager : Singleton<GameManager>
     /// Event that broadcasts from Game Manager upon restart after death.
     /// </summary>
     public event Action Restarting;
+
+    /// <summary>
+    /// Event that broadcasts Death state from the game manager upon death.
+    /// </summary>
+    public event Action GameOverStateEvent;
     #endregion
 
     protected override void Awake()
@@ -48,6 +53,13 @@ public class GameManager : Singleton<GameManager>
     public virtual void Update()
     {
         Debug.Log("Current State is " + gameState);
+
+        //when game state is gameover an event is broadcast to the appropriate subscribers 
+        if (gameState == GameState.gameOver && GameOverStateEvent != null)
+        {
+            GameOverStateEvent();
+            GameOver();
+        }
     }
 
     public GameState GetState()

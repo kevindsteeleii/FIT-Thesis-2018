@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// class used to 
+/// This is the class/script that deals with fall death in-game.
 /// </summary>
 public class DeathByFallBox : InstaDeath
 {
@@ -11,6 +11,9 @@ public class DeathByFallBox : InstaDeath
     Camera followTarget;
 	// Use this for initialization
 	protected override void Start () {
+        base.Start();
+
+        //insures that the followTarget is indeed the camera
 		if (followTarget == null)
         {
            followTarget = FindObjectOfType<Camera>();
@@ -19,6 +22,7 @@ public class DeathByFallBox : InstaDeath
 	
 	// Update is called once per frame
 	void Update () {
+        //this bit simply makes the deathBox follow along w/ the camera's x position
         Vector3 pos = this.transform.position;
         pos.x = followTarget.transform.position.x;
         transform.position = pos;

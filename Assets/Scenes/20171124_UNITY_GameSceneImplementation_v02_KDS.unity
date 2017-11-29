@@ -588,9 +588,10 @@ GameObject:
   - component: {fileID: 1829669603}
   - component: {fileID: 1829669602}
   - component: {fileID: 1829669605}
+  - component: {fileID: 1829669606}
   m_Layer: 0
   m_Name: DeathBox
-  m_TagString: Untagged
+  m_TagString: Death Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -602,7 +603,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1829669600}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.2, y: -13, z: 0}
+  m_LocalPosition: {x: 0.2, y: -12.7, z: 0}
   m_LocalScale: {x: 127.74931, y: 1, z: 53.973423}
   m_Children: []
   m_Father: {fileID: 0}
@@ -674,3 +675,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathBox: {fileID: 0}
   followTarget: {fileID: 0}
+--- !u!65 &1829669606
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1829669600}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Center: {x: 0, y: 0, z: 0}

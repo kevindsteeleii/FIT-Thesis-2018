@@ -99,6 +99,11 @@ public class PlayerStats : Singleton<PlayerStats>
         HP = stats.maxHP;
     }
 
+    void HPDeath()
+    {
+        HP = 0;
+    }
+
     //culls the layer that holds player from game render view (layer 9)
     void CullOn()
     {
@@ -168,6 +173,11 @@ public class PlayerStats : Singleton<PlayerStats>
 
             Debug.Log("The type of pick up is " + col.GetComponent<PickUpType>().pickup);
             Destroy(col.gameObject);
+        }
+
+        if (col.gameObject.tag == "Death Object")
+        {
+            HP = 0;
         }
     }
 

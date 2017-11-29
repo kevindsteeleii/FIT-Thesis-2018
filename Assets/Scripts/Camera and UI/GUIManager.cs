@@ -30,7 +30,13 @@ public class GUIManager : Singleton<GUIManager>
     protected override void Awake()
     {
         base.Awake();
+    }
+
+    protected virtual void Start ()
+    {
         isDead = false;
+        //subscribes the event created by the 
+        GameManager.instance.GameOverStateEvent += OnGameOver;
     }
 
     public virtual void Continue()
@@ -40,6 +46,14 @@ public class GUIManager : Singleton<GUIManager>
         gameOverScreen.SetActive(false);
         //menu.SetActive(false);
         Unpaused();
+    }
+
+    //Subscriber that only is triggered by the initiation of the gameOver state change 
+    public virtual void OnGameOver()
+    {
+        Debug.Log("GameOver GUI activated");
+        gameOverScreen.SetActive(true);
+
     }
 
     /*Restart logic needs to reside in the Game Manager you only need to worry 
@@ -79,8 +93,6 @@ public class GUIManager : Singleton<GUIManager>
         }
 
         menu.SetActive(visible);
-        gameOverScreen.SetActive(isDead);
-        //Debug.Log("The input pressed is "+Input.inputString);
     }
 
     //checks to see if the pause button is pressed and returns if the key pressed was true or false <coops's note
