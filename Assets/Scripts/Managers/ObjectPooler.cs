@@ -23,7 +23,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
         //adds to their number either way as a new entry or
         //adding to what's there
         int idNum = entry.GetInstanceID();
-        //GameObject local = entry;
+ 
         if (!objectsPooled.ContainsKey(idNum))
         {
             objectsPooled.Add(idNum, new Queue<GameObject>());

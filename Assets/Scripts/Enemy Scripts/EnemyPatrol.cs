@@ -72,6 +72,7 @@ public class EnemyPatrol : MonoBehaviour
         {
             return;
         }
+
         else
         {
             //oscillates between either extreme with an offset with specified timing

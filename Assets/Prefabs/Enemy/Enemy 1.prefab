@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23255639345174478}
   - component: {fileID: 114952977122860556}
   - component: {fileID: 114471060813994506}
+  - component: {fileID: 114215719838567348}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: Enemy
@@ -97,6 +98,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114215719838567348
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1900038833049090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fbf7dda3b734554181c8361c1954a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 0}
+  turretInterval: 0.97
+  shotsPerInterval: 4
+  throwForce: 1045
 --- !u!114 &114471060813994506
 MonoBehaviour:
   m_ObjectHideFlags: 1

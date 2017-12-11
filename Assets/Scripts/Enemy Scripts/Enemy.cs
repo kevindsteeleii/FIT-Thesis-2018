@@ -62,9 +62,6 @@ public class Enemy : MonoBehaviour
 
     [Range(0, 25)]
     public int damage;
-
-    //int used to print out debug log that tells what behavior the enemy is exhibiting
-    int printOuts = 0;
         #endregion
 
     // Use this for initialization
@@ -103,14 +100,6 @@ public class Enemy : MonoBehaviour
             Debug.Log("This enemy is the " + enBehavior + " type!!");
             randomBehavior = false;
         }
-
-        if (printOuts < 1)
-        {
-            Debug.Log("The exhibited behavior is " + enBehavior);
-            printOuts++;
-        }
-
-        //Debug.Log("Enemy HP is " + HP);
     }
 
     /// <summary>

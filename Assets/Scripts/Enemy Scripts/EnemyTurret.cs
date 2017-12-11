@@ -19,20 +19,10 @@ public class EnemyTurret : MonoBehaviour {
 
     //in reference to current enemy
     Enemy myEnemy;
-
+    EnemyBehavior thisBehavior;
     //used ast multiplier to affect direction projectile is shot in
-    int direction
-    {
-        get
-        {
-            return direction;
-        }
-
-        set
-        {
-            Mathf.Clamp(direction, -1, 1);
-        }
-    }
+    int direction;
+   
 
     //bool set true when enemy behavior is turret as well
     bool turretOn = false;
@@ -55,22 +45,23 @@ public class EnemyTurret : MonoBehaviour {
     void Start ()
     {
         this.gameObject.GetComponent<Enemy>().SendBehavior += PatrolBehave;
+        thisBehavior = gameObject.GetComponent<Enemy>().enBehavior;
         myEnemy = this.gameObject.GetComponent<Enemy>();
-
-	}
+        StartCoroutine(TurretPatrol());
+    }
 
     //if the subscribing method that has event passed on that carries the behavior enum that then starts or stops the coroutine and changes the turretOn bool
-    protected virtual void PatrolBehave(EnemyBehavior obj)
+    public void PatrolBehave(EnemyBehavior obj)
     {
         if (obj != EnemyBehavior.Turret)
         {
             turretOn = false;
-            StopCoroutine(TurretPatrol());
+           // StopCoroutine(TurretPatrol());
         } 
         else
         {
             turretOn = true;
-            StartCoroutine(TurretPatrol());
+           // StartCoroutine(TurretPatrol());
         }
     }
 
@@ -80,13 +71,14 @@ public class EnemyTurret : MonoBehaviour {
     /// <returns></returns>
     IEnumerator TurretPatrol ()
     {
+        Debug.Log("Turret Patrol starts and turretOn is "+turretOn);
         float intervals = shotsPerInterval / turretInterval;
 
-        while (turretOn)
+        while (true)
         {
-            
             for (int i = shotsPerInterval; i > 0; i++)
             {
+                Debug.Log("Entering the For Loop");
                 Fire();
                 yield return new WaitForSecondsRealtime(intervals);
             }
