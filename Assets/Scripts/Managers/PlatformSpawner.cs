@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlatformSpawner : Singleton<PlatformSpawner>
 {
+    #region Variables
+
     //Array of platforms used as pool for platform spawner
     public GameObject[] platforms;
     //List that populates with all the platforms made by spawner to allow access by external components
@@ -21,14 +23,18 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
     /// <summary>
     /// Event that broadcasts to the enemySpawner to pass to the spawned enemyies' patrol component certain data.
     /// </summary>
-    public event Action <Platforms> PlatformPass;
+    public event Action<Platforms> PlatformPass;
 
     // variables used to "save" previous and next heights of the 
     float previousHeight, nextHeight;
+    //variable used for the test number of random platforms generated and the number of each platform loaded for the object pooled version of spawner
     int cap = 5;
 
     //offset used as buffer between player and spawner offscreen
     public Vector2 offset = new Vector2(2f, 0f);
+
+
+    #endregion
 
     // Use this for initialization
     void Start()
@@ -39,13 +45,14 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
         an offset that then keeps ahead of the player to a certain extent 
         while generating platforms*/
         SpawnNewPlatformAt(Vector3.zero);
+
         GameManager.instance.Restarting += ReSpawn;
         GUIManager.instance.Restarted += ReSpawn;
     }
 
     private void Update()
     {
-        if (PlatformsHaveSpawned != null && PlatformPass != null  && !generated)
+        if (PlatformsHaveSpawned != null && PlatformPass != null && !generated)
         {
             StartCoroutine("SendPositions");
             generated = true;
@@ -58,11 +65,11 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
     void ReSpawn()
     {
         Debug.Log(" Platforms are supposed to Respawn Here!!");
-        cap = 5;
+        cap = 5; //**need to be changed to a method that reshuffles the pooled platforms order
         generated = false;
-        //SpawnNewPlatformAt(respawnPos);
         SpawnNewPlatformAt(Vector3.zero);
     }
+
 
     /// <summary>
     /// Coroutine used to transmit the vector3 center position of each generated platform in turn
@@ -121,6 +128,7 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
         }
         cap--;
 
+        #region Random non-repeating height generating code 
         //prevents same height instantiations of platforms spawned, loops back if same goes at least once before checking loop condition
         do
         {
@@ -139,12 +147,13 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
         }
         //assigns previous to next height as to set up comparison for next go around in the do-while loop
         previousHeight = nextHeight;
+        #endregion
 
         GameObject tempPlatform = Instantiate(platforms[RandInt(0, platforms.Length - 1)], pos, Quaternion.identity);
         tempPlatform.transform.SetParent(this.gameObject.transform);
         //adds spawned platform to the list used for enemy spawning
         spawnedPlatforms.Add(tempPlatform);
-        Vector3 loc = tempPlatform.transform.position;
+        //Vector3 loc = tempPlatform.transform.position;
     }
 
 }
