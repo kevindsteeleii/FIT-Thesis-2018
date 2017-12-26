@@ -78,7 +78,7 @@ public class EnemyTurret : MonoBehaviour {
         {
             for (int i = shotsPerInterval; i > 0; i++)
             {
-                Debug.Log("Entering the For Loop");
+                //Debug.Log("Entering the For Loop");
                 Fire();
                 yield return new WaitForSecondsRealtime(intervals);
             }
@@ -95,7 +95,7 @@ public class EnemyTurret : MonoBehaviour {
     {
         // GameObject shot = Instantiate(bullet, myEnemy.transform.position, Quaternion.identity);
         // shot.GetComponent<Rigidbody>().AddForce(Vector3.right * direction * throwForce);
-        Debug.Log("Pew Pew");
+        //Debug.Log("Pew Pew");
     }
     // Update is called once per frame
     void Update ()

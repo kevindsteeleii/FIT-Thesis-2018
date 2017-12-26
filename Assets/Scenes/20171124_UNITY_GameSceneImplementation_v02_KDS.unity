@@ -491,6 +491,39 @@ Transform:
   m_PrefabParentObject: {fileID: 4030115164417424, guid: 1915f56ceb99394458fc4e54cfafdeee,
     type: 2}
   m_PrefabInternal: {fileID: 320591850}
+--- !u!4 &1499796761 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4228840492625006, guid: 11626e1f4c462f942a57097ac30ac708,
+    type: 2}
+  m_PrefabInternal: {fileID: 1803085978}
+--- !u!1 &1517323778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1517323779}
+  m_Layer: 0
+  m_Name: ContinuePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1517323779
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1517323778}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.2258, y: 1.162, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1499796761}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1803085978
 Prefab:
   m_ObjectHideFlags: 0
@@ -522,15 +555,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4228840492625006, guid: 11626e1f4c462f942a57097ac30ac708, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4228840492625006, guid: 11626e1f4c462f942a57097ac30ac708, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4228840492625006, guid: 11626e1f4c462f942a57097ac30ac708, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4228840492625006, guid: 11626e1f4c462f942a57097ac30ac708, type: 2}
       propertyPath: m_LocalRotation.w
@@ -573,6 +606,29 @@ Prefab:
       propertyPath: respawnVertOffset
       value: 0.306
       objectReference: {fileID: 0}
+    - target: {fileID: 4228840492625006, guid: 11626e1f4c462f942a57097ac30ac708, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 55.799347
+      objectReference: {fileID: 0}
+    - target: {fileID: 4228840492625006, guid: 11626e1f4c462f942a57097ac30ac708, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2.7375016
+      objectReference: {fileID: 0}
+    - target: {fileID: 114663021368084314, guid: 11626e1f4c462f942a57097ac30ac708,
+        type: 2}
+      propertyPath: horizontalBuffer
+      value: 0.112
+      objectReference: {fileID: 0}
+    - target: {fileID: 114663021368084314, guid: 11626e1f4c462f942a57097ac30ac708,
+        type: 2}
+      propertyPath: continuePoint
+      value: 
+      objectReference: {fileID: 1517323778}
+    - target: {fileID: 114663021368084314, guid: 11626e1f4c462f942a57097ac30ac708,
+        type: 2}
+      propertyPath: pointer
+      value: 
+      objectReference: {fileID: 1369120714}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11626e1f4c462f942a57097ac30ac708, type: 2}
   m_IsPrefabParent: 0

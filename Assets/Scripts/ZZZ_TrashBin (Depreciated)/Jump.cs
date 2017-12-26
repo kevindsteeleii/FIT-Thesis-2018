@@ -33,7 +33,7 @@ public class Jump : MonoBehaviour {
             }
 
             bool jumper = jumpCheck("Jump", "grounded", true, myAnim);
-            if (Input.GetButton("Jump")) { Debug.Log("Jumping"); }
+            if (Input.GetButton("Jump")) // { Debug.Log("Jumping"); }
             if (jumper)
             {
                 Jumper();

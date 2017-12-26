@@ -29,6 +29,11 @@ public class PlayerController : Singleton<PlayerController>
     public event Action<Vector3> PosReSpawnAt;
 
     /// <summary>
+    /// Event that broadcasts the current location of the player character
+    /// </summary>
+    public event Action<Vector3> PlayerPosition;
+
+    /// <summary>
     /// keeps position to be referred to outside
     /// </summary>
     public Vector3 myPos;
@@ -72,6 +77,10 @@ public class PlayerController : Singleton<PlayerController>
     protected virtual void Update()
     {
         myPos = transform.position;
+        if (PlayerPosition != null)
+        {
+            PlayerPosition(myPos);
+        }
     }
 
     // Update is called once per physics action

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlatformSpawner : Singleton<PlatformSpawner>
 {
-    #region Variables
+
 
     //Array of platforms used as pool for platform spawner
     public GameObject[] platforms;
@@ -30,11 +30,18 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
     //variable used for the test number of random platforms generated and the number of each platform loaded for the object pooled version of spawner
     int cap = 5;
 
-    //offset used as buffer between player and spawner offscreen
-    public Vector2 offset = new Vector2(2f, 0f);
+    //Vector3 that shows the player's current position
+    Vector3 PlayerPos;
 
+    /// <summary>
+    ///game object used to mark halfway point or rather check point to trigger last platform skipping to the front 
+    /// </summary>
+    public GameObject continuePoint;
+    public Transform pointer;
 
-    #endregion
+    [Tooltip("Float that determines the amount of gap between teleporting platforms")]
+    [Range(0.01f, 1f)]
+    public float horizontalBuffer;
 
     // Use this for initialization
     void Start()
@@ -48,6 +55,8 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
 
         GameManager.instance.Restarting += ReSpawn;
         GUIManager.instance.Restarted += ReSpawn;
+        PlayerController.instance.PlayerPosition += GetPlayerPosition;
+        continuePoint.transform.SetParent(pointer);
     }
 
     private void Update()
@@ -58,6 +67,54 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
             generated = true;
         }
     }
+
+    private void FixedUpdate()
+    {
+
+        PlatformTeleport(continuePoint.transform.position);
+    }
+
+    /// <summary>
+    /// Assigns the variable that tracks player position for certain features
+    /// </summary>
+    /// <param name="pos"></param>
+    private void GetPlayerPosition(Vector3 pos)
+    {
+        PlayerPos = pos;
+    }
+
+    //compares all objects to see which is the farthest from the beginning
+    private int GetFarPlatform()
+    {
+        int address = 0;
+        for (int i = 0; i < spawnedPlatforms.Count - 1; i++)
+        {
+            if (spawnedPlatforms[address].transform.position.x < spawnedPlatforms[i].transform.position.x)
+            {
+                address = i;
+            }
+        }
+        return address;
+    }
+
+    /// <summary>
+    /// Method that checks to see if the continue checkpoint has passed a 
+    /// platform and proceeds to teleport it to the front upon a positive outcome
+    /// </summary>
+    private void PlatformTeleport(Vector3 checkPoint)
+    {
+        foreach (GameObject obj in spawnedPlatforms)
+        {
+            if (obj.transform.position.x < continuePoint.transform.position.x)
+            {
+                obj.SetActive(false);
+                float length = horizontalBuffer + spawnedPlatforms[GetFarPlatform()].transform.position.x + spawnedPlatforms[GetFarPlatform()].GetComponentInChildren<Collider>().bounds.size.x;
+                obj.transform.position = new Vector3(length, obj.transform.position.y, obj.transform.position.z);
+                obj.SetActive(true);
+            }
+        }
+    }
+
 
     /// <summary>
     /// Respawns the level layout after each player generated restart
@@ -140,7 +197,7 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
         while (nextHeight == previousHeight);
 
         //prevents too much space between next generated platform to allow a jumpable height
-        if (Mathf.Abs(previousHeight - nextHeight) > 3.6)
+        if (Mathf.Abs(previousHeight - nextHeight) > 3.0)
         {
             float dif = Mathf.Abs(previousHeight - nextHeight);
             nextHeight -= 1;
@@ -155,5 +212,4 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
         spawnedPlatforms.Add(tempPlatform);
         //Vector3 loc = tempPlatform.transform.position;
     }
-
 }
