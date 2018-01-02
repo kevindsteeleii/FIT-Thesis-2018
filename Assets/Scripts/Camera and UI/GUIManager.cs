@@ -7,53 +7,44 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GUIManager : Singleton<GUIManager>
 {
-
     public GameObject menu, gameOverScreen;
-    public bool visible { get; private set; }
-    public bool isDead { get; private set; }
+    bool visible;
 
     /// <summary>
-    /// Paused event transmits from GUI Manager when pause button is pressed
+    /// Event transmitted from GUI Manager when pause button is pressed
     /// </summary>
-    public event Action Paused;
+    public event Action On_PauseButton_Sent;
 
     /// <summary>
-    /// Unpaused is transmitted from GUI Manager when pause is exited and game is to resume
+    /// Event transmitted from GUI Manager when pause is exited and game is set to resume
     /// </summary>
-    public event Action Unpaused;
+    public event Action On_ResumeButton_Sent;
 
     /// <summary>
-    /// Restarted is transmitted from GUI Manager upon the restarting of the level/ game loop
+    /// Event transmitted from GUI Manager upon the restarting of the level/ game loop
     /// </summary>
-    public event Action Restarted;
+    public event Action On_RestartButton_Sent;
 
-    protected override void Awake()
+    protected virtual void Start()
     {
-        base.Awake();
-    }
-
-    protected virtual void Start ()
-    {
-        isDead = false;
         //subscribes the event created by the 
-        GameManager.instance.GameOverStateEvent += OnGameOver;
+        GameManager.instance.On_GameOverState_Sent += On_GameOver_Caught;
     }
 
-    public virtual void Continue()
+    protected virtual void Continue()
     {
         Debug.Log("RESUME");
         visible = false;
         gameOverScreen.SetActive(false);
-        //menu.SetActive(false);
-        Unpaused();
+
+        On_ResumeButton_Sent();
     }
 
     //Subscriber that only is triggered by the initiation of the gameOver state change 
-    public virtual void OnGameOver()
+    public virtual void On_GameOver_Caught()
     {
         Debug.Log("GameOver GUI activated");
         gameOverScreen.SetActive(true);
-
     }
 
     /*Restart logic needs to reside in the Game Manager you only need to worry 
@@ -61,15 +52,17 @@ public class GUIManager : Singleton<GUIManager>
     Mind you this is still a WIP gimme a minute... <Kev Note*/
     public virtual void Restart()
     {
-        if (Restarted != null)
+        visible = false;
+        gameOverScreen.SetActive(false);
+
+        if (On_RestartButton_Sent != null)
         {
-            Restarted();
-            Continue();
+            Debug.Log("Sending Restart");
+            On_RestartButton_Sent();
+            Debug.Log("Restarted");
+            //Continue();
         }
-        //Loads the main/active scene asynchronously (the one with camera and player)
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-        //Loads the scene with scene manager in additive mode right after but at time its called
-        SceneManager.LoadScene(sceneBuildIndex: 2, mode: LoadSceneMode.Additive);
+
     }
 
     // Update is called once per frame
@@ -77,19 +70,15 @@ public class GUIManager : Singleton<GUIManager>
     {
         /*checks the gameState and the button presses to make sure things work 
          * dependent of the current game state of the GameManager <Kev Note*/
-        if (ButtonPressed("Start") || ButtonPressed() && GameManager.instance.GetState() == GameState.inGame && Paused != null)
+
+        if (ButtonPressed("Start") || ButtonPressed() && GameManager.instance.GetState() == GameState.inGame && On_PauseButton_Sent != null)
         {
-            Paused();
+            On_PauseButton_Sent();
             visible = true;
         }
-        else if (ButtonPressed("Start") || ButtonPressed() && GameManager.instance.GetState() == GameState.pause && Paused != null)
+        else if (ButtonPressed("Start") || ButtonPressed() && GameManager.instance.GetState() == GameState.pause && On_PauseButton_Sent != null)
         {
             Continue();
-        }
-
-        if (ButtonPressed("Start"))
-        {
-            Debug.Log("Pressed Start Button");
         }
 
         menu.SetActive(visible);
@@ -107,5 +96,4 @@ public class GUIManager : Singleton<GUIManager>
         bool pressed;
         return pressed = (Input.GetButton(button)) ? true : false;
     }
-
 }

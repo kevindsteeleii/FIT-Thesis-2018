@@ -22,7 +22,6 @@ public class EnemyTurret : MonoBehaviour {
     EnemyBehavior thisBehavior;
     //used ast multiplier to affect direction projectile is shot in
     int direction;
-   
 
     //bool set true when enemy behavior is turret as well
     bool turretOn = false;
@@ -49,6 +48,8 @@ public class EnemyTurret : MonoBehaviour {
         myEnemy = this.gameObject.GetComponent<Enemy>();
         StartCoroutine(TurretPatrol());
     }
+
+
 
     //if the subscribing method that has event passed on that carries the behavior enum that then starts or stops the coroutine and changes the turretOn bool
     public void PatrolBehave(EnemyBehavior obj)
@@ -95,7 +96,7 @@ public class EnemyTurret : MonoBehaviour {
     {
         // GameObject shot = Instantiate(bullet, myEnemy.transform.position, Quaternion.identity);
         // shot.GetComponent<Rigidbody>().AddForce(Vector3.right * direction * throwForce);
-        //Debug.Log("Pew Pew");
+        Debug.Log("Pew Pew");
     }
     // Update is called once per frame
     void Update ()

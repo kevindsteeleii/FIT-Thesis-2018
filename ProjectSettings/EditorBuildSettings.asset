@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/20171104_UNITY_GameSceneImplementation_v01_KDS.unity
     guid: fee87e68e0eb473439b1f242af9711b0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/UI/UI_Standalone_fixed(noRestartYet...)_11-04-17_KDS.unity
     guid: b734f97212a723d4fa85a82afa51fc14
   - enabled: 1
@@ -20,3 +20,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lighting.unity
     guid: 6cbe4ebd75518dd4a83258f516a93a16
+  - enabled: 1
+    path: Assets/Scenes/20171124_UNITY_GameSceneImplementation_v02_KDS.unity
+    guid: 74d0b7c71389c994080a44519afb50ab
+  - enabled: 1
+    path: Assets/Scenes/UI/UI_Standalone_11-14-17_KDS.unity
+    guid: b02642ca359fb564abd2152f35f1d846
+  - enabled: 0
+    path: Assets/Scenes/Inputs/Joystick Axis Inputs.unity
+    guid: a5a3bbdb3d1d92248b3ac2e9f1683830
+  - enabled: 0
+    path: Assets/Scenes/Inputs/KeyInputs.unity
+    guid: c230e0f449b486c42ab44912824160b3
+  - enabled: 0
+    path: Assets/Scenes/Inputs/MouseInputs.unity
+    guid: 7233b276852638743b1d2b5b3f4aac50
+  - enabled: 0
+    path: Assets/Scenes/Inputs/TouchInputs.unity
+    guid: 598750a67f162ae4680d5fb62e40164b

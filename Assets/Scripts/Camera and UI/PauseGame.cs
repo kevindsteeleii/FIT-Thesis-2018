@@ -50,7 +50,7 @@ public class PauseGame : Singleton<PauseGame>
 
     protected virtual void Start()
     {
-        PlayerStats.instance.HPAmount += IsDead;
+        PlayerStats.instance.On_HPAmount_Sent += IsDead;
         Continue();
     }
 

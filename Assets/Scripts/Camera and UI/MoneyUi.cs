@@ -11,7 +11,7 @@ public class MoneyUi : MonoBehaviour {
 	void Start () {
 		MoneyText.text = "Oh hai Money";
         //subscribes the GetMoney method's subscription from 
-        PlayerStats.instance.MoneyAmount += GetMoney;
+        PlayerStats.instance.On_MoneyAmount_Sent += GetMoney;
     }
 	
 	// Update is called once per frame

@@ -19,14 +19,14 @@ public class MouseInputTest : MonoBehaviour {
 			if (args is MouseInputArgs) {
 				MouseInputArgs mouseArgs = (MouseInputArgs)args;
 
-				Debug.Log("Mouse position is " + mouseArgs.position.ToString() + ", with a change in position of " + mouseArgs.delta.ToString() + ", at " + mouseArgs.time.ToString("0.00") + " seconds.");
+				//Debug.Log("Mouse position is " + mouseArgs.position.ToString() + ", with a change in position of " + mouseArgs.delta.ToString() + ", at " + mouseArgs.time.ToString("0.00") + " seconds.");
 			}
 		};
 		InputObserver.onInputUp += (InputArgs args) => {
 			if (args is MouseInputArgs) {
 				MouseInputArgs mouseArgs = (MouseInputArgs)args;
 
-				Debug.Log("Mouse position on release " + mouseArgs.position.ToString() + ", with a change in position of " + mouseArgs.delta.ToString() + ", at " + mouseArgs.time.ToString("0.00") + " seconds.");
+				//Debug.Log("Mouse position on release " + mouseArgs.position.ToString() + ", with a change in position of " + mouseArgs.delta.ToString() + ", at " + mouseArgs.time.ToString("0.00") + " seconds.");
 			}
 		};
 	}

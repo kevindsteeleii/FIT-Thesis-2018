@@ -19,16 +19,6 @@ public class PlayerController : Singleton<PlayerController>
     Quaternion rot;
 
     /// <summary>
-    /// Event used to broadcast in the event that character respawns
-    /// </summary>
-    public event Action Respawned;
-
-    /// <summary> **FindMe**
-    /// Event that broadcasts a reference point for the platform spawner
-    /// </summary>
-    public event Action<Vector3> PosReSpawnAt;
-
-    /// <summary>
     /// Event that broadcasts the current location of the player character
     /// </summary>
     public event Action<Vector3> PlayerPosition;
@@ -64,14 +54,7 @@ public class PlayerController : Singleton<PlayerController>
         rot = myRB.transform.rotation;
 
         //assigns ResetHP() as subscriber of Restarting event
-        GameManager.instance.Restarting += ReSpawn;
-        GUIManager.instance.Restarted += ReSpawn;
-
-        //broadcasts the position of player
-        if (PosReSpawnAt != null)
-        {
-            PosReSpawnAt(respawnPos);
-        }
+        GameManager.instance.On_RestartState_Sent += On_ReStartState_Caught;
     }
 
     protected virtual void Update()
@@ -93,7 +76,6 @@ public class PlayerController : Singleton<PlayerController>
         if (GameManager.instance.GetState() == GameState.inGame)
 
         {
-
             #region Horizontal Movement
             float move = 0;
 
@@ -137,17 +119,6 @@ public class PlayerController : Singleton<PlayerController>
                 myAnim.SetBool("slam", true);
             }
         }
-        /*needs to be replaced by a state-driven, menu selected, continue of sorts*/
-        else if (GameManager.instance.GetState() == GameState.gameOver)
-        {
-            if (undead)
-            {
-                if (Respawned != null)
-                {
-                    Respawned();
-                }
-            }
-        }
     }
 
     /// <summary>
@@ -178,7 +149,7 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     //respawns transform and animation info
-    protected virtual void ReSpawn()
+    protected virtual void On_ReStartState_Caught()
     {
         transform.SetPositionAndRotation(respawnPos, rot);
         myAnim.SetBool("dead", false);

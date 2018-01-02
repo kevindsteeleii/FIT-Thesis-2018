@@ -28,7 +28,7 @@ public class HealthBar : Singleton<HealthBar>
         sliderGroup.alpha = 1;
 
         //GetHPBar listens for the event of HPAmount changing
-        PlayerStats.instance.HPAmount += GetHPBar;
+        PlayerStats.instance.On_HPAmount_Sent += GetHPBar;
     }
 
     // Update is called once per frame

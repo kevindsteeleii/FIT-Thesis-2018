@@ -21,17 +21,17 @@ public class PlayerStats : Singleton<PlayerStats>
     /// <summary>
     /// When Hp reaches zero, talk to subscriber
     /// </summary>
-    public event Action HPisZero;
+    public event Action On_ZeroHP_Sent;
 
     /// <summary>
     /// Event that transmits the HP amount to a subscriber to listen for.
     /// </summary>
-    public event Action<int> HPAmount;
+    public event Action<int> On_HPAmount_Sent;
 
     /// <summary>
     /// Event that transmits the Monetary amount to a subscriber to listen for.
     /// </summary>
-    public event Action<int> MoneyAmount;
+    public event Action<int> On_MoneyAmount_Sent;
 
     bool invincible;
 
@@ -48,7 +48,7 @@ public class PlayerStats : Singleton<PlayerStats>
         invincible = false;
         Wallet = 0;
         //assigns ResetHP() as subscriber of Restarting event
-        GameManager.instance.Restarting += ResetHP;
+        GameManager.instance.On_RestartState_Sent += ResetHP;
     }
 
     void Update()
@@ -62,9 +62,9 @@ public class PlayerStats : Singleton<PlayerStats>
         //if hp is  0 or less broadcasts the event that hp is zero to game manager to start gameover
         if (HP <= 0)
         {
-            if (HPisZero != null)
+            if (On_ZeroHP_Sent != null)
             {
-                HPisZero();
+                On_ZeroHP_Sent();
             }
         }
 
@@ -80,14 +80,14 @@ public class PlayerStats : Singleton<PlayerStats>
             //Debug.Log("Now Mortal Again!!");
         }
 
-        if (HPAmount != null)
+        if (On_HPAmount_Sent != null)
         {
-            HPAmount(HP);
+            On_HPAmount_Sent(HP);
         }
 
-        if (MoneyAmount != null)
+        if (On_MoneyAmount_Sent != null)
         {
-            MoneyAmount(Wallet);
+            On_MoneyAmount_Sent(Wallet);
         }
     }
 
@@ -96,6 +96,7 @@ public class PlayerStats : Singleton<PlayerStats>
     /// </summary>
     void ResetHP()
     {
+        Debug.Log("HP is reset!!!");
         HP = stats.maxHP;
     }
 
@@ -134,7 +135,7 @@ public class PlayerStats : Singleton<PlayerStats>
     }
 
     //handles damage taken by player character and its effects
-    public void takeDamage(int dmg)
+    public void TakeDamage(int dmg)
     {
         if (!invincible)
         {
@@ -150,7 +151,7 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         if (col.gameObject.tag == "Enemy" && !invincible)
         {
-            takeDamage(col.gameObject.GetComponent<Enemy>().damage);
+            TakeDamage(col.gameObject.GetComponent<Enemy>().damage);
             //Debug.Log("I've been hit!");
         }
 

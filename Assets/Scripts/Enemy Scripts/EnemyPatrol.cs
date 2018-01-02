@@ -21,7 +21,10 @@ public class EnemyPatrol : MonoBehaviour
 
     //bool that determines whether or not the enemy is patrolling
     bool patrolling = false;
-    
+
+    //location of the center of movement
+    Vector3 centerVec;
+
     /// <summary>
     /// Sets up the platform's info that the 
     /// </summary>
@@ -39,6 +42,12 @@ public class EnemyPatrol : MonoBehaviour
         //endPatrolling = enemyPost.endPatrol;
         this.gameObject.GetComponent<Enemy>().SendBehavior += PatrolBehave;
         this.gameObject.GetComponent<Enemy>().EnPlatformIs += PlatformGet;
+        this.gameObject.GetComponent<Enemy>().PlatformMoved += GetCentered;
+    }
+
+    private void GetCentered(Vector3 tempVec)
+    {
+        centerVec = tempVec;
     }
 
     void PlatformGet(Platforms obj)
@@ -65,7 +74,7 @@ public class EnemyPatrol : MonoBehaviour
 
     void Update()
     {
-        Vector3 pos = enemyPost.transform.position;
+        Vector3 pos = centerVec;
         float distance = enemyPost.delta - xOffset;
 
         if (!patrolling)

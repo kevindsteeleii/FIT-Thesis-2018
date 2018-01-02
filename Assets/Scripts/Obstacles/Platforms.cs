@@ -32,6 +32,14 @@ public class Platforms : MonoBehaviour
 
     [SerializeField]
     Transform endPoint;
+    /// <summary>
+    /// Returns the World Location of the endpoint inside of the 
+    /// </summary>
+    /// <returns></returns>
+    public Vector3 GetEndPoint()
+    {
+        return endPoint.transform.position;
+    }
 
     /// <summary>
     /// The absolute value distance from the center to either edge of the platform
@@ -42,7 +50,11 @@ public class Platforms : MonoBehaviour
     /// If true makes the Platform 
     /// </summary>
     public bool isRandomMovement;
-    
+
+    /// <summary>
+    /// Event that broadcasts upon platform being cycled to front/back based on where player is in scene.
+    /// </summary>
+    public event Action<Vector3> PlatformMoved;
 
     /// <summary>
     /// Enumeration that assigns default behavior of platform
@@ -132,6 +144,14 @@ public class Platforms : MonoBehaviour
     public Vector3 GetCenter()
     {
         return centerPoint;
+    }
+
+    private void Update()
+    {
+        if (PlatformMoved != null)
+        {
+            PlatformMoved(centerPoint);
+        }
     }
 
     //deals with the positional data of the particular platform obstacle

@@ -22,8 +22,8 @@ public class EnemySpawner : Singleton<EnemySpawner>
     // Use this for initialization
     void Start()
     {
-        PlatformSpawner.instance.PlatformsHaveSpawned += SpawnEnemies;
-        PlatformSpawner.instance.PlatformPass += SetTempPlatform;
+        PlatformSpawner.instance.On_PlatformsHaveSpawned_Sent += SpawnEnemies;
+        PlatformSpawner.instance.On_PlatformPass_Sent += SetTempPlatform;
     }
 
     //function that subscribes to the platformSpawner's event that passes list of vector3s of the platforms created
@@ -36,7 +36,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
         //if even number then appear
         if (randInt % 2 == 0)
         {
-            Debug.Log(platPos + " is the location of a platform \n");
+            //Debug.Log(platPos + " is the location of a platform \n");
             GameObject tempObj = Instantiate(enemy, platPos, Quaternion.identity);
             tempObj.GetComponentInChildren<Enemy>().SetPlatform(TempPlatforms);
             tempObj.transform.SetParent(this.gameObject.transform);

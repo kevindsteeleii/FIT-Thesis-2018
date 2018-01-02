@@ -1,37 +1,37 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlatformSpawner : Singleton<PlatformSpawner>
 {
-
-
     //Array of platforms used as pool for platform spawner
     public GameObject[] platforms;
     //List that populates with all the platforms made by spawner to allow access by external components
     public List<GameObject> spawnedPlatforms;
+
     //Height ranges to spawn at
     float bottom = -.5f;
-    float top = 3.8f;
+    float top = 3f;
     bool generated = false;
 
     /// <summary>
     /// Event broadcast from PlatformSpawner upon spawning platforms
     /// </summary>
-    public event Action<Vector3> PlatformsHaveSpawned;
+    public event Action<Vector3> On_PlatformsHaveSpawned_Sent;
 
     /// <summary>
     /// Event that broadcasts to the enemySpawner to pass to the spawned enemyies' patrol component certain data.
     /// </summary>
-    public event Action<Platforms> PlatformPass;
+    public event Action<Platforms> On_PlatformPass_Sent;
 
     // variables used to "save" previous and next heights of the 
     float previousHeight, nextHeight;
     //variable used for the test number of random platforms generated and the number of each platform loaded for the object pooled version of spawner
     int cap = 5;
 
-    //Vector3 that shows the player's current position
-    Vector3 PlayerPos;
+    //array that holds the original "addresses" of the platforms generated
+    public List<Vector3> platLocations;
 
     /// <summary>
     ///game object used to mark halfway point or rather check point to trigger last platform skipping to the front 
@@ -52,44 +52,82 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
         an offset that then keeps ahead of the player to a certain extent 
         while generating platforms*/
         SpawnNewPlatformAt(Vector3.zero);
-
-        GameManager.instance.Restarting += ReSpawn;
-        GUIManager.instance.Restarted += ReSpawn;
-        PlayerController.instance.PlayerPosition += GetPlayerPosition;
+        GameManager.instance.On_RestartState_Sent += On_ReStartState_Caught;
         continuePoint.transform.SetParent(pointer);
     }
 
+
     private void Update()
     {
-        if (PlatformsHaveSpawned != null && PlatformPass != null && !generated)
+        if (On_PlatformsHaveSpawned_Sent != null && On_PlatformPass_Sent != null && !generated)
         {
             StartCoroutine("SendPositions");
-            generated = true;
         }
     }
 
     private void FixedUpdate()
     {
-
         PlatformTeleport(continuePoint.transform.position);
     }
 
     /// <summary>
-    /// Assigns the variable that tracks player position for certain features
+    /// Returns position of the object entered
     /// </summary>
-    /// <param name="pos"></param>
-    private void GetPlayerPosition(Vector3 pos)
+    /// <param name="obj"></param>
+    /// <returns></returns>
+    protected virtual Vector3 GetPosition(GameObject obj)
     {
-        PlayerPos = pos;
+        return obj.transform.position;
     }
 
-    //compares all objects to see which is the farthest from the beginning
-    private int GetFarPlatform()
+    /// <summary>
+    /// Adds gameObject world location one object at a time.
+    /// </summary>
+    /// <param name="temp"></param>
+    protected virtual void SavePlatformAddresses(GameObject temp)
+    {
+        platLocations.Add(temp.transform.position);
+    }
+
+    /// <summary>
+    /// On reset, sets all platforms back to original world locations.
+    /// </summary>
+    protected virtual void ReloadPlatformAddresses()
+    {
+        for (int i = 0; i < spawnedPlatforms.Count; i++)
+        {
+            spawnedPlatforms[i].transform.position = platLocations[i];
+        }
+    }
+
+
+    /// <summary>
+    ///  Compares all platforms to see which is the farthest to the right and returns its corresponding array address.
+    /// </summary>
+    /// <returns></returns>
+    protected virtual int GetFarPlatform()
     {
         int address = 0;
-        for (int i = 0; i < spawnedPlatforms.Count - 1; i++)
+        for (int i = 0; i < spawnedPlatforms.Count; i++)
         {
             if (spawnedPlatforms[address].transform.position.x < spawnedPlatforms[i].transform.position.x)
+            {
+                address = i;
+            }
+        }
+        return address;
+    }
+
+    /// <summary>
+    ///  Compares all platforms to see which is the closest to the left and returns its corresponding array address.
+    /// </summary>
+    /// <returns></returns>
+    protected virtual int GetClosePlatform()
+    {
+        int address = 0;
+        for (int i = 0; i < spawnedPlatforms.Count; i++)
+        {
+            if (spawnedPlatforms[address].transform.position.x > spawnedPlatforms[i].transform.position.x)
             {
                 address = i;
             }
@@ -101,7 +139,7 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
     /// Method that checks to see if the continue checkpoint has passed a 
     /// platform and proceeds to teleport it to the front upon a positive outcome
     /// </summary>
-    private void PlatformTeleport(Vector3 checkPoint)
+    protected virtual void PlatformTeleport(Vector3 checkPoint)
     {
         foreach (GameObject obj in spawnedPlatforms)
         {
@@ -115,34 +153,32 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
         }
     }
 
-
     /// <summary>
     /// Respawns the level layout after each player generated restart
     /// </summary>
-    void ReSpawn()
+    protected virtual void On_ReStartState_Caught()
     {
         Debug.Log(" Platforms are supposed to Respawn Here!!");
-        cap = 5; //**need to be changed to a method that reshuffles the pooled platforms order
-        generated = false;
-        SpawnNewPlatformAt(Vector3.zero);
+        //SpawnNewPlatformAt(Vector3.zero);
+        ReloadPlatformAddresses();
     }
-
 
     /// <summary>
     /// Coroutine used to transmit the vector3 center position of each generated platform in turn
     /// </summary>
     /// <returns></returns>
-    System.Collections.IEnumerator SendPositions()
+    IEnumerator SendPositions()
     {
         yield return null;
 
         foreach (GameObject item in spawnedPlatforms)
         {
             Platforms temp = item.GetComponentInChildren<Platforms>();
-            PlatformPass(temp);
+            On_PlatformPass_Sent(temp);
             Vector3 pos = temp.GetCenter();
-            PlatformsHaveSpawned(pos);
+            On_PlatformsHaveSpawned_Sent(pos);
         }
+        generated = true;
     }
 
     /// <summary>
@@ -151,7 +187,7 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
     /// <param name="lower"></param>
     /// <param name="upper"></param>
     /// <returns></returns>
-    float RandFloat(float lower, float upper)
+    protected virtual float RandFloat(float lower, float upper)
     {
         float randFloat = 0f;
         randFloat = UnityEngine.Random.Range(lower, upper);
@@ -164,7 +200,7 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
     /// <param name="lower"></param>
     /// <param name="upper"></param>
     /// <returns></returns>
-    int RandInt(int lower, int upper)
+    protected virtual int RandInt(int lower, int upper)
     {
         int randInt = 0;
         randInt = (int)RandFloat(lower, upper);
@@ -183,9 +219,10 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
         {
             return;
         }
+
         cap--;
 
-        #region Random non-repeating height generating code 
+        #region Random non-repeating height generating code to be encapsulated in own individual method later on...
         //prevents same height instantiations of platforms spawned, loops back if same goes at least once before checking loop condition
         do
         {
@@ -210,6 +247,7 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
         tempPlatform.transform.SetParent(this.gameObject.transform);
         //adds spawned platform to the list used for enemy spawning
         spawnedPlatforms.Add(tempPlatform);
-        //Vector3 loc = tempPlatform.transform.position;
+        SavePlatformAddresses(tempPlatform);
     }
+
 }

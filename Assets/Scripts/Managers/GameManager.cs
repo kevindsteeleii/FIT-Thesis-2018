@@ -19,33 +19,30 @@ public class GameManager : Singleton<GameManager>
     /// <summary>
     /// Event that broadcasts from Game Manager upon restart after death.
     /// </summary>
-    public event Action Restarting;
+    public event Action On_RestartState_Sent;
 
     /// <summary>
     /// Event that broadcasts Death state from the game manager upon death.
     /// </summary>
-    public event Action GameOverStateEvent;
+    public event Action On_GameOverState_Sent;
     #endregion
 
     protected override void Awake()
     {
         base.Awake();
-        //DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this);
     }
 
     // Use this for initialization
     protected virtual void Start()
     {
         //Used to alert the GameOver 
-        PlayerStats.instance.HPisZero += GameOver;
-
-        //upon respawned
-        PlayerController.instance.Respawned += ResetGame;
+        PlayerStats.instance.On_ZeroHP_Sent += On_ZeroHP_Caught;
 
         //subscribes the pause game inputs to game state setting methods
-        GUIManager.instance.Paused += Pause;
-        GUIManager.instance.Unpaused += UnPause;
-        GUIManager.instance.Restarted += StartGame;
+        GUIManager.instance.On_PauseButton_Sent += On_PauseButton_Caught;
+        GUIManager.instance.On_ResumeButton_Sent += On_ResumeButton_Caught;
+        GUIManager.instance.On_RestartButton_Sent += On_RestartButton_Caught;
 
         StartGame();
     }
@@ -55,9 +52,9 @@ public class GameManager : Singleton<GameManager>
         //Debug.Log("Current State is " + gameState);
 
         //when game state is gameover an event is broadcast to the appropriate subscribers 
-        if (gameState == GameState.gameOver && GameOverStateEvent != null)
+        if (gameState == GameState.gameOver && On_GameOverState_Sent != null)
         {
-            GameOverStateEvent();
+            On_GameOverState_Sent();
             GameOver();
         }
     }
@@ -100,32 +97,41 @@ public class GameManager : Singleton<GameManager>
     /// <summary>
     /// Upon Reset an event is launched to pertinent listeners.
     /// </summary>
-    public virtual void ResetGame()
+    public virtual void On_RestartButton_Caught()
     {
         SetGameState(GameState.inGame);
-        if (Restarting != null)
+        Time.timeScale = 1;
+
+        if (On_RestartState_Sent != null)
         {
-            Restarting();
+            On_RestartState_Sent();
         }
     }
 
     //death sate renders hp to zero
-    public virtual void GameOver()
+    public virtual void On_ZeroHP_Caught()
     {
         Time.timeScale = 0;
         SetGameState(GameState.gameOver);
         //PlayerStats.instance.hp = 0;
     }
 
+    public virtual void GameOver()
+    {
+        On_ZeroHP_Caught();
+    }
+
+
     //will refactor the pause and unpause methods later, going to sleep < Kev note
-    public virtual void Pause()
+    public virtual void On_PauseButton_Caught()
     {
         Time.timeScale = 0;
         SetGameState(GameState.pause);
     }
 
-    public virtual void UnPause()
+    public virtual void On_ResumeButton_Caught()
     {
+        Console.WriteLine("UnPaused!!");
         Time.timeScale = 1;
         SetGameState(GameState.inGame);
     }
@@ -135,4 +141,3 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("Current State is " + gameState);
     }
 }
-
