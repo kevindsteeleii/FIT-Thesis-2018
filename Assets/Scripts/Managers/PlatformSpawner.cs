@@ -6,7 +6,8 @@ using UnityEngine;
 public class PlatformSpawner : Singleton<PlatformSpawner>
 {
     //Array of platforms used as pool for platform spawner
-    public GameObject[] platforms;
+    [SerializeField]
+    GameObject[] platforms;
     //List that populates with all the platforms made by spawner to allow access by external components
     public List<GameObject> spawnedPlatforms;
 
@@ -31,12 +32,15 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
     int cap = 5;
 
     //array that holds the original "addresses" of the platforms generated
-    public List<Vector3> platLocations;
+    List<Vector3> platLocations;
 
     /// <summary>
     ///game object used to mark halfway point or rather check point to trigger last platform skipping to the front 
     /// </summary>
     public GameObject continuePoint;
+    /// <summary>
+    /// Transform that the continuePoint follows AKA the player character
+    /// </summary>
     public Transform pointer;
 
     [Tooltip("Float that determines the amount of gap between teleporting platforms")]
@@ -53,6 +57,7 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
         while generating platforms*/
         SpawnNewPlatformAt(Vector3.zero);
         GameManager.instance.On_RestartState_Sent += On_ReStartState_Caught;
+
         continuePoint.transform.SetParent(pointer);
     }
 

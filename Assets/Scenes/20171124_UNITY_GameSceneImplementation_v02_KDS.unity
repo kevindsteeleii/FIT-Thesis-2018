@@ -538,6 +538,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114663021368084314, guid: 11626e1f4c462f942a57097ac30ac708,
         type: 2}
+      propertyPath: platLocations.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114663021368084314, guid: 11626e1f4c462f942a57097ac30ac708,
+        type: 2}
       propertyPath: spawnedPlatforms.Array.size
       value: 0
       objectReference: {fileID: 0}

@@ -62,7 +62,6 @@ public class GUIManager : Singleton<GUIManager>
             Debug.Log("Restarted");
             //Continue();
         }
-
     }
 
     // Update is called once per frame
