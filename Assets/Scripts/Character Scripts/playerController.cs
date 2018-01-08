@@ -21,12 +21,13 @@ public class PlayerController : Singleton<PlayerController>
     /// <summary>
     /// Event that broadcasts the current location of the player character
     /// </summary>
-    public event Action<Vector3> PlayerPosition;
+    public event Action<Vector3> onPlayerPosition;
 
     /// <summary>
     /// keeps position to be referred to outside
     /// </summary>
     public Vector3 myPos;
+
 
     /// <summary>
     /// Delegates used to speed up runtime of checking the parameters and buttons of a resulting
@@ -54,15 +55,15 @@ public class PlayerController : Singleton<PlayerController>
         rot = myRB.transform.rotation;
 
         //assigns ResetHP() as subscriber of Restarting event
-        GameManager.instance.On_RestartState_Sent += On_ReStartState_Caught;
+        GameManager.instance.onRestartState += On_ReStartState_Caught;
     }
 
     protected virtual void Update()
     {
         myPos = transform.position;
-        if (PlayerPosition != null)
+        if (onPlayerPosition != null)
         {
-            PlayerPosition(myPos);
+            onPlayerPosition(myPos);
         }
     }
 

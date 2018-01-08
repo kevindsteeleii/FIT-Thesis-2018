@@ -13,22 +13,22 @@ public class GUIManager : Singleton<GUIManager>
     /// <summary>
     /// Event transmitted from GUI Manager when pause button is pressed
     /// </summary>
-    public event Action On_PauseButton_Sent;
+    public event Action onPauseButton;
 
     /// <summary>
     /// Event transmitted from GUI Manager when pause is exited and game is set to resume
     /// </summary>
-    public event Action On_ResumeButton_Sent;
+    public event Action onResumeButton;
 
     /// <summary>
     /// Event transmitted from GUI Manager upon the restarting of the level/ game loop
     /// </summary>
-    public event Action On_RestartButton_Sent;
+    public event Action onRestartButton;
 
     protected virtual void Start()
     {
         //subscribes the event created by the 
-        GameManager.instance.On_GameOverState_Sent += On_GameOver_Caught;
+        GameManager.instance.onGameOverState += OnGameOverState;
     }
 
     protected virtual void Continue()
@@ -37,11 +37,11 @@ public class GUIManager : Singleton<GUIManager>
         visible = false;
         gameOverScreen.SetActive(false);
 
-        On_ResumeButton_Sent();
+        onResumeButton();
     }
 
     //Subscriber that only is triggered by the initiation of the gameOver state change 
-    public virtual void On_GameOver_Caught()
+    public virtual void OnGameOverState()
     {
         Debug.Log("GameOver GUI activated");
         gameOverScreen.SetActive(true);
@@ -55,10 +55,10 @@ public class GUIManager : Singleton<GUIManager>
         visible = false;
         gameOverScreen.SetActive(false);
 
-        if (On_RestartButton_Sent != null)
+        if (onRestartButton != null)
         {
             Debug.Log("Sending Restart");
-            On_RestartButton_Sent();
+            onRestartButton();
             Debug.Log("Restarted");
             //Continue();
         }
@@ -70,12 +70,12 @@ public class GUIManager : Singleton<GUIManager>
         /*checks the gameState and the button presses to make sure things work 
          * dependent of the current game state of the GameManager <Kev Note*/
 
-        if (ButtonPressed("Start") || ButtonPressed() && GameManager.instance.GetState() == GameState.inGame && On_PauseButton_Sent != null)
+        if (ButtonPressed("Start") || ButtonPressed() && GameManager.instance.GetState() == GameState.inGame && onPauseButton != null)
         {
-            On_PauseButton_Sent();
+            onPauseButton();
             visible = true;
         }
-        else if (ButtonPressed("Start") || ButtonPressed() && GameManager.instance.GetState() == GameState.pause && On_PauseButton_Sent != null)
+        else if (ButtonPressed("Start") || ButtonPressed() && GameManager.instance.GetState() == GameState.pause && onPauseButton != null)
         {
             Continue();
         }

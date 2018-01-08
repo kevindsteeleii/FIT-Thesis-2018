@@ -48,7 +48,7 @@ public class PlayerStats : Singleton<PlayerStats>
         invincible = false;
         Wallet = 0;
         //assigns ResetHP() as subscriber of Restarting event
-        GameManager.instance.On_RestartState_Sent += ResetHP;
+        GameManager.instance.onRestartState += ResetHP;
     }
 
     void Update()

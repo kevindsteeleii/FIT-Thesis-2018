@@ -31,8 +31,9 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
     //variable used for the test number of random platforms generated and the number of each platform loaded for the object pooled version of spawner
     int cap = 5;
 
+    bool playerFacesRight = true;
     //array that holds the original "addresses" of the platforms generated
-    List<Vector3> platLocations;
+    public List<Vector3> platLocations;
 
     /// <summary>
     ///game object used to mark halfway point or rather check point to trigger last platform skipping to the front 
@@ -56,11 +57,9 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
         an offset that then keeps ahead of the player to a certain extent 
         while generating platforms*/
         SpawnNewPlatformAt(Vector3.zero);
-        GameManager.instance.On_RestartState_Sent += On_ReStartState_Caught;
-
         continuePoint.transform.SetParent(pointer);
+        GameManager.instance.onRestartState += On_ReStartState_Caught;
     }
-
 
     private void Update()
     {
@@ -91,6 +90,7 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
     /// <param name="temp"></param>
     protected virtual void SavePlatformAddresses(GameObject temp)
     {
+        Debug.Log("Platform position is " + temp.transform.position);
         platLocations.Add(temp.transform.position);
     }
 
@@ -153,6 +153,10 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
                 obj.SetActive(false);
                 float length = horizontalBuffer + spawnedPlatforms[GetFarPlatform()].transform.position.x + spawnedPlatforms[GetFarPlatform()].GetComponentInChildren<Collider>().bounds.size.x;
                 obj.transform.position = new Vector3(length, obj.transform.position.y, obj.transform.position.z);
+                obj.SetActive(true);
+            }
+            else
+            {
                 obj.SetActive(true);
             }
         }
