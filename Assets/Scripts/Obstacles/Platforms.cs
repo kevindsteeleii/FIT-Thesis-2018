@@ -8,7 +8,6 @@ using System.Collections.Generic;
 /// </summary>
 public enum PlatformBehavior { Normal, Disappearing, Moving, Falling };
 
-
 /// <summary>
 /// Enumeration that handles the kind of movement the platform performs if its behavior enumeration = moving and defaults to none if any other type of behavior
 /// </summary>
@@ -32,13 +31,21 @@ public class Platforms : MonoBehaviour
 
     [SerializeField]
     Transform endPoint;
+
+    /// <summary>
+    /// Event that broadcasts the location of the platform
+    /// </summary>
+    public event Action<Vector3> On_PlatformSpawned_Sent;
+
     /// <summary>
     /// Returns the World Location of the endpoint inside of the 
     /// </summary>
     /// <returns></returns>
     public Vector3 GetEndPoint()
     {
-        return endPoint.transform.position;
+        Vector3 pos = collider.bounds.max;
+        return pos;
+        //return endPoint.transform.position;
     }
 
     /// <summary>
@@ -70,13 +77,13 @@ public class Platforms : MonoBehaviour
             collider = this.GetComponent<Collider>();
         }
 
-        platform = this.gameObject;
+        platform = gameObject;
 
         delta = collider.bounds.extents.x;
 
         // just for debugging
         // remove later
-        PlatformSpawner.instance.SpawnNewPlatformAt(endPoint.position);
+        //PlatformSpawner.instance.SpawnNewPlatformAt(endPoint.position);
 
         if (isRandomMovement)
         {
@@ -148,9 +155,14 @@ public class Platforms : MonoBehaviour
 
     private void Update()
     {
-        if (PlatformMoved != null)
+        if (On_PlatformSpawned_Sent != null)
         {
-            PlatformMoved(centerPoint);
+            On_PlatformSpawned_Sent(centerPoint);
+
+            if (PlatformMoved != null)
+            {
+                PlatformMoved(centerPoint);
+            }
         }
     }
 
@@ -161,9 +173,5 @@ public class Platforms : MonoBehaviour
         centerPoint = collider.bounds.center;
         //distance from center to end of the object on x-axis
         float width = collider.bounds.extents.x;
-
-        //this will have to be changed for non-boxy platforms/obstacles in the future
-        //startPatrol = new Vector3(centerPoint.x - width, centerPoint.y, centerPoint.z);
-        //endPatrol = new Vector3(centerPoint.x + width, centerPoint.y, centerPoint.z);
     }
 }

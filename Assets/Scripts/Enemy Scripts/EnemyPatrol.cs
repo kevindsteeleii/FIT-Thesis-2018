@@ -34,17 +34,6 @@ public class EnemyPatrol : MonoBehaviour
         enemyPost = platform;
     }
 
-    // Use this for initialization
-    void Start()
-    {
-        //assigns the beginning and end of the collider of the platform the enemy will be patrolling upon
-        //startPatrolling = enemyPost.startPatrol;
-        //endPatrolling = enemyPost.endPatrol;
-        this.gameObject.GetComponent<Enemy>().SendBehavior += PatrolBehave;
-        this.gameObject.GetComponent<Enemy>().EnPlatformIs += PlatformGet;
-        this.gameObject.GetComponent<Enemy>().PlatformMoved += GetCentered;
-    }
-
     private void GetCentered(Vector3 tempVec)
     {
         centerVec = tempVec;
@@ -72,21 +61,21 @@ public class EnemyPatrol : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        Vector3 pos = centerVec;
-        float distance = enemyPost.delta - xOffset;
+    //void Update()
+    //{
+    //    Vector3 pos = centerVec;
+    //    float distance = enemyPost.delta - xOffset;
 
-        if (!patrolling)
-        {
-            return;
-        }
+    //    if (!patrolling)
+    //    {
+    //        return;
+    //    }
 
-        else
-        {
-            //oscillates between either extreme with an offset with specified timing
-            pos.x += distance * Mathf.Sin(Time.time * speed);
-            transform.position = pos;
-        }
-    }
+    //    else
+    //    {
+    //        //oscillates between either extreme with an offset with specified timing
+    //        pos.x += distance * Mathf.Sin(Time.time * speed);
+    //        transform.position = pos;
+    //    }
+    //}
 }

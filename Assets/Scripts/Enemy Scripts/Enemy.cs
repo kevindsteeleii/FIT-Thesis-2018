@@ -8,25 +8,14 @@ public enum EnemyBehavior { None, Patrolling, Turret, Floating, total };
 /// <summary>
 /// Enemy base class used to determine basic information and behavior of enemy class
 /// </summary>
-[RequireComponent(typeof(EnemyPatrol), typeof(EnemyTurret))]
+//[RequireComponent(typeof(EnemyPatrol), typeof(EnemyTurret))]
 public class Enemy : MonoBehaviour
 {
 
     #region Global Variables
     //the physical body of the enemy itself
     [SerializeField]
-    public GameObject body;
-
-    /// <summary>
-    /// Platform enemy is place upon
-    /// </summary>
-    [SerializeField]
-    Platforms enPlatform;
-
-    /// <summary>
-    /// Event that transmits which platform enemy is assigned to
-    /// </summary>
-    public event Action<Platforms> EnPlatformIs;
+    GameObject body;
 
     /// <summary>
     /// Event that transmits from Enemy to trigger ammo stocking 
@@ -48,11 +37,6 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public event Action<EnemyBehavior> SendBehavior;
 
-    /// <summary>
-    /// Event that broadcasts the current center position of the platform
-    /// </summary>
-    public event Action<Vector3> PlatformMoved;
-
     //allows for adjustment of enemy health points
     [Range(0, 25)]
     public int HP;
@@ -67,8 +51,6 @@ public class Enemy : MonoBehaviour
 
     [Range(0, 25)]
     public int damage;
-    //CenterPosition to be passed to derived classes 
-    public Vector3 centerPos;
     #endregion
 
     // Use this for initialization
@@ -76,18 +58,8 @@ public class Enemy : MonoBehaviour
     {
         body = this.gameObject;
         saveHP = HP;
-        enPlatform.PlatformMoved += EnPlatform_PlatformMoved;
-
-    }
-
-    private void EnPlatform_PlatformMoved(Vector3 pos)
-    {
-        centerPos = pos;
-    }
-
-    protected virtual void PlatformMoveAdjust()
-    {
-        this.transform.position = centerPos;
+        //enPlatform.PlatformMoved += EnPlatform_PlatformMoved;
+        RandomBehavior(randomBehavior);
     }
 
     protected virtual void Update()
@@ -104,24 +76,11 @@ public class Enemy : MonoBehaviour
         {
             SendBehavior(enBehavior);
         }
-
-        if (EnPlatformIs != null)
-        {
-            EnPlatformIs(enPlatform);
-        }
-
-        if (PlatformMoved != null)
-        {
-            PlatformMoved(centerPos);
-        }
-
-        if (enBehavior == EnemyBehavior.None  || enBehavior == EnemyBehavior.Turret)
-        {
-            PlatformMoveAdjust();
-        }
-
-        //if random behavior is toggled it randomly assigns the behavior type
-        if (randomBehavior)
+    }
+    //if random behavior is toggled it randomly assigns the behavior type
+    protected virtual void RandomBehavior(bool active)
+    {
+        if (active)
         {
             int pick = UnityEngine.Random.Range(0, EnemyBehavior.total.GetHashCode() - 1);
             enBehavior = (EnemyBehavior)pick;
@@ -150,16 +109,6 @@ public class Enemy : MonoBehaviour
                 break;
         }
         enBehavior = behavior;
-    }
-
-    /// <summary>
-    /// Assigns Platform of player the value of passed param.
-    /// </summary>
-    /// <param name="tempPlat"></param>
-    public virtual void SetPlatform(Platforms tempPlat)
-    {
-        enPlatform = tempPlat;
-        Debug.Log("Platform Assigned!!");
     }
 
     /// <summary>

@@ -1,11 +1,17 @@
 ﻿using UnityEngine;
+using System;
 
-public class PlatformRemoverControl : MonoBehaviour
+public class PlatformRemoverControl : Singleton<PlatformRemoverControl>
 {
 
     public Transform target;
     float horizontalOffSet;
     Vector3 respawnPos, hidden;
+
+    /// <summary>
+    /// Event that sends the Vector3 location of the platform remover to a recipient
+    /// </summary>
+    public event Action<Vector3> On_PlatformRemoverPass_Sent;
 
     // Use this for initialization
     void Start()
@@ -28,6 +34,11 @@ public class PlatformRemoverControl : MonoBehaviour
         Vector3 pos = this.transform.position;
         pos.x = target.position.x - horizontalOffSet;
         this.transform.position = pos;
+        //sends the platformRemover's location to a subscriber/listener
+        if (On_PlatformRemoverPass_Sent != null)
+        {
+            On_PlatformRemoverPass_Sent(transform.position);
+        }
 
     }
 
