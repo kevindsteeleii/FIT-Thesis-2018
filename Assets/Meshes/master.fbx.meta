@@ -1,0 +1,256 @@
+fileFormatVersion: 2
+guid: 86c61f557ef168140b16139e086a72ae
+timeCreated: 1516725678
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: elbow
+    100002: hips
+    100004: ikHandle6
+    100006: joint16
+    100008: joint17
+    100010: joint18
+    100012: joint19
+    100014: joint22
+    100016: joint23
+    100018: joint24
+    100020: joint25
+    100022: joint32
+    100024: joint34
+    100026: joint35
+    100028: joint36
+    100030: joint37
+    100032: joint38
+    100034: joint39
+    100036: joint40
+    100038: joint41
+    100040: joint42
+    100042: Lleg
+    100044: //RootNode
+    100046: mesh
+    100048: pCube1
+    100050: pCube2
+    100052: pCube3
+    100054: pCube4
+    100056: pCube5
+    100058: pCube6
+    100060: pCube7
+    100062: pCube8
+    100064: pCube9
+    100066: pCylinder1
+    100068: pCylinder11
+    100070: pCylinder12
+    100072: pCylinder13
+    100074: pCylinder15
+    100076: pCylinder16
+    100078: pCylinder17
+    100080: pCylinder4
+    100082: pCylinder5
+    100084: pCylinder6
+    100086: pCylinder7
+    100088: pCylinder8
+    100090: pCylinder9
+    100092: pSphere1
+    100094: pSphere2
+    100096: pSphere3
+    100098: pSphere4
+    100100: Rleg
+    100102: spine
+    100104: upper_body1
+    100106: upper_body_thing
+    400000: elbow
+    400002: hips
+    400004: ikHandle6
+    400006: joint16
+    400008: joint17
+    400010: joint18
+    400012: joint19
+    400014: joint22
+    400016: joint23
+    400018: joint24
+    400020: joint25
+    400022: joint32
+    400024: joint34
+    400026: joint35
+    400028: joint36
+    400030: joint37
+    400032: joint38
+    400034: joint39
+    400036: joint40
+    400038: joint41
+    400040: joint42
+    400042: Lleg
+    400044: //RootNode
+    400046: mesh
+    400048: pCube1
+    400050: pCube2
+    400052: pCube3
+    400054: pCube4
+    400056: pCube5
+    400058: pCube6
+    400060: pCube7
+    400062: pCube8
+    400064: pCube9
+    400066: pCylinder1
+    400068: pCylinder11
+    400070: pCylinder12
+    400072: pCylinder13
+    400074: pCylinder15
+    400076: pCylinder16
+    400078: pCylinder17
+    400080: pCylinder4
+    400082: pCylinder5
+    400084: pCylinder6
+    400086: pCylinder7
+    400088: pCylinder8
+    400090: pCylinder9
+    400092: pSphere1
+    400094: pSphere2
+    400096: pSphere3
+    400098: pSphere4
+    400100: Rleg
+    400102: spine
+    400104: upper_body1
+    400106: upper_body_thing
+    4300000: pCylinder1
+    4300002: pSphere1
+    4300004: pCube1
+    4300006: pCube2
+    4300008: pSphere2
+    4300010: pSphere3
+    4300012: pSphere4
+    4300014: pCylinder4
+    4300016: pCylinder5
+    4300018: pCylinder6
+    4300020: pCylinder7
+    4300022: pCylinder8
+    4300024: pCylinder9
+    4300026: pCylinder11
+    4300028: pCylinder12
+    4300030: pCylinder13
+    4300032: pCylinder15
+    4300034: pCube3
+    4300036: pCylinder16
+    4300038: pCylinder17
+    4300040: pCube4
+    4300042: pCube5
+    4300044: pCube6
+    4300046: pCube7
+    4300048: pCube8
+    4300050: pCube9
+    9500000: //RootNode
+    13700000: pCube1
+    13700002: pCube2
+    13700004: pCube3
+    13700006: pCube4
+    13700008: pCube5
+    13700010: pCube6
+    13700012: pCube7
+    13700014: pCube8
+    13700016: pCube9
+    13700018: pCylinder1
+    13700020: pCylinder11
+    13700022: pCylinder12
+    13700024: pCylinder13
+    13700026: pCylinder15
+    13700028: pCylinder16
+    13700030: pCylinder17
+    13700032: pCylinder4
+    13700034: pCylinder5
+    13700036: pCylinder6
+    13700038: pCylinder7
+    13700040: pCylinder8
+    13700042: pCylinder9
+    13700044: pSphere1
+    13700046: pSphere2
+    13700048: pSphere3
+    13700050: pSphere4
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: trashcannon_jauntrun_0007_cannon
+    second: {fileID: 2100000, guid: 5f052efcbe5cee74b9556fe42136273f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: trashcannon_jauntrun_0007_robo_skin
+    second: {fileID: 2100000, guid: fa0cb1e89bd570440a73f1fbca5b643c, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
