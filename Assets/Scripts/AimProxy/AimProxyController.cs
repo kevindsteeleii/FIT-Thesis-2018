@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// The controller class for the AnimProxy.
+/// The controller class for the AimProxy.
 /// This class checks for inputs.
 /// </summary>
 public class AimProxyController : Controller {
@@ -28,6 +28,5 @@ public class AimProxyController : Controller {
             }
         };
     }
-
-    protected virtual void Update() {}
+   
 }

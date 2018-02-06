@@ -18,7 +18,7 @@ public class AimProxyPlus : MonoBehaviour {
      it is triggered by the push and release of the input button labeled
      as "Aim"*/
        protected virtual void Update() { 
-        if(Input.GetButtonDown("Aim"))
+       if (Input.GetButtonDown("Aim"))
             {
                 model.StartProgressUpdateLoop();
             }

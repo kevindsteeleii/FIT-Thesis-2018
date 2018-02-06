@@ -18,5 +18,4 @@ public class PlayerData : ScriptableObject {
     //for jumping player starts suspended above ground by default is not on ground
     [Range(0, 10)]
     public float jumpHeight;
-
-}
+    }

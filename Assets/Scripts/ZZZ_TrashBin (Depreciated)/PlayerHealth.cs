@@ -28,9 +28,8 @@ public class PlayerHealth : MonoBehaviour
         invincible = false;
     }
 
-
     //handles damage taken by player character and its effects
-    public void takeDamage(int dmg)
+    public void TakeDamage(int dmg)
     {
         if (!invincible)
         {
@@ -44,7 +43,6 @@ public class PlayerHealth : MonoBehaviour
             {
                 invincible = true;
             }
-
         }
     }
 
@@ -91,7 +89,7 @@ public class PlayerHealth : MonoBehaviour
         if (col.gameObject.tag == "Enemy")
         {
             StartCoroutine(iFrames());
-            takeDamage(col.gameObject.GetComponent<Enemy>().damage);
+            //takeDamage(col.gameObject.GetComponent<Enemy>().damage);
             Debug.Log("I've been hit!");
             
         }

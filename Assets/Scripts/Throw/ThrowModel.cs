@@ -7,6 +7,7 @@ using System.Collections.Generic;
 /// </summary>
 public class ThrowModel : Model
 {
+    //Need to fix direction shot bug!!
     [Tooltip("The projectile prefab")]
     public GameObject testBullet;
 
@@ -29,12 +30,12 @@ public class ThrowModel : Model
     public float throwHeightOffset;
 
     int facing = 1;
-    Vector3 right, direction;
-
+    Vector3 right, left, direction, flatShot;
     // Use this for initialization
     void Awake()
     {
-        right = transform.right;
+        right = Vector3.right;
+        left = Vector3.left;
     }
 
     // Update is called once per frame
@@ -42,7 +43,7 @@ public class ThrowModel : Model
     {
         //facing is used to determine the direction the character is facing and uses a multiplier to affect trajectory of projectile
         //assignmentParameter = (outcomeOfConditional) ? a:b; // it equals a if the outcome is true and b if false
-        facing = (PlayerController.facingRight) ? 1 : -1;
+        flatShot = (PlayerController.facingRight) ? right : left;
         direction = aimReticle.transform.position - rootAim.transform.position;
     }
 
@@ -52,17 +53,16 @@ public class ThrowModel : Model
 
     public void ThrowStraight()
     {
-        //GameObject bullet = Ammo.instance.GetPooledObject();
-        if (Ammo.instance.bullets>0)
+        if (Ammo.instance.bullets > 0)
         {
             GameObject bullet = Ammo.instance.GetPooledObject(rootAim.transform.position);
-            //Rigidbody tempRB;
-
-            bullet.GetComponent<Rigidbody>().AddForce(facing * right * throwForce);
+            bullet.transform.SetParent(null); //trying to fix possible  movement bug
+            Debug.Log("Facing is: "+facing);
+            bullet.GetComponent<Rigidbody>().AddForce(flatShot * throwForce);
             Ammo.instance.ShootLoad();
         }
         else
-            print("Ran out of bullets");
+            throw new ArgumentOutOfRangeException("Ran out of bullets");
     }
 
     public void ThrowAngle()
@@ -70,24 +70,13 @@ public class ThrowModel : Model
         if (Ammo.instance.bullets > 0)
         {
             GameObject bullet = Ammo.instance.GetPooledObject(rootAim.transform.position);
+            bullet.transform.SetParent(null); //trying to fix possible  movement bug
             Rigidbody tempRB;
             tempRB = bullet.GetComponent<Rigidbody>();
             tempRB.AddForceAtPosition(direction * throwForce * aimThrowSpeed, transform.position);
             Ammo.instance.ShootLoad();
-            //Destroy(bullet, 5.0f);
         }
         else
-            print("Ran out of bullets");
+            throw new ArgumentOutOfRangeException("Ran out of bullets");
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        //this.gameObject.SetActive(false);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        //this.gameObject.SetActive(false);
-    }
-
 }

@@ -32,7 +32,7 @@ public class ThrowController : Controller
                 }
                 catch (IndexOutOfRangeException e)
                 {
-                    throw new Exception("Out of Ammo");
+                    throw new Exception("Out of Ammo. "+e.Message);
                 }
             }
 

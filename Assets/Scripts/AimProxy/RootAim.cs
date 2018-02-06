@@ -25,9 +25,9 @@ public class RootAim : MonoBehaviour
     public float vertAdjustment;
 
     //Initiates the default state
-    public virtual void Awake()    {
+    public virtual void Awake()
+    {
         facesRight = true;
-
     }
     
     // Update is called once per frame
@@ -41,10 +41,12 @@ public class RootAim : MonoBehaviour
         float mover = Input.GetAxis("JoystickHorizontal");
 
         if (move > 0 && !facesRight || move < 0 && facesRight || mover < 0 && facesRight || mover > 0 && !facesRight)
-        { flipMe(); }
+        {
+            FlipMe();
+        }
     }
 
-    public virtual void flipMe()
+    public virtual void FlipMe()
     {
         facesRight = !facesRight;
         direction *= -1;

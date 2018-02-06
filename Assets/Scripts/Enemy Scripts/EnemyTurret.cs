@@ -43,7 +43,7 @@ public class EnemyTurret : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        this.gameObject.GetComponent<Enemy>().SendBehavior += PatrolBehave;
+        this.gameObject.GetComponent<Enemy>().On_SendBehavior_Sent += PatrolBehave;
         thisBehavior = gameObject.GetComponent<Enemy>().enBehavior;
         myEnemy = this.gameObject.GetComponent<Enemy>();
         StartCoroutine(TurretPatrol());

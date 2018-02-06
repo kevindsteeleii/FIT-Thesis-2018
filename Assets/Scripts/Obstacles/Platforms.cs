@@ -83,7 +83,6 @@ public class Platforms : MonoBehaviour
 
         // just for debugging
         // remove later
-        //PlatformSpawner.instance.SpawnNewPlatformAt(endPoint.position);
 
         if (isRandomMovement)
         {

@@ -15,6 +15,9 @@ public class PlayerStats : Singleton<PlayerStats>
     [SerializeField]
     Camera camera;
 
+    [SerializeField]
+    CapsuleCollider hurtBox;
+
     /*number of intervals to be calculated by duration and wait time total*/
     int intervals = 0;
 
@@ -33,7 +36,7 @@ public class PlayerStats : Singleton<PlayerStats>
     /// </summary>
     public event Action<int> On_MoneyAmount_Sent;
 
-    bool invincible;
+    public bool invincible { get; private set; }
 
     /*To make parameter accessible outside of Singleton set up as a get and set parameter like so*/
     public int Wallet { get; private set; }
@@ -49,6 +52,11 @@ public class PlayerStats : Singleton<PlayerStats>
         Wallet = 0;
         //assigns ResetHP() as subscriber of Restarting event
         GameManager.instance.onRestartState += ResetHP;
+        //TBD
+        if (hurtBox == null)
+        {
+            hurtBox = GetComponentInChildren<CapsuleCollider>();
+        }
     }
 
     void Update()
@@ -149,11 +157,16 @@ public class PlayerStats : Singleton<PlayerStats>
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Enemy" && !invincible)
-        {
-            TakeDamage(col.gameObject.GetComponent<Enemy>().damage);
+        //if (col.gameObject.tag == "Enemy" && !invincible)
+        //{
+            //Collider[] cols = Physics.OverlapBox(hurtBox.bounds.center, hurtBox.bounds.extents, hurtBox.transform.rotation, LayerMask.GetMask("HurtBox"),QueryTriggerInteraction.Collide);
+            //foreach (Collider coll in cols)
+            //{
+
+            //}
+            //TakeDamage(col.gameObject.GetComponent<Enemy>().damage);
             //Debug.Log("I've been hit!");
-        }
+        //}
 
         //logic that makes sure pickup affects the numbers of the stats
         if (col.gameObject.tag == "PickUp")

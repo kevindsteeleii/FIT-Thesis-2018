@@ -38,7 +38,6 @@ public class GameManager : Singleton<GameManager>
     {
         //Used to alert the GameOver 
         PlayerStats.instance.On_ZeroHP_Sent += OnZeroHP;
-
         //subscribes the pause game inputs to game state setting methods
         GUIManager.instance.onPauseButton += OnPauseButton;
         GUIManager.instance.onResumeButton += OnResumeButton;
@@ -49,8 +48,6 @@ public class GameManager : Singleton<GameManager>
 
     public virtual void Update()
     {
-        //Debug.Log("Current State is " + gameState);
-
         //when game state is gameover an event is broadcast to the appropriate subscribers 
         if (gameState == GameState.gameOver && onGameOverState != null)
         {
@@ -83,8 +80,8 @@ public class GameManager : Singleton<GameManager>
             case GameState.win:
                 break;
         }
+        Debug.Log("Game State is: " + newGameState);
         gameState = newGameState;
-        //PrintState();
     }
 
     //game at initialization
@@ -121,7 +118,6 @@ public class GameManager : Singleton<GameManager>
         OnZeroHP();
     }
 
-
     //will refactor the pause and unpause methods later, going to sleep < Kev note
     public virtual void OnPauseButton()
     {
@@ -135,9 +131,4 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 1;
         SetGameState(GameState.inGame);
     }
-    //Debug Log that prints current game state
-    ////public void PrintState()
-    ////{
-    ////    Debug.Log("Current State is " + gameState);
-    ////}
 }

@@ -15,15 +15,12 @@ public class BulletControl :Singleton<BulletControl>
 
     void GetAmmo(int ammo)
     {
-        BulletImage.sprite = Shots[ammo];
-        //if (ammo > 0)
-        //{
-        //    Debug.Log("Bullets available " + Ammo.bullets);
-        //    BulletImage.sprite = Shots[ammo];
-        //}
-        //else
-        //{
-        //    Debug.Log("No more bullets");
-        //}
+        if (ammo >= 0)
+        {
+            BulletImage.sprite = Shots[ammo];
+        }
+        else
+            throw new ArgumentOutOfRangeException("Out of Bullets");
+        
     }
 }

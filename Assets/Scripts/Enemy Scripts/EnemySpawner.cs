@@ -19,10 +19,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
     //variable used to store the respective locations of the platforms
     List<Vector3> platLocations = new List<Vector3>();
-
-    //[Tooltip("This float is the offset from the center of the platform vertically.")]
-    //[Range(0f, 5f)]
-    //public float yOffset = 4f;
+    
     int enemyCount = 0;
 
     #endregion
@@ -76,7 +73,6 @@ public class EnemySpawner : Singleton<EnemySpawner>
             enemyCount++;
             MakeSomeEnemies(platLocations[enemyCount]);
         }
-
     }
 
     //function that returns a random int
@@ -124,7 +120,6 @@ public class EnemySpawner : Singleton<EnemySpawner>
         //MakeSomeEnemies(platLocations[0]);
         MakeSomeEnemiesRandom(platLocations[0]);
     }
-
 } //end of class
 
 

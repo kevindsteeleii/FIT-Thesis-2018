@@ -39,8 +39,8 @@ public class LootGenerator : Singleton<LootGenerator>
         {
             foreach (Enemy enemy in enemiesPresent)
             {
-                enemy.RandomLootDropped += MakeRandomLootNow;
-                enemy.DefaultLootDrop += MakeThisLoot;
+                enemy.On_RandomLootDropped_Sent += MakeRandomLootNow;
+                enemy.On_DefaultLootDrop_Sent += MakeThisLoot;
             }
         }
         

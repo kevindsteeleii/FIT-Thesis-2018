@@ -48,14 +48,13 @@ public class Ammo : Singleton<Ammo>
         enemiesPresent = FindObjectsOfType<Enemy>();
 
         //assigns Ammo as subscriber if enemies are present will refactor < Kev Note
-        if (enemiesPresent != null)
-        {
-            foreach (Enemy enemy in enemiesPresent)
-            {
-                enemy.BecomeAmmo += Load;
-            }
-        }
-
+        //if (enemiesPresent != null)
+        //{
+        //    foreach (Enemy enemy in enemiesPresent)
+        //    {
+        //        enemy.On_BecomeAmmo_Sent += Load;
+        //    }
+        //}
         Populate();
     }
 
@@ -92,7 +91,6 @@ public class Ammo : Singleton<Ammo>
             {
                 ammoList[i].SetActive(true);
                 ammoList[i].transform.position = position;
-                Debug.Log("Number " + i + " bullet");
                 return ammoList[i];
             }
         }
@@ -135,6 +133,7 @@ public class Ammo : Singleton<Ammo>
             }
         }
     }
+
     /// <summary>
     /// Deletes from bullet int and launches different throwing
     /// </summary>

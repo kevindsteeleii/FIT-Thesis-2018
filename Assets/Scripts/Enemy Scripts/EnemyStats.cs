@@ -11,7 +11,7 @@ public class EnemyStats : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        HP = 25;
+
 	}
 
     // Update is called once per frame
@@ -22,4 +22,9 @@ public class EnemyStats : MonoBehaviour {
             On_EnemyHPZero_Sent();
         }
     }
+    /// <summary>
+    /// Calculates damage.
+    /// </summary>
+    /// <param name="dam"></param>
+    
 }

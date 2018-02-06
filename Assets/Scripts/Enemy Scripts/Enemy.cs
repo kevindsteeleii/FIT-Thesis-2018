@@ -5,13 +5,13 @@ using System;
 /// Enum that is used to handle the behavior of individual enemies. Never use total its just to number them for enumerations, iterations and the like.
 /// </summary>
 public enum EnemyBehavior { None, Patrolling, Turret, Floating, total };
+
 /// <summary>
 /// Enemy base class used to determine basic information and behavior of enemy class
 /// </summary>
 //[RequireComponent(typeof(EnemyPatrol), typeof(EnemyTurret))]
 public class Enemy : MonoBehaviour
 {
-
     #region Global Variables
     //the physical body of the enemy itself
     [SerializeField]
@@ -20,37 +20,37 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// Event that transmits from Enemy to trigger ammo stocking 
     /// </summary>
-    public event Action BecomeAmmo; //need to assign subscriber < Kev Note
+    public event Action On_BecomeAmmo_Sent; //need to assign subscriber < Kev Note
 
     /// <summary>
     /// Event that transmits when the enemy becomes random loot on "destruction"
     /// </summary>
-    public event Action<Vector3, Quaternion> RandomLootDropped;
+    public event Action<Vector3, Quaternion> On_RandomLootDropped_Sent;
 
     /// <summary>
     /// Event that transmits when the enemy becomes the default loot upon "destruction"
     /// </summary>
-    public event Action<Vector3, Quaternion, PickupType> DefaultLootDrop;
+    public event Action<Vector3, Quaternion, PickupType> On_DefaultLootDrop_Sent;
 
     /// <summary>
     /// Event that transmits the current enemies type of behavior
     /// </summary>
-    public event Action<EnemyBehavior> SendBehavior;
+    public event Action<EnemyBehavior> On_SendBehavior_Sent;
 
     //allows for adjustment of enemy health points
     [Range(0, 25)]
     public int HP;
     public bool randomDrop = false;
     public bool randomBehavior = false;
-
+    
     //enum used to determine the behavior of the enemy
     public EnemyBehavior enBehavior = EnemyBehavior.None;
 
     //used to save max HP info for enemy
     int saveHP;
 
-    [Range(0, 25)]
-    public int damage;
+    //[Range(0, 25)]
+    //public int damage;
     #endregion
 
     // Use this for initialization
@@ -69,14 +69,30 @@ public class Enemy : MonoBehaviour
         if (HP <= 0)
         {
             HP = 0;
+            DealDeath();
         }
         //if sendBehavior has a subscriber...
 
-        if (SendBehavior != null)
+        if (On_SendBehavior_Sent != null)
         {
-            SendBehavior(enBehavior);
+            On_SendBehavior_Sent(enBehavior);
         }
     }
+
+    /// <summary>
+    /// Logic ran upon death using several functions
+    /// </summary>
+    private void DealDeath()
+    {
+        Destroy(body);
+    }
+
+    public virtual void TakeDamage(int dam)
+    {
+        HP -= dam;
+        //Debug.Log("Enemy taking damage. HP = "+HP);
+    }
+
     //if random behavior is toggled it randomly assigns the behavior type
     protected virtual void RandomBehavior(bool active)
     {
@@ -112,15 +128,6 @@ public class Enemy : MonoBehaviour
     }
 
     /// <summary>
-    /// Calculates damage.
-    /// </summary>
-    /// <param name="dam"></param>
-    public virtual void TakeDamage(int dam)
-    {
-        HP -= dam;
-    }
-
-    /// <summary>
     /// Sets the position of the enemy
     /// </summary>
     /// <param name="pos"></param>
@@ -134,14 +141,19 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public virtual void BecomeProjectile()
     {
+        On_BecomeAmmo_Sent += Ammo.instance.Load;
         //transmits to Ammo handling manager as a subject of subscription
-        if (BecomeAmmo != null)
+        if (On_BecomeAmmo_Sent != null)
         {
-            BecomeAmmo();
+            Debug.Log("Became Ammo");
+            On_BecomeAmmo_Sent();
         }
-        //Ammo.instance.Load();
-        Destroy(body); //needs implementation of a enemy spawner/ manager class to "disappear" enemies < Kev Note
-        Debug.Log("Became Projectile!!");
+        Destroy(body); 
+    }
+
+    private void Destroy(GameObject obj)
+    {
+        obj.SetActive(false);
     }
 
     /*creates a pickUp item upon destruction if and only if
@@ -150,21 +162,22 @@ public class Enemy : MonoBehaviour
     protected virtual void BecomePickUp()
     {
         Destroy(body);
-        if (randomDrop && RandomLootDropped != null)
+        if (randomDrop && On_RandomLootDropped_Sent != null)
         {
-            RandomLootDropped(transform.position, transform.rotation);
+            On_RandomLootDropped_Sent(transform.position, transform.rotation);
         }
-        else if (!randomDrop && DefaultLootDrop != null)
+        else if (!randomDrop && On_DefaultLootDrop_Sent != null)
         {
-            DefaultLootDrop(transform.position, transform.rotation, PickupType.Health);
+            On_DefaultLootDrop_Sent(transform.position, transform.rotation, PickupType.Health);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Projectile")
+        GameObject obj = other.gameObject;
+        if (obj.tag == "Projectile")
         {
-            TakeDamage(other.gameObject.GetComponent<Projectile>().damage);
+            TakeDamage(obj.GetComponent<Projectile>().damage); //refactor with hitbox/hurtbox paradigm 
             if (HP <= saveHP / 2)
             {
                 BecomePickUp();
@@ -177,9 +190,9 @@ public class Enemy : MonoBehaviour
          then sorts out what happens based on comparing the max HP w/ the new adjusted amount and 
          outputs results accordingly*/
 
-        else if (other.gameObject.tag == "Hand")
+        else if (obj.tag == "Hand")
         {
-            TakeDamage(other.gameObject.GetComponent<GrabModel>().damage);
+            TakeDamage(obj.GetComponent<GrabModel>().damage);
 
             if (HP <= saveHP / 2)
             {
@@ -191,6 +204,7 @@ public class Enemy : MonoBehaviour
                 Debug.Log("Grope!");
             }
         }
+
         /*Add cases for a punch or slam attack modeled after the
          prior conditional statements here later on*/
     }

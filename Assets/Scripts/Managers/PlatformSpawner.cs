@@ -28,6 +28,7 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
 
     //array that holds the original center "addresses" of the platforms generated
     public List<Vector3> platLocations;
+
     //List that holds the proper location of the platforms as opposed to their center address used for the enemy spawner
     public List<Vector3> trueLocations;
 
@@ -244,6 +245,5 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
             SavePlatformAddresses(tempPlatform); //this adds the vector3 addresses of the generated platforms 
             MakeSomePlatforms(startPos);
         }
-
     }
 }

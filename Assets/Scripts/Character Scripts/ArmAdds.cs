@@ -10,9 +10,4 @@ public class ArmAdds : GrabModel {
 	void Start () {
         collider = this.gameObject.GetComponent<Collider>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
