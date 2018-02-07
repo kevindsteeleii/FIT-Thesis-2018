@@ -57,7 +57,6 @@ public class ThrowModel : Model
         {
             GameObject bullet = Ammo.instance.GetPooledObject(rootAim.transform.position);
             bullet.transform.SetParent(null); //trying to fix possible  movement bug
-            Debug.Log("Facing is: "+facing);
             bullet.GetComponent<Rigidbody>().AddForce(flatShot * throwForce);
             Ammo.instance.ShootLoad();
         }

@@ -10,9 +10,6 @@ using System;
 
 public class LootGenerator : Singleton<LootGenerator>
 {
-
-    protected static Dictionary<PickupType, GameObject> lootIndex = new Dictionary<PickupType, GameObject>();
-
     [Tooltip("The health item prefab")]
     public GameObject healthPickUp;
 
@@ -22,28 +19,31 @@ public class LootGenerator : Singleton<LootGenerator>
     PickupType currentTypeofItem;
 
     //Collection that populates with all enemies present to be implemented in an enemy manager class later
-    private Enemy [] enemiesPresent;
+    [SerializeField]
+    List<GameObject> enemiesPresent = new List<GameObject>();
 
-    protected override void Awake()
+    private void Start()
     {
-        base.Awake();
+        //EnemySpawner.instance.On_EnemySpawns_Sent += On_EnemySpawns_Received;
+    }
+    private void Update()
+    {
+        EnemySpawner.instance.On_EnemySpawns_Sent += On_EnemySpawns_Received;
+    }
+    protected virtual void On_EnemySpawns_Received(List<GameObject> obj)
+    {
+        enemiesPresent = obj;
+
+        //for (int i =0; i < obj.Count;i++)
+        //{
+        //    enemiesPresent[i].GetComponent<Enemy>().On_RandomLootDropped_Sent += On_RandomLootDropped_Received;
+        //    enemiesPresent[i].GetComponent<Enemy>().On_DefaultLootDrop_Sent += On_DefaultLootDrop_Received;
+        //}
     }
 
-    protected void Start()
+    public void On_DefaultLootDrop_Received(Vector3 pos1, Quaternion rot, PickupType pickUp)
     {
-        PopulateList();
-        enemiesPresent = FindObjectsOfType<Enemy>();
-
-        //assigns LootGenerator as subscriber if enemies are present will refactor < Kev Note
-        if (enemiesPresent != null)
-        {
-            foreach (Enemy enemy in enemiesPresent)
-            {
-                enemy.On_RandomLootDropped_Sent += MakeRandomLootNow;
-                enemy.On_DefaultLootDrop_Sent += MakeThisLoot;
-            }
-        }
-        
+        MakeThisLoot(pos1, rot, pickUp);
     }
 
     /// <summary>
@@ -51,7 +51,7 @@ public class LootGenerator : Singleton<LootGenerator>
     /// </summary>
     /// <param name="pos"></param>
     /// <param name="rot"></param>
-    protected void MakeRandomLootNow(Vector3 pos, Quaternion rot)
+    public void On_RandomLootDropped_Received(Vector3 pos, Quaternion rot)
     {
         MakeRandomLoot(pos, rot);
     }
@@ -65,36 +65,24 @@ public class LootGenerator : Singleton<LootGenerator>
     public void MakeThisLoot(Vector3 dropSpot, Quaternion rot, PickupType itemIs)
     {
         GameObject spawnObject;
+        switch (itemIs)
+        {
+            case PickupType.Health:
+                spawnObject = Instantiate(healthPickUp);
+                spawnObject.transform.position = dropSpot;
+                break;
+            case PickupType.Money:
+                spawnObject = moneyPickUp;
+                spawnObject = Instantiate(moneyPickUp);
+                spawnObject.transform.position = dropSpot;
+                break;
+            case PickupType.Nothing:
+                break;
+            default:
+                break;
+        }
 
-        if (lootIndex.TryGetValue(itemIs, out spawnObject))
-        {
-            GameObject objToSpawn = Instantiate(spawnObject, dropSpot, rot);
-
-            Rigidbody tempRB = spawnObject.GetComponent<Rigidbody>();
-            print("Item is " + itemIs);
-        }
-        else
-        {
-            // do a thing here if item doesn't exist
-            print("Nothing available here!");
-        }
-    }
-
-    /// <summary>
-    /// Adds the pickups to the list to set active/inactive as objects being pooled
-    /// </summary>
-    protected virtual void PopulateList()
-    {
-        if (lootIndex != null)
-        {
-            return;
-        }
-        else
-        {
-            lootIndex.Add(PickupType.Health, healthPickUp);
-            lootIndex.Add(PickupType.Money, moneyPickUp);
-            lootIndex.Add(PickupType.Nothing, null);
-        }
+        print("Item is " + itemIs);
     }
 
     /// <summary>
@@ -110,19 +98,16 @@ public class LootGenerator : Singleton<LootGenerator>
         if (dropWeight >= 60 && dropWeight < 91)
         {
             currentTypeofItem = PickupType.Health;
+            MakeThisLoot(dropSpot, rot, currentTypeofItem);
         }
         else if (dropWeight >= 21 && dropWeight < 59)
         {
             currentTypeofItem = PickupType.Money;
+            MakeThisLoot(dropSpot, rot, currentTypeofItem);
         }
         else
         {
             currentTypeofItem = PickupType.Nothing;
-        }
-
-        if (currentTypeofItem != PickupType.Nothing)
-        {
-            MakeThisLoot(dropSpot, rot, currentTypeofItem);
         }
 
         Debug.Log("Pick Up became " + currentTypeofItem + " !!");

@@ -11,12 +11,9 @@ public class EnemyAttack : MonoBehaviour {
     [Range(0, 25)]
     public int damage;
 
-    bool alive;
 
     // Use this for initialization
     void Start () {
-
-        alive = true;
 
 		if (hitBox == null)
         {

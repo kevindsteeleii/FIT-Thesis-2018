@@ -16,7 +16,6 @@ public class HealthBar : Singleton<HealthBar>
     /*The Canvas group to be made invisible upon death and visible upon respawn etc*/
     [SerializeField]
     CanvasGroup sliderGroup;
-    //Animator myAnim;
 
     // Use this for initialization
     void Start()
@@ -30,14 +29,6 @@ public class HealthBar : Singleton<HealthBar>
         //GetHPBar listens for the event of HPAmount changing
         PlayerStats.instance.On_HPAmount_Sent += GetHPBar;
     }
-
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    //updating HP value for the slider
-    //    //Debug.Log("Player HP is " + PlayerStats.instance.hp);
-    //    NewMethod();
-    //}
 
     /// <summary>
     /// HP is updated by the event HPAmount from PlayerStats

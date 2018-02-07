@@ -1,14 +1,14 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine;
 
 /// <summary>
 /// Class used to compartmentalize the purpose of pickup of items of various types
 /// it is to be attached to a prefab to be instantiated by destroying enemy types
 /// </summary>
-public class PickUpType : MonoBehaviour
-{
+public enum PickupType { Health, Money, Nothing };
+public class PickUpMake : MonoBehaviour {
+
     // Use this for initialization making enum public allows for easier use outside of this class 
     public PickupType pickup;
     Renderer render;
@@ -17,6 +17,7 @@ public class PickUpType : MonoBehaviour
     [Tooltip("The amount added")]
     [Range(0, 1000)]
     public int purse = 250;
+    private Vector3 hidden = new Vector3 (-99f, -99f, -99f);
 
     private void Start()
     {
@@ -32,7 +33,7 @@ public class PickUpType : MonoBehaviour
          pickUp item on enemy destruction*/
 
         yield return new WaitForSeconds(3.0f);
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 20; i++)
         {
             yield return new WaitForSeconds(.1f);
             render.enabled = false;
@@ -47,10 +48,24 @@ public class PickUpType : MonoBehaviour
     //destroys the object upon collision with an object tagged "Player"
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             Debug.Log("Destroy " + this.gameObject.name);
-            Destroy(this);
+            Destroy(gameObject);
         }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("Destroy " + this.gameObject.name);
+            Destroy(gameObject);
+        }
+    }
+
+    private void Destroy(GameObject obj)
+    {
+        obj.SetActive(false);
+        obj.transform.position = hidden;
     }
 }

@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Singleton class that handles the logic and events of the individual platforms spawned
+/// </summary>
 public class PlatformSpawner : Singleton<PlatformSpawner>
 {
     //Array of platforms used as pool for platform spawner
@@ -33,6 +36,11 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
     public List<Vector3> trueLocations;
 
     /// <summary>
+    /// Broadcasts corresponding collection address for 
+    /// </summary>
+    public event Action <int> On_Teleport_Sent;
+
+    /// <summary>
     /// Broadcast the list of platform locations from spawn until game over/ restart
     /// </summary>
     public event Action<List<Vector3>> On_PlatLocations_Sent;
@@ -56,6 +64,7 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
         spawnedPlatforms = new List<GameObject>();
         MakeSomePlatforms(Vector3.zero);
         continuePoint.transform.SetParent(pointer);
+        On_Teleport_Sent += EnemySpawner.instance.On_Teleport_Received;
         GameManager.instance.onRestartState += On_ReStartState_Caught;
         PlatformRemoverControl.instance.On_PlatformRemoverPass_Sent += PlatformTeleport;
     }
@@ -157,6 +166,7 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
                 obj.transform.position = new Vector3(length, obj.transform.position.y, obj.transform.position.z);
                 Vector3 centerLoc = obj.GetComponentInChildren<Collider>().bounds.center;
                 platLocations[i] = centerLoc;
+                On_Teleport_Sent(i);
                 obj.SetActive(true);
             }
             else

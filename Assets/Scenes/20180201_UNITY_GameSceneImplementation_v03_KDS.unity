@@ -628,6 +628,7 @@ MonoBehaviour:
   enemy: {fileID: 1531191268477008, guid: e3e21a784a0648445b4c78df919384c1, type: 2}
   enemyTroops: []
   didGenerate: 
+  yOffset: 2
 --- !u!4 &1222540771
 Transform:
   m_ObjectHideFlags: 0

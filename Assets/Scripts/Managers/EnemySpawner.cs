@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 /// <summary>
-/// Class used to handle enemy spawning and other such logic, mostly temporary measures at this point < Kev Note
+/// Singleton class that uses the 
 /// </summary>
 public class EnemySpawner : Singleton<EnemySpawner>
 {
@@ -14,12 +14,21 @@ public class EnemySpawner : Singleton<EnemySpawner>
     [SerializeField]
     List<GameObject> enemyTroops = new List<GameObject>();
 
+    /// <summary>
+    /// Broadcasts the the Spawned/Active Enemies as a List
+    /// </summary>
+    public event Action<List<GameObject>> On_EnemySpawns_Sent;
+
     //list that is used to check and record whether a corresponding enemy in the address was spawned or not
     public List<bool> didGenerate = new List<bool>();
 
     //variable used to store the respective locations of the platforms
     List<Vector3> platLocations = new List<Vector3>();
-    
+
+    [Tooltip("Vertical Offset of the enemy spawned on a platform.")]
+    [Range(0f, 5f)]
+    public float yOffset = 2f;
+
     int enemyCount = 0;
 
     #endregion
@@ -32,13 +41,22 @@ public class EnemySpawner : Singleton<EnemySpawner>
         GameManager.instance.onRestartState += On_ReStartState_Received;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        for (int i = 0; i < platLocations.Count-1; i++)
-        {
-            enemyTroops[i].transform.position = platLocations[i];
-        }
+        On_EnemySpawns_Sent(enemyTroops);
     }
+
+    /// <summary>
+    /// Listener that 
+    /// </summary>
+    /// <param name="i"></param>
+    public void On_Teleport_Received(int i)
+    {
+        Vector3 moveLoc = platLocations[i];
+        moveLoc.y += yOffset;
+        enemyTroops[i].transform.position = moveLoc;
+    }
+
 
     /// <summary>
     /// Function that subscribes to the GameManager and "resets" the positions of the enemies upon restart
@@ -69,7 +87,6 @@ public class EnemySpawner : Singleton<EnemySpawner>
             enemy.transform.SetParent(gameObject.transform);
             enemy.transform.position = startPos;
             enemyTroops.Add(tempObj);
-
             enemyCount++;
             MakeSomeEnemies(platLocations[enemyCount]);
         }
@@ -108,6 +125,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
             tempObj.SetActive(didSpawn);
             MakeSomeEnemiesRandom(platLocations[enemyCount]);
         }
+
     }
 
     /// <summary>

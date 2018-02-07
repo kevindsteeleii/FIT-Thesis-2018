@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 33446074219762526}
   - component: {fileID: 135811022384135886}
   - component: {fileID: 23492968789894800}
-  - component: {fileID: 114546184294261474}
   - component: {fileID: 54833009022282286}
+  - component: {fileID: 114959720053970044}
   m_Layer: 8
   m_Name: moneyPickUp
   m_TagString: PickUp
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1278930696587250}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.17, y: 2.32, z: 0}
+  m_LocalPosition: {x: 5.9174557, y: 2.5635266, z: -1.6595812}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -53,11 +53,12 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9ed0ef06f7da4fd4897e41d1b0057826, type: 2}
+  - {fileID: 2100000, guid: bb659008d93284a4a928660b4e80a716, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -68,6 +69,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -98,7 +100,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &114546184294261474
+--- !u!114 &114959720053970044
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -106,11 +108,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1278930696587250}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37a1874bfe539994c94fb933b0180f34, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a54181d3254bc04f9009ce82e5846d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pickup: 1
-  purse: 202
+  purse: 250
 --- !u!135 &135811022384135886
 SphereCollider:
   m_ObjectHideFlags: 1

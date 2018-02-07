@@ -42,12 +42,17 @@ public class Punch : MonoBehaviour {
             myAnim = gameObject.GetComponentInParent<Animator>();
         }
 	}
-     
+
+
 	// Update is called once per frame
 	void Update () {
+        float normalTime = myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime; //returns the percentage of completion of animation as a float
+        
         punchCapsule.enabled = myAnim.GetBool("punching"); //bool is determined by when/during the punch animation is active/on
-        if (punchCapsule.enabled)
+        if (punchCapsule.enabled && normalTime > 0.2f )
         {
+            int baseName = myAnim.GetCurrentAnimatorClipInfo(0).Rank;
+            
             PunchAttack();
         }
     }
@@ -59,6 +64,7 @@ public class Punch : MonoBehaviour {
         {
             if (col.tag == "HurtBox")
             {
+                
                 Debug.Log("Enemy hit");
                 col.gameObject.GetComponentInParent<Enemy>().TakeDamage(dam);
             }

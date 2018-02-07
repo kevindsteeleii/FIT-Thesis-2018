@@ -48,9 +48,6 @@ public class Enemy : MonoBehaviour
 
     //used to save max HP info for enemy
     int saveHP;
-
-    //[Range(0, 25)]
-    //public int damage;
     #endregion
 
     // Use this for initialization
@@ -73,10 +70,10 @@ public class Enemy : MonoBehaviour
         }
         //if sendBehavior has a subscriber...
 
-        if (On_SendBehavior_Sent != null)
-        {
-            On_SendBehavior_Sent(enBehavior);
-        }
+        //if (On_SendBehavior_Sent != null)
+        //{
+        //    On_SendBehavior_Sent(enBehavior);
+        //}
     }
 
     /// <summary>
@@ -90,7 +87,6 @@ public class Enemy : MonoBehaviour
     public virtual void TakeDamage(int dam)
     {
         HP -= dam;
-        //Debug.Log("Enemy taking damage. HP = "+HP);
     }
 
     //if random behavior is toggled it randomly assigns the behavior type
@@ -98,9 +94,9 @@ public class Enemy : MonoBehaviour
     {
         if (active)
         {
-            int pick = UnityEngine.Random.Range(0, EnemyBehavior.total.GetHashCode() - 1);
-            enBehavior = (EnemyBehavior)pick;
-            Debug.Log("This enemy is the " + enBehavior + " type!!");
+            //int pick = UnityEngine.Random.Range(0, EnemyBehavior.total.GetHashCode() - 1);
+            //enBehavior = (EnemyBehavior)pick;
+            //Debug.Log("This enemy is the " + enBehavior + " type!!");
             randomBehavior = false;
         }
     }
@@ -109,23 +105,23 @@ public class Enemy : MonoBehaviour
     /// Switches the behavior exhibited by the enemy and transmits to its subsequent 
     /// </summary>
     /// <param name="behavior"></param>
-    protected virtual void SwitchBehavior(EnemyBehavior behavior)
-    {
-        switch (behavior)
-        {
-            case EnemyBehavior.None:
-                break;
-            case EnemyBehavior.Patrolling:
-                break;
-            case EnemyBehavior.Turret:
-                break;
-            case EnemyBehavior.Floating:
-                break;
-            default:
-                break;
-        }
-        enBehavior = behavior;
-    }
+    //protected virtual void SwitchBehavior(EnemyBehavior behavior)
+    //{
+    //    switch (behavior)
+    //    {
+    //        case EnemyBehavior.None:
+    //            break;
+    //        case EnemyBehavior.Patrolling:
+    //            break;
+    //        case EnemyBehavior.Turret:
+    //            break;
+    //        case EnemyBehavior.Floating:
+    //            break;
+    //        default:
+    //            break;
+    //    }
+    //    enBehavior = behavior;
+    //}
 
     /// <summary>
     /// Sets the position of the enemy
@@ -161,15 +157,18 @@ public class Enemy : MonoBehaviour
      mutually inclusive*/
     protected virtual void BecomePickUp()
     {
-        Destroy(body);
-        if (randomDrop && On_RandomLootDropped_Sent != null)
+        if (randomDrop)
         {
+            this.On_RandomLootDropped_Sent += LootGenerator.instance.On_RandomLootDropped_Received;
             On_RandomLootDropped_Sent(transform.position, transform.rotation);
         }
-        else if (!randomDrop && On_DefaultLootDrop_Sent != null)
+        else if (!randomDrop)
         {
+            this.On_DefaultLootDrop_Sent += LootGenerator.instance.On_DefaultLootDrop_Received ;
             On_DefaultLootDrop_Sent(transform.position, transform.rotation, PickupType.Health);
         }
+        Destroy(body);
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -180,17 +179,19 @@ public class Enemy : MonoBehaviour
             TakeDamage(obj.GetComponent<Projectile>().damage); //refactor with hitbox/hurtbox paradigm 
             if (HP <= saveHP / 2)
             {
+                
                 BecomePickUp();
+                Debug.Log("Become a pickup/drop item");
             }
             Debug.Log("Hit");
-            //Destroy(other.gameObject);
+            //other.GetComponent<Projectile>().Destroy();
         }
 
         /*In this block, if the object in contact is the hand it automatically does damage,
          then sorts out what happens based on comparing the max HP w/ the new adjusted amount and 
          outputs results accordingly*/
 
-        else if (obj.tag == "Hand")
+        if (obj.tag == "Hand")
         {
             TakeDamage(obj.GetComponent<GrabModel>().damage);
 
@@ -204,7 +205,6 @@ public class Enemy : MonoBehaviour
                 Debug.Log("Grope!");
             }
         }
-
         /*Add cases for a punch or slam attack modeled after the
          prior conditional statements here later on*/
     }
