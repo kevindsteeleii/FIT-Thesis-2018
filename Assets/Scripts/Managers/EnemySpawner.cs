@@ -95,7 +95,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
     //function that returns a random int
     int RandomInt(int a, int b)
     {
-        int c = (int)UnityEngine.Random.Range(a, b);
+        int c = UnityEngine.Random.Range(a, b);
         return c;
     }
 

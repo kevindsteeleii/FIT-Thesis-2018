@@ -99,6 +99,11 @@ public class PlayerStats : Singleton<PlayerStats>
         }
     }
 
+    public void MakeMoney(int amount)
+    {
+        Wallet += amount;
+    }
+
     /// <summary>
     /// Part of a group of methods called at reset of game after death.
     /// </summary>

@@ -44,17 +44,7 @@ public class Ammo : Singleton<Ammo>
         bullets = testLoad;
         cap = capacity;
         ammoList = new List<GameObject>();
-
         enemiesPresent = FindObjectsOfType<Enemy>();
-
-        //assigns Ammo as subscriber if enemies are present will refactor < Kev Note
-        //if (enemiesPresent != null)
-        //{
-        //    foreach (Enemy enemy in enemiesPresent)
-        //    {
-        //        enemy.On_BecomeAmmo_Sent += Load;
-        //    }
-        //}
         Populate();
     }
 
@@ -64,6 +54,7 @@ public class Ammo : Singleton<Ammo>
         {
             MyAmmo(bullets);
         }
+
     }
 
     /// <summary>

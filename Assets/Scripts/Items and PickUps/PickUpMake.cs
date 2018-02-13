@@ -7,6 +7,7 @@ using UnityEngine;
 /// it is to be attached to a prefab to be instantiated by destroying enemy types
 /// </summary>
 public enum PickupType { Health, Money, Nothing };
+
 public class PickUpMake : MonoBehaviour {
 
     // Use this for initialization making enum public allows for easier use outside of this class 
@@ -58,7 +59,7 @@ public class PickUpMake : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Destroy " + this.gameObject.name);
+            Debug.Log("Destroy on collision " + this.gameObject.name);
             Destroy(gameObject);
         }
     }

@@ -64,7 +64,6 @@ public class Punch : MonoBehaviour {
         {
             if (col.tag == "HurtBox")
             {
-                
                 Debug.Log("Enemy hit");
                 col.gameObject.GetComponentInParent<Enemy>().TakeDamage(dam);
             }

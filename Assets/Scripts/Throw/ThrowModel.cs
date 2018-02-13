@@ -7,10 +7,6 @@ using System.Collections.Generic;
 /// </summary>
 public class ThrowModel : Model
 {
-    //Need to fix direction shot bug!!
-    [Tooltip("The projectile prefab")]
-    public GameObject testBullet;
-
     [Tooltip("The empty gameObject used as source or origin of aim")]
     public GameObject rootAim;
 
@@ -29,7 +25,6 @@ public class ThrowModel : Model
     [Range(0.1f, 4f)]
     public float throwHeightOffset;
 
-    int facing = 1;
     Vector3 right, left, direction, flatShot;
     // Use this for initialization
     void Awake()

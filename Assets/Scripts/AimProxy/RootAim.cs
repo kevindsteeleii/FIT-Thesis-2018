@@ -14,10 +14,9 @@ public class RootAim : MonoBehaviour
 
     //player as target
     [SerializeField]
-    private Transform target;
+    Transform target;
 
     public static bool facesRight;
-
     public static Vector3 aimPos;
     public static int direction = 1;
 
@@ -52,6 +51,10 @@ public class RootAim : MonoBehaviour
         direction *= -1;
         transform.Rotate(Vector3.up, 180.0f, Space.World);
     }
-    
+
+    public virtual GameObject GetAim()
+    {
+        return gameObject;
+    }
 }
 

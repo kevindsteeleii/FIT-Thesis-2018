@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1d24b633176e94eadbe4ac665cea27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testBullet: {fileID: 1967322751113368, guid: 6c2d62670ee276346a51bd50a04eb635, type: 2}
+  testBullet: {fileID: 1689252865988560, guid: 6c2d62670ee276346a51bd50a04eb635, type: 2}
   rootAim: {fileID: 1271707487943148}
   aimReticle: {fileID: 1671454006507516}
   throwForce: 800
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 889d069ef36559d47b8ca7226ea87207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1967322751113368, guid: 6c2d62670ee276346a51bd50a04eb635, type: 2}
+  bullet: {fileID: 1689252865988560, guid: 6c2d62670ee276346a51bd50a04eb635, type: 2}
   testLoad: 6
   capacity: 6
   ammoList: []

@@ -82,7 +82,7 @@ public class LootGenerator : Singleton<LootGenerator>
                 break;
         }
 
-        print("Item is " + itemIs);
+        //print("Item is " + itemIs);
     }
 
     /// <summary>
@@ -110,6 +110,6 @@ public class LootGenerator : Singleton<LootGenerator>
             currentTypeofItem = PickupType.Nothing;
         }
 
-        Debug.Log("Pick Up became " + currentTypeofItem + " !!");
+        //Debug.Log("Pick Up became " + currentTypeofItem + " !!");
     }
 }

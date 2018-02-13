@@ -184,7 +184,7 @@ public class Enemy : MonoBehaviour
                 Debug.Log("Become a pickup/drop item");
             }
             Debug.Log("Hit");
-            //other.GetComponent<Projectile>().Destroy();
+
         }
 
         /*In this block, if the object in contact is the hand it automatically does damage,
