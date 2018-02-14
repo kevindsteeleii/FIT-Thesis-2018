@@ -1,0 +1,361 @@
+fileFormatVersion: 2
+guid: 86066afaaf900884195f37bd6daa6390
+timeCreated: 1518635793
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Example_bn_Tail
+    100004: Example_loc_Tail
+    100006: ikHandle2
+    100008: ikHandle3
+    100010: ikHandle4
+    100012: ikHandle5
+    100014: joint3
+    100016: joint4
+    100018: joint5
+    100020: joint6
+    100022: KillahBee_antenna
+    100024: KillahBee_antennaDiskBig
+    100026: KillahBee_antennaDiskSm
+    100028: KillahBee_antennaTip
+    100030: KillahBee_armL
+    100032: KillahBee_armR
+    100034: KillahBee_bn_antenna
+    100036: KillahBee_bn_BASE
+    100038: KillahBee_bn_elbowL
+    100040: KillahBee_bn_elbowR
+    100042: KillahBee_bn_head
+    100044: KillahBee_bn_MASTER
+    100046: KillahBee_bn_neck
+    100048: KillahBee_bn_propeller01
+    100050: KillahBee_bn_propeller02
+    100052: KillahBee_bn_propeller03
+    100054: KillahBee_bn_propeller04
+    100056: KillahBee_bn_propellerL
+    100058: KillahBee_bn_propellerL_blade01
+    100060: KillahBee_bn_propellerL_blade02
+    100062: KillahBee_bn_propellerL_blade02 1
+    100064: KillahBee_bn_propellerL_blade03
+    100066: KillahBee_bn_propellerL_blade03 1
+    100068: KillahBee_bn_propellerL_blade04
+    100070: KillahBee_bn_propellerL_blade04 1
+    100072: KillahBee_bn_propellerR
+    100074: KillahBee_bn_propellerR_blade01
+    100076: KillahBee_bn_shoulderL
+    100078: KillahBee_bn_shoulderR
+    100080: KillahBee_bn_stingerL
+    100082: KillahBee_bn_stingerR
+    100084: KillahBee_bn_stingerTipL
+    100086: KillahBee_bn_stingerTipR
+    100088: KillahBee_bn_tail01
+    100090: KillahBee_bn_tail02
+    100092: KillahBee_bn_tail02 1
+    100094: KillahBee_bn_tail03
+    100096: KillahBee_bn_tail03 1
+    100098: KillahBee_bn_tail04
+    100100: KillahBee_bn_tail04 1
+    100102: KillahBee_bn_tail05
+    100104: KillahBee_bn_tail05 1
+    100106: KillahBee_bn_tail06
+    100108: KillahBee_bn_tail06 1
+    100110: KillahBee_bn_tailStart
+    100112: KillahBee_bn_wingL
+    100114: KillahBee_bn_wingR
+    100116: KillahBee_bn_wingTipL
+    100118: KillahBee_bn_wingTipR
+    100120: KillahBee_bn_wristL
+    100122: KillahBee_bn_wristR
+    100124: KillahBee_body
+    100126: KillahBee_cc_armL
+    100128: KillahBee_cc_armR
+    100130: KillahBee_cc_body_BASE
+    100132: KillahBee_cc_head
+    100134: KillahBee_cc_MASTER
+    100136: KillahBee_cc_propeller
+    100138: KillahBee_cc_tail
+    100140: KillahBee_cc_wingL
+    100142: KillahBee_cc_wingR
+    100144: KillahBee_clawL
+    100146: KillahBee_clawR
+    100148: KillahBee_head
+    100150: KillahBee_headPropeller
+    100152: KillahBee_ik_armL
+    100154: KillahBee_ik_armR
+    100156: KillahBee_ik_tail01
+    100158: KillahBee_ik_tail02
+    100160: KillahBee_ik_tail03
+    100162: KillahBee_ik_tail04
+    100164: KillahBee_ik_tail05
+    100166: KillahBee_loc_armL
+    100168: KillahBee_loc_armR
+    100170: KillahBee_loc_tail01
+    100172: KillahBee_MESH_GRP
+    100174: KillahBee_propeller_blade01
+    100176: KillahBee_propeller_blade010
+    100178: KillahBee_propeller_blade011
+    100180: KillahBee_propeller_blade012
+    100182: KillahBee_propeller_blade02
+    100184: KillahBee_propeller_blade03
+    100186: KillahBee_propeller_blade04
+    100188: KillahBee_propeller_blade05
+    100190: KillahBee_propeller_blade06
+    100192: KillahBee_propeller_blade07
+    100194: KillahBee_propeller_blade08
+    100196: KillahBee_propeller_blade09
+    100198: KillahBee_propellerL
+    100200: KillahBee_propellerR
+    100202: KillahBee_speaker
+    100204: KillahBee_tail
+    100206: KillahBee_wingL
+    100208: KillahBee_wingR
+    100210: locator2
+    100212: locator3
+    100214: locator4
+    100216: locator5
+    400000: //RootNode
+    400002: Example_bn_Tail
+    400004: Example_loc_Tail
+    400006: ikHandle2
+    400008: ikHandle3
+    400010: ikHandle4
+    400012: ikHandle5
+    400014: joint3
+    400016: joint4
+    400018: joint5
+    400020: joint6
+    400022: KillahBee_antenna
+    400024: KillahBee_antennaDiskBig
+    400026: KillahBee_antennaDiskSm
+    400028: KillahBee_antennaTip
+    400030: KillahBee_armL
+    400032: KillahBee_armR
+    400034: KillahBee_bn_antenna
+    400036: KillahBee_bn_BASE
+    400038: KillahBee_bn_elbowL
+    400040: KillahBee_bn_elbowR
+    400042: KillahBee_bn_head
+    400044: KillahBee_bn_MASTER
+    400046: KillahBee_bn_neck
+    400048: KillahBee_bn_propeller01
+    400050: KillahBee_bn_propeller02
+    400052: KillahBee_bn_propeller03
+    400054: KillahBee_bn_propeller04
+    400056: KillahBee_bn_propellerL
+    400058: KillahBee_bn_propellerL_blade01
+    400060: KillahBee_bn_propellerL_blade02
+    400062: KillahBee_bn_propellerL_blade02 1
+    400064: KillahBee_bn_propellerL_blade03
+    400066: KillahBee_bn_propellerL_blade03 1
+    400068: KillahBee_bn_propellerL_blade04
+    400070: KillahBee_bn_propellerL_blade04 1
+    400072: KillahBee_bn_propellerR
+    400074: KillahBee_bn_propellerR_blade01
+    400076: KillahBee_bn_shoulderL
+    400078: KillahBee_bn_shoulderR
+    400080: KillahBee_bn_stingerL
+    400082: KillahBee_bn_stingerR
+    400084: KillahBee_bn_stingerTipL
+    400086: KillahBee_bn_stingerTipR
+    400088: KillahBee_bn_tail01
+    400090: KillahBee_bn_tail02
+    400092: KillahBee_bn_tail02 1
+    400094: KillahBee_bn_tail03
+    400096: KillahBee_bn_tail03 1
+    400098: KillahBee_bn_tail04
+    400100: KillahBee_bn_tail04 1
+    400102: KillahBee_bn_tail05
+    400104: KillahBee_bn_tail05 1
+    400106: KillahBee_bn_tail06
+    400108: KillahBee_bn_tail06 1
+    400110: KillahBee_bn_tailStart
+    400112: KillahBee_bn_wingL
+    400114: KillahBee_bn_wingR
+    400116: KillahBee_bn_wingTipL
+    400118: KillahBee_bn_wingTipR
+    400120: KillahBee_bn_wristL
+    400122: KillahBee_bn_wristR
+    400124: KillahBee_body
+    400126: KillahBee_cc_armL
+    400128: KillahBee_cc_armR
+    400130: KillahBee_cc_body_BASE
+    400132: KillahBee_cc_head
+    400134: KillahBee_cc_MASTER
+    400136: KillahBee_cc_propeller
+    400138: KillahBee_cc_tail
+    400140: KillahBee_cc_wingL
+    400142: KillahBee_cc_wingR
+    400144: KillahBee_clawL
+    400146: KillahBee_clawR
+    400148: KillahBee_head
+    400150: KillahBee_headPropeller
+    400152: KillahBee_ik_armL
+    400154: KillahBee_ik_armR
+    400156: KillahBee_ik_tail01
+    400158: KillahBee_ik_tail02
+    400160: KillahBee_ik_tail03
+    400162: KillahBee_ik_tail04
+    400164: KillahBee_ik_tail05
+    400166: KillahBee_loc_armL
+    400168: KillahBee_loc_armR
+    400170: KillahBee_loc_tail01
+    400172: KillahBee_MESH_GRP
+    400174: KillahBee_propeller_blade01
+    400176: KillahBee_propeller_blade010
+    400178: KillahBee_propeller_blade011
+    400180: KillahBee_propeller_blade012
+    400182: KillahBee_propeller_blade02
+    400184: KillahBee_propeller_blade03
+    400186: KillahBee_propeller_blade04
+    400188: KillahBee_propeller_blade05
+    400190: KillahBee_propeller_blade06
+    400192: KillahBee_propeller_blade07
+    400194: KillahBee_propeller_blade08
+    400196: KillahBee_propeller_blade09
+    400198: KillahBee_propellerL
+    400200: KillahBee_propellerR
+    400202: KillahBee_speaker
+    400204: KillahBee_tail
+    400206: KillahBee_wingL
+    400208: KillahBee_wingR
+    400210: locator2
+    400212: locator3
+    400214: locator4
+    400216: locator5
+    4300000: KillahBee_head
+    4300002: KillahBee_propeller_blade01
+    4300004: KillahBee_propeller_blade02
+    4300006: KillahBee_propeller_blade03
+    4300008: KillahBee_propeller_blade04
+    4300010: KillahBee_body
+    4300012: KillahBee_armL
+    4300014: KillahBee_clawL
+    4300016: KillahBee_armR
+    4300018: KillahBee_clawR
+    4300020: KillahBee_tail
+    4300022: KillahBee_speaker
+    4300024: KillahBee_antenna
+    4300026: KillahBee_antennaTip
+    4300028: KillahBee_antennaDiskSm
+    4300030: KillahBee_antennaDiskBig
+    4300032: KillahBee_wingR
+    4300034: KillahBee_propeller_blade05
+    4300036: KillahBee_propeller_blade06
+    4300038: KillahBee_propeller_blade07
+    4300040: KillahBee_propeller_blade08
+    4300042: KillahBee_wingL
+    4300044: KillahBee_propeller_blade012
+    4300046: KillahBee_propeller_blade011
+    4300048: KillahBee_propeller_blade010
+    4300050: KillahBee_propeller_blade09
+    9500000: //RootNode
+    13700000: KillahBee_antenna
+    13700002: KillahBee_antennaDiskBig
+    13700004: KillahBee_antennaDiskSm
+    13700006: KillahBee_antennaTip
+    13700008: KillahBee_armL
+    13700010: KillahBee_armR
+    13700012: KillahBee_body
+    13700014: KillahBee_clawL
+    13700016: KillahBee_clawR
+    13700018: KillahBee_head
+    13700020: KillahBee_propeller_blade01
+    13700022: KillahBee_propeller_blade010
+    13700024: KillahBee_propeller_blade011
+    13700026: KillahBee_propeller_blade012
+    13700028: KillahBee_propeller_blade02
+    13700030: KillahBee_propeller_blade03
+    13700032: KillahBee_propeller_blade04
+    13700034: KillahBee_propeller_blade05
+    13700036: KillahBee_propeller_blade06
+    13700038: KillahBee_propeller_blade07
+    13700040: KillahBee_propeller_blade08
+    13700042: KillahBee_propeller_blade09
+    13700044: KillahBee_speaker
+    13700046: KillahBee_tail
+    13700048: KillahBee_wingL
+    13700050: KillahBee_wingR
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: f7d78676d9900d8498caea23f79fbe27, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
