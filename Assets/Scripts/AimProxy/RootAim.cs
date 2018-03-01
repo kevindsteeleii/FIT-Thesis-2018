@@ -37,9 +37,9 @@ public class RootAim : MonoBehaviour
         desiredPosition.z = 0f;
         transform.position = desiredPosition;
         float move = Input.GetAxis("Horizontal");
-        float mover = Input.GetAxis("JoystickHorizontal");
+        //float mover = Input.GetAxis("JoystickHorizontal");
 
-        if (move > 0 && !facesRight || move < 0 && facesRight || mover < 0 && facesRight || mover > 0 && !facesRight)
+        if (move > 0 && !facesRight || move < 0 && facesRight )
         {
             FlipMe();
         }

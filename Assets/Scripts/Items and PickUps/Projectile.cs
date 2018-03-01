@@ -31,7 +31,6 @@ public class Projectile : Model
         {
             Debug.Log("Enemy hit on Trigger Projecile!!!");
             DestroyMe();
-            //gameObject.SetActive(false);
         }
     }
 

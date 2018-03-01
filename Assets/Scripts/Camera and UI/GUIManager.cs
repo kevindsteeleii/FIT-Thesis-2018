@@ -13,12 +13,12 @@ public class GUIManager : Singleton<GUIManager>
     /// <summary>
     /// Event transmitted from GUI Manager when pause button is pressed
     /// </summary>
-    public event Action onPauseButton;
+    public event Action On_PauseButton_Sent;
 
     /// <summary>
     /// Event transmitted from GUI Manager when pause is exited and game is set to resume
     /// </summary>
-    public event Action onResumeButton;
+    public event Action On_ResumeButton_Sent;
 
     /// <summary>
     /// Event transmitted from GUI Manager upon the restarting of the level/ game loop
@@ -37,7 +37,7 @@ public class GUIManager : Singleton<GUIManager>
         visible = false;
         gameOverScreen.SetActive(false);
 
-        onResumeButton();
+        On_ResumeButton_Sent();
     }
 
     //Subscriber that only is triggered by the initiation of the gameOver state change 
@@ -60,7 +60,6 @@ public class GUIManager : Singleton<GUIManager>
             Debug.Log("Sending Restart");
             onRestartButton();
             Debug.Log("Restarted");
-            //Continue();
         }
     }
 
@@ -70,29 +69,29 @@ public class GUIManager : Singleton<GUIManager>
         /*checks the gameState and the button presses to make sure things work 
          * dependent of the current game state of the GameManager <Kev Note*/
 
-        if (ButtonPressed("Start") || ButtonPressed() && GameManager.instance.GetState() == GameState.inGame && onPauseButton != null)
+        if (Input.GetButtonDown("Start"))
         {
-            onPauseButton();
+            Debug.Log("Start button pressed");
+        }
+
+        if (ButtonPressed("Start") && GameManager.instance.GetState() == GameState.inGame && On_PauseButton_Sent != null)
+        {
+            //Debug.Log("Start was pressed.");
+            On_PauseButton_Sent();
             visible = true;
         }
-        else if (ButtonPressed("Start") || ButtonPressed() && GameManager.instance.GetState() == GameState.pause && onPauseButton != null)
+        else if (ButtonPressed("Start") && GameManager.instance.GetState() == GameState.pause && On_PauseButton_Sent != null)
         {
+            //Debug.Log("Start was pressed.");
             Continue();
         }
 
         menu.SetActive(visible);
     }
 
-    //checks to see if the pause button is pressed and returns if the key pressed was true or false <coops's note
-    protected virtual bool ButtonPressed()
-    {
-        bool pressed;
-        return pressed = (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Space)) ? true : false;
-    }
-
     protected virtual bool ButtonPressed(string button)
     {
         bool pressed;
-        return pressed = (Input.GetButton(button)) ? true : false;
+        return pressed = (Input.GetButtonDown(button)) ? true : false;
     }
 }

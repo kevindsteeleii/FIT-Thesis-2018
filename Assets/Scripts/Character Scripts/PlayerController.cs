@@ -84,10 +84,10 @@ public class PlayerController : Singleton<PlayerController>
             {
                 move = Input.GetAxis("Horizontal");
             }
-            else if (Mathf.Abs(Input.GetAxis("JoystickHorizontal")) > 0)
-            {
-                move = Input.GetAxis("JoystickHorizontal");
-            }
+            //else if (Mathf.Abs(Input.GetAxis("JoystickHorizontal")) > 0)
+            //{
+            //    move = Input.GetAxis("JoystickHorizontal");
+            //}
 
             myAnim.SetFloat("speed", Mathf.Abs(move));
             //Debug.Log("Move is " + move);
@@ -114,11 +114,11 @@ public class PlayerController : Singleton<PlayerController>
                 myAnim.SetBool("slam", true);
             }
             //this is the alternative inputs for the slam on controller
-            else if (Input.GetAxisRaw("JoystickVertical") == 1 && Input.GetButton("Punch"))
-            {
-                myAnim.SetBool("airborne", false);
-                myAnim.SetBool("slam", true);
-            }
+            else if (Input.GetAxisRaw("JoystickVertical") == -1 && Input.GetButton("Punch"))
+                {
+                    myAnim.SetBool("airborne", false);
+                    myAnim.SetBool("slam", true);
+                }
         }
     }
 

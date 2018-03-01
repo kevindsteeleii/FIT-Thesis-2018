@@ -22,32 +22,6 @@ public class PauseGame : Singleton<PauseGame>
     /// </summary>
     public event Action Restarted;
 
-    /// <summary>
-    /// Commenting out on account of spooky language copy/paste helps no one
-    /// </summary>
-    //protected override void Awake()
-    //{
-        //ThesisDebuggingTools.ProxyController.onControllerKeyUp += (ThesisDebuggingTools.KeyPressed key) =>
-        //{
-        //    if (key == ThesisDebuggingTools.KeyPressed.start)
-        //    {
-        //        // create a method to toggle between pause & unpause
-        //        Debug.Log("key press up: " + key.ToString());
-
-        //        if (visible)
-        //        {
-        //Continue();
-        //        }
-        //        else
-        //        {
-        //            visible = true;
-        //            //GameManager.instance.Pause();
-        //        }
-        //    }
-        //};
-        //DontDestroyOnLoad(this.GetComponentInParent<Canvas>());
-    //}
-
     protected virtual void Start()
     {
         PlayerStats.instance.On_HPAmount_Sent += IsDead;

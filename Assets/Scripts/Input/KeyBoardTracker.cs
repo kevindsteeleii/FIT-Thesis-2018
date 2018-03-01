@@ -3,7 +3,7 @@
 public class KeyBoardTracker : DeviceTracker
 {
 
-    public AxisButtons[] axisKeys;
+    public Button[] axisKeys;
     public KeyCode[] buttonKeys;
 
     /// <summary>
@@ -11,7 +11,7 @@ public class KeyBoardTracker : DeviceTracker
     /// </summary>
     void Reset()    {
         im = GetComponent<InputManager>();
-        axisKeys = new AxisButtons[im.axisCount];
+        axisKeys = new Button[im.axisCount];
         buttonKeys = new KeyCode[im.buttonCount];
     }
     // Update is called once per frame
@@ -47,7 +47,7 @@ public class KeyBoardTracker : DeviceTracker
 /// handles the keyboard input of axes so that it will impossible to generate both positive and negative on same axis
 /// </summary>
 [System.Serializable]
-public struct AxisButtons   {
+public struct Button   {
     public KeyCode positive;
     public KeyCode negative;
 }

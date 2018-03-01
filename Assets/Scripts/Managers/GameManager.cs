@@ -39,8 +39,8 @@ public class GameManager : Singleton<GameManager>
         //Used to alert the GameOver 
         PlayerStats.instance.On_ZeroHP_Sent += OnZeroHP;
         //subscribes the pause game inputs to game state setting methods
-        GUIManager.instance.onPauseButton += OnPauseButton;
-        GUIManager.instance.onResumeButton += OnResumeButton;
+        GUIManager.instance.On_PauseButton_Sent += OnPauseButton;
+        GUIManager.instance.On_ResumeButton_Sent += OnResumeButton;
         GUIManager.instance.onRestartButton += OnRestartButton;
 
         StartGame();

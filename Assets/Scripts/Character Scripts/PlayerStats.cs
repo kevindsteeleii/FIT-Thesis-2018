@@ -98,12 +98,23 @@ public class PlayerStats : Singleton<PlayerStats>
             On_MoneyAmount_Sent(Wallet);
         }
     }
-
+    /// <summary>
+    /// Observer of the pickup event On_Health_PickUp_Sent
+    /// </summary>
+    /// <param name="amount"></param>
     public void MakeMoney(int amount)
     {
         Wallet += amount;
     }
-
+    /// <summary>
+    /// Observer of the pickup event On_Money_PickUp_Sent
+    /// </summary>
+    /// <param name="Hp"></param>
+    public void On_Health_PickUp_Received(int Hp)
+    {
+        HP += Hp;
+    }
+    
     /// <summary>
     /// Part of a group of methods called at reset of game after death.
     /// </summary>
@@ -129,8 +140,6 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         camera.cullingMask |= (1 << 9);
     }
-
-    
 
     IEnumerator IFramez()
     {
@@ -162,38 +171,6 @@ public class PlayerStats : Singleton<PlayerStats>
 
     void OnTriggerEnter(Collider col)
     {
-        //if (col.gameObject.tag == "Enemy" && !invincible)
-        //{
-            //Collider[] cols = Physics.OverlapBox(hurtBox.bounds.center, hurtBox.bounds.extents, hurtBox.transform.rotation, LayerMask.GetMask("HurtBox"),QueryTriggerInteraction.Collide);
-            //foreach (Collider coll in cols)
-            //{
-
-            //}
-            //TakeDamage(col.gameObject.GetComponent<Enemy>().damage);
-            //Debug.Log("I've been hit!");
-        //}
-
-        //logic that makes sure pickup affects the numbers of the stats
-        if (col.gameObject.tag == "PickUp")
-        {
-            int amount = 0;
-
-            if (col.GetComponent<PickUpType>().pickup == PickupType.Health)
-            {
-                amount = Mathf.RoundToInt(.25f * (stats.maxHP));
-                HP = (HP + amount > stats.maxHP) ? stats.maxHP : HP + amount;
-            }
-
-            else if (col.GetComponent<PickUpType>().pickup == PickupType.Money)
-            {
-                amount = col.GetComponent<PickUpType>().purse;
-                Wallet += amount;
-            }
-
-            Debug.Log("The type of pick up is " + col.GetComponent<PickUpType>().pickup);
-            Destroy(col.gameObject);
-        }
-
         if (col.gameObject.tag == "Death Object")
         {
             HP = 0;

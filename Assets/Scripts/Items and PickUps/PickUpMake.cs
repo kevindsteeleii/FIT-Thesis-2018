@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +19,22 @@ public class PickUpMake : MonoBehaviour {
     [Tooltip("The amount added")]
     [Range(0, 1000)]
     public int purse = 250;
+
+    [Tooltip("The hp added")]
+    [Range(0, 20)]
+    public int health = 10;
+
     private Vector3 hidden = new Vector3 (-99f, -99f, -99f);
+
+    /// <summary>
+    /// Event that transmits the integer value of the in-game currency
+    /// </summary>
+    public event Action<int> On_Money_PickUp_Sent;
+
+    /// <summary>
+    /// Event that transmits the integer value of the health pickup
+    /// </summary>
+    public event Action<int> On_Health_PickUp_Sent;
 
     private void Start()
     {
@@ -51,16 +67,32 @@ public class PickUpMake : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Destroy " + this.gameObject.name);
+            Debug.Log( this.gameObject.name+ " was collected");
+            OnPickUpCollected();
             Destroy(gameObject);
         }
     }
-    private void OnCollisionEnter(Collision collision)
+
+    /// <summary>
+    /// Used to send the pickup information 
+    /// </summary>
+    private void OnPickUpCollected()
     {
-        if (collision.gameObject.tag == "Player")
+        switch (pickup)
         {
-            Debug.Log("Destroy on collision " + this.gameObject.name);
-            Destroy(gameObject);
+            case PickupType.Health:
+                On_Health_PickUp_Sent += PlayerStats.instance.On_Health_PickUp_Received;
+                On_Health_PickUp_Sent(health);
+                break;
+            case PickupType.Money:
+                Debug.Log("Money with value of " + purse);
+                On_Money_PickUp_Sent += PlayerStats.instance.MakeMoney;
+                On_Money_PickUp_Sent(purse);
+                break;
+            case PickupType.Nothing:
+                break;
+            default:
+                break;
         }
     }
 

@@ -33,12 +33,6 @@ public class LootGenerator : Singleton<LootGenerator>
     protected virtual void On_EnemySpawns_Received(List<GameObject> obj)
     {
         enemiesPresent = obj;
-
-        //for (int i =0; i < obj.Count;i++)
-        //{
-        //    enemiesPresent[i].GetComponent<Enemy>().On_RandomLootDropped_Sent += On_RandomLootDropped_Received;
-        //    enemiesPresent[i].GetComponent<Enemy>().On_DefaultLootDrop_Sent += On_DefaultLootDrop_Received;
-        //}
     }
 
     public void On_DefaultLootDrop_Received(Vector3 pos1, Quaternion rot, PickupType pickUp)
@@ -81,8 +75,7 @@ public class LootGenerator : Singleton<LootGenerator>
             default:
                 break;
         }
-
-        //print("Item is " + itemIs);
+        
     }
 
     /// <summary>
