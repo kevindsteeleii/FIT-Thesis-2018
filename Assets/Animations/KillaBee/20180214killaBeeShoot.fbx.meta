@@ -1,0 +1,211 @@
+fileFormatVersion: 2
+guid: 1e389d5be615de14aaa67b8d416bd78c
+timeCreated: 1518635894
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Example_bn_Tail
+    100004: joint3
+    100006: joint4
+    100008: joint5
+    100010: joint6
+    100012: KillahBee_bn_antenna
+    100014: KillahBee_bn_BASE
+    100016: KillahBee_bn_elbowL
+    100018: KillahBee_bn_elbowR
+    100020: KillahBee_bn_head
+    100022: KillahBee_bn_MASTER
+    100024: KillahBee_bn_neck
+    100026: KillahBee_bn_propeller01
+    100028: KillahBee_bn_propeller02
+    100030: KillahBee_bn_propeller03
+    100032: KillahBee_bn_propeller04
+    100034: KillahBee_bn_propellerL
+    100036: KillahBee_bn_propellerL_blade01
+    100038: KillahBee_bn_propellerL_blade02
+    100040: KillahBee_bn_propellerL_blade02 1
+    100042: KillahBee_bn_propellerL_blade03
+    100044: KillahBee_bn_propellerL_blade03 1
+    100046: KillahBee_bn_propellerL_blade04
+    100048: KillahBee_bn_propellerL_blade04 1
+    100050: KillahBee_bn_propellerR
+    100052: KillahBee_bn_propellerR_blade01
+    100054: KillahBee_bn_shoulderL
+    100056: KillahBee_bn_shoulderR
+    100058: KillahBee_bn_stingerL
+    100060: KillahBee_bn_stingerR
+    100062: KillahBee_bn_stingerTipL
+    100064: KillahBee_bn_stingerTipR
+    100066: KillahBee_bn_tail01
+    100068: KillahBee_bn_tail02
+    100070: KillahBee_bn_tail03
+    100072: KillahBee_bn_tail04
+    100074: KillahBee_bn_tail05
+    100076: KillahBee_bn_tail06
+    100078: KillahBee_bn_tailStart
+    100080: KillahBee_bn_wingL
+    100082: KillahBee_bn_wingR
+    100084: KillahBee_bn_wingTipL
+    100086: KillahBee_bn_wingTipR
+    100088: KillahBee_bn_wristL
+    100090: KillahBee_bn_wristR
+    100092: KillahBee_loc_armL
+    100094: KillahBee_loc_armR
+    400000: //RootNode
+    400002: Example_bn_Tail
+    400004: joint3
+    400006: joint4
+    400008: joint5
+    400010: joint6
+    400012: KillahBee_bn_antenna
+    400014: KillahBee_bn_BASE
+    400016: KillahBee_bn_elbowL
+    400018: KillahBee_bn_elbowR
+    400020: KillahBee_bn_head
+    400022: KillahBee_bn_MASTER
+    400024: KillahBee_bn_neck
+    400026: KillahBee_bn_propeller01
+    400028: KillahBee_bn_propeller02
+    400030: KillahBee_bn_propeller03
+    400032: KillahBee_bn_propeller04
+    400034: KillahBee_bn_propellerL
+    400036: KillahBee_bn_propellerL_blade01
+    400038: KillahBee_bn_propellerL_blade02
+    400040: KillahBee_bn_propellerL_blade02 1
+    400042: KillahBee_bn_propellerL_blade03
+    400044: KillahBee_bn_propellerL_blade03 1
+    400046: KillahBee_bn_propellerL_blade04
+    400048: KillahBee_bn_propellerL_blade04 1
+    400050: KillahBee_bn_propellerR
+    400052: KillahBee_bn_propellerR_blade01
+    400054: KillahBee_bn_shoulderL
+    400056: KillahBee_bn_shoulderR
+    400058: KillahBee_bn_stingerL
+    400060: KillahBee_bn_stingerR
+    400062: KillahBee_bn_stingerTipL
+    400064: KillahBee_bn_stingerTipR
+    400066: KillahBee_bn_tail01
+    400068: KillahBee_bn_tail02
+    400070: KillahBee_bn_tail03
+    400072: KillahBee_bn_tail04
+    400074: KillahBee_bn_tail05
+    400076: KillahBee_bn_tail06
+    400078: KillahBee_bn_tailStart
+    400080: KillahBee_bn_wingL
+    400082: KillahBee_bn_wingR
+    400084: KillahBee_bn_wingTipL
+    400086: KillahBee_bn_wingTipR
+    400088: KillahBee_bn_wristL
+    400090: KillahBee_bn_wristR
+    400092: KillahBee_loc_armL
+    400094: KillahBee_loc_armR
+    7400000: Fly
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Fly
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

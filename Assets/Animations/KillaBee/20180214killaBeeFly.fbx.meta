@@ -1,0 +1,251 @@
+fileFormatVersion: 2
+guid: 4534c3cc5c6ded64fa0d3392a1270b83
+timeCreated: 1518635894
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Example_bn_Tail
+    100004: Example_loc_Tail
+    100006: ikHandle2
+    100008: ikHandle3
+    100010: ikHandle4
+    100012: ikHandle5
+    100014: joint3
+    100016: joint4
+    100018: joint5
+    100020: joint6
+    100022: KillahBee_bn_antenna
+    100024: KillahBee_bn_BASE
+    100026: KillahBee_bn_elbowL
+    100028: KillahBee_bn_elbowR
+    100030: KillahBee_bn_head
+    100032: KillahBee_bn_MASTER
+    100034: KillahBee_bn_neck
+    100036: KillahBee_bn_propeller01
+    100038: KillahBee_bn_propeller02
+    100040: KillahBee_bn_propeller03
+    100042: KillahBee_bn_propeller04
+    100044: KillahBee_bn_propellerL
+    100046: KillahBee_bn_propellerL_blade01
+    100048: KillahBee_bn_propellerL_blade02
+    100050: KillahBee_bn_propellerL_blade02 1
+    100052: KillahBee_bn_propellerL_blade03
+    100054: KillahBee_bn_propellerL_blade03 1
+    100056: KillahBee_bn_propellerL_blade04
+    100058: KillahBee_bn_propellerL_blade04 1
+    100060: KillahBee_bn_propellerR
+    100062: KillahBee_bn_propellerR_blade01
+    100064: KillahBee_bn_shoulderL
+    100066: KillahBee_bn_shoulderR
+    100068: KillahBee_bn_stingerL
+    100070: KillahBee_bn_stingerR
+    100072: KillahBee_bn_stingerTipL
+    100074: KillahBee_bn_stingerTipR
+    100076: KillahBee_bn_tail01
+    100078: KillahBee_bn_tail02
+    100080: KillahBee_bn_tail02 1
+    100082: KillahBee_bn_tail03
+    100084: KillahBee_bn_tail03 1
+    100086: KillahBee_bn_tail04
+    100088: KillahBee_bn_tail04 1
+    100090: KillahBee_bn_tail05
+    100092: KillahBee_bn_tail05 1
+    100094: KillahBee_bn_tail06
+    100096: KillahBee_bn_tail06 1
+    100098: KillahBee_bn_tailStart
+    100100: KillahBee_bn_wingL
+    100102: KillahBee_bn_wingR
+    100104: KillahBee_bn_wingTipL
+    100106: KillahBee_bn_wingTipR
+    100108: KillahBee_bn_wristL
+    100110: KillahBee_bn_wristR
+    100112: KillahBee_ik_tail01
+    100114: KillahBee_ik_tail02
+    100116: KillahBee_ik_tail03
+    100118: KillahBee_ik_tail04
+    100120: KillahBee_ik_tail05
+    100122: KillahBee_loc_armL
+    100124: KillahBee_loc_armR
+    100126: KillahBee_loc_tail01
+    100128: locator2
+    100130: locator3
+    100132: locator4
+    100134: locator5
+    400000: //RootNode
+    400002: Example_bn_Tail
+    400004: Example_loc_Tail
+    400006: ikHandle2
+    400008: ikHandle3
+    400010: ikHandle4
+    400012: ikHandle5
+    400014: joint3
+    400016: joint4
+    400018: joint5
+    400020: joint6
+    400022: KillahBee_bn_antenna
+    400024: KillahBee_bn_BASE
+    400026: KillahBee_bn_elbowL
+    400028: KillahBee_bn_elbowR
+    400030: KillahBee_bn_head
+    400032: KillahBee_bn_MASTER
+    400034: KillahBee_bn_neck
+    400036: KillahBee_bn_propeller01
+    400038: KillahBee_bn_propeller02
+    400040: KillahBee_bn_propeller03
+    400042: KillahBee_bn_propeller04
+    400044: KillahBee_bn_propellerL
+    400046: KillahBee_bn_propellerL_blade01
+    400048: KillahBee_bn_propellerL_blade02
+    400050: KillahBee_bn_propellerL_blade02 1
+    400052: KillahBee_bn_propellerL_blade03
+    400054: KillahBee_bn_propellerL_blade03 1
+    400056: KillahBee_bn_propellerL_blade04
+    400058: KillahBee_bn_propellerL_blade04 1
+    400060: KillahBee_bn_propellerR
+    400062: KillahBee_bn_propellerR_blade01
+    400064: KillahBee_bn_shoulderL
+    400066: KillahBee_bn_shoulderR
+    400068: KillahBee_bn_stingerL
+    400070: KillahBee_bn_stingerR
+    400072: KillahBee_bn_stingerTipL
+    400074: KillahBee_bn_stingerTipR
+    400076: KillahBee_bn_tail01
+    400078: KillahBee_bn_tail02
+    400080: KillahBee_bn_tail02 1
+    400082: KillahBee_bn_tail03
+    400084: KillahBee_bn_tail03 1
+    400086: KillahBee_bn_tail04
+    400088: KillahBee_bn_tail04 1
+    400090: KillahBee_bn_tail05
+    400092: KillahBee_bn_tail05 1
+    400094: KillahBee_bn_tail06
+    400096: KillahBee_bn_tail06 1
+    400098: KillahBee_bn_tailStart
+    400100: KillahBee_bn_wingL
+    400102: KillahBee_bn_wingR
+    400104: KillahBee_bn_wingTipL
+    400106: KillahBee_bn_wingTipR
+    400108: KillahBee_bn_wristL
+    400110: KillahBee_bn_wristR
+    400112: KillahBee_ik_tail01
+    400114: KillahBee_ik_tail02
+    400116: KillahBee_ik_tail03
+    400118: KillahBee_ik_tail04
+    400120: KillahBee_ik_tail05
+    400122: KillahBee_loc_armL
+    400124: KillahBee_loc_armR
+    400126: KillahBee_loc_tail01
+    400128: locator2
+    400130: locator3
+    400132: locator4
+    400134: locator5
+    7400000: attack
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: attack
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
