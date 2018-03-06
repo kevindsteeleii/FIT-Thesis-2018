@@ -27,7 +27,6 @@ public class ThrowController : Controller
             {
                 try
                 {
-                    //ThrowModel bullet = bulletPool.GetPooledObject().GetComponent<ThrowModel>();
                     canon.ThrowStraight();
                 }
                 catch (IndexOutOfRangeException e)

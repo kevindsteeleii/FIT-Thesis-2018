@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GUIManager : Singleton<GUIManager>
 {
-    public GameObject menu, gameOverScreen;
+    public GameObject menu;
     bool visible;
 
     /// <summary>
@@ -28,24 +28,22 @@ public class GUIManager : Singleton<GUIManager>
     protected virtual void Start()
     {
         //subscribes the event created by the 
-        GameManager.instance.onGameOverState += OnGameOverState;
+        //GameManager.instance.onGameOverState += OnGameOverState;
     }
 
     protected virtual void Continue()
     {
         Debug.Log("RESUME");
         visible = false;
-        gameOverScreen.SetActive(false);
-
         On_ResumeButton_Sent();
     }
 
     //Subscriber that only is triggered by the initiation of the gameOver state change 
-    public virtual void OnGameOverState()
-    {
-        Debug.Log("GameOver GUI activated");
-        gameOverScreen.SetActive(true);
-    }
+    //public virtual void OnGameOverState()
+    //{
+    //    Debug.Log("GameOver GUI activated");
+    //    menu.SetActive(false);
+    //}
 
     /*Restart logic needs to reside in the Game Manager you only need to worry 
     about type void methods that uses a subscribed event as input or a trigger
@@ -53,8 +51,6 @@ public class GUIManager : Singleton<GUIManager>
     public virtual void Restart()
     {
         visible = false;
-        gameOverScreen.SetActive(false);
-
         if (onRestartButton != null)
         {
             Debug.Log("Sending Restart");
@@ -69,11 +65,6 @@ public class GUIManager : Singleton<GUIManager>
         /*checks the gameState and the button presses to make sure things work 
          * dependent of the current game state of the GameManager <Kev Note*/
 
-        if (Input.GetButtonDown("Start"))
-        {
-            Debug.Log("Start button pressed");
-        }
-
         if (ButtonPressed("Start") && GameManager.instance.GetState() == GameState.inGame && On_PauseButton_Sent != null)
         {
             //Debug.Log("Start was pressed.");
@@ -82,7 +73,6 @@ public class GUIManager : Singleton<GUIManager>
         }
         else if (ButtonPressed("Start") && GameManager.instance.GetState() == GameState.pause && On_PauseButton_Sent != null)
         {
-            //Debug.Log("Start was pressed.");
             Continue();
         }
 

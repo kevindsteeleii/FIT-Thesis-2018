@@ -3,6 +3,7 @@
 /// <summary>
 /// The GrabData Scriptable Object to be made into a saveable asset
 /// </summary>
+[CreateAssetMenu(fileName ="Grab Data", menuName ="DataAsset/Grab Data")]
 public class GrabData : ScriptableObject {
     //range of grab determined by slider
     [Tooltip("How far away he grabs")]

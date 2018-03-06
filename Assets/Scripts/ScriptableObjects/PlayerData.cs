@@ -3,7 +3,7 @@
 /// Used for the player options to save
 /// </summary>
 /// 
-
+[CreateAssetMenu(fileName ="PlayerData",menuName ="DataAsset/PlayerData")]
 public class PlayerData : ScriptableObject {
     //variables for movement
     [Range(0f, 8f)]

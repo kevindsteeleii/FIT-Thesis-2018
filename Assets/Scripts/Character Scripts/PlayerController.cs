@@ -24,11 +24,16 @@ public class PlayerController : Singleton<PlayerController>
     public event Action<Vector3> onPlayerPosition;
 
     /// <summary>
+    /// Event that broadcastst the left/right status of the player character
+    /// </summary>
+    public event Action<bool> On_IsFacingRight_Sent;
+
+    /// <summary>
     /// keeps position to be referred to outside
     /// </summary>
     public Vector3 myPos;
 
-
+    
     /// <summary>
     /// Delegates used to speed up runtime of checking the parameters and buttons of a resulting
     /// Animation/Action
@@ -70,6 +75,10 @@ public class PlayerController : Singleton<PlayerController>
     // Update is called once per physics action
     protected virtual void FixedUpdate()
     {
+        if (On_IsFacingRight_Sent != null)
+        {
+            On_IsFacingRight_Sent(facingRight);
+        }
 
         bool undead = takeAction("Respawn", "dead", true, myAnim);
         //if false death-state is on all other actions cease

@@ -3,6 +3,7 @@
 /// <summary>
 /// Scriptable Object that holds the data for the PlayerStats Class
 /// </summary>
+[CreateAssetMenu (fileName ="Player Stats Data",menuName ="DataAsset/PlayerStats")]
 public class StatsData : ScriptableObject {
 
     [Tooltip("Sets Player Health")]

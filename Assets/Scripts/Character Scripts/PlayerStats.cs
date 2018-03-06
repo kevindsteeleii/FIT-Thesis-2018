@@ -143,17 +143,19 @@ public class PlayerStats : Singleton<PlayerStats>
 
     IEnumerator IFramez()
     {
+        invincible = true;
+        hurtBox.enabled=false;
         for (int i = 0; i < intervals; i++)
         {
             CullOn();
             //Debug.Log("Culling");
-            yield return new WaitForSeconds(stats.waitTime / 2);
+            yield return new WaitForSeconds(stats.waitTime/2);
             CullOff();
-            yield return new WaitForSeconds(stats.waitTime / 2);
+            yield return new WaitForSeconds(stats.waitTime/2);
             invincible = false;
-            // Debug.Log("Not Culling");
+            hurtBox.enabled = true;
         }
-        //yield return null;
+        yield return null;
     }
 
     //handles damage taken by player character and its effects

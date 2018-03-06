@@ -27,9 +27,13 @@ public class Projectile : Model
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("The tag of collider entered is: " + other.gameObject.tag);
         if (other.gameObject.tag == "HurtBox" )
         {
-            Debug.Log("Enemy hit on Trigger Projecile!!!");
+            DestroyMe();
+        }
+        else if (other.gameObject.tag == "ActiveBox")
+        {
             DestroyMe();
         }
     }

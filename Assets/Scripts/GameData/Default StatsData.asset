@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 40
   duration: 3
-  waitTime: 0.125
+  waitTime: 0.229
   maxMoney: 10000
   maxEnergy: 300
   percentDeduction: 12

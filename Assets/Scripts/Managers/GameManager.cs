@@ -42,6 +42,8 @@ public class GameManager : Singleton<GameManager>
         GUIManager.instance.On_PauseButton_Sent += OnPauseButton;
         GUIManager.instance.On_ResumeButton_Sent += OnResumeButton;
         GUIManager.instance.onRestartButton += OnRestartButton;
+        GameOverGUI.instance.On_Restart_Sent += OnRestartButton;
+
 
         StartGame();
     }
@@ -80,7 +82,6 @@ public class GameManager : Singleton<GameManager>
             case GameState.win:
                 break;
         }
-        Debug.Log("Game State is: " + newGameState);
         gameState = newGameState;
     }
 
@@ -110,7 +111,6 @@ public class GameManager : Singleton<GameManager>
     {
         Time.timeScale = 0;
         SetGameState(GameState.gameOver);
-        //PlayerStats.instance.hp = 0;
     }
 
     public virtual void GameOver()

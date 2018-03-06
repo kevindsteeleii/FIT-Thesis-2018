@@ -33,12 +33,19 @@ public class ThrowModel : Model
         left = Vector3.left;
     }
 
+    void Start()
+    {
+        PlayerController.instance.On_IsFacingRight_Sent += On_IsFacingRight_Received;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
         //facing is used to determine the direction the character is facing and uses a multiplier to affect trajectory of projectile
         //assignmentParameter = (outcomeOfConditional) ? a:b; // it equals a if the outcome is true and b if false
-        flatShot = (PlayerController.facingRight) ? right : left;
+        //flatShot = (PlayerController.facingRight) ? right : left;
+        //string message = (PlayerController.facingRight) ? "right" : "left";
+        //Debug.Log("Player faces " + message);
         direction = aimReticle.transform.position - rootAim.transform.position;
     }
 
@@ -64,6 +71,7 @@ public class ThrowModel : Model
         if (Ammo.instance.bullets > 0)
         {
             GameObject bullet = Ammo.instance.GetPooledObject(rootAim.transform.position);
+            //
             bullet.transform.SetParent(null); //trying to fix possible  movement bug
             Rigidbody tempRB;
             tempRB = bullet.GetComponent<Rigidbody>();
@@ -72,5 +80,13 @@ public class ThrowModel : Model
         }
         else
             throw new ArgumentOutOfRangeException("Ran out of bullets");
+    }
+
+    //Listener of the PlayerController that changes the direction a shot takes
+    public void On_IsFacingRight_Received (bool facesRight)
+    {
+        flatShot = (facesRight) ? right : left;
+        string message = (facesRight) ? "right" : "left";
+        Debug.Log("Player faces " + message);
     }
 }

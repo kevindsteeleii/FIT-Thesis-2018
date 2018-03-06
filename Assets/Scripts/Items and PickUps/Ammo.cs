@@ -65,7 +65,7 @@ public class Ammo : Singleton<Ammo>
         for (int i = 0; i < capacity; i++)
         {
             GameObject obj = Instantiate(bullet, hidden, Quaternion.identity);
-            obj.transform.SetParent(this.gameObject.transform);
+            obj.transform.SetParent(null);
             obj.SetActive(false);
             ammoList.Add(obj);
         }
