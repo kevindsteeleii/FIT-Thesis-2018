@@ -13,6 +13,10 @@ public class Ammo : Singleton<Ammo>
     //the bullet or single projectile to be "loaded" into the PoolList known as ammoList
     public GameObject bullet;
 
+    //gameObject that manages the ammunition
+    [SerializeField]
+    GameObject ammoManager;
+
     //creation of collection to handle pooling of ammo, as opposed to instantiating and destroying and using up lots of memory allocation to do so
     //at this scope its harmless but its best practice
 
@@ -65,7 +69,7 @@ public class Ammo : Singleton<Ammo>
         for (int i = 0; i < capacity; i++)
         {
             GameObject obj = Instantiate(bullet, hidden, Quaternion.identity);
-            obj.transform.SetParent(null);
+            obj.transform.SetParent(ammoManager.transform);
             obj.SetActive(false);
             ammoList.Add(obj);
         }
@@ -95,19 +99,9 @@ public class Ammo : Singleton<Ammo>
     public void Load()
     {
         bullets++;
-        Mathf.Clamp(bullets, 0, cap);
-
-        if (bullets >= cap)
-        {
-            bullets = cap;
-            Debug.Log("Filled to max capacity! Try throwing one.");
-        }
-
-        else
-        {
-            Debug.Log("Loading...Now you have " + bullets + " bullets!!");
-            Reuse();
-        }
+        bullets = Mathf.Clamp(bullets, 0, cap);
+        Debug.Log("Loading...Now you have " + bullets + " bullets!!");
+        Reuse();
     }
 
     /// <summary>
@@ -125,25 +119,31 @@ public class Ammo : Singleton<Ammo>
         }
     }
 
+    public void Reuse(GameObject bullet)
+    {
+        bullet.SetActive(false);
+        bullet.transform.position = hidden;
+    }
+
     /// <summary>
     /// Deletes from bullet int and launches different throwing
     /// </summary>
     public void ShootLoad()
     {
-        Mathf.Clamp(bullets, 0, cap);
+
         if (Input.GetButton("Throw") && bullets <= 0)
         {
             bullets = 0;
             Debug.Log("No Ammo, Empty Clip");
         }
 
-        else if (Input.GetButton("Throw") && bullets >= 0)
+        else if (Input.GetButton("Throw") && bullets > 0)
         {
             Debug.Log("Shots fired! Only " + bullets + " shots left!");
         }
         else
             return;
-        //add before logic subtract after logic
         bullets--;
+        bullets = Mathf.Clamp(bullets, 0, cap);
     }
 }

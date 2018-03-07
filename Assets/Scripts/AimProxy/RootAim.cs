@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-
+using System;
 /// <summary>
 /// Class used to follow player character w/o problematic rotations
 /// or other adjustments to models etc.
 /// Works as inteded do not directly adjust or change
 /// </summary>
-public class RootAim : MonoBehaviour
+public class RootAim : Singleton<RootAim>
 {
     /// <summary>
     /// Used as a basis for both the relativeOffset for grab and starting
@@ -24,8 +24,9 @@ public class RootAim : MonoBehaviour
     public float vertAdjustment;
 
     //Initiates the default state
-    public virtual void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         facesRight = true;
     }
     
@@ -37,8 +38,6 @@ public class RootAim : MonoBehaviour
         desiredPosition.z = 0f;
         transform.position = desiredPosition;
         float move = Input.GetAxis("Horizontal");
-        //float mover = Input.GetAxis("JoystickHorizontal");
-
         if (move > 0 && !facesRight || move < 0 && facesRight )
         {
             FlipMe();

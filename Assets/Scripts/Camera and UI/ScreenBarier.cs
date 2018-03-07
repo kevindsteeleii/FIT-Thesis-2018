@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+ 
+public enum Direction { left = -1, right = 1 };
 /// <summary>
 /// This component is used for a box collider that determines when ammo is no longer viable based upon
 /// its absence from a box collider
 /// </summary>
-/// 
-public enum Direction { left = -1, right = 1 };
+///
 public class ScreenBarier : MonoBehaviour {
     [SerializeField]
     Transform followObject;
@@ -23,7 +24,6 @@ public class ScreenBarier : MonoBehaviour {
 	void Update () {
         float multiplier = 0;
         multiplier = (myDirection == Direction.left) ? -1 : 1;
-
         Vector3 adjust = followObject.position;
         float xOff = adjust.x + (xOffset * multiplier);
         adjust.x = xOff;

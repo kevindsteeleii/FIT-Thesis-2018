@@ -24,11 +24,6 @@ public class PlayerController : Singleton<PlayerController>
     public event Action<Vector3> onPlayerPosition;
 
     /// <summary>
-    /// Event that broadcastst the left/right status of the player character
-    /// </summary>
-    public event Action<bool> On_IsFacingRight_Sent;
-
-    /// <summary>
     /// keeps position to be referred to outside
     /// </summary>
     public Vector3 myPos;
@@ -75,10 +70,7 @@ public class PlayerController : Singleton<PlayerController>
     // Update is called once per physics action
     protected virtual void FixedUpdate()
     {
-        if (On_IsFacingRight_Sent != null)
-        {
-            On_IsFacingRight_Sent(facingRight);
-        }
+        
 
         bool undead = takeAction("Respawn", "dead", true, myAnim);
         //if false death-state is on all other actions cease
@@ -86,6 +78,8 @@ public class PlayerController : Singleton<PlayerController>
         if (GameManager.instance.GetState() == GameState.inGame)
 
         {
+
+
             #region Horizontal Movement
             float move = 0;
 
@@ -93,21 +87,13 @@ public class PlayerController : Singleton<PlayerController>
             {
                 move = Input.GetAxis("Horizontal");
             }
-            //else if (Mathf.Abs(Input.GetAxis("JoystickHorizontal")) > 0)
-            //{
-            //    move = Input.GetAxis("JoystickHorizontal");
-            //}
 
             myAnim.SetFloat("speed", Mathf.Abs(move));
-            //Debug.Log("Move is " + move);
-            //Debug.Log("Speed "+ myAnim.GetFloat("speed"));
 
             myRB.velocity = new Vector3(move * data.runSpeed, myRB.velocity.y, 0);
             if (move > 0 && !facingRight) { Flip(); }
             else if (move < 0 && facingRight) { Flip(); }
             #endregion
-
-            //Debug.Log("Horizontal Input is this number -> "+Input.GetAxis("JoystickHorizontal"));
 
             bool puncher = takeAction("Punch", "grounded", true, myAnim);
             bool slammer = comboAction("Punch", "Slam", "airborne", true, myAnim);

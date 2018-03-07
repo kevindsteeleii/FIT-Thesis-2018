@@ -13,40 +13,40 @@ public class ThrowModel : Model
     [Tooltip("The aim reticle")]
     public GameObject aimReticle;
 
+    //the game object used to manage the bullets when made
+    [SerializeField]
+    GameObject ammoManager;
+
+    [Tooltip("X-Offset of the throw")]
+    [Range(0f, 3f)]
+    public float xOffset = .4f;
+
     [Tooltip("Intensity of throw")]
-    [Range(400f, 1000f)]
+    [Range(0f, 100f)]
     public float throwForce;
 
     [Tooltip("Decreases speed of aimed throw")]
-    [Range(0f, 0.9f)]
+    [Range(0f, 04f)]
     public float aimThrowSpeed;
 
     [Tooltip("Determines height offset of the beginning of throw ")]
     [Range(0.1f, 4f)]
     public float throwHeightOffset;
 
-    Vector3 right, left, direction, flatShot;
-    // Use this for initialization
-    void Awake()
-    {
-        right = Vector3.right;
-        left = Vector3.left;
-    }
+    Vector3 aimDirection, direction;
 
-    void Start()
+    protected virtual void Update()
     {
-        PlayerController.instance.On_IsFacingRight_Sent += On_IsFacingRight_Received;
+        if (!RootAim.facesRight)
+            direction = Vector3.left;
+        else
+            direction = Vector3.right;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        //facing is used to determine the direction the character is facing and uses a multiplier to affect trajectory of projectile
-        //assignmentParameter = (outcomeOfConditional) ? a:b; // it equals a if the outcome is true and b if false
-        //flatShot = (PlayerController.facingRight) ? right : left;
-        //string message = (PlayerController.facingRight) ? "right" : "left";
-        //Debug.Log("Player faces " + message);
-        direction = aimReticle.transform.position - rootAim.transform.position;
+        aimDirection = aimReticle.transform.position - rootAim.transform.position;
     }
 
     /*Creates an object variable that when assigned is passed as a prefab for the projectile.
@@ -58,8 +58,8 @@ public class ThrowModel : Model
         if (Ammo.instance.bullets > 0)
         {
             GameObject bullet = Ammo.instance.GetPooledObject(rootAim.transform.position);
-            bullet.transform.SetParent(null); //trying to fix possible  movement bug
-            bullet.GetComponent<Rigidbody>().AddForce(flatShot * throwForce);
+            bullet.transform.SetParent(ammoManager.transform); //trying to fix possible  movement bug
+            bullet.GetComponent<Rigidbody>().velocity = direction * throwForce;
             Ammo.instance.ShootLoad();
         }
         else
@@ -71,22 +71,13 @@ public class ThrowModel : Model
         if (Ammo.instance.bullets > 0)
         {
             GameObject bullet = Ammo.instance.GetPooledObject(rootAim.transform.position);
-            //
-            bullet.transform.SetParent(null); //trying to fix possible  movement bug
+            bullet.transform.SetParent(ammoManager.transform); //trying to fix possible  movement bug
             Rigidbody tempRB;
             tempRB = bullet.GetComponent<Rigidbody>();
-            tempRB.AddForceAtPosition(direction * throwForce * aimThrowSpeed, transform.position);
+            tempRB.AddForceAtPosition(aimDirection * throwForce*10, transform.position,ForceMode.Acceleration);
             Ammo.instance.ShootLoad();
         }
         else
             throw new ArgumentOutOfRangeException("Ran out of bullets");
-    }
-
-    //Listener of the PlayerController that changes the direction a shot takes
-    public void On_IsFacingRight_Received (bool facesRight)
-    {
-        flatShot = (facesRight) ? right : left;
-        string message = (facesRight) ? "right" : "left";
-        Debug.Log("Player faces " + message);
     }
 }

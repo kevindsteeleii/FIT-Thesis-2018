@@ -9,9 +9,6 @@ public class GrabModel : Model
     //stores the data for the GrabModel and saves changes during play mode
     public GrabData data;
 
-    //direction of ray and relative position of player
-    public static Vector3 direction;
-
     //renderer used to make the "hand" disappear 
     Renderer myRender = new Renderer();
 
@@ -28,14 +25,6 @@ public class GrabModel : Model
         Vector3 trueOffSet = new Vector3(data.offSet.x, data.offSet.y, 0);
         transform.localPosition = trueOffSet;
         this.GetComponent<SphereCollider>().enabled = false;
-    }
-
-    protected virtual void Update()
-    {
-        if (!RootAim.facesRight)
-            direction = Vector3.left;
-        else
-            direction = Vector3.right;
     }
 
     /// <summary>

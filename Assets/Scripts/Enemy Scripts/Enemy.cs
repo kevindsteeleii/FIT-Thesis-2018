@@ -55,7 +55,6 @@ public class Enemy : MonoBehaviour
     {
         body = this.gameObject;
         saveHP = HP;
-        //enPlatform.PlatformMoved += EnPlatform_PlatformMoved;
         RandomBehavior(randomBehavior);
     }
 
@@ -68,12 +67,6 @@ public class Enemy : MonoBehaviour
             HP = 0;
             DealDeath();
         }
-        //if sendBehavior has a subscriber...
-
-        //if (On_SendBehavior_Sent != null)
-        //{
-        //    On_SendBehavior_Sent(enBehavior);
-        //}
     }
 
     /// <summary>
@@ -94,34 +87,9 @@ public class Enemy : MonoBehaviour
     {
         if (active)
         {
-            //int pick = UnityEngine.Random.Range(0, EnemyBehavior.total.GetHashCode() - 1);
-            //enBehavior = (EnemyBehavior)pick;
-            //Debug.Log("This enemy is the " + enBehavior + " type!!");
             randomBehavior = false;
         }
     }
-
-    /// <summary>
-    /// Switches the behavior exhibited by the enemy and transmits to its subsequent 
-    /// </summary>
-    /// <param name="behavior"></param>
-    //protected virtual void SwitchBehavior(EnemyBehavior behavior)
-    //{
-    //    switch (behavior)
-    //    {
-    //        case EnemyBehavior.None:
-    //            break;
-    //        case EnemyBehavior.Patrolling:
-    //            break;
-    //        case EnemyBehavior.Turret:
-    //            break;
-    //        case EnemyBehavior.Floating:
-    //            break;
-    //        default:
-    //            break;
-    //    }
-    //    enBehavior = behavior;
-    //}
 
     /// <summary>
     /// Sets the position of the enemy
@@ -181,10 +149,7 @@ public class Enemy : MonoBehaviour
             {
                 
                 BecomePickUp();
-                Debug.Log("Become a pickup/drop item");
             }
-            Debug.Log("Hit");
-
         }
 
         /*In this block, if the object in contact is the hand it automatically does damage,
@@ -198,11 +163,6 @@ public class Enemy : MonoBehaviour
             if (HP <= saveHP / 2)
             {
                 BecomeProjectile();
-                Debug.Log("Grabbed");
-            }
-            else
-            {
-                Debug.Log("Grope!");
             }
         }
         /*Add cases for a punch or slam attack modeled after the

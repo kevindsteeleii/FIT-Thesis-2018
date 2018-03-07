@@ -14,11 +14,6 @@ public class CameraFollowv2_0 : MonoBehaviour {
 
     public float smoothSpeed = 0.125f;
 
-    void Awake()
-    {
-        //joffset = Vector3.forward * -7.5f;
-    }
-
     protected void Start()
     {
         camRespawnPos = this.transform.position;

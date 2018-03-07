@@ -1,47 +1,35 @@
 ﻿using UnityEngine;
-
+using System;
 /// <summary>
 /// Class that houses logic for Projectile
 /// </summary>
 public class Projectile : Model
-{
-    [SerializeField]
-    GameObject rootAim;
+{ 
+    GameObject projectileObj;
 
     //damage the projectile causes
     [Range (0,15)]
     public int damage;
-
+    /// <summary>
+    /// event that transmsits the physical game object body of the projectile
+    /// </summary>
+    public event Action<GameObject> On_BulletDestroyed_Sent;
+   
     public virtual void Start()
     {
-        if (rootAim == null)
+        if (projectileObj == null)
         {
-            rootAim = GameObject.FindGameObjectWithTag("RootAim");
+            projectileObj = this.gameObject;
         }
-    }
-
-    private void OnBecameInvisible()
-    {
-        DestroyMe();
+        On_BulletDestroyed_Sent += Ammo.instance.Reuse;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("The tag of collider entered is: " + other.gameObject.tag);
-        if (other.gameObject.tag == "HurtBox" )
+        if (other.gameObject.tag == "HurtBox" || other.gameObject.tag == "ActiveBox")
         {
-            DestroyMe();
-        }
-        else if (other.gameObject.tag == "ActiveBox")
-        {
-            DestroyMe();
+            On_BulletDestroyed_Sent(projectileObj);
         }
     }
 
-    //Doesn't "destroy" as much as set's active to false and rejoins it's old parent object in hierarchy
-    public void DestroyMe()
-    {
-        gameObject.transform.SetParent(rootAim.transform);
-        gameObject.SetActive(false);
-    }
 }
