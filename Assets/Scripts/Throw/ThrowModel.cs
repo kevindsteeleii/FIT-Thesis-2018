@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-using System.Collections.Generic;
+using System.Collections;
 
 /// <summary>
 /// Class used as empty model that generates the instantiated bullet to be shot
@@ -41,12 +41,10 @@ public class ThrowModel : Model
             direction = Vector3.left;
         else
             direction = Vector3.right;
-    }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        aimDirection = aimReticle.transform.position - rootAim.transform.position;
+        aimDirection = aimReticle.transform.localPosition;
+        aimDirection.x = aimReticle.transform.localPosition.x * direction.x;
+
     }
 
     /*Creates an object variable that when assigned is passed as a prefab for the projectile.
@@ -74,7 +72,7 @@ public class ThrowModel : Model
             bullet.transform.SetParent(ammoManager.transform); //trying to fix possible  movement bug
             Rigidbody tempRB;
             tempRB = bullet.GetComponent<Rigidbody>();
-            tempRB.AddForceAtPosition(aimDirection * throwForce*10, transform.position,ForceMode.Acceleration);
+            tempRB.AddForceAtPosition(aimDirection * throwForce * 10, transform.position, ForceMode.Acceleration);
             Ammo.instance.ShootLoad();
         }
         else

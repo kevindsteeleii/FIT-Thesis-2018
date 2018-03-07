@@ -26,7 +26,7 @@ public class Projectile : Model
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "HurtBox" || other.gameObject.tag == "ActiveBox")
+        if (other.gameObject.tag == "HurtBox" || other.gameObject.tag == "ActiveBox"|| other.gameObject.tag == "DeathBox")
         {
             On_BulletDestroyed_Sent(projectileObj);
         }

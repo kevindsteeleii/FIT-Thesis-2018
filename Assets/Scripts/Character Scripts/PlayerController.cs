@@ -70,7 +70,6 @@ public class PlayerController : Singleton<PlayerController>
     // Update is called once per physics action
     protected virtual void FixedUpdate()
     {
-        
 
         bool undead = takeAction("Respawn", "dead", true, myAnim);
         //if false death-state is on all other actions cease

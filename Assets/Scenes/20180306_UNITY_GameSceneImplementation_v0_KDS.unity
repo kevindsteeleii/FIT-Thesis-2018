@@ -404,6 +404,7 @@ MonoBehaviour:
   myCollider: {fileID: 184489194}
   myDirection: -1
   xOffset: 12
+  yOffset: 0
 --- !u!65 &184489194
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -477,6 +478,7 @@ MonoBehaviour:
   myCollider: {fileID: 473046985}
   myDirection: 1
   xOffset: 12
+  yOffset: 0
 --- !u!65 &473046985
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -608,6 +610,64 @@ Transform:
   m_PrefabParentObject: {fileID: 4514602311295474, guid: 3d769b7c4facefe48a60e0427fcfa6b9,
     type: 2}
   m_PrefabInternal: {fileID: 592730736}
+--- !u!1 &823751891
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 823751892}
+  - component: {fileID: 823751894}
+  - component: {fileID: 823751893}
+  m_Layer: 0
+  m_Name: ScreenBarrierTop
+  m_TagString: ActiveBox
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &823751892
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 823751891}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 21.630772, y: 1.2379669, z: 21.69736}
+  m_Children: []
+  m_Father: {fileID: 1283273739}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &823751893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 823751891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 921650b666cfb2a479e01b7c524fa055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followObject: {fileID: 1369120714}
+  myCollider: {fileID: 823751894}
+  myDirection: 0
+  xOffset: 0
+  yOffset: 9.3
+--- !u!65 &823751894
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 823751891}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &981400812
 Prefab:
   m_ObjectHideFlags: 0
@@ -802,6 +862,7 @@ Transform:
   m_Children:
   - {fileID: 184489192}
   - {fileID: 473046983}
+  - {fileID: 823751892}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

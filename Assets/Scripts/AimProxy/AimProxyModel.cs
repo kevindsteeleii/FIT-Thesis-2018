@@ -21,6 +21,11 @@ public class AimProxyModel : Model
     public event Action onProgressUpdateEnd;
 
     /// <summary>
+    /// Sends the local aim direction modified by a facing multiplier
+    /// </summary>
+    public event Action<Vector3> On_AimDirection_Sent;
+
+    /// <summary>
     /// A multiplier used to speed up or slow down the animation.
     /// </summary>
     [Tooltip("A multiplier used to speed up or slow down the animation.")]

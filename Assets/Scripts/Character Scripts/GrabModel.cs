@@ -32,7 +32,7 @@ public class GrabModel : Model
     /// Additionally, it sets the collider to active on grab and activates the renderer to make it visible as well
     /// </summary>
 
-    public void grab()
+    public void Grab()
     {
         //appears whilegrabbing
         this.GetComponent<SphereCollider>().enabled = true;
@@ -47,7 +47,7 @@ public class GrabModel : Model
     /// Upon release of the grab button the collider deactivates as well as the renderer
     /// making it invisible as well
     /// </summary>
-    public void release()
+    public void Release()
     {
         //and disappears when you let go
         Vector3 trueOffSet = new Vector3(data.offSet.x, data.offSet.y, 0);
