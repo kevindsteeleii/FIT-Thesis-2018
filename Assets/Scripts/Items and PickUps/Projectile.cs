@@ -10,6 +10,7 @@ public class Projectile : Model
     //damage the projectile causes
     [Range (0,15)]
     public int damage;
+
     /// <summary>
     /// event that transmsits the physical game object body of the projectile
     /// </summary>
@@ -31,5 +32,4 @@ public class Projectile : Model
             On_BulletDestroyed_Sent(projectileObj);
         }
     }
-
 }

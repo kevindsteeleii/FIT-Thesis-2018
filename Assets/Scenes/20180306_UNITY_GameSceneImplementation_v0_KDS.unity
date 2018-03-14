@@ -297,7 +297,8 @@ MonoBehaviour:
   aimReticle: {fileID: 295133581}
   ammoManager: {fileID: 1242356777}
   xOffset: 0.4
-  throwForce: 20
+  throwForce: 16.4
+  aimThrowForce: 15.6
   aimThrowSpeed: 0.9
   throwHeightOffset: 0
 --- !u!114 &119570802

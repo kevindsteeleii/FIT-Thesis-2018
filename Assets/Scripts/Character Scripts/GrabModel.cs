@@ -5,7 +5,6 @@ using UnityEngine;
 /// </summary>
 public class GrabModel : Model
 {
-
     //stores the data for the GrabModel and saves changes during play mode
     public GrabData data;
 
@@ -31,7 +30,6 @@ public class GrabModel : Model
     /// As long as button is pressed down it will propel hand towards maximum Reach.
     /// Additionally, it sets the collider to active on grab and activates the renderer to make it visible as well
     /// </summary>
-
     public void Grab()
     {
         //appears whilegrabbing

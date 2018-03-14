@@ -58,7 +58,6 @@ public class Ammo : Singleton<Ammo>
         {
             MyAmmo(bullets);
         }
-
     }
 
     /// <summary>
@@ -100,7 +99,6 @@ public class Ammo : Singleton<Ammo>
     {
         bullets++;
         bullets = Mathf.Clamp(bullets, 0, cap);
-        Debug.Log("Loading...Now you have " + bullets + " bullets!!");
         Reuse();
     }
 

@@ -39,12 +39,6 @@ public class ThrowController : Controller
             {
                 canon.ThrowAngle();
             }
-
-            else if (Input.GetButtonDown("Throw") && Ammo.instance.bullets <= 0)
-            {
-                Ammo.instance.ShootLoad();
-            }
         }
     }
 }
-

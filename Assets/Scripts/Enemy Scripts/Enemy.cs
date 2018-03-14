@@ -4,12 +4,11 @@ using System;
 /// <summary>
 /// Enum that is used to handle the behavior of individual enemies. Never use total its just to number them for enumerations, iterations and the like.
 /// </summary>
-public enum EnemyBehavior { None, Patrolling, Turret, Floating, total };
+public enum EnemyBehavior { Stationary, Patrolling, Turret, Floating, total };
 
 /// <summary>
 /// Enemy base class used to determine basic information and behavior of enemy class
 /// </summary>
-//[RequireComponent(typeof(EnemyPatrol), typeof(EnemyTurret))]
 public class Enemy : MonoBehaviour
 {
     #region Global Variables
@@ -44,7 +43,7 @@ public class Enemy : MonoBehaviour
     public bool randomBehavior = false;
     
     //enum used to determine the behavior of the enemy
-    public EnemyBehavior enBehavior = EnemyBehavior.None;
+    public EnemyBehavior enBehavior = EnemyBehavior.Stationary;
 
     //used to save max HP info for enemy
     int saveHP;
@@ -120,9 +119,11 @@ public class Enemy : MonoBehaviour
         obj.SetActive(false);
     }
 
-    /*creates a pickUp item upon destruction if and only if
-     the enemy did not become ammo to be shot, they are not
-     mutually inclusive*/
+    /// <summary>
+    /// creates a pickUp item upon destruction if and only if
+    ///the enemy did not become ammo to be shot, they are not
+    ///mutually inclusive
+    /// </summary>
     protected virtual void BecomePickUp()
     {
         if (randomDrop)
@@ -135,8 +136,7 @@ public class Enemy : MonoBehaviour
             this.On_DefaultLootDrop_Sent += LootGenerator.instance.On_DefaultLootDrop_Received ;
             On_DefaultLootDrop_Sent(transform.position, transform.rotation, PickupType.Health);
         }
-        Destroy(body);
-        
+        Destroy(body);   
     }
 
     private void OnTriggerEnter(Collider other)
@@ -147,7 +147,6 @@ public class Enemy : MonoBehaviour
             TakeDamage(obj.GetComponent<Projectile>().damage); //refactor with hitbox/hurtbox paradigm 
             if (HP <= saveHP / 2)
             {
-                
                 BecomePickUp();
             }
         }
@@ -155,7 +154,6 @@ public class Enemy : MonoBehaviour
         /*In this block, if the object in contact is the hand it automatically does damage,
          then sorts out what happens based on comparing the max HP w/ the new adjusted amount and 
          outputs results accordingly*/
-
         if (obj.tag == "Hand")
         {
             TakeDamage(obj.GetComponent<GrabModel>().damage);

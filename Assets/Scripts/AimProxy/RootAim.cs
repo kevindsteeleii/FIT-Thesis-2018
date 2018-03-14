@@ -7,11 +7,6 @@ using System;
 /// </summary>
 public class RootAim : Singleton<RootAim>
 {
-    /// <summary>
-    /// Used as a basis for both the relativeOffset for grab and starting
-    /// Vector3 to figure out the direction of the aimed throw.
-    /// </summary>
-
     //player as target
     [SerializeField]
     Transform target;
@@ -20,6 +15,7 @@ public class RootAim : Singleton<RootAim>
     public static Vector3 aimPos;
     public static int direction = 1;
 
+    [Tooltip("Vertical adjustment/offset")]
     [Range (0f,3f)]
     public float vertAdjustment;
 
@@ -56,4 +52,3 @@ public class RootAim : Singleton<RootAim>
         return gameObject;
     }
 }
-

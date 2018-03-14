@@ -22,8 +22,12 @@ public class ThrowModel : Model
     public float xOffset = .4f;
 
     [Tooltip("Intensity of throw")]
-    [Range(0f, 100f)]
+    [Range(0f, 30f)]
     public float throwForce;
+
+    [Tooltip("Intensity of throw")]
+    [Range(0f, 100f)]
+    public float aimThrowForce;
 
     [Tooltip("Decreases speed of aimed throw")]
     [Range(0f, 04f)]
@@ -41,16 +45,14 @@ public class ThrowModel : Model
             direction = Vector3.left;
         else
             direction = Vector3.right;
-
-        aimDirection = aimReticle.transform.localPosition;
-        aimDirection.x = aimReticle.transform.localPosition.x * direction.x;
-
     }
 
-    /*Creates an object variable that when assigned is passed as a prefab for the projectile.
-     In turn, a rigidbody variable is created, then assigned the rigidbody inside of the prefab.
-     Then force is applied, Ammo class decrements the ammo count, and the bullet is destroyed after a set amount of time*/
-
+    /// <summary>
+    /// Creates an object variable that when assigned is passed as a prefab for the projectile.
+    ///In turn, a rigidbody variable is created, then assigned the rigidbody inside of the prefab.
+    ///Then force is applied, Ammo class decrements the ammo count, and the bullet is destroyed 
+    ///after a set amount of time
+    /// </summary>
     public void ThrowStraight()
     {
         if (Ammo.instance.bullets > 0)
@@ -72,7 +74,9 @@ public class ThrowModel : Model
             bullet.transform.SetParent(ammoManager.transform); //trying to fix possible  movement bug
             Rigidbody tempRB;
             tempRB = bullet.GetComponent<Rigidbody>();
-            tempRB.AddForceAtPosition(aimDirection * throwForce * 10, transform.position, ForceMode.Acceleration);
+            aimDirection = aimReticle.transform.localPosition;
+            aimDirection.x *= direction.x;
+            tempRB.velocity = aimDirection * aimThrowForce;
             Ammo.instance.ShootLoad();
         }
         else

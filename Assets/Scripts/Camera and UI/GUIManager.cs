@@ -38,13 +38,6 @@ public class GUIManager : Singleton<GUIManager>
         On_ResumeButton_Sent();
     }
 
-    //Subscriber that only is triggered by the initiation of the gameOver state change 
-    //public virtual void OnGameOverState()
-    //{
-    //    Debug.Log("GameOver GUI activated");
-    //    menu.SetActive(false);
-    //}
-
     /*Restart logic needs to reside in the Game Manager you only need to worry 
     about type void methods that uses a subscribed event as input or a trigger
     Mind you this is still a WIP gimme a minute... <Kev Note*/

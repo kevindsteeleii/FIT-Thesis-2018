@@ -13,8 +13,7 @@ public class ScreenBarier : MonoBehaviour {
     Transform followObject;
     [SerializeField]
     BoxCollider myCollider;
-
-
+    
     public Direction myDirection = Direction.left;
 
     [Tooltip("The horizontal offSet for the bullet to disappear after")]
@@ -24,8 +23,7 @@ public class ScreenBarier : MonoBehaviour {
     [Tooltip("The vertical offSet for the bullet to disappear after")]
     [Range(0, 20f)]
     public float yOffset;
-
-
+    
     // Update is called once per frame
     void Update () {
         float multiplier = 0;
@@ -43,8 +41,6 @@ public class ScreenBarier : MonoBehaviour {
             float yOff = adjust.y + yOffset;
             adjust.y = yOff;
         }
-
         myCollider.transform.position = adjust;
-
     }
 }
