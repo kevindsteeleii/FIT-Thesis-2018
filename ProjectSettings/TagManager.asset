@@ -18,6 +18,7 @@ TagManager:
   - Punch
   - HurtBox
   - ActiveBox
+  - EndPoint
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - HurtBox
   - HitBox
   - Enemy
-  - 
+  - HitEdgeDetection
   - 
   - 
   - 

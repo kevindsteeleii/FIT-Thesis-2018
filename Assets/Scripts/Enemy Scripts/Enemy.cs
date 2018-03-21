@@ -4,7 +4,6 @@ using System;
 /// <summary>
 /// Enum that is used to handle the behavior of individual enemies. Never use total its just to number them for enumerations, iterations and the like.
 /// </summary>
-public enum EnemyBehavior { Stationary, Patrolling, Turret, Floating, total };
 public enum Facing { Left = -1, Right = 1 };
 /// <summary>
 /// Enemy base class used to determine basic information and behavior of enemy class
@@ -30,11 +29,6 @@ public class Enemy : MonoBehaviour
     /// Event that transmits when the enemy becomes the default loot upon "destruction"
     /// </summary>
     public event Action<Vector3, Quaternion, PickupType> On_DefaultLootDrop_Sent;
-
-    /// <summary>
-    /// Event that transmits the current enemies type of behavior
-    /// </summary>
-    public event Action<EnemyBehavior> On_SendBehavior_Sent;
 
     //allows for adjustment of enemy health points
     [Range(0, 25)]

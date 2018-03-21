@@ -5,9 +5,9 @@ using UnityEngine;
 /// <summary>
 /// Enum used to determine the direction the turret is facing
 /// </summary>
-public enum Facing { Left, Right};
+//public enum Facing { Left = -1, Right = 1};
 
-public class EnemyTurret : MonoBehaviour {
+public class EnemyTurretGo : MonoBehaviour {
     #region Variables Field
 
     //sets default direction turret faces
@@ -39,17 +39,23 @@ public class EnemyTurret : MonoBehaviour {
     public float throwForce;
 
     #endregion
+    /// <summary>
+    /// The constructor for the EnemyTurret
+    /// </summary>
+    public EnemyTurretGo(float switchInterval, int shotsPer, float shotForce)
+    {
+        this.turretInterval = switchInterval;
+        this.shotsPerInterval = shotsPer;
+        this.throwForce = shotForce;
+    }
 
     // Use this for initialization
     void Start ()
     {
-        this.gameObject.GetComponent<Enemy>().On_SendBehavior_Sent += PatrolBehave;
         thisBehavior = gameObject.GetComponent<Enemy>().enBehavior;
         myEnemy = this.gameObject.GetComponent<Enemy>();
         StartCoroutine(TurretPatrol());
     }
-
-
 
     //if the subscribing method that has event passed on that carries the behavior enum that then starts or stops the coroutine and changes the turretOn bool
     public void PatrolBehave(EnemyBehavior obj)
@@ -88,7 +94,6 @@ public class EnemyTurret : MonoBehaviour {
             this.gameObject.transform.localScale = reScale;
             Debug.Log("Turned around to the " + TurretFacing + " side");
         }
-        
     }
 
     //fires projectile
