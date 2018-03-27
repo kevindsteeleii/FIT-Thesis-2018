@@ -38,7 +38,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
     {
         //sends the list of the vector3 locations of the platforms
         PlatformSpawner.instance.On_PlatLocations_Sent += On_PlatLocations_Received;
-        GameManager.instance.onRestartState += On_ReStartState_Received;
+        GameManager.instance.On_RestartState_Sent += On_ReStartState_Received;
     }
 
     private void Update()

@@ -5,9 +5,7 @@ using UnityEngine;
 public class EnemyTestPatrol : MonoBehaviour {
 
     public EnStatsData enStats;
-
     int multiplier = 1;
-
     Rigidbody myRB;
 
     // Use this for initialization
@@ -22,8 +20,7 @@ public class EnemyTestPatrol : MonoBehaviour {
         }
 	}
 
-    void Turn()
-    {
+    void Turn()  {
         multiplier *= -1;
     }
 
@@ -43,8 +40,7 @@ public class EnemyTestPatrol : MonoBehaviour {
 
         if (Physics.Raycast(ray, out hit, enStats.minDistance))
         {
-            if (hit.collider.tag == "EndPoint")
-            {
+            if (hit.collider.tag == "EndPoint")  {
                 Turn();
             }
         }

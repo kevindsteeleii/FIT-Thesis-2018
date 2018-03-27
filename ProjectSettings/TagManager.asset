@@ -19,6 +19,7 @@ TagManager:
   - HurtBox
   - ActiveBox
   - EndPoint
+  - VisionCone
   layers:
   - Default
   - TransparentFX

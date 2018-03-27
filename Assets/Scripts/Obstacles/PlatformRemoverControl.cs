@@ -26,7 +26,7 @@ public class PlatformRemoverControl : Singleton<PlatformRemoverControl>
         horizontalOffSet = Mathf.Abs(transform.position.x - target.position.x);
 
         GameManager.instance.onGameOverState += OnGameOverState;
-        GameManager.instance.onRestartState += OnRestartState;
+        GameManager.instance.On_RestartState_Sent += OnRestartState;
     }
 
     protected virtual void Update()

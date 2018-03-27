@@ -2,10 +2,6 @@
 using System;
 
 /// <summary>
-/// Enum that is used to handle the behavior of individual enemies. Never use total its just to number them for enumerations, iterations and the like.
-/// </summary>
-public enum Facing { Left = -1, Right = 1 };
-/// <summary>
 /// Enemy base class used to determine basic information and behavior of enemy class
 /// </summary>
 public class Enemy : MonoBehaviour
@@ -14,7 +10,6 @@ public class Enemy : MonoBehaviour
     //the physical body of the enemy itself
     [SerializeField]
     GameObject body;
-
     /// <summary>
     /// Event that transmits from Enemy to trigger ammo stocking 
     /// </summary>
@@ -61,7 +56,6 @@ public class Enemy : MonoBehaviour
             DealDeath();
         }
     }
-
     /// <summary>
     /// Logic ran upon death using several functions
     /// </summary>
@@ -70,16 +64,13 @@ public class Enemy : MonoBehaviour
         Destroy(body);
     }
 
-    public virtual void TakeDamage(int dam)
-    {
+    public virtual void EnemyTakeDamage(int dam)  {
         HP -= dam;
     }
 
     //if random behavior is toggled it randomly assigns the behavior type
-    protected virtual void RandomBehavior(bool active)
-    {
-        if (active)
-        {
+    protected virtual void RandomBehavior(bool active)   {
+        if (active)  {
             randomBehavior = false;
         }
     }
@@ -88,8 +79,7 @@ public class Enemy : MonoBehaviour
     /// Sets the position of the enemy
     /// </summary>
     /// <param name="pos"></param>
-    public virtual void SetCenter(Vector3 pos)
-    {
+    public virtual void SetCenter(Vector3 pos)   {
         this.transform.position = pos;
     }
 
@@ -108,9 +98,14 @@ public class Enemy : MonoBehaviour
         Destroy(body); 
     }
 
+    /// <summary>
+    /// "Destroys" body by setting parent to inactive
+    /// </summary>
+    /// <param name="obj"></param>
     private void Destroy(GameObject obj)
     {
-        obj.SetActive(false);
+        var parent = obj.transform.parent;
+        parent.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -138,7 +133,7 @@ public class Enemy : MonoBehaviour
         GameObject obj = other.gameObject;
         if (obj.tag == "Projectile")
         {
-            TakeDamage(obj.GetComponent<Projectile>().damage); //refactor with hitbox/hurtbox paradigm 
+            EnemyTakeDamage(obj.GetComponent<Projectile>().damage); //refactor with hitbox/hurtbox paradigm 
             if (HP <= saveHP / 2)
             {
                 BecomePickUp();
@@ -150,14 +145,12 @@ public class Enemy : MonoBehaviour
          outputs results accordingly*/
         if (obj.tag == "Hand")
         {
-            TakeDamage(obj.GetComponent<GrabModel>().damage);
+            EnemyTakeDamage(obj.GetComponent<GrabModel>().damage);
 
             if (HP <= saveHP / 2)
             {
                 BecomeProjectile();
             }
         }
-        /*Add cases for a punch or slam attack modeled after the
-         prior conditional statements here later on*/
     }
 }

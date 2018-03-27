@@ -65,7 +65,7 @@ public class PlatformSpawner : Singleton<PlatformSpawner>
         MakeSomePlatforms(Vector3.zero);
         continuePoint.transform.SetParent(pointer);
         On_Teleport_Sent += EnemySpawner.instance.On_Teleport_Received;
-        GameManager.instance.onRestartState += On_ReStartState_Caught;
+        GameManager.instance.On_RestartState_Sent += On_ReStartState_Caught;
         PlatformRemoverControl.instance.On_PlatformRemoverPass_Sent += PlatformTeleport;
     }
 

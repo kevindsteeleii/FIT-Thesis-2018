@@ -19,7 +19,7 @@ public class GameManager : Singleton<GameManager>
     /// <summary>
     /// Event that broadcasts from Game Manager upon restart after death.
     /// </summary>
-    public event Action onRestartState;
+    public event Action On_RestartState_Sent;
 
     /// <summary>
     /// Event that broadcasts Death state from the game manager upon death.
@@ -100,9 +100,9 @@ public class GameManager : Singleton<GameManager>
         SetGameState(GameState.inGame);
         Time.timeScale = 1;
 
-        if (onRestartState != null)
+        if (On_RestartState_Sent != null)
         {
-            onRestartState();
+            On_RestartState_Sent();
         }
     }
 

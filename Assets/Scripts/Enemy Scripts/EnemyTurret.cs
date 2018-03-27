@@ -14,9 +14,6 @@ public class EnemyTurretGo : MonoBehaviour {
     [SerializeField]
     GameObject bullet;
 
-    //Default facing/aim state of turret
-    Facing TurretFacing = Facing.Left;
-
     //in reference to current enemy
     Enemy myEnemy;
     EnemyBehavior thisBehavior;
@@ -92,7 +89,6 @@ public class EnemyTurretGo : MonoBehaviour {
             Vector3 reScale = this.gameObject.transform.localScale;
             reScale.x *= -1;
             this.gameObject.transform.localScale = reScale;
-            Debug.Log("Turned around to the " + TurretFacing + " side");
         }
     }
 
@@ -102,16 +98,5 @@ public class EnemyTurretGo : MonoBehaviour {
         // GameObject shot = Instantiate(bullet, myEnemy.transform.position, Quaternion.identity);
         // shot.GetComponent<Rigidbody>().AddForce(Vector3.right * direction * throwForce);
         Debug.Log("Pew Pew");
-    }
-    // Update is called once per frame
-    void Update ()
-    {
-        GetDirectionFacing();
-	}
-
-    //changes the direction modifying int based upon which direction the turret is currently facing
-    protected virtual void GetDirectionFacing()
-    {
-        direction = (TurretFacing == Facing.Left) ? -1 : 1;
     }
 }

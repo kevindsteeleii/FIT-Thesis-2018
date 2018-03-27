@@ -5,7 +5,7 @@ using UnityEngine;
 /// Currently empty class to contain just the values for different types of dammage
 /// </summary>
 [CreateAssetMenu(fileName ="Damage Data", menuName ="DataAsset/Damage Data")]
-public class DamageData : MonoBehaviour {
+public class DamageData : ScriptableObject {
     //damage type for copy-pasting different types of damage
     [Tooltip("Damage taken from")]
     [Range(0, 100)]

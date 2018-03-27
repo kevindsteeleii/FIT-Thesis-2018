@@ -5,30 +5,13 @@ using UnityEngine;
 /// <summary>
 /// Component used to create the punch based on the animation state parameters
 /// </summary>
-[RequireComponent(typeof (CapsuleCollider))]
-public class Punch : MonoBehaviour {
+public class Punch : BaseAttack {
 
     [SerializeField]
     CapsuleCollider punchCapsule;
 
     [SerializeField]
     Animator myAnim;
-
-    [Tooltip("The damage the punch inflicts upon an enemy or destructible obstacle")]
-    [Range(0, 20)]
-    public int dam = 10;
-    
-    private int Damage
-    {
-        get
-        {
-            return Damage;
-        }
-        set
-        {
-            Damage = dam;
-        }
-    }
 
     // Use this for initialization
     void Start () {
@@ -43,7 +26,6 @@ public class Punch : MonoBehaviour {
         }
 	}
 
-
 	// Update is called once per frame
 	void Update () {
         float normalTime = myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime; //returns the percentage of completion of animation as a float
@@ -52,21 +34,14 @@ public class Punch : MonoBehaviour {
         if (punchCapsule.enabled && normalTime > 0.2f )
         {
             int baseName = myAnim.GetCurrentAnimatorClipInfo(0).Rank;
-            
-            PunchAttack();
+
+            AttackDetection();
         }
     }
 
-    void PunchAttack()
+    public override void AttackDetection()
     {
-        Collider [] cols = Physics.OverlapCapsule(punchCapsule.bounds.center, punchCapsule.bounds.extents, punchCapsule.radius,LayerMask.GetMask("Enemy"));
-        foreach (Collider col in cols)
-        {
-            if (col.tag == "HurtBox")
-            {
-                Debug.Log("Enemy hit");
-                col.gameObject.GetComponentInParent<Enemy>().TakeDamage(dam);
-            }
-        }
+        Collider[] cols = Physics.OverlapCapsule(punchCapsule.bounds.center, punchCapsule.bounds.extents, punchCapsule.radius, LayerMask.GetMask("Enemy"));
+        EnemyHit(cols);
     }
 }
