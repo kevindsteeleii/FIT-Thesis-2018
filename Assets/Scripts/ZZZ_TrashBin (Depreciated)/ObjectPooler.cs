@@ -17,6 +17,11 @@ public class ObjectPooler : Singleton<ObjectPooler>
 
     Vector3 hidden = new Vector3(1000f, 1000f, 1000f);
 
+    /// <summary>
+    /// Initial load and instantiation of object pooled items
+    /// </summary>
+    /// <param name="entryAmount"></param>
+    /// <param name="entry"></param>
     public void AddEntry(int entryAmount, GameObject entry)
     {
         //checks if entry has copies within pool and
@@ -32,7 +37,9 @@ public class ObjectPooler : Singleton<ObjectPooler>
         for (int i = 0; i < entryAmount; i++)
         {
             GameObject tempObj = Instantiate (entry) as GameObject;
-            Put(tempObj, hidden, Quaternion.identity);
+            tempObj.transform.position = hidden;
+            tempObj.SetActive(false);
+            Debug.Log("Loaded " + (i + 1) + " bullets");
         }
     }
 
@@ -43,27 +50,28 @@ public class ObjectPooler : Singleton<ObjectPooler>
     /// <param name="position"></param>
     /// <param name="rotation"></param>
     /// <returns></returns>
-    public GameObject Get(GameObject obj, Vector3 position, Quaternion rotation)
+    public GameObject Get(GameObject obj, Vector3 position)
     {
-        GameObject tempObj;
-
         int idKey = obj.GetInstanceID();
-        if (objectsPooled.ContainsKey(idKey) && !obj.activeInHierarchy)
+        if (objectsPooled.ContainsKey(idKey))
         {
-            tempObj = objectsPooled [idKey].Dequeue();
-            tempObj.SetActive(true);
-            tempObj.transform.position = position;
-            tempObj.transform.rotation = rotation;
-            return tempObj;
+            foreach (var item in objectsPooled[idKey]) //(int i = 0; i < objectsPooled[idKey].Count; i++)
+            {
+                if (!item.activeInHierarchy)
+                {
+                    item.SetActive(true);
+                    item.transform.position = position;
+                    return item;
+                }
+            }
         }
-
-        else
             return null;
     }
 
     //puts object into corresponding queue as identified by the key
     public void Put(GameObject obj, Vector3 position, Quaternion rotation)
     {
+        Debug.Log("Putting away hidden bullets");
         int idKey = obj.GetInstanceID();
         if (objectsPooled.ContainsKey(idKey) && obj.activeInHierarchy)
         {
@@ -71,6 +79,21 @@ public class ObjectPooler : Singleton<ObjectPooler>
             obj.transform.position = position;
             obj.transform.rotation = rotation;
             objectsPooled [idKey].Enqueue(obj);
+        }
+    }
+
+    /// <summary>
+    /// Simply puts the gameobject that is active in hierarchy into hiding and sets it inactive
+    /// </summary>
+    /// <param name="obj"></param>
+    public void Put(GameObject obj)
+    {
+        int idKey = obj.GetInstanceID();
+        if (objectsPooled.ContainsKey(idKey) && obj.activeInHierarchy)
+        {
+            obj.SetActive(false);
+            obj.transform.position = hidden;
+            objectsPooled[idKey].Enqueue(obj);
         }
     }
 }
