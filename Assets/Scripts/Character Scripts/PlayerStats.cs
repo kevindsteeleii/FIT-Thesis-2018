@@ -152,9 +152,9 @@ public class PlayerStats : Singleton<PlayerStats>
             yield return new WaitForSeconds(stats.waitTime/2);
             CullOff();
             yield return new WaitForSeconds(stats.waitTime/2);
-            invincible = false;
             hurtBox.enabled = true;
         }
+        invincible = false;
         yield return null;
     }
 
@@ -187,5 +187,3 @@ public class PlayerStats : Singleton<PlayerStats>
         }
     }
 }
-
-

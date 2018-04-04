@@ -112,6 +112,34 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &141334723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 141334724}
+  m_Layer: 0
+  m_Name: EnemyAmmoManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &141334724
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 141334723}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 601091400}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &494963060
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +251,7 @@ Transform:
   - {fileID: 795482883}
   - {fileID: 1222540771}
   - {fileID: 1242356778}
+  - {fileID: 141334724}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -320,7 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebfa3ecedb98bb46befebd508330deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1617177818653944, guid: 4a1de3ccc0df89046b7c9ff009264fc4, type: 2}
+  enemy: {fileID: 1635778768699066, guid: f9a373e07b233ae40be1ee9fa9e5de22, type: 2}
   enemyTroops: []
   didGenerate: 
   yOffset: 2

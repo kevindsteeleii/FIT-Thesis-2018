@@ -56,6 +56,7 @@ MonoBehaviour:
     type: 2}
   moneyPickUp: {fileID: 1278930696587250, guid: 303d02b3fa0a87640959fc5577034822,
     type: 2}
+  enemiesPresent: []
 --- !u!114 &114385119733003664
 MonoBehaviour:
   m_ObjectHideFlags: 1

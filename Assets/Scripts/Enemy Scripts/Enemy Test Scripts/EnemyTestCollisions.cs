@@ -7,7 +7,8 @@ public class EnemyTestCollisions : MonoBehaviour {
     public BoxCollider hurtBox;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		if (hurtBox == null)
         {
             hurtBox = gameObject.GetComponent<BoxCollider>();

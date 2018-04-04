@@ -9,6 +9,7 @@ using UnityEngine;
 public class PoolItem : MonoBehaviour
 {
 
+    GameObject poolManager; //used to manage the pooled items may be replaced later for the factory object to be made later, perhaps...
     public int inititalAmount = 6;
     GameObject pooledItem;
     int idKey; /*the integer id to be used as the key of a key,value pair 
@@ -22,8 +23,25 @@ public class PoolItem : MonoBehaviour
     /// </summary>
     /// <param name="amount"></param>
     /// <param name="obj"></param>
-    public PoolItem(int amount, GameObject obj)
+    public PoolItem(int amount, GameObject obj, GameObject manager)
     {
+        this.poolManager = manager;
+
+        if (!pooled)
+        {
+            inititalAmount = amount;
+            pooledItem = obj;
+            idKey = obj.GetInstanceID();
+            Populate();
+        }
+        else
+            return;
+    }
+
+    public PoolItem (int amount, GameObject obj)
+    {
+        this.poolManager = gameObject.transform.parent.gameObject;
+
         if (!pooled)
         {
             inititalAmount = amount;
@@ -39,7 +57,8 @@ public class PoolItem : MonoBehaviour
     {
         for (int i = 0; i < inititalAmount; i++)
         {
-            GameObject obj = Instantiate(pooledItem);
+            GameObject obj = Instantiate(pooledItem, hidden, Quaternion.identity);
+            obj.transform.SetParent(poolManager.transform);
             obj.SetActive(false);
             pool.Add(obj);
         }
@@ -96,9 +115,24 @@ public class PoolItem : MonoBehaviour
         return idKey;
     }
 
-    public int GetAmount()
+    public int Count()  //named the same as the version used for 
     {
         return pool.Count;
     }
+    
+    public bool IsEmpty()
+    {
+        bool empty;
+        return empty = (Count() <= 0) ? true : false;
+    }
 
+    public List<GameObject> GetList()
+    {
+        return pool;
+    }
+
+    public GameObject GetAtIndex (int index)
+    {
+        return pool[index];
+    }
 }

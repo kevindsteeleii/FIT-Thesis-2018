@@ -54,7 +54,7 @@ public class EnemySensesTest : MonoBehaviour {
         {
             if (On_IsPlayerNearby_Sent !=null)
             {
-                if (hit.collider.tag == "Player")
+                if (hit.collider.gameObject.tag == "Player")
                 {
                     On_IsPlayerNearby_Sent(true);
                 }

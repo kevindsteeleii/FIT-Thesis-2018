@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/// <summary>
-/// Enum used to determine the direction the turret is facing
-/// </summary>
-//public enum Facing { Left = -1, Right = 1};
 
-public class EnemyTurretGo : MonoBehaviour
+public class EnemyTurret_Spawner : MonoBehaviour
 {
  
     //rigid body of the parent enemy element to be used to determine direction of shot
@@ -164,3 +159,4 @@ public class EnemyTurretGo : MonoBehaviour
       */
     /****************************************TODO************************************************/
 }
+
