@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Enum used to determine the direction the turret is facing
 /// </summary>
+
 //public enum Facing { Left = -1, Right = 1};
 
 public class EnemyTurretGo : MonoBehaviour
