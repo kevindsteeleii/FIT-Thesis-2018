@@ -51,7 +51,7 @@ public class PlayerStats : Singleton<PlayerStats>
         invincible = false;
         Wallet = 0;
         //assigns ResetHP() as subscriber of Restarting event
-        GameManager.instance.onRestartState += ResetHP;
+        GameManager.instance.On_RestartState_Sent += ResetHP;
         //TBD
         if (hurtBox == null)
         {
@@ -152,9 +152,9 @@ public class PlayerStats : Singleton<PlayerStats>
             yield return new WaitForSeconds(stats.waitTime/2);
             CullOff();
             yield return new WaitForSeconds(stats.waitTime/2);
-            invincible = false;
             hurtBox.enabled = true;
         }
+        invincible = false;
         yield return null;
     }
 
@@ -187,5 +187,3 @@ public class PlayerStats : Singleton<PlayerStats>
         }
     }
 }
-
-

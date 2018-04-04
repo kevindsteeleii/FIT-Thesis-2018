@@ -18,6 +18,8 @@ TagManager:
   - Punch
   - HurtBox
   - ActiveBox
+  - EndPoint
+  - VisionCone
   layers:
   - Default
   - TransparentFX
@@ -32,7 +34,7 @@ TagManager:
   - HurtBox
   - HitBox
   - Enemy
-  - 
+  - HitEdgeDetection
   - 
   - 
   - 

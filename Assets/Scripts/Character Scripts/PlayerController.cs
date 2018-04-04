@@ -55,7 +55,7 @@ public class PlayerController : Singleton<PlayerController>
         rot = myRB.transform.rotation;
 
         //assigns ResetHP() as subscriber of Restarting event
-        GameManager.instance.onRestartState += On_ReStartState_Caught;
+        GameManager.instance.On_RestartState_Sent += On_ReStartState_Caught;
     }
 
     protected virtual void Update()

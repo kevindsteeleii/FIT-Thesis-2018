@@ -5,108 +5,163 @@ using UnityEngine;
 /// <summary>
 /// Enum used to determine the direction the turret is facing
 /// </summary>
-//public enum Facing { Left, Right};
 
-public class EnemyTurret : MonoBehaviour {
-    #region Variables Field
+//public enum Facing { Left = -1, Right = 1};
 
-    //sets default direction turret faces
-    [SerializeField]
-    GameObject bullet;
+public class EnemyTurretGo : MonoBehaviour
+{
+ 
+    //rigid body of the parent enemy element to be used to determine direction of shot
+    Rigidbody myRb;
+    //commented out bullets array used for the grabbable and non-grabbable ammo types to be tested later
 
-    //Default facing/aim state of turret
-    Facing TurretFacing = Facing.Left;
+    //the empty game object used to launch bullets from
+    public GameObject gunBarrel;
+    public GameObject bullet;
+    public GameObject poolManager;
 
-    //in reference to current enemy
-    Enemy myEnemy;
-    EnemyBehavior thisBehavior;
-    //used ast multiplier to affect direction projectile is shot in
-    int direction;
+    PoolItem poolBullets;   //the pooled bullets
 
-    //bool set true when enemy behavior is turret as well
-    bool turretOn = false;
+    int directionModifier = 1;
 
-    [Tooltip("Time between turns of turret")]
-    [Range(0.3f , 3f)]
-    public float turretInterval;
+    //the number of shots that can be fired per second
+    int fullClip = 0;
 
-    [Tooltip("Number of shots fired between turret turn intervals")]
-    [Range(1 , 6)]
-    public int shotsPerInterval;
+    //not in use atm, for the fire rate in seconds or 5 times a second .2 * 1.000 seconds
+    [Range(0, 2)]
+    public float fireRate = 0.2f;
 
-    [Tooltip("Strength of force with which the projectile is shot")]
-    [Range(1f, 3000f)]
-    public float throwForce;
+    [Range(0, 100)]
+    public float fireForce = 30f;
 
-    #endregion
+    [Tooltip("The percentage of shots per fire cycle that are grabbable")]
+    [Range(0, 100)]
+    public int percentage = 50;
+
+    float percentFloat = .5f;
 
     // Use this for initialization
-    void Start ()
+    protected virtual void Start()
     {
-        this.gameObject.GetComponent<Enemy>().On_SendBehavior_Sent += PatrolBehave;
-        thisBehavior = gameObject.GetComponent<Enemy>().enBehavior;
-        myEnemy = this.gameObject.GetComponent<Enemy>();
-        StartCoroutine(TurretPatrol());
-    }
+        percentFloat = percentage * 0.01f;  //converts percentage whole number to float form for weighted generation of bullets
 
-
-
-    //if the subscribing method that has event passed on that carries the behavior enum that then starts or stops the coroutine and changes the turretOn bool
-    public void PatrolBehave(EnemyBehavior obj)
-    {
-        if (obj != EnemyBehavior.Turret)
+        if (myRb != null)
         {
-            turretOn = false;
-           // StopCoroutine(TurretPatrol());
-        } 
+            return;
+        }
         else
         {
-            turretOn = true;
-           // StartCoroutine(TurretPatrol());
+            myRb = gameObject.GetComponent<Rigidbody>(); //to be used to determine direction which should be determined in fixed update
         }
+
+        fullClip = Mathf.RoundToInt(1 / fireRate);
+
+        poolBullets = new PoolItem(fullClip, bullet);
+        ChangeBullets();
     }
 
-    /// <summary>
-    /// Coroutine that governs the logic that fires from the turret at regular intervals a nominal number of times
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator TurretPatrol ()
+    private void ChangeBullets()    //changes the kind of bullets the turret fires based on a percentage
     {
-        Debug.Log("Turret Patrol starts and turretOn is "+turretOn);
-        float intervals = shotsPerInterval / turretInterval;
+        int changedBullets = Mathf.FloorToInt(percentFloat * poolBullets.Count());
+        List<int> previousIndexes = new List<int>();
+        int randomIndex;
 
-        while (true)
+        for (int i = changedBullets; i >= 0; i--)
         {
-            for (int i = shotsPerInterval; i > 0; i++)
+            do
             {
-                //Debug.Log("Entering the For Loop");
-                Fire();
-                yield return new WaitForSecondsRealtime(intervals);
-            }
-            Vector3 reScale = this.gameObject.transform.localScale;
-            reScale.x *= -1;
-            this.gameObject.transform.localScale = reScale;
-            Debug.Log("Turned around to the " + TurretFacing + " side");
+                randomIndex = UnityEngine.Random.Range(0, poolBullets.Count());
+            } while (previousIndexes.Contains(randomIndex));
+
+            poolBullets.GetAtIndex(randomIndex).GetComponent<EnemyBulletTest>().SetGrabbable(true);
+            previousIndexes.Add(randomIndex);
+
         }
-        
     }
 
-    //fires projectile
-    protected virtual void Fire()
+    private void Update()
     {
-        // GameObject shot = Instantiate(bullet, myEnemy.transform.position, Quaternion.identity);
-        // shot.GetComponent<Rigidbody>().AddForce(Vector3.right * direction * throwForce);
-        Debug.Log("Pew Pew");
-    }
-    // Update is called once per frame
-    void Update ()
-    {
-        GetDirectionFacing();
-	}
+        percentFloat = percentage * 0.01f;  //converts percentage whole number to float form for weighted generation of bullets
 
-    //changes the direction modifying int based upon which direction the turret is currently facing
-    protected virtual void GetDirectionFacing()
-    {
-        direction = (TurretFacing == Facing.Left) ? -1 : 1;
+        if (poolBullets.Count() <= 0)
+        {
+            StartCoroutine(WaitToReload());
+            poolBullets.ReUse();
+        }
     }
+
+    void FireFix() //using pooled objects to fire projectiles
+    {
+        GameObject temp = poolBullets.Get(gunBarrel.transform.position);
+        temp.GetComponent<Rigidbody>().velocity = Vector3.right * directionModifier * fireForce;
+    }
+
+    IEnumerator FireRoute()
+    {
+        for (int i = 0; i < poolBullets.Count(); i++)
+        {
+            FireFix();
+            yield return new WaitForSecondsRealtime(.5f);
+        }
+
+        yield return null;
+    }
+
+    IEnumerator WaitToReload()
+    {
+        yield return new WaitForSecondsRealtime(.75f);
+    }
+
+    IEnumerator StopFire()
+    {
+        for (int i = 0; i < poolBullets.Count(); i++)
+        {
+            poolBullets.ReUse();
+        }
+        yield return null;
+    }
+
+    private void FixedUpdate()
+    {
+        //this if-else block deteremines a directional modifier for the launch of projectiles
+        if (myRb.velocity.x > 0)
+        {
+            directionModifier = 1;
+        }
+        else if (myRb.velocity.x < 0)
+        {
+            directionModifier = -1;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //Debug.Log(other.gameObject + " collider detected");
+        if (other.tag == "Player")
+        {
+            if (!poolBullets.IsEmpty())
+            {
+                StartCoroutine(FireRoute());    //fires when player is detected
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            StopAllCoroutines();
+            StartCoroutine(StopFire()); //reloads when not detected
+        }
+    }
+
+    /****************************************TODO************************************************/
+    /*
+     *3.5) add a isEmpty method to the pool item class to set reloads 
+      4) make all this conditional upon if the enemy detects a certain tagged object of colllider
+      5) make some particle traces for the bullets
+      6) figure out the grabbable projectiles
+      7) figure out how to share ammo between enemies based on proximity and activity levels
+      */
+    /****************************************TODO************************************************/
 }
