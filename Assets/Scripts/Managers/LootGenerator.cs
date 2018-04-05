@@ -16,6 +16,9 @@ public class LootGenerator : Singleton<LootGenerator>
     [Tooltip("The currency prefab")]
     public GameObject moneyPickUp;
 
+    [Tooltip("Boolean that determines whether or not the manager is running its auto-scripts used with the generators")]
+    public bool initialized = false;
+
     PickupType currentTypeofItem;
 
     //Collection that populates with all enemies present to be implemented in an enemy manager class later
@@ -24,11 +27,17 @@ public class LootGenerator : Singleton<LootGenerator>
 
     private void Start()
     {
-        //EnemySpawner.instance.On_EnemySpawns_Sent += On_EnemySpawns_Received;
+        if (initialized)    //only if
+        {
+            EnemySpawner.instance.On_EnemySpawns_Sent += On_EnemySpawns_Received;
+        }
     }
     private void Update()
     {
-        EnemySpawner.instance.On_EnemySpawns_Sent += On_EnemySpawns_Received;
+        if (initialized)
+        {
+            EnemySpawner.instance.On_EnemySpawns_Sent += On_EnemySpawns_Received;
+        }
     }
     protected virtual void On_EnemySpawns_Received(List<GameObject> obj)
     {
@@ -75,7 +84,6 @@ public class LootGenerator : Singleton<LootGenerator>
             default:
                 break;
         }
-        
     }
 
     /// <summary>
@@ -104,5 +112,23 @@ public class LootGenerator : Singleton<LootGenerator>
         }
 
         //Debug.Log("Pick Up became " + currentTypeofItem + " !!");
+    }
+    /// <summary>
+    /// Used in place of the enemy spawner dependent version,
+    /// It populates a list with all the enemies. Used in the beginning at Start()
+    /// </summary>
+    void LookForEnemies()
+    {
+        if (!initialized)
+        {
+            Enemy[] allMyEnemies = FindObjectsOfType<Enemy>();
+            foreach (var en in allMyEnemies)
+            {
+                //TODO
+                /*-add logic that adds the enemies found to a LootGenerator-specific list or collection
+                 * used to monitor the "vitals" of said enemies
+                 */
+            }
+        }
     }
 }

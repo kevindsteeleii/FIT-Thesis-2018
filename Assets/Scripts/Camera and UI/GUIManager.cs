@@ -68,7 +68,6 @@ public class GUIManager : Singleton<GUIManager>
         {
             Continue();
         }
-
         menu.SetActive(visible);
     }
 

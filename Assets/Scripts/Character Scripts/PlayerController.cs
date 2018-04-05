@@ -7,7 +7,13 @@ using System;
 /// </summary>
 public class PlayerController : Singleton<PlayerController>
 {
+    #region Global Variables
+
+    //set of variables used to detect if the ground is beneath or not
     public PlayerData data;
+    Ray ray = new Ray();
+    bool groundBeneath = false; //bool that is used to keep track of whether the ground is infact beneath the player character
+    GameObject targetCamera; //camera used to subscribe to the On_GroundRayCasting_Sent event to change the camera's verticality
 
     //rigidboday and animator children of the player character 
     Animator myAnim;
@@ -21,14 +27,18 @@ public class PlayerController : Singleton<PlayerController>
     /// <summary>
     /// Event that broadcasts the current location of the player character
     /// </summary>
-    public event Action<Vector3> onPlayerPosition;
+    public event Action<Vector3> On_PlayerPosition_Sent;
 
     /// <summary>
     /// keeps position to be referred to outside
     /// </summary>
     public Vector3 myPos;
 
-    
+    /// <summary>
+    /// Event that broadcasts whether the player character is below the ground or not to affect camera vertical movement
+    /// </summary>
+    public event Action<bool> On_GroundRayCasting_Sent;
+
     /// <summary>
     /// Delegates used to speed up runtime of checking the parameters and buttons of a resulting
     /// Animation/Action
@@ -44,6 +54,8 @@ public class PlayerController : Singleton<PlayerController>
     ActionTaken takeAction = ActionTook;
     ComboActionTaken comboAction = ComboActionTake;
 
+    #endregion
+
     //establishes defaults and initiates variables/placeholders use Start over Awake for all singletons
     protected virtual void Start()
     {
@@ -53,32 +65,53 @@ public class PlayerController : Singleton<PlayerController>
         myAnim.SetBool("grounded", false);
         respawnPos = myRB.transform.position;
         rot = myRB.transform.rotation;
-
+        targetCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        
         //assigns ResetHP() as subscriber of Restarting event
         GameManager.instance.On_RestartState_Sent += On_ReStartState_Caught;
+
+        On_GroundRayCasting_Sent += targetCamera.GetComponent<CameraFollowv2_0>().On_GroundRayCasting_Received;
+
     }
 
     protected virtual void Update()
     {
         myPos = transform.position;
-        if (onPlayerPosition != null)
+        if (On_PlayerPosition_Sent != null)
         {
-            onPlayerPosition(myPos);
+            On_PlayerPosition_Sent(myPos);
+        }
+
+        //sends whether or not the character is underneath ground
+        if (On_GroundRayCasting_Sent!= null)
+        {
+            On_GroundRayCasting_Sent(groundBeneath);
         }
     }
 
     // Update is called once per physics action
     protected virtual void FixedUpdate()
     {
+        #region Logic for the Raycast detecting ground underneath to figure out if camera needs to change verticality
+        RaycastHit hit;
+        if (Physics.Raycast(gameObject.transform.position, Vector3.down,out hit, Mathf.Infinity))
+        {
+            if (hit.collider.gameObject.tag == "Ground")
+            {
+                groundBeneath = true;
+            }
+            else
+            {
+                groundBeneath = false;
+            }
+        }
+        #endregion
 
         bool undead = takeAction("Respawn", "dead", true, myAnim);
         //if false death-state is on all other actions cease
 
         if (GameManager.instance.GetState() == GameState.inGame)
-
         {
-
-
             #region Horizontal Movement
             float move = 0;
 
@@ -109,10 +142,10 @@ public class PlayerController : Singleton<PlayerController>
             }
             //this is the alternative inputs for the slam on controller
             else if (Input.GetAxisRaw("JoystickVertical") == -1 && Input.GetButton("Punch"))
-                {
-                    myAnim.SetBool("airborne", false);
-                    myAnim.SetBool("slam", true);
-                }
+            {
+                myAnim.SetBool("airborne", false);
+                myAnim.SetBool("slam", true);
+            }
         }
     }
 
@@ -195,4 +228,20 @@ public class PlayerController : Singleton<PlayerController>
             myAnim.SetBool("airborne", true);
         }
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "CheckPoint")
+        {
+            respawnPos.x = other.gameObject.transform.position.x;
+        }
+    }
 }
+#region TODO list, refactoring etc
+/************TODO Refactoring********************************************************************//*
+ 1-
+ 2-
+ 3-
+ 4-
+ *************************************************************************************************/
+#endregion

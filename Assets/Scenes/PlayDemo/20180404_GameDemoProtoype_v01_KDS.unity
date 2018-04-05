@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -112,52 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &285774925
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4738234301749462, guid: 76c23d6aacbdbea41bad354c57a64338, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4738234301749462, guid: 76c23d6aacbdbea41bad354c57a64338, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -12.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4738234301749462, guid: 76c23d6aacbdbea41bad354c57a64338, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4738234301749462, guid: 76c23d6aacbdbea41bad354c57a64338, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4738234301749462, guid: 76c23d6aacbdbea41bad354c57a64338, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4738234301749462, guid: 76c23d6aacbdbea41bad354c57a64338, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4738234301749462, guid: 76c23d6aacbdbea41bad354c57a64338, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4738234301749462, guid: 76c23d6aacbdbea41bad354c57a64338, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1763518099940532, guid: 76c23d6aacbdbea41bad354c57a64338, type: 2}
-      propertyPath: m_Name
-      value: DeathBox
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 76c23d6aacbdbea41bad354c57a64338, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &335458271
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,6 +123,7 @@ GameObject:
   - component: {fileID: 335458274}
   - component: {fileID: 335458273}
   - component: {fileID: 335458272}
+  - component: {fileID: 335458276}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -199,7 +154,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.5588235, g: 0.44388497, b: 0.2383218, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -238,6 +193,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &335458276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 335458271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 641e19e04176d3b4e8f5e7c2569e89af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1094460740}
+  offset: {x: 0, y: 1.47, z: -6}
+  smoothSpeed: 1.6
 --- !u!1 &457564354
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,13 +232,13 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.8992214, g: 0.9705882, b: 0.9705882, a: 1}
+  m_Intensity: 1.79
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -283,9 +252,9 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 1.5
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -297,7 +266,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 457564354}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 484, y: 723, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -403,6 +372,10 @@ Prefab:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1618766685329626, guid: c65be701c47a4de4f8d57349ae9ef463, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c65be701c47a4de4f8d57349ae9ef463, type: 2}
   m_IsPrefabParent: 0
@@ -453,6 +426,39 @@ Prefab:
     - target: {fileID: 1831275416350794, guid: 1b7830a808c0da24dabd36b06afd8d9c, type: 2}
       propertyPath: m_Name
       value: Manager Drawer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1126451171628580, guid: 1b7830a808c0da24dabd36b06afd8d9c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066812365763570, guid: 1b7830a808c0da24dabd36b06afd8d9c, type: 2}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1336925393128194, guid: 1b7830a808c0da24dabd36b06afd8d9c, type: 2}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881081327803212, guid: 1b7830a808c0da24dabd36b06afd8d9c, type: 2}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1831275416350794, guid: 1b7830a808c0da24dabd36b06afd8d9c, type: 2}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1126451171628580, guid: 1b7830a808c0da24dabd36b06afd8d9c, type: 2}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262945785364080, guid: 1b7830a808c0da24dabd36b06afd8d9c, type: 2}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 114665384959781478, guid: 1b7830a808c0da24dabd36b06afd8d9c,
+        type: 2}
+      propertyPath: initialized
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b7830a808c0da24dabd36b06afd8d9c, type: 2}

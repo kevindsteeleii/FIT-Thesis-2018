@@ -11,8 +11,8 @@ public class CameraFollowv2_0 : MonoBehaviour {
 
     private Vector3 camRespawnPos;
     private Quaternion camRespawnAngle;
-
     public float smoothSpeed = 0.125f;
+    bool landingSpace = false;
 
     protected void Start()
     {
@@ -43,8 +43,35 @@ public class CameraFollowv2_0 : MonoBehaviour {
         float tempY = offset.y;
         desiredPosition.z = offset.z;
         desiredPosition.x = tempX;
-        desiredPosition.y = tempY;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+
+        if (!landingSpace)
+        {
+            desiredPosition.y = tempY;
+        }
+        else
+        {
+            desiredPosition.y = target.transform.position.y + tempY;
+        }
+        Vector3 velocity = target.gameObject.GetComponent<Rigidbody>().velocity;
+        //Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);   //only good for non-warpy camera
+        Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition,ref velocity,smoothSpeed*Time.deltaTime);
         transform.position = smoothedPosition;
     }
+
+    /// <summary>
+    /// Subscriber used to figure out whether or not the ground is beneath character
+    /// </summary>
+    /// <param name="beneath"></param>
+    public void On_GroundRayCasting_Received(bool beneath)
+    {
+        landingSpace = beneath;
+    }
 }
+#region TODO list, refactoring etc
+/************TODO Refactoring********************************************************************//*
+ 1-
+ 2-
+ 3-
+ 4-
+ *************************************************************************************************/
+#endregion

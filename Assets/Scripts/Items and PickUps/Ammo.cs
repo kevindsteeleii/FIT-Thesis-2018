@@ -37,7 +37,7 @@ public class Ammo : Singleton<Ammo>
     /// <summary>
     /// Event that passest the amount of bullets left in ammo
     /// </summary>
-    public event Action<int> MyAmmo;
+    public event Action<int> On_AmmoChanged_Sent;
 
     //Collection that populates with all enemies present to be implemented in an enemy manager class later
     private Enemy[] enemiesPresent;
@@ -54,9 +54,11 @@ public class Ammo : Singleton<Ammo>
 
     void Update()
     {
-        if (MyAmmo != null)
+        Debug.Log("On_AmmoChanged_Sent event is " + On_AmmoChanged_Sent);
+        if (On_AmmoChanged_Sent != null)
         {
-            MyAmmo(bullets);
+            On_AmmoChanged_Sent(bullets);
+            Debug.Log("Ammo event in progress");
         }
     }
 
@@ -128,7 +130,7 @@ public class Ammo : Singleton<Ammo>
     /// </summary>
     public void ShootLoad()
     {
-
+        bullets--;
         if (Input.GetButton("Throw") && bullets <= 0)
         {
             bullets = 0;
@@ -141,7 +143,7 @@ public class Ammo : Singleton<Ammo>
         }
         else
             return;
-        bullets--;
+
         bullets = Mathf.Clamp(bullets, 0, cap);
     }
 }
