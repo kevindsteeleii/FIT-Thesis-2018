@@ -7,7 +7,13 @@ AnimatorController:
   m_PrefabInternal: {fileID: 0}
   m_Name: 20180214killaBee
   serializedVersion: 5
-  m_AnimatorParameters: []
+  m_AnimatorParameters:
+  - m_Name: detectEnemy
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -27,17 +33,20 @@ AnimatorStateTransition:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: detectEnemy
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102596841067719700}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.008383989
   m_TransitionOffset: 0
-  m_ExitTime: 0.8076923
-  m_HasExitTime: 1
+  m_ExitTime: 0.9899766
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -48,16 +57,19 @@ AnimatorStateTransition:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: detectEnemy
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102216432326011152}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.03161627
   m_TransitionOffset: 0
-  m_ExitTime: 0.74137926
+  m_ExitTime: 0.96729344
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -70,7 +82,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Fly
-  m_Speed: 1
+  m_Speed: 0.85
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101045278011516976}
@@ -96,7 +108,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: attack
-  m_Speed: 1
+  m_Speed: 0.85
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101218883009909668}
@@ -125,7 +137,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102216432326011152}
-    m_Position: {x: 36, y: 180, z: 0}
+    m_Position: {x: 276, y: 108, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102596841067719700}
     m_Position: {x: 36, y: 240, z: 0}
@@ -135,7 +147,7 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
-  m_EntryPosition: {x: 50, y: 120, z: 0}
-  m_ExitPosition: {x: 800, y: 120, z: 0}
+  m_EntryPosition: {x: 288, y: -60, z: 0}
+  m_ExitPosition: {x: 600, y: 144, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1102216432326011152}

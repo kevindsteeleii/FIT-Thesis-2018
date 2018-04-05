@@ -7,9 +7,6 @@ using System;
 public class Enemy : MonoBehaviour
 {
     #region Global Variables
-    //the physical body of the enemy itself
-    [SerializeField]
-    GameObject body;
     /// <summary>
     /// Event that transmits from Enemy to trigger ammo stocking 
     /// </summary>
@@ -41,7 +38,6 @@ public class Enemy : MonoBehaviour
     // Use this for initialization
     protected virtual void Start()
     {
-        body = this.gameObject;
         saveHP = HP;
         RandomBehavior(randomBehavior);
     }
@@ -61,7 +57,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private void DealDeath()
     {
-        Destroy(body);
+        Destroy(gameObject);
     }
 
     public virtual void EnemyTakeDamage(int dam)  {
@@ -95,7 +91,7 @@ public class Enemy : MonoBehaviour
             Debug.Log("Became Ammo");
             On_BecomeAmmo_Sent();
         }
-        Destroy(body); 
+        Destroy(gameObject); 
     }
 
     /// <summary>
@@ -104,8 +100,7 @@ public class Enemy : MonoBehaviour
     /// <param name="obj"></param>
     private void Destroy(GameObject obj)
     {
-        var parent = obj.transform.parent;
-        parent.gameObject.SetActive(false);
+        obj.SetActive(false);
     }
 
     /// <summary>
@@ -125,7 +120,7 @@ public class Enemy : MonoBehaviour
             this.On_DefaultLootDrop_Sent += LootGenerator.instance.On_DefaultLootDrop_Received ;
             On_DefaultLootDrop_Sent(transform.position, transform.rotation, PickupType.Health);
         }
-        Destroy(body);   
+        Destroy(gameObject);   
     }
 
     private void OnTriggerEnter(Collider other)
@@ -134,7 +129,7 @@ public class Enemy : MonoBehaviour
         if (obj.tag == "Projectile")
         {
             EnemyTakeDamage(obj.GetComponent<Projectile>().damage); //refactor with hitbox/hurtbox paradigm 
-            if (HP <= saveHP / 2)
+            if (HP <= 0)
             {
                 BecomePickUp();
             }
@@ -154,3 +149,11 @@ public class Enemy : MonoBehaviour
         }
     }
 }
+#region TODO list, refactoring etc
+/************TODO Refactoring********************************************************************//*
+ 1-
+ 2-
+ 3-
+ 4-
+ *************************************************************************************************/
+#endregion

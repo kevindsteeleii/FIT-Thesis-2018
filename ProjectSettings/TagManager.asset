@@ -21,6 +21,7 @@ TagManager:
   - EndPoint
   - VisionCone
   - CheckPoint
+  - Manager
   layers:
   - Default
   - TransparentFX
