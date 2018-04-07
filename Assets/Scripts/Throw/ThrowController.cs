@@ -23,7 +23,7 @@ public class ThrowController : Controller
          at an angle or straight, or returns a debug log*/
          if (GameManager.instance.GetState() == GameState.inGame)
         {
-            if (Input.GetButtonDown("Throw") && !Input.GetButton("Aim") && Ammo.instance.bullets > 0)
+            if (Input.GetButtonDown("Throw") && !Input.GetButton("Aim") && Ammo.instance._bullets > 0)
             {
                 try
                 {
@@ -35,7 +35,7 @@ public class ThrowController : Controller
                 }
             }
 
-            else if (Input.GetButtonDown("Throw") && Input.GetButton("Aim") && Ammo.instance.bullets > 0)
+            else if (Input.GetButtonDown("Throw") && Input.GetButton("Aim") && Ammo.instance._bullets > 0)
             {
                 canon.ThrowAngle();
             }

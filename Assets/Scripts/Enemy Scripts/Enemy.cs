@@ -26,20 +26,15 @@ public class Enemy : MonoBehaviour
     [Range(0, 25)]
     public int HP;
     public bool randomDrop = false;
-    public bool randomBehavior = false;
-    
-    //enum used to determine the behavior of the enemy
-    public EnemyBehavior enBehavior = EnemyBehavior.Stationary;
 
     //used to save max HP info for enemy
-    int saveHP;
+    public int saveHP;
     #endregion
 
     // Use this for initialization
     protected virtual void Start()
     {
         saveHP = HP;
-        RandomBehavior(randomBehavior);
     }
 
     protected virtual void Update()
@@ -62,13 +57,6 @@ public class Enemy : MonoBehaviour
 
     public virtual void EnemyTakeDamage(int dam)  {
         HP -= dam;
-    }
-
-    //if random behavior is toggled it randomly assigns the behavior type
-    protected virtual void RandomBehavior(bool active)   {
-        if (active)  {
-            randomBehavior = false;
-        }
     }
 
     /// <summary>
@@ -132,19 +120,6 @@ public class Enemy : MonoBehaviour
             if (HP <= 0)
             {
                 BecomePickUp();
-            }
-        }
-
-        /*In this block, if the object in contact is the hand it automatically does damage,
-         then sorts out what happens based on comparing the max HP w/ the new adjusted amount and 
-         outputs results accordingly*/
-        if (obj.tag == "Hand")
-        {
-            EnemyTakeDamage(obj.GetComponent<GrabModel>().damage);
-
-            if (HP <= saveHP / 2)
-            {
-                BecomeProjectile();
             }
         }
     }

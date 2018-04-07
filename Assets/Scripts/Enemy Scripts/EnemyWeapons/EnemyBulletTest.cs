@@ -53,6 +53,7 @@ public class EnemyBulletTest : MonoBehaviour {
         //transmits to Ammo handling manager as a subject of subscription
         if (On_BecomeAmmo_Sent != null)
         {
+            Debug.Log("Enemy bullet became your ammo");
             On_BecomeAmmo_Sent();
         }
         Destroy();
@@ -68,8 +69,9 @@ public class EnemyBulletTest : MonoBehaviour {
     {
         foreach (var collider in cols)
         {
-            if (collider.tag == "HurtBox")
+            if (collider.tag == "Player")
             {
+                Debug.Log("Player hit");
                 On_TransferDamage_Sent += collider.gameObject.GetComponent<PlayerStats>().TakeDamage;
                 On_TransferDamage_Sent(hitPoint);
                 On_TransferDamage_Sent -= collider.gameObject.GetComponent<PlayerStats>().TakeDamage;
@@ -94,3 +96,13 @@ public class EnemyBulletTest : MonoBehaviour {
         }
     }
 }
+#region TODO list, refactoring etc
+/****************************************TODO************************************************
+  1-
+  2-
+  3-
+  4-
+  5-
+  6-
+****************************************TODO************************************************/
+#endregion

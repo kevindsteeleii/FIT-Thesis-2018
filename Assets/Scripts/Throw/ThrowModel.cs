@@ -55,7 +55,7 @@ public class ThrowModel : Model
     /// </summary>
     public void ThrowStraight()
     {
-        if (Ammo.instance.bullets > 0)
+        if (Ammo.instance._bullets > 0)
         {
             GameObject bullet = Ammo.instance.GetPooledObject(rootAim.transform.position);
             bullet.transform.SetParent(ammoManager.transform); //trying to fix possible  movement bug
@@ -68,7 +68,7 @@ public class ThrowModel : Model
 
     public void ThrowAngle()
     {
-        if (Ammo.instance.bullets > 0)
+        if (Ammo.instance._bullets > 0)
         {
             GameObject bullet = Ammo.instance.GetPooledObject(rootAim.transform.position);
             bullet.transform.SetParent(ammoManager.transform); //trying to fix possible  movement bug

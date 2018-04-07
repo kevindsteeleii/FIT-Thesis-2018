@@ -39,7 +39,6 @@ public class EnemySensesTest : MonoBehaviour {
 
     private void FixedUpdate()
     {
-
         if (myRB.velocity.x > 0)    //if the velocity is positive so is the ray's direction
         {
             ray = new Ray(transform.position, Vector3.right);

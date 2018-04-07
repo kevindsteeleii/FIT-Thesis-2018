@@ -29,7 +29,7 @@ public class Ammo : Singleton<Ammo>
     int cap;
 
     /*To make parameter accessible outside of Singleton set up as a get and set parameter like so*/
-    public int bullets { get; private set; }
+    public int _bullets { get; private set; }
 
     public List<GameObject> ammoList;
     Vector3 hidden = new Vector3(1000f, 1000f, 1000f);
@@ -45,7 +45,7 @@ public class Ammo : Singleton<Ammo>
     // Use this for initialization
     void Start()
     {
-        bullets = testLoad;
+        _bullets = testLoad;
         cap = capacity;
         ammoList = new List<GameObject>();
         enemiesPresent = FindObjectsOfType<Enemy>();
@@ -54,11 +54,9 @@ public class Ammo : Singleton<Ammo>
 
     void Update()
     {
-        Debug.Log("On_AmmoChanged_Sent event is " + On_AmmoChanged_Sent);
         if (On_AmmoChanged_Sent != null)
         {
-            On_AmmoChanged_Sent(bullets);
-            Debug.Log("Ammo event in progress");
+            On_AmmoChanged_Sent(_bullets);
         }
     }
 
@@ -99,8 +97,8 @@ public class Ammo : Singleton<Ammo>
     /// </summary>
     public void Load()
     {
-        bullets++;
-        bullets = Mathf.Clamp(bullets, 0, cap);
+        _bullets++;
+        _bullets = Mathf.Clamp(_bullets, 0, cap);
         Reuse();
     }
 
@@ -130,20 +128,20 @@ public class Ammo : Singleton<Ammo>
     /// </summary>
     public void ShootLoad()
     {
-        bullets--;
-        if (Input.GetButton("Throw") && bullets <= 0)
+        _bullets--;
+        if (Input.GetButton("Throw") && _bullets <= 0)
         {
-            bullets = 0;
+            _bullets = 0;
             Debug.Log("No Ammo, Empty Clip");
         }
 
-        else if (Input.GetButton("Throw") && bullets > 0)
+        else if (Input.GetButton("Throw") && _bullets > 0)
         {
-            Debug.Log("Shots fired! Only " + bullets + " shots left!");
+            Debug.Log("Shots fired! Only " + _bullets + " shots left!");
         }
         else
             return;
 
-        bullets = Mathf.Clamp(bullets, 0, cap);
+        _bullets = Mathf.Clamp(_bullets, 0, cap);
     }
 }

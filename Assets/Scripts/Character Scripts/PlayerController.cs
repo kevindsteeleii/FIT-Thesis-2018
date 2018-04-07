@@ -11,7 +11,7 @@ public class PlayerController : Singleton<PlayerController>
 
     //set of variables used to detect if the ground is beneath or not
     public PlayerData data;
-    Ray ray = new Ray();
+    Ray ray = new Ray(); // ray used to detect if player is over a ground object wh/ is used to affect camera movements
     bool groundBeneath = false; //bool that is used to keep track of whether the ground is infact beneath the player character
     GameObject targetCamera; //camera used to subscribe to the On_GroundRayCasting_Sent event to change the camera's verticality
 

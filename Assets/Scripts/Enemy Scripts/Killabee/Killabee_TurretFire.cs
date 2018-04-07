@@ -1,18 +1,16 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Collections;
 using UnityEngine;
-
-public class EnemyTurretFireTest : MonoBehaviour
-{
+/// <summary>
+/// The killabee turret firing script 
+/// </summary>
+public class Killabee_TurretFire : MonoBehaviour {
     //rigid body of the parent enemy element to be used to determine direction of shot
     Rigidbody myRb;
-    //commented out bullets array used for the grabbable and non-grabbable ammo types to be tested later
 
     //the empty game object used to launch bullets from
     public GameObject gunBarrel;
     public GameObject bullet;
-    public GameObject poolManager;
 
     PoolItem poolBullets;   //the pooled bullets
 
@@ -60,11 +58,11 @@ public class EnemyTurretFireTest : MonoBehaviour
         List<int> previousIndexes = new List<int>();
         int randomIndex;
 
-        for (int i = changedBullets; i >=0; i--)
+        for (int i = changedBullets; i >= 0; i--)
         {
             do
             {
-              randomIndex = UnityEngine.Random.Range(0, poolBullets.Count());
+                randomIndex = UnityEngine.Random.Range(0, poolBullets.Count());
             } while (previousIndexes.Contains(randomIndex));
 
             poolBullets.GetAtIndex(randomIndex).GetComponent<EnemyBulletTest>().SetGrabbable(true);
@@ -86,8 +84,16 @@ public class EnemyTurretFireTest : MonoBehaviour
 
     void FireFix() //using pooled objects to fire projectiles
     {
-        GameObject temp = poolBullets.Get(gunBarrel.transform.position);
-        temp.GetComponent<Rigidbody>().velocity = Vector3.right * directionModifier * fireForce;
+        try
+        {
+            GameObject temp = poolBullets.Get(gunBarrel.transform.position);
+            temp.GetComponent<Rigidbody>().velocity = Vector3.right * directionModifier * fireForce;
+        }
+        catch (System.NullReferenceException)
+        {
+            throw;
+            Debug.Log("Out of bullets, enemy");
+        }
     }
 
     IEnumerator FireRoute()
@@ -115,12 +121,15 @@ public class EnemyTurretFireTest : MonoBehaviour
         yield return null;
     }
 
-    private void FixedUpdate()  {
+    private void FixedUpdate()
+    {
         //this if-else block deteremines a directional modifier for the launch of projectiles
-        if (myRb.velocity.x > 0)    {
+        if (myRb.velocity.x > 0)
+        {
             directionModifier = 1;
         }
-        else if (myRb.velocity.x < 0)   {
+        else if (myRb.velocity.x < 0)
+        {
             directionModifier = -1;
         }
     }
@@ -129,7 +138,7 @@ public class EnemyTurretFireTest : MonoBehaviour
     {
         //Debug.Log(other.gameObject + " collider detected");
         if (other.tag == "Player")
-        {   
+        {
             if (!poolBullets.IsEmpty())
             {
                 StartCoroutine(FireRoute());    //fires when player is detected
@@ -145,14 +154,14 @@ public class EnemyTurretFireTest : MonoBehaviour
             StartCoroutine(StopFire()); //reloads when not detected
         }
     }
-    #region TODO list, refactoring
-    /****************************************TODO************************************************/
-    /* 
-      4) make all this conditional upon if the enemy detects a certain tagged object of colllider
-      5) make some particle traces for the bullets
-      6) figure out the grabbable projectiles
-      7) figure out how to share ammo between enemies based on proximity and activity levels
-      */
-    /****************************************TODO************************************************/
-    #endregion
 }
+#region TODO list, refactoring etc
+/****************************************TODO************************************************
+1-
+2-
+3-
+4-
+5-
+6-
+****************************************TODO************************************************/
+#endregion
