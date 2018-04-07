@@ -14,6 +14,7 @@ public class GrabLogic : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 		if (handCollider != null)
         {
             return;
@@ -31,6 +32,7 @@ public class GrabLogic : MonoBehaviour {
         {
             grabModel = gameObject.GetComponent<GrabModel>();
         }
+
         grabModel.On_DamageAtHand_Sent += On_DamageAtHand_Received;
 
     }
