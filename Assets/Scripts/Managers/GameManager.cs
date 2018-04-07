@@ -24,7 +24,11 @@ public class GameManager : Singleton<GameManager>
     /// <summary>
     /// Event that broadcasts Death state from the game manager upon death.
     /// </summary>
-    public event Action onGameOverState;
+    public event Action On_GameOverState_Sent;
+
+    public event Action On_PauseState_Sent;
+
+    public event Action<GameState> On_GameState_Sent;
     #endregion
 
     protected override void Awake()
@@ -39,22 +43,25 @@ public class GameManager : Singleton<GameManager>
         //Used to alert the GameOver 
         PlayerStats.instance.On_ZeroHP_Sent += OnZeroHP;
         //subscribes the pause game inputs to game state setting methods
-        GUIManager.instance.On_PauseButton_Sent += OnPauseButton;
-        GUIManager.instance.On_ResumeButton_Sent += OnResumeButton;
-        GUIManager.instance.onRestartButton += OnRestartButton;
-        GameOverGUI.instance.On_Restart_Sent += OnRestartButton;
-
-
+        AnimatedGUIManager.instance.On_PauseButton_Sent += OnPauseButton;
+        AnimatedGUIManager.instance.On_ResumeButton_Sent += OnResumeButton;
+        AnimatedGUIManager.instance.On_RestartButtonPauseMenu_Sent += OnRestartButton;
+        AnimatedGameOverGUI.instance.On_Restart_Sent += OnRestartButton;
         StartGame();
     }
 
     public virtual void Update()
     {
         //when game state is gameover an event is broadcast to the appropriate subscribers 
-        if (gameState == GameState.gameOver && onGameOverState != null)
+        if (gameState == GameState.gameOver && On_GameOverState_Sent != null)
         {
-            onGameOverState();
+            On_GameOverState_Sent();
             GameOver();
+        }
+        //sends the game state to a receiver
+        if (On_GameState_Sent != null)
+        {
+            On_GameState_Sent(gameState);
         }
     }
 
@@ -123,6 +130,10 @@ public class GameManager : Singleton<GameManager>
     {
         Time.timeScale = 0;
         SetGameState(GameState.pause);
+        if (On_PauseState_Sent != null)
+        {
+            On_PauseState_Sent();
+        }
     }
 
     public virtual void OnResumeButton()

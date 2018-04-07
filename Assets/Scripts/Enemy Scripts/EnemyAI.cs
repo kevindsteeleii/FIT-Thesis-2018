@@ -70,7 +70,6 @@ public abstract class EnemyAI : MonoBehaviour
         {
             myRb = GetComponent<Rigidbody>();
         }
-        enemyBehavior = thisEnemy.enBehavior;
     }
 
     /// <summary>

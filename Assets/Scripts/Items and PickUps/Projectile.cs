@@ -6,6 +6,7 @@ using System;
 public class Projectile : Model
 { 
     GameObject projectileObj;
+    SphereCollider mySphere;
 
     //damage the projectile causes
     [Range (0,15)]
@@ -22,6 +23,16 @@ public class Projectile : Model
         {
             projectileObj = this.gameObject;
         }
+
+        if(mySphere != null)
+        {
+            return;
+        }
+        else
+        {
+            mySphere = gameObject.GetComponent<SphereCollider>();
+        }
+
         On_BulletDestroyed_Sent += Ammo.instance.Reuse;
     }
 
@@ -31,5 +42,10 @@ public class Projectile : Model
         {
             On_BulletDestroyed_Sent(projectileObj);
         }
+        if(other.gameObject.tag == "VisionCone")
+        {
+            Physics.IgnoreCollision(mySphere, other,true);
+        }
+
     }
 }

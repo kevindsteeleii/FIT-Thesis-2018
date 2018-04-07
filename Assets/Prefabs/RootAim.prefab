@@ -297,10 +297,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1d24b633176e94eadbe4ac665cea27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testBullet: {fileID: 1689252865988560, guid: 6c2d62670ee276346a51bd50a04eb635, type: 2}
   rootAim: {fileID: 1271707487943148}
   aimReticle: {fileID: 1671454006507516}
+  ammoManager: {fileID: 0}
+  xOffset: 0.4
   throwForce: 800
+  aimThrowForce: 0
   aimThrowSpeed: 0.382
   throwHeightOffset: 0
 --- !u!114 &114784528122146476
@@ -315,6 +317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1689252865988560, guid: 6c2d62670ee276346a51bd50a04eb635, type: 2}
+  ammoManager: {fileID: 0}
   testLoad: 6
   capacity: 6
   ammoList: []
@@ -362,7 +365,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1588783808846844}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.50000006

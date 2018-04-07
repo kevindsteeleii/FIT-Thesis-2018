@@ -17,7 +17,7 @@ public class GameOverGUI : Singleton<GameOverGUI> {
     // Use this for initialization
     void Start () {
         //subscribes the event created by the 
-        GameManager.instance.onGameOverState += OnGameOverState;
+        GameManager.instance.On_GameOverState_Sent += OnGameOverState;
         On_Restart_Sent += GameManager.instance.OnRestartButton;
     }
 

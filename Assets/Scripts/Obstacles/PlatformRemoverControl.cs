@@ -25,7 +25,7 @@ public class PlatformRemoverControl : Singleton<PlatformRemoverControl>
         hidden = new Vector3(-99f, -99f, -99f);
         horizontalOffSet = Mathf.Abs(transform.position.x - target.position.x);
 
-        GameManager.instance.onGameOverState += OnGameOverState;
+        GameManager.instance.On_GameOverState_Sent += OnGameOverState;
         GameManager.instance.On_RestartState_Sent += OnRestartState;
     }
 

@@ -50,7 +50,7 @@ public class EnemyTurretFireTest : MonoBehaviour
 
         fullClip = Mathf.RoundToInt(1 / fireRate);
 
-        poolBullets = new PoolItem(fullClip, bullet, poolManager);
+        poolBullets = new PoolItem(fullClip, bullet);
         ChangeBullets();
     }
 
@@ -145,14 +145,14 @@ public class EnemyTurretFireTest : MonoBehaviour
             StartCoroutine(StopFire()); //reloads when not detected
         }
     }
-
+    #region TODO list, refactoring
     /****************************************TODO************************************************/
-    /*
-     *3.5) add a isEmpty method to the pool item class to set reloads 
+    /* 
       4) make all this conditional upon if the enemy detects a certain tagged object of colllider
       5) make some particle traces for the bullets
       6) figure out the grabbable projectiles
       7) figure out how to share ammo between enemies based on proximity and activity levels
       */
     /****************************************TODO************************************************/
+    #endregion
 }

@@ -34,7 +34,6 @@ public class Punch : BaseAttack {
         if (punchCapsule.enabled && normalTime > 0.2f )
         {
             int baseName = myAnim.GetCurrentAnimatorClipInfo(0).Rank;
-
             AttackDetection();
         }
     }

@@ -24,8 +24,8 @@ GameObject:
   - component: {fileID: 54912853052917910}
   - component: {fileID: 114468737424615992}
   - component: {fileID: 114887616292095228}
-  - component: {fileID: 135708779052351568}
-  m_Layer: 9
+  - component: {fileID: 135978854940153316}
+  m_Layer: 11
   m_Name: Hand
   m_TagString: Hand
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handModel: {fileID: 114468737424615992}
---- !u!135 &135708779052351568
+--- !u!135 &135978854940153316
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -366,7 +366,7 @@ SphereCollider:
   m_GameObject: {fileID: 1500583785135018}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.50000006
   m_Center: {x: -0.00000023841858, y: 0, z: 0}

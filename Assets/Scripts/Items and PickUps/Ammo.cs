@@ -29,7 +29,7 @@ public class Ammo : Singleton<Ammo>
     int cap;
 
     /*To make parameter accessible outside of Singleton set up as a get and set parameter like so*/
-    public int bullets { get; private set; }
+    public int _bullets { get; private set; }
 
     public List<GameObject> ammoList;
     Vector3 hidden = new Vector3(1000f, 1000f, 1000f);
@@ -37,7 +37,7 @@ public class Ammo : Singleton<Ammo>
     /// <summary>
     /// Event that passest the amount of bullets left in ammo
     /// </summary>
-    public event Action<int> MyAmmo;
+    public event Action<int> On_AmmoChanged_Sent;
 
     //Collection that populates with all enemies present to be implemented in an enemy manager class later
     private Enemy[] enemiesPresent;
@@ -45,7 +45,7 @@ public class Ammo : Singleton<Ammo>
     // Use this for initialization
     void Start()
     {
-        bullets = testLoad;
+        _bullets = testLoad;
         cap = capacity;
         ammoList = new List<GameObject>();
         enemiesPresent = FindObjectsOfType<Enemy>();
@@ -54,9 +54,9 @@ public class Ammo : Singleton<Ammo>
 
     void Update()
     {
-        if (MyAmmo != null)
+        if (On_AmmoChanged_Sent != null)
         {
-            MyAmmo(bullets);
+            On_AmmoChanged_Sent(_bullets);
         }
     }
 
@@ -97,8 +97,8 @@ public class Ammo : Singleton<Ammo>
     /// </summary>
     public void Load()
     {
-        bullets++;
-        bullets = Mathf.Clamp(bullets, 0, cap);
+        _bullets++;
+        _bullets = Mathf.Clamp(_bullets, 0, cap);
         Reuse();
     }
 
@@ -128,20 +128,20 @@ public class Ammo : Singleton<Ammo>
     /// </summary>
     public void ShootLoad()
     {
-
-        if (Input.GetButton("Throw") && bullets <= 0)
+        _bullets--;
+        if (Input.GetButton("Throw") && _bullets <= 0)
         {
-            bullets = 0;
+            _bullets = 0;
             Debug.Log("No Ammo, Empty Clip");
         }
 
-        else if (Input.GetButton("Throw") && bullets > 0)
+        else if (Input.GetButton("Throw") && _bullets > 0)
         {
-            Debug.Log("Shots fired! Only " + bullets + " shots left!");
+            Debug.Log("Shots fired! Only " + _bullets + " shots left!");
         }
         else
             return;
-        bullets--;
-        bullets = Mathf.Clamp(bullets, 0, cap);
+
+        _bullets = Mathf.Clamp(_bullets, 0, cap);
     }
 }

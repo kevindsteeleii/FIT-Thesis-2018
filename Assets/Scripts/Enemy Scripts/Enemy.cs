@@ -7,9 +7,6 @@ using System;
 public class Enemy : MonoBehaviour
 {
     #region Global Variables
-    //the physical body of the enemy itself
-    [SerializeField]
-    GameObject body;
     /// <summary>
     /// Event that transmits from Enemy to trigger ammo stocking 
     /// </summary>
@@ -29,21 +26,15 @@ public class Enemy : MonoBehaviour
     [Range(0, 25)]
     public int HP;
     public bool randomDrop = false;
-    public bool randomBehavior = false;
-    
-    //enum used to determine the behavior of the enemy
-    public EnemyBehavior enBehavior = EnemyBehavior.Stationary;
 
     //used to save max HP info for enemy
-    int saveHP;
+    public int saveHP;
     #endregion
 
     // Use this for initialization
     protected virtual void Start()
     {
-        body = this.gameObject;
         saveHP = HP;
-        RandomBehavior(randomBehavior);
     }
 
     protected virtual void Update()
@@ -61,18 +52,11 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private void DealDeath()
     {
-        Destroy(body);
+        Destroy(gameObject);
     }
 
     public virtual void EnemyTakeDamage(int dam)  {
         HP -= dam;
-    }
-
-    //if random behavior is toggled it randomly assigns the behavior type
-    protected virtual void RandomBehavior(bool active)   {
-        if (active)  {
-            randomBehavior = false;
-        }
     }
 
     /// <summary>
@@ -95,7 +79,7 @@ public class Enemy : MonoBehaviour
             Debug.Log("Became Ammo");
             On_BecomeAmmo_Sent();
         }
-        Destroy(body); 
+        Destroy(gameObject); 
     }
 
     /// <summary>
@@ -104,8 +88,7 @@ public class Enemy : MonoBehaviour
     /// <param name="obj"></param>
     private void Destroy(GameObject obj)
     {
-        var parent = obj.transform.parent;
-        parent.gameObject.SetActive(false);
+        obj.SetActive(false);
     }
 
     /// <summary>
@@ -125,7 +108,7 @@ public class Enemy : MonoBehaviour
             this.On_DefaultLootDrop_Sent += LootGenerator.instance.On_DefaultLootDrop_Received ;
             On_DefaultLootDrop_Sent(transform.position, transform.rotation, PickupType.Health);
         }
-        Destroy(body);   
+        Destroy(gameObject);   
     }
 
     private void OnTriggerEnter(Collider other)
@@ -134,23 +117,18 @@ public class Enemy : MonoBehaviour
         if (obj.tag == "Projectile")
         {
             EnemyTakeDamage(obj.GetComponent<Projectile>().damage); //refactor with hitbox/hurtbox paradigm 
-            if (HP <= saveHP / 2)
+            if (HP <= 0)
             {
                 BecomePickUp();
             }
         }
-
-        /*In this block, if the object in contact is the hand it automatically does damage,
-         then sorts out what happens based on comparing the max HP w/ the new adjusted amount and 
-         outputs results accordingly*/
-        if (obj.tag == "Hand")
-        {
-            EnemyTakeDamage(obj.GetComponent<GrabModel>().damage);
-
-            if (HP <= saveHP / 2)
-            {
-                BecomeProjectile();
-            }
-        }
     }
 }
+#region TODO list, refactoring etc
+/************TODO Refactoring********************************************************************//*
+ 1-
+ 2-
+ 3-
+ 4-
+ *************************************************************************************************/
+#endregion

@@ -10,10 +10,10 @@ public class BulletControl :Singleton<BulletControl>
     void Start()
     {
         //GetAmmo subscribes the event MyAmmo that updates the UI element
-        Ammo.instance.MyAmmo += GetAmmo;
+        Ammo.instance.On_AmmoChanged_Sent += On_AmmoChanged_Received;
     }
 
-    void GetAmmo(int ammo)
+    void On_AmmoChanged_Received(int ammo)
     {
         if (ammo >= 0)
         {
@@ -21,6 +21,6 @@ public class BulletControl :Singleton<BulletControl>
         }
         else
             throw new ArgumentOutOfRangeException("Out of Bullets");
-        
+
     }
 }

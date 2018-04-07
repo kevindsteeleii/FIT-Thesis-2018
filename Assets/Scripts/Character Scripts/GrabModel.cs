@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 /// <summary>
 /// A class that represents the physical and visual changes of the 
@@ -16,6 +17,11 @@ public class GrabModel : Model
     [Range(0, 15)]
     public int damage;
 
+    /// <summary>
+    /// Event that transmits the damage the hand does to the enemy character
+    /// </summary>
+    public event Action<int> On_DamageAtHand_Sent;
+
     // Use this for initialization
     protected virtual void Awake()
     {
@@ -24,6 +30,14 @@ public class GrabModel : Model
         Vector3 trueOffSet = new Vector3(data.offSet.x, data.offSet.y, 0);
         transform.localPosition = trueOffSet;
         this.GetComponent<SphereCollider>().enabled = false;
+    }
+
+    private void Update()
+    {
+        if (On_DamageAtHand_Sent != null)
+        {
+            On_DamageAtHand_Sent(damage);
+        }
     }
 
     /// <summary>
