@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 4408077673088002}
   - component: {fileID: 95079261559067948}
   m_Layer: 0
-  m_Name: Trashcannon_Animdemo
+  m_Name: Trashcannon_walkloop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
