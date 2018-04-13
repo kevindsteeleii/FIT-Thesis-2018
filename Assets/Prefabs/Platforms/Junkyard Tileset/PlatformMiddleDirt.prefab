@@ -140,7 +140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4619513432541450}
   m_Layer: 0
-  m_Name: platformMiddleDirt
+  m_Name: PlatformMiddleDirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

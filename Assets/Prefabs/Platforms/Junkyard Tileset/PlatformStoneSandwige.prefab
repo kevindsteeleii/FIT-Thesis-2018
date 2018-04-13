@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4639291699482992}
   m_Layer: 0
-  m_Name: platformStoneSandwige
+  m_Name: PlatformStoneSandwige
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
