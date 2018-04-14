@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 4011082887966668}
   m_Layer: 9
   m_Name: CollisionDetection
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1219,7 +1219,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1247318173306246}
-  m_LocalRotation: {x: -0.0115309935, y: 0.69861364, z: 0.6349925, w: 0.3295308}
+  m_LocalRotation: {x: -0.011530994, y: 0.6986137, z: 0.63499254, w: 0.32953084}
   m_LocalPosition: {x: -0.0048214984, y: -0.025206257, z: 0.015817024}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2909,9 +2909,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59605b907f125f419f565a7b5b55fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dam: 10
   punchCapsule: {fileID: 136659911787130942}
   myAnim: {fileID: 95204606133942558}
-  dam: 10
 --- !u!114 &114404800600929308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2962,9 +2962,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d49cba68c36a0744a874b531ea3620b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dam: 10
   slamArea: {fileID: 135703549040499246}
   myAnim: {fileID: 95204606133942558}
-  dam: 10
 --- !u!135 &135703549040499246
 SphereCollider:
   m_ObjectHideFlags: 1

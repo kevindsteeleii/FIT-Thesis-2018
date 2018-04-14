@@ -9,7 +9,7 @@ public class Killabee_Detection : MonoBehaviour
 {
     public EnStatsData enStats;
 
-    int multiplier = 1;
+    int multiplier = 1; //used to start/stop the enemy
     int modifier = 1;   // used to modify velocity upon player detection
 
     Rigidbody myRB;
@@ -69,6 +69,7 @@ public class Killabee_Detection : MonoBehaviour
                 Turn();
             }
         }
+
         myRB.velocity = Vector3.right * Time.timeScale * enStats.speed*modifier * multiplier;
     }
 

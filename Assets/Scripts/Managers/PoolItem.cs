@@ -6,14 +6,15 @@ using UnityEngine;
 /// Class that handles the logic of a a singular object pool to be used with
 /// some sort of manager class that utilizes a management class to be added later
 /// </summary>
-public class PoolItem : MonoBehaviour
+public class PoolItem 
 {
     public int inititalAmount = 6;
-    GameObject pooledItem, poolManager;
+    GameObject pooledItem;
     int idKey; /*the integer id to be used as the key of a key,value pair 
     in the dictionary entry for the pool item party/manager*/
     List<GameObject> pool = new List<GameObject>();  //used to keep the pooled items in a manageable collection
     Vector3 hidden = new Vector3(99f, 99f, 99f);    // location to hide the inactive parts in hierarchy
+    GameObject parentGameObject;
 
     /// <summary>
     /// Pools initial item in the amount specified
@@ -30,17 +31,18 @@ public class PoolItem : MonoBehaviour
 
     private void Start()
     {
-        //PoolManager.instance.DoesPoolItemExist(this, inititalAmount);
     }
 
     public void Populate()
     {
         for (int i = 0; i < inititalAmount; i++)
         {
-            GameObject obj = Instantiate(pooledItem, hidden, Quaternion.identity,PoolManager.instance.ParentOf().transform);
+            GameObject obj = UnityEngine.Object.Instantiate(pooledItem, hidden, Quaternion.identity,PoolManager.instance.ParentOf().transform);
             obj.SetActive(false);
             pool.Add(obj);
         }
+
+        parentGameObject = pool[0].gameObject.transform.parent.gameObject;
     }
 
     public GameObject Get(Vector3 pos)
@@ -106,7 +108,7 @@ public class PoolItem : MonoBehaviour
 
     public GameObject GetParent()
     {
-        return gameObject.transform.parent.gameObject;
+        return parentGameObject;
     }
 }
 #region TODO list, refactoring etc

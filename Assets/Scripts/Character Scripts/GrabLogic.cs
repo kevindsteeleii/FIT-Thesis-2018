@@ -49,8 +49,11 @@ public class GrabLogic : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate () {
-        GrabDetection();
-	}
+        if (handCollider.enabled)
+        {
+            GrabDetection();
+        }
+    }
 
     /// <summary>
     /// Fixes the 
@@ -63,11 +66,12 @@ public class GrabLogic : MonoBehaviour {
             if (enemyCols.tag == "HurtBox")
             {
                 Enemy target = enemyCols.gameObject.transform.parent.gameObject.GetComponent<Enemy>();
-                if (target.HP <= target.saveHP/2)
+                if (target.HP <= target.saveHP / 2)
                 {
                     target.BecomeProjectile();
                 }
                 else
+                    Debug.Log("Hand hurt enemy");
                     target.EnemyTakeDamage(damage);
             }
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class EnemyBulletTest : MonoBehaviour {
 
@@ -9,8 +10,11 @@ public class EnemyBulletTest : MonoBehaviour {
     [SerializeField] GameObject grabModel;
     [SerializeField] GameObject shootModel;
 
-    SphereCollider sphereCollider;
+    [Tooltip("The life expectancy of the projectile gameobject")]
+    [Range(1f, 10f)]
+    float timeout = 3f;
 
+    SphereCollider sphereCollider;
     [Tooltip("The amount of damage done by the projectile")]
     [Range(0, 15)]
     public int hitPoint;
@@ -28,7 +32,10 @@ public class EnemyBulletTest : MonoBehaviour {
         {
             sphereCollider = gameObject.GetComponent<SphereCollider>();
         }
-	}
+
+        grabModel.SetActive(isGrabby);
+        shootModel.SetActive(!isGrabby);
+    }
 	
     public void SetGrabbable(bool grabbable)
     {
@@ -42,8 +49,6 @@ public class EnemyBulletTest : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        grabModel.SetActive(isGrabby);
-        shootModel.SetActive(!isGrabby);
         AttackDetection();
 	}
 
@@ -69,7 +74,7 @@ public class EnemyBulletTest : MonoBehaviour {
     {
         foreach (var collider in cols)
         {
-            if (collider.tag == "Player")
+            if (collider.tag == "Player" && collider.gameObject.layer == LayerMask.GetMask("Player"))
             {
                 Debug.Log("Player hit");
                 On_TransferDamage_Sent += collider.gameObject.GetComponent<PlayerStats>().TakeDamage;
@@ -78,6 +83,14 @@ public class EnemyBulletTest : MonoBehaviour {
                 Destroy();
             }
         }
+    }
+
+    void PlayerHit(Collider playerCollider)
+    {
+        On_TransferDamage_Sent += playerCollider.gameObject.GetComponent<PlayerStats>().TakeDamage;
+        On_TransferDamage_Sent(hitPoint);
+        On_TransferDamage_Sent -= playerCollider.gameObject.GetComponent<PlayerStats>().TakeDamage;
+        Destroy();
     }
 
     /// <summary>
@@ -90,9 +103,16 @@ public class EnemyBulletTest : MonoBehaviour {
     }
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Bullet hit "+ other.tag);
         if (other.tag == "Hand" && isGrabby)
         {
             BecomeProjectile();
+        }
+
+        if (other.tag == "Player")
+        {
+            PlayerHit(other);
+            Debug.Log("Enemy Projectile hit player!!");
         }
     }
 }

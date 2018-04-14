@@ -5,20 +5,10 @@ using UnityEngine;
 /// A singleton that automatically gathers pool items on creation
 /// </summary>
 /// 
-[Serializable]
+
 public class PoolManager : Singleton<PoolManager> {
 
-    public Dictionary<int, PoolItem> ManagerOfPools = new Dictionary<int, PoolItem>();
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    Dictionary<int, Queue<PoolItem>> ManagerOfPools = new Dictionary<int, Queue<PoolItem>>();
 
     /// <summary>
     /// Method that listens for the pool item to be created
