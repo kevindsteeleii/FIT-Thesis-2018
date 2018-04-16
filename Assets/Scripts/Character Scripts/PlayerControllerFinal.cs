@@ -2,8 +2,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerControllerFinal : Singleton<PlayerControllerFinal> {
-  
+public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
+{
+
     #region Global Variables
     //set of variables used to detect if the ground is beneath or not
     public PlayerData data;
@@ -91,8 +92,9 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal> {
 
         if (GameManager.instance.GetState() == GameState.inGame)
         {
-            if (Input.GetButtonDown("Punch"))
+            if (Input.GetButtonDown("Punch") && myAnim.GetBool("grounded"))
             {
+                myAnim.SetFloat("speed", 0f);
                 lastPressed = Time.time;
                 //Debug.Log("Last pressed punch at " + lastPressed);
                 myAnim.SetBool("attacking", true);
@@ -106,27 +108,49 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal> {
                 {
                     if (Input.GetButtonDown("Punch") && Time.time <= (lastPressed + comboInterval))
                     {
+                        myAnim.SetFloat("speed", 0f);
                         buttonPresses++;
 
                     }
                     else if (myAnim.GetInteger("attackChain") >= 4)
                     {
-                        myAnim.SetInteger("attackChain",0);
+                        myAnim.SetInteger("attackChain", 0);
                         buttonPresses = 0;
                     }
                 }
+
             }
-            if (Time.time > (lastPressed + comboInterval) || myAnim.GetInteger("attackChain") >= 4 )
+            //else
+            //{
+            //    myAnim.SetBool("attacking", false);
+            //}
+
+            if (Time.time > (lastPressed + comboInterval) || myAnim.GetInteger("attackChain") >= 4)
             {
                 buttonPresses = 0;
+                myAnim.SetBool("attacking", false);
             }
+            //myAnim.SetBool("attacking", false);
 
-            //this is the alternative inputs for the slam on controller
-            if (Input.GetAxisRaw("JoystickVertical") == -1 && Input.GetButton("Punch"))
+            if (Input.GetAxisRaw("JoystickVertical") == -1 //&& Input.GetButton("Punch") 
+                && !myAnim.GetBool("grounded"))
             {
-                //myAnim.SetBool("airborne", false);
+                Debug.Log("welcome to the slam");
                 myAnim.SetBool("slam", true);
             }
+            else
+                myAnim.SetBool("slam", false);
+
+            //this is the alternative inputs for the slam on controller
+            //if (Input.GetAxisRaw("JoystickVertical") == -1 && Input.GetButton("Punch"))
+            //{
+            //    //myAnim.SetBool("airborne", false);
+            //    myAnim.SetBool("slam", true);
+            //}
+            //else
+            //{
+            //    myAnim.SetBool("slam", false);
+            //}
         }
     }
 
@@ -166,7 +190,7 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal> {
             if (move > 0 && !facingRight) { Flip(); }
             else if (move < 0 && facingRight) { Flip(); }
             #endregion
-            Debug.Log(buttonPresses+" button presses");
+            //Debug.Log(buttonPresses + " button presses");
 
             myAnim.SetInteger("attackChain", buttonPresses);
         }
@@ -249,6 +273,7 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal> {
         if (other.gameObject.tag == "CheckPoint")
         {
             respawnPos.x = other.gameObject.transform.position.x;
+            respawnPos.z = 0;
         }
     }
 }

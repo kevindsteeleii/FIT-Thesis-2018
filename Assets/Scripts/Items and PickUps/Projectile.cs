@@ -46,16 +46,16 @@ public class Projectile : Model
         On_BulletDestroyed_Sent += Ammo.instance.Reuse;
     }
 
-  
-    IEnumerator ProjectileTimeOut()
-    {
-        if (gameObject.activeInHierarchy)
-        {
-            yield return new WaitForSeconds(outTime);
-            gameObject.SetActive(false);
-        }
-        yield return null;
-    }
+
+    //IEnumerator ProjectileTimeOut()
+    //{
+    //    if (gameObject.activeInHierarchy)
+    //    {
+    //        yield return new WaitForSeconds(outTime);
+    //        gameObject.SetActive(false);
+    //    }
+    //    yield return null;
+    //}
 
     private void OnTriggerEnter(Collider other)
     {
@@ -63,26 +63,29 @@ public class Projectile : Model
         {
             On_BulletDestroyed_Sent(projectileObj);
         }
-        if(other.gameObject.tag == "VisionCone")
+        if (other.gameObject.tag == "VisionCone")
         {
-            Physics.IgnoreCollision(mySphere, other,true);
+            Physics.IgnoreCollision(mySphere, other, true);
         }
     }
 
-    private void Update()
-    {
-        Debug.Log("Initial position is " + initPos);
+    //private void Update()
+    //{
+    //    if (gameObject.activeInHierarchy)
+    //    {
+    //        Debug.Log("Position is " + initPos);
+    //    }
 
-        float distance = Vector3.Distance(initPos, gameObject.transform.position);
-        if (Mathf.Abs(distance)>= outOfBounds)
-        {
-            gameObject.SetActive(false);
-        }
-    }
+    //    float distance = Vector3.Distance(initPos, gameObject.transform.position);
+    //    if (Mathf.Abs(distance) >= outOfBounds)
+    //    {
+    //        gameObject.SetActive(false);
+    //    }
+    //}
 
     private void OnEnable()
     {
-        StartCoroutine(ProjectileTimeOut());
+        //StartCoroutine(ProjectileTimeOut());
         initPos = gameObject.transform.position;
     }
 

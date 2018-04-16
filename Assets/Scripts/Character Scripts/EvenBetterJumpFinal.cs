@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EvenBetterJumpFinal : MonoBehaviour {
+public class EvenBetterJumpFinal : MonoBehaviour
+{
     //initiates the mario jump where after the peak of jump character's gravity snappily increases
     //reduces float
 
@@ -63,16 +64,16 @@ public class EvenBetterJumpFinal : MonoBehaviour {
     protected virtual void Jump()
     {
         myAnim.SetBool("grounded", false);
-        myAnim.SetBool("airborne", true);
+        //myAnim.SetBool("airborne", true);
         myRB.velocity = new Vector3(myRB.velocity.x, jumpHeight, 0);
     }
-
 
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
             myAnim.SetBool("grounded", true);
+            myAnim.SetBool("slam", false);
             //myAnim.SetFloat("vertSpeed", 0);
         }
     }
@@ -84,6 +85,5 @@ public class EvenBetterJumpFinal : MonoBehaviour {
             myAnim.SetBool("grounded", false);
             //myAnim.SetFloat("vertSpeed", myRB.velocity.y);
         }
-            
     }
 }

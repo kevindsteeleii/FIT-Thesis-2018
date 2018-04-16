@@ -129,18 +129,11 @@ public class Ammo : Singleton<Ammo>
     public void ShootLoad()
     {
         _bullets--;
-        if (Input.GetButton("Throw") && _bullets <= 0)
+        if (_bullets <= 0)
         {
             _bullets = 0;
             Debug.Log("No Ammo, Empty Clip");
         }
-
-        else if (Input.GetButton("Throw") && _bullets > 0)
-        {
-            Debug.Log("Shots fired! Only " + _bullets + " shots left!");
-        }
-        else
-            return;
 
         _bullets = Mathf.Clamp(_bullets, 0, cap);
     }
