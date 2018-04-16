@@ -9,19 +9,34 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1679500622325076}
+  m_RootGameObject: {fileID: 1323410236510034}
   m_IsPrefabParent: 1
---- !u!1 &1268409296527066
+--- !u!1 &1323410236510034
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4655019022452836}
-  - component: {fileID: 33814758344951576}
-  - component: {fileID: 23507756010496428}
-  - component: {fileID: 65284132917713672}
+  - component: {fileID: 4894905137273818}
+  m_Layer: 0
+  m_Name: junkCube 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1495225107766412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4761626410941198}
+  - component: {fileID: 33088033224570728}
+  - component: {fileID: 23736536191946916}
+  - component: {fileID: 65154175289048566}
   m_Layer: 0
   m_Name: junk cubeNew
   m_TagString: Untagged
@@ -29,58 +44,43 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1679500622325076
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4736228752440840}
-  m_Layer: 0
-  m_Name: junkCube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4655019022452836
+--- !u!4 &4761626410941198
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1268409296527066}
+  m_GameObject: {fileID: 1495225107766412}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4736228752440840}
+  m_Father: {fileID: 4894905137273818}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4736228752440840
+--- !u!4 &4894905137273818
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1679500622325076}
+  m_GameObject: {fileID: 1323410236510034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.903, y: -0.361, z: 0}
+  m_LocalScale: {x: 4.940416, y: 4.9404135, z: 4.9404135}
   m_Children:
-  - {fileID: 4655019022452836}
+  - {fileID: 4761626410941198}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23507756010496428
+--- !u!23 &23736536191946916
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1268409296527066}
+  m_GameObject: {fileID: 1495225107766412}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -109,22 +109,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33814758344951576
+--- !u!33 &33088033224570728
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1268409296527066}
+  m_GameObject: {fileID: 1495225107766412}
   m_Mesh: {fileID: 4300000, guid: cb906d13b685de34e9ffe8d314fcd96f, type: 3}
---- !u!65 &65284132917713672
+--- !u!65 &65154175289048566
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1268409296527066}
+  m_GameObject: {fileID: 1495225107766412}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.010000005, y: 0.010043625, z: 0.010049274}
-  m_Center: {x: 2.2737395e-13, y: -0.0000009555372, z: 0.000022521017}
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
