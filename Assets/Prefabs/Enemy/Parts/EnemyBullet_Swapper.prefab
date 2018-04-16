@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 54543566672182420}
   - component: {fileID: 135354646698929040}
   - component: {fileID: 114311115845473210}
+  - component: {fileID: 114618180852951480}
   m_Layer: 0
   m_Name: EnemyBullet_Swapper
   m_TagString: Untagged
@@ -185,7 +186,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1158135273269822}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.15, z: 0}
+  m_LocalPosition: {x: 5.3741765, y: 1.7911412, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4940958018687022}
@@ -342,10 +343,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7bc130cd4af62349bb94b1b194390a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGrabby: 0
+  isGrabby: 1
   grabModel: {fileID: 1232055273236710}
   shootModel: {fileID: 1927096664678618}
   hitPoint: 5
+--- !u!114 &114618180852951480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1158135273269822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a3379d93861ede479363423bafb64f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 5
+  fireDistance: 6
 --- !u!135 &135354646698929040
 SphereCollider:
   m_ObjectHideFlags: 1

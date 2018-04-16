@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class betterJump : MonoBehaviour
+public class EvenBetterJumpFinal : MonoBehaviour
 {
     //initiates the mario jump where after the peak of jump character's gravity snappily increases
     //reduces float
@@ -28,18 +28,14 @@ public class betterJump : MonoBehaviour
         myAnim = GetComponent<Animator>();
     }
 
-    //	void Start () {
-    //		
-    //	}
-
     // Update is called once per frame
     void Update()
     {
         //checks if rigidbody is descending and increases rate of drop for snappier jump does not accelerate tthe same if slamming down
         if (myRB.velocity.y < 0)
         {
-            myAnim.SetBool("Jump", false);
-            myAnim.SetBool("Falling", true);
+            //myAnim.SetBool("Jump", false);
+            //myAnim.SetBool("Falling", true);
             myRB.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
 
@@ -61,32 +57,33 @@ public class betterJump : MonoBehaviour
                 Jump();
             }
         }
+
+        myAnim.SetFloat("vertSpeed", myRB.velocity.y);
     }
 
     protected virtual void Jump()
     {
         myAnim.SetBool("grounded", false);
-        myAnim.SetBool("airborne", true);
+        //myAnim.SetBool("airborne", true);
         myRB.velocity = new Vector3(myRB.velocity.x, jumpHeight, 0);
     }
-
 
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
             myAnim.SetBool("grounded", true);
-            myAnim.SetBool("airborne", false);
+            myAnim.SetBool("slam", false);
+            //myAnim.SetFloat("vertSpeed", 0);
         }
     }
 
     void OnCollisionExit(Collision collision)
     {
-        if (Mathf.Abs(myRB.velocity.y) > 0)
+        if (collision.gameObject.tag == "Ground")
         {
             myAnim.SetBool("grounded", false);
-            myAnim.SetBool("airborne", true);
+            //myAnim.SetFloat("vertSpeed", myRB.velocity.y);
         }
     }
-
 }

@@ -38,9 +38,25 @@ public class Punch : BaseAttack {
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (GameManager.instance.GetState() == GameState.inGame)
+        {
+
+        }
+    }
+
     public override void AttackDetection()
     {
         Collider[] cols = Physics.OverlapCapsule(punchCapsule.bounds.center, punchCapsule.bounds.extents, punchCapsule.radius, LayerMask.GetMask("Enemy"));
         EnemyHit(cols);
     }
 }
+#region TODO list, refactoring etc
+/************TODO Refactoring********************************************************************//*
+ 1-
+ 2-
+ 3-
+ 4-
+ *************************************************************************************************/
+#endregion

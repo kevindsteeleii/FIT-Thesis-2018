@@ -6,6 +6,7 @@ public class CameraFollowv2_0 : MonoBehaviour {
 
     //player as target
     public Transform target;
+
     //distance b/n camera and player
     public Vector3 offset;
 

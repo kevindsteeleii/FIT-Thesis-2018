@@ -313,13 +313,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1618766685329626, guid: c65be701c47a4de4f8d57349ae9ef463, type: 2}
-      propertyPath: m_Name
-      value: Player
+    - target: {fileID: 4194006422391840, guid: c65be701c47a4de4f8d57349ae9ef463, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.011530994
       objectReference: {fileID: 0}
-    - target: {fileID: 1618766685329626, guid: c65be701c47a4de4f8d57349ae9ef463, type: 2}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 4194006422391840, guid: c65be701c47a4de4f8d57349ae9ef463, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.6986137
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194006422391840, guid: c65be701c47a4de4f8d57349ae9ef463, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.63499254
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194006422391840, guid: c65be701c47a4de4f8d57349ae9ef463, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.32953084
       objectReference: {fileID: 0}
     - target: {fileID: 114404800600929308, guid: c65be701c47a4de4f8d57349ae9ef463,
         type: 2}
@@ -393,6 +401,18 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 1094460740}
+    - target: {fileID: 1161897257731464, guid: 0db4fa4220ac428408e93f4d0b78718e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1230604586649408, guid: 0db4fa4220ac428408e93f4d0b78718e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1390514352789262, guid: 0db4fa4220ac428408e93f4d0b78718e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0db4fa4220ac428408e93f4d0b78718e, type: 2}
   m_IsPrefabParent: 0

@@ -13,20 +13,16 @@ public class ThrowModel : Model
     [Tooltip("The aim reticle")]
     public GameObject aimReticle;
 
-    //the game object used to manage the bullets when made
-    [SerializeField]
-    GameObject ammoManager;
-
     [Tooltip("X-Offset of the throw")]
     [Range(0f, 3f)]
     public float xOffset = .4f;
 
     [Tooltip("Intensity of throw")]
-    [Range(0f, 30f)]
+    [Range(0f, 200f)]
     public float throwForce;
 
     [Tooltip("Intensity of throw")]
-    [Range(0f, 100f)]
+    [Range(0f, 200f)]
     public float aimThrowForce;
 
     [Tooltip("Decreases speed of aimed throw")]
@@ -39,7 +35,7 @@ public class ThrowModel : Model
 
     Vector3 aimDirection, direction;
 
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
         if (!RootAim.facesRight)
             direction = Vector3.left;
@@ -58,7 +54,6 @@ public class ThrowModel : Model
         if (Ammo.instance._bullets > 0)
         {
             GameObject bullet = Ammo.instance.GetPooledObject(rootAim.transform.position);
-            bullet.transform.SetParent(ammoManager.transform); //trying to fix possible  movement bug
             bullet.GetComponent<Rigidbody>().velocity = direction * throwForce;
             Ammo.instance.ShootLoad();
         }
@@ -71,7 +66,6 @@ public class ThrowModel : Model
         if (Ammo.instance._bullets > 0)
         {
             GameObject bullet = Ammo.instance.GetPooledObject(rootAim.transform.position);
-            bullet.transform.SetParent(ammoManager.transform); //trying to fix possible  movement bug
             Rigidbody tempRB;
             tempRB = bullet.GetComponent<Rigidbody>();
             aimDirection = aimReticle.transform.localPosition;

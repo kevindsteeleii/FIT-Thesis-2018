@@ -26,7 +26,7 @@ public class TestCombos : MonoBehaviour
             {
                 buttonPresses++;
                 Debug.Log("Button pressed " + buttonPresses + " times!!");
-            }
+            } 
 
             else
             {
