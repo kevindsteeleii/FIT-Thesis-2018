@@ -8,10 +8,11 @@ public class Jump : MonoBehaviour {
     //rigidboday and animator children of the player character 
     Animator myAnim;
     Rigidbody myRB;
+    bool falling = false; //float that monitors the vertical movement to switch from jump to fall states in anim
 
     // Use this for initialization
     void Awake () {
-        myAnim = this.GetComponent<Animator>();
+        myAnim = this.GetComponentInChildren<Animator>();
         myAnim.SetBool("grounded", false);
         myHealth = this.gameObject.GetComponent<PlayerHealth>();
         myRB = this.GetComponent<Rigidbody>();
@@ -24,11 +25,14 @@ public class Jump : MonoBehaviour {
             //checks if rigidbody is descending and increases rate of drop for snappier jump does not accelerate tthe same if slamming down
             if (myRB.velocity.y < 0)
             {
+                falling = true;
+                Debug.Log("falling");
                 myRB.velocity += Vector3.up * Physics.gravity.y * (data.fallMultiplier - 1) * Time.deltaTime;
             }
 
-            else if (myRB.velocity.y > 0 && !Input.GetButton("Jump"))
+            else if (myRB.velocity.y > 0.1 && !Input.GetButton("Jump"))
             {
+                falling = false;
                 myRB.velocity += Vector3.up * Physics.gravity.y * (data.lowJumpMultiplier - 1) * Time.deltaTime;
             }
 
@@ -42,8 +46,12 @@ public class Jump : MonoBehaviour {
             {
                 myAnim.SetBool("grounded", true);
                 myAnim.SetBool("airborne", false);
+                falling = false;
             }
+            myAnim.SetBool("falling", falling);
+
         }
+        Debug.Log("rigidbody velocity is {0}"+myRB.velocity.y);
     }
 
     bool jumpCheck(String button, String state, bool flag, Animator myAnim)

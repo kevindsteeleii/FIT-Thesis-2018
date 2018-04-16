@@ -28,11 +28,12 @@ public class RootAim : Singleton<RootAim>
     
     // Update is called once per frame
     public virtual void FixedUpdate()    {
-        aimPos = this.transform.position;
+        aimPos = gameObject.transform.position;
         Vector3 desiredPosition = target.position;
-        desiredPosition.y = vertAdjustment+target.position.y;
+        desiredPosition.y = vertAdjustment + target.position.y;
         desiredPosition.z = 0f;
-        transform.position = desiredPosition;
+        gameObject.transform.position = desiredPosition;
+
         float move = Input.GetAxis("Horizontal");
         if (move > 0 && !facesRight || move < 0 && facesRight )
         {

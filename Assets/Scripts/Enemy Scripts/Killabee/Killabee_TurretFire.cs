@@ -4,6 +4,8 @@ using UnityEngine;
 /// <summary>
 /// The killabee turret firing script 
 /// </summary>
+public enum Facing { Left = -1, Right = 1 };
+
 public class Killabee_TurretFire : MonoBehaviour {
     //rigid body of the parent enemy element to be used to determine direction of shot
     Rigidbody myRb;
@@ -11,6 +13,7 @@ public class Killabee_TurretFire : MonoBehaviour {
     //the empty game object used to launch bullets from
     public GameObject gunBarrel;
     public GameObject bullet;
+    Facing enFacing = Facing.Left;
 
     PoolItem poolBullets;   //the pooled bullets
 
@@ -63,11 +66,11 @@ public class Killabee_TurretFire : MonoBehaviour {
             do
             {
                 randomIndex = UnityEngine.Random.Range(0, poolBullets.Count());
-            } while (previousIndexes.Contains(randomIndex));
+            }
+            while (previousIndexes.Contains(randomIndex));
 
             poolBullets.GetAtIndex(randomIndex).GetComponent<EnemyBulletTest>().SetGrabbable(true);
             previousIndexes.Add(randomIndex);
-
         }
     }
 
@@ -84,15 +87,19 @@ public class Killabee_TurretFire : MonoBehaviour {
 
     void FireFix() //using pooled objects to fire projectiles
     {
-        try
+        if (fullClip >0)
         {
-            GameObject temp = poolBullets.Get(gunBarrel.transform.position);
-            temp.GetComponent<Rigidbody>().velocity = Vector3.right * directionModifier * fireForce;
-        }
-        catch (System.NullReferenceException)
-        {
-            throw;
-            Debug.Log("Out of bullets, enemy");
+            try
+            {
+                GameObject temp = poolBullets.Get(gunBarrel.transform.position);
+                temp.GetComponent<Rigidbody>().velocity = Vector3.right * directionModifier * fireForce;
+            }
+            catch (System.NullReferenceException)
+            {
+                Debug.Log("Out of bullets, enemy");
+                throw;
+            }
+            fullClip--;
         }
     }
 
@@ -101,7 +108,7 @@ public class Killabee_TurretFire : MonoBehaviour {
         for (int i = 0; i < poolBullets.Count(); i++)
         {
             FireFix();
-            yield return new WaitForSecondsRealtime(.5f);
+            yield return new WaitForSecondsRealtime(1f);
         }
 
         yield return null;
@@ -117,6 +124,7 @@ public class Killabee_TurretFire : MonoBehaviour {
         for (int i = 0; i < poolBullets.Count(); i++)
         {
             poolBullets.ReUse();
+            fullClip++;
         }
         yield return null;
     }

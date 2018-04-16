@@ -1,13 +1,11 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 
-/// <summary>
-/// New and Improved consolidated Player Controller that handles movements, jumps, attacks and whatnot.
-/// </summary>
-public class PlayerController : Singleton<PlayerController>
+public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
 {
-    #region Global Variables
 
+    #region Global Variables
     //set of variables used to detect if the ground is beneath or not
     public PlayerData data;
     Ray ray = new Ray(); // ray used to detect if player is over a ground object wh/ is used to affect camera movements
@@ -18,6 +16,14 @@ public class PlayerController : Singleton<PlayerController>
     Animator myAnim;
     Rigidbody myRB;
     public static bool facingRight;
+
+
+    [Tooltip("The punch chain time interval used to work")]
+    [Range(0.1f, 4f)]
+    public float comboInterval;
+    float lastPressed = 0f;
+    int buttonPresses = 0;  //used to increase the combo 
+
     //respawn position
     Vector3 respawnPos;
     //respawn rotation
@@ -52,7 +58,6 @@ public class PlayerController : Singleton<PlayerController>
     //have the delegates equal two specific generic functions that produce bools based on input and animator parameters
     ActionTaken takeAction = ActionTook;
     ComboActionTaken comboAction = ComboActionTake;
-
     #endregion
 
     //establishes defaults and initiates variables/placeholders use Start over Awake for all singletons
@@ -61,16 +66,14 @@ public class PlayerController : Singleton<PlayerController>
         myAnim = this.GetComponent<Animator>();
         myRB = this.GetComponent<Rigidbody>();
         facingRight = true;
-        myAnim.SetBool("grounded", false);
+        //myAnim.SetBool("grounded", false);
         respawnPos = myRB.transform.position;
         rot = myRB.transform.rotation;
         targetCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        
+
         //assigns ResetHP() as subscriber of Restarting event
         GameManager.instance.On_RestartState_Sent += On_ReStartState_Caught;
-
         On_GroundRayCasting_Sent += targetCamera.GetComponent<CameraFollowv2_0>().On_GroundRayCasting_Received;
-
     }
 
     protected virtual void Update()
@@ -82,9 +85,72 @@ public class PlayerController : Singleton<PlayerController>
         }
 
         //sends whether or not the character is underneath ground
-        if (On_GroundRayCasting_Sent!= null)
+        if (On_GroundRayCasting_Sent != null)
         {
             On_GroundRayCasting_Sent(groundBeneath);
+        }
+
+        if (GameManager.instance.GetState() == GameState.inGame)
+        {
+            if (Input.GetButtonDown("Punch") && myAnim.GetBool("grounded"))
+            {
+                myAnim.SetFloat("speed", 0f);
+                lastPressed = Time.time;
+                //Debug.Log("Last pressed punch at " + lastPressed);
+                myAnim.SetBool("attacking", true);
+
+                if (buttonPresses <= 0)
+                {
+                    buttonPresses++;
+
+                }
+                else
+                {
+                    if (Input.GetButtonDown("Punch") && Time.time <= (lastPressed + comboInterval))
+                    {
+                        myAnim.SetFloat("speed", 0f);
+                        buttonPresses++;
+
+                    }
+                    else if (myAnim.GetInteger("attackChain") >= 4)
+                    {
+                        myAnim.SetInteger("attackChain", 0);
+                        buttonPresses = 0;
+                    }
+                }
+
+            }
+            //else
+            //{
+            //    myAnim.SetBool("attacking", false);
+            //}
+
+            if (Time.time > (lastPressed + comboInterval) || myAnim.GetInteger("attackChain") >= 4)
+            {
+                buttonPresses = 0;
+                myAnim.SetBool("attacking", false);
+            }
+            //myAnim.SetBool("attacking", false);
+
+            if (Input.GetAxisRaw("JoystickVertical") == -1 //&& Input.GetButton("Punch") 
+                && !myAnim.GetBool("grounded"))
+            {
+                Debug.Log("welcome to the slam");
+                myAnim.SetBool("slam", true);
+            }
+            else
+                myAnim.SetBool("slam", false);
+
+            //this is the alternative inputs for the slam on controller
+            //if (Input.GetAxisRaw("JoystickVertical") == -1 && Input.GetButton("Punch"))
+            //{
+            //    //myAnim.SetBool("airborne", false);
+            //    myAnim.SetBool("slam", true);
+            //}
+            //else
+            //{
+            //    myAnim.SetBool("slam", false);
+            //}
         }
     }
 
@@ -93,7 +159,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         #region Logic for the Raycast detecting ground underneath to figure out if camera needs to change verticality
         RaycastHit hit;
-        if (Physics.Raycast(gameObject.transform.position, Vector3.down,out hit, Mathf.Infinity))
+        if (Physics.Raycast(gameObject.transform.position, Vector3.down, out hit, Mathf.Infinity))
         {
             if (hit.collider.gameObject.tag == "Ground")
             {
@@ -106,14 +172,13 @@ public class PlayerController : Singleton<PlayerController>
         }
         #endregion
 
-        bool undead = takeAction("Respawn", "dead", true, myAnim);
+        //bool undead = takeAction("Respawn", "dead", true, myAnim);
         //if false death-state is on all other actions cease
 
         if (GameManager.instance.GetState() == GameState.inGame)
         {
             #region Horizontal Movement
             float move = 0;
-
             if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0)
             {
                 move = Input.GetAxis("Horizontal");
@@ -125,26 +190,9 @@ public class PlayerController : Singleton<PlayerController>
             if (move > 0 && !facingRight) { Flip(); }
             else if (move < 0 && facingRight) { Flip(); }
             #endregion
+            //Debug.Log(buttonPresses + " button presses");
 
-            bool puncher = takeAction("Punch", "grounded", true, myAnim);
-            bool slammer = comboAction("Punch", "Slam", "airborne", true, myAnim);
-
-            if (puncher)
-            {
-                StartCoroutine(HitStopperPunch());
-            }
-            //slammer checks if the punch and down is pressed at the same time on keyboard
-            if (slammer)
-            {
-                myAnim.SetBool("airborne", false);
-                myAnim.SetBool("slam", true);
-            }
-            //this is the alternative inputs for the slam on controller
-            else if (Input.GetAxisRaw("JoystickVertical") == -1 && Input.GetButton("Punch"))
-            {
-                myAnim.SetBool("airborne", false);
-                myAnim.SetBool("slam", true);
-            }
+            myAnim.SetInteger("attackChain", buttonPresses);
         }
     }
 
@@ -180,7 +228,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         transform.SetPositionAndRotation(respawnPos, rot);
         myAnim.SetBool("dead", false);
-        myAnim.SetBool("grounded", true);
+        //myAnim.SetBool("grounded", true);
         facingRight = true;
     }
 
@@ -191,7 +239,7 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     //hitStop coroutine for punch to hold and then stop animation
-    System.Collections.IEnumerator HitStopperPunch()
+    IEnumerator HitStopperPunch()
     {
         myAnim.SetBool("punching", true);
         //find better way to hitStop on the punch its jaggy atm
@@ -203,28 +251,20 @@ public class PlayerController : Singleton<PlayerController>
     //declares slam bool false upon ground contact resetting its anim state
     void OnCollisionEnter(Collision collision)
     {
-        myAnim.SetBool("slam", false);
-        myAnim.SetBool("airborne", false);
-        myAnim.SetBool("grounded", true);
+        //myAnim.SetBool("slam", false);
+        //myAnim.SetBool("airborne", false);
+        //myAnim.SetBool("grounded", true);
 
-        if (collision.gameObject.tag == "Ground")
-        {
-            myAnim.SetBool("grounded", true);
-            myAnim.SetBool("airborne", false);
-        }
+        //if (collision.gameObject.tag == "Ground")
+        //{
+        //    myAnim.SetBool("grounded", true);
+        //    myAnim.SetBool("Jump", false);
+        //    myAnim.SetBool("Falling", false);
+        //}
 
-        else if (collision.gameObject.tag == "Death Object")
+        if (collision.gameObject.tag == "Death Object")
         {
             Die();
-        }
-    }
-
-    void OnCollisionExit(Collision collision)
-    {
-        if (Mathf.Abs(myRB.velocity.y) > 0 || collision.gameObject.tag == "Ground")
-        {
-            myAnim.SetBool("grounded", false);
-            myAnim.SetBool("airborne", true);
         }
     }
 
@@ -233,12 +273,13 @@ public class PlayerController : Singleton<PlayerController>
         if (other.gameObject.tag == "CheckPoint")
         {
             respawnPos.x = other.gameObject.transform.position.x;
+            respawnPos.z = 0;
         }
     }
 }
 #region TODO list, refactoring etc
 /************TODO Refactoring********************************************************************//*
- 1-
+ 1- fine tune the combo animations/timing to be more reactive to the button presses
  2-
  3-
  4-
