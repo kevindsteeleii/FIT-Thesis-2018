@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
 {
-
     #region Global Variables
     //set of variables used to detect if the ground is beneath or not
     public PlayerData data;
@@ -17,6 +16,7 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
     Rigidbody myRB;
     public static bool facingRight;
 
+    public GameObject throwControlObject;   //DO NOT DELETE!! this reference enables an action on an animation event to happen
 
     [Tooltip("The punch chain time interval used to work")]
     [Range(0.1f, 4f)]
@@ -45,6 +45,11 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
     public event Action<bool> On_GroundRayCasting_Sent;
 
     /// <summary>
+    /// Event that broadcasts when the animator's toss animation reaches a specific frame triggering when the throw happens
+    /// </summary>
+    public event Action On_TossNow_Sent;
+
+    /// <summary>
     /// Delegates used to speed up runtime of checking the parameters and buttons of a resulting
     /// Animation/Action
     /// </summary>
@@ -70,10 +75,17 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
         respawnPos = myRB.transform.position;
         rot = myRB.transform.rotation;
         targetCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        throwControlObject = GameObject.FindGameObjectWithTag("RootAim");
 
         //assigns ResetHP() as subscriber of Restarting event
         GameManager.instance.On_RestartState_Sent += On_ReStartState_Caught;
         On_GroundRayCasting_Sent += targetCamera.GetComponent<CameraFollowv2_0>().On_GroundRayCasting_Received;
+        On_TossNow_Sent += throwControlObject.GetComponent<ThrowController>().On_TossNow_Received; //heavily dependent on references do not delete throwControlObject
+    }
+    //used to trigger an event that prompts the throw DO NOT DELETE!!!
+    public void TossNow()
+    {
+        On_TossNow_Sent();
     }
 
     protected virtual void Update()

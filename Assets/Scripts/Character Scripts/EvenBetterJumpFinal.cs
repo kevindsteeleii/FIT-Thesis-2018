@@ -6,24 +6,25 @@ public class EvenBetterJumpFinal : MonoBehaviour
 {
     //initiates the mario jump where after the peak of jump character's gravity snappily increases
     //reduces float
-
-    [Range(1, 20)]
-    public float fallMultiplier = 2.5f;
+    public PlayerData playData;
+ 
+    float fallMultiplier = 2.5f;
 
     //establishes the lowest jump possible upon quick release of jump button 
-    [Range(1, 10)]
-    public float lowJumpMultiplier = 5f;
+    float lowJumpMultiplier = 5f;
     // Use this for initialization
     Rigidbody myRB;
     Animator myAnim;
 
     //for jumping player starts suspended above ground by default is not on ground
-    [Range(0, 40)]
-    public float jumpHeight;
+    float jumpHeight = 5f;
 
     protected virtual void Awake()
     {
-        jumpHeight = 7f;
+        fallMultiplier = playData.fallMultiplier;
+        lowJumpMultiplier = playData.lowJumpMultiplier;
+        jumpHeight = playData.jumpHeight;
+
         myRB = GetComponent<Rigidbody>();
         myAnim = GetComponent<Animator>();
     }
