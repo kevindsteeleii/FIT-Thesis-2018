@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 9df0f48649a411f4d8ff2b09e2bbf2ff
-timeCreated: 1523919191
+guid: 3a578f678fbda1d4296ae314a4458a1e
+timeCreated: 1524065836
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -175,8 +175,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.8304196
-        functionName: TossNow
+      - time: 0
+        functionName: StartGrab
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9982476
+        functionName: EndGrab
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

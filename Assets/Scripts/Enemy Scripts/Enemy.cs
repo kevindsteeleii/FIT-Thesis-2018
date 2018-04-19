@@ -29,6 +29,8 @@ public class Enemy : MonoBehaviour
 
     //used to save max HP info for enemy
     public int saveHP;
+
+    public CapsuleCollider hurtBox;
     #endregion
 
     // Use this for initialization
@@ -52,11 +54,12 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private void DealDeath()
     {
-        Destroy(gameObject);
+        Destroy();
     }
 
     public virtual void EnemyTakeDamage(int dam)  {
         HP -= dam;
+        Debug.Log("Took damage "+ HP +" HP left");
     }
 
     /// <summary>
@@ -76,19 +79,19 @@ public class Enemy : MonoBehaviour
         //transmits to Ammo handling manager as a subject of subscription
         if (On_BecomeAmmo_Sent != null)
         {
-            Debug.Log("Became Ammo");
             On_BecomeAmmo_Sent();
         }
-        Destroy(gameObject); 
+        Destroy(); 
     }
 
     /// <summary>
     /// "Destroys" body by setting parent to inactive
     /// </summary>
     /// <param name="obj"></param>
-    private void Destroy(GameObject obj)
-    {
-        obj.SetActive(false);
+    private void Destroy() {
+
+        Debug.Log("Destroyed");
+        gameObject.transform.parent.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -98,6 +101,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     protected virtual void BecomePickUp()
     {
+        Debug.Log("Became PickUP");
         if (randomDrop)
         {
             this.On_RandomLootDropped_Sent += LootGenerator.instance.On_RandomLootDropped_Received;
@@ -108,20 +112,20 @@ public class Enemy : MonoBehaviour
             this.On_DefaultLootDrop_Sent += LootGenerator.instance.On_DefaultLootDrop_Received ;
             On_DefaultLootDrop_Sent(transform.position, transform.rotation, PickupType.Health);
         }
-        Destroy(gameObject);   
+        Destroy();   
     }
 
     private void OnTriggerEnter(Collider other)
     {
         GameObject obj = other.gameObject;
-        if (obj.tag == "Projectile")
-        {
-            EnemyTakeDamage(obj.GetComponent<Projectile>().damage); //refactor with hitbox/hurtbox paradigm 
-            if (HP <= 0)
-            {
-                BecomePickUp();
-            }
-        }
+        //if (obj.tag == "Hand")
+        //{
+        //    EnemyTakeDamage(obj.GetComponent<Projectile>().damage); //refactor with hitbox/hurtbox paradigm 
+        //    if (HP <= 0)
+        //    {
+        //        BecomePickUp();
+        //    }
+        //}
     }
 }
 #region TODO list, refactoring etc

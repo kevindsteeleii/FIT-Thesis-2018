@@ -21,6 +21,11 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
     [Tooltip("The punch chain time interval used to work")]
     [Range(0.1f, 4f)]
     public float comboInterval;
+
+    [Tooltip("The grabbing time interval used to  establish how long after grab is pressed that it's true")]
+    [Range(0.1f, 4f)]
+    public float grabInterval = .3f;
+
     float lastPressed = 0f;
     int buttonPresses = 0;  //used to increase the combo 
 
@@ -71,7 +76,6 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
         myAnim = this.GetComponent<Animator>();
         myRB = this.GetComponent<Rigidbody>();
         facingRight = true;
-        //myAnim.SetBool("grounded", false);
         respawnPos = myRB.transform.position;
         rot = myRB.transform.rotation;
         targetCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -108,13 +112,11 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
             {
                 myAnim.SetFloat("speed", 0f);
                 lastPressed = Time.time;
-                //Debug.Log("Last pressed punch at " + lastPressed);
                 myAnim.SetBool("attacking", true);
 
                 if (buttonPresses <= 0)
                 {
                     buttonPresses++;
-
                 }
                 else
                 {
@@ -130,39 +132,56 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
                         buttonPresses = 0;
                     }
                 }
-
             }
-            //else
-            //{
-            //    myAnim.SetBool("attacking", false);
-            //}
-
+           
             if (Time.time > (lastPressed + comboInterval) || myAnim.GetInteger("attackChain") >= 4)
             {
                 buttonPresses = 0;
                 myAnim.SetBool("attacking", false);
             }
-            //myAnim.SetBool("attacking", false);
 
-            if (Input.GetAxisRaw("JoystickVertical") == -1 //&& Input.GetButton("Punch") 
-                && !myAnim.GetBool("grounded"))
+            if (Input.GetAxisRaw("JoystickVertical") == -1 || Input.GetButtonDown("Slam"))
             {
-                Debug.Log("welcome to the slam");
                 myAnim.SetBool("slam", true);
             }
-            else
-                myAnim.SetBool("slam", false);
 
-            //this is the alternative inputs for the slam on controller
-            //if (Input.GetAxisRaw("JoystickVertical") == -1 && Input.GetButton("Punch"))
-            //{
-            //    //myAnim.SetBool("airborne", false);
-            //    myAnim.SetBool("slam", true);
-            //}
-            //else
-            //{
-            //    myAnim.SetBool("slam", false);
-            //}
+            if (Input.GetButton("Grab"))
+            {
+                myAnim.SetBool("grabbing", true);
+                StartCoroutine(GrabTime());
+            }
+            else
+            {
+                myAnim.SetBool("grabbing", false);
+            }
+        }
+    }
+
+
+    #region Grab Animation Dependent Events
+    public event Action<bool> On_Grabbing_Sent;
+    public GameObject Hand;
+
+    void StartGrab()
+    {
+        On_Grabbing_Sent += Hand.GetComponent<GrabArm>().On_Grabbing_Received;
+        On_Grabbing_Sent(true);
+    }
+    void EndGrab()
+    {
+        On_Grabbing_Sent -= Hand.GetComponent<GrabArm>().On_Grabbing_Received;
+        GrabFSM.On_Grabbing_Sent += Hand.GetComponent<GrabArm>().On_Grabbing_Received;
+
+    }
+    #endregion
+
+    IEnumerator GrabTime()
+    {
+
+        if (!Input.GetButton("Grab"))
+        {
+            yield return new WaitForSecondsRealtime(grabInterval);
+            myAnim.SetBool("grabbing", false);
         }
     }
 
@@ -187,7 +206,7 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
         //bool undead = takeAction("Respawn", "dead", true, myAnim);
         //if false death-state is on all other actions cease
 
-        if (GameManager.instance.GetState() == GameState.inGame)
+        if (GameManager.instance.GetState() == GameState.inGame )
         {
             #region Horizontal Movement
             float move = 0;
@@ -195,17 +214,14 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
             {
                 move = Input.GetAxis("Horizontal");
             }
-
             myAnim.SetFloat("speed", Mathf.Abs(move));
 
-            myRB.velocity = new Vector3(move * data.runSpeed, myRB.velocity.y, 0);
+            myRB.velocity = new Vector3(move* data.runSpeed, myRB.velocity.y, 0);
             if (move > 0 && !facingRight) { Flip(); }
             else if (move < 0 && facingRight) { Flip(); }
             #endregion
-            //Debug.Log(buttonPresses + " button presses");
-
-            myAnim.SetInteger("attackChain", buttonPresses);
         }
+        myAnim.SetInteger("attackChain", buttonPresses);
     }
 
     /// <summary>
@@ -263,17 +279,6 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
     //declares slam bool false upon ground contact resetting its anim state
     void OnCollisionEnter(Collision collision)
     {
-        //myAnim.SetBool("slam", false);
-        //myAnim.SetBool("airborne", false);
-        //myAnim.SetBool("grounded", true);
-
-        //if (collision.gameObject.tag == "Ground")
-        //{
-        //    myAnim.SetBool("grounded", true);
-        //    myAnim.SetBool("Jump", false);
-        //    myAnim.SetBool("Falling", false);
-        //}
-
         if (collision.gameObject.tag == "Death Object")
         {
             Die();
@@ -285,7 +290,6 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
         if (other.gameObject.tag == "CheckPoint")
         {
             respawnPos.x = other.gameObject.transform.position.x;
-            respawnPos.z = 0;
         }
     }
 }

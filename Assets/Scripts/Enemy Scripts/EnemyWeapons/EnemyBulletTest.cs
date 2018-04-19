@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
 
-public class EnemyBulletTest : MonoBehaviour {
+public class EnemyBulletTest : MonoBehaviour
+{
 
     public event Action On_BecomeAmmo_Sent;
     public bool isGrabby = false;   //bool that toggles on start the mesh/logic for a grabbable/non-grabbable projectile
@@ -22,7 +23,8 @@ public class EnemyBulletTest : MonoBehaviour {
     public event Action<int> On_TransferDamage_Sent;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         grabModel.SetActive(isGrabby);
         shootModel.SetActive(!isGrabby);
 
@@ -36,7 +38,7 @@ public class EnemyBulletTest : MonoBehaviour {
         grabModel.SetActive(isGrabby);
         shootModel.SetActive(!isGrabby);
     }
-	
+
     public void SetGrabbable(bool grabbable)
     {
         isGrabby = grabbable;
@@ -47,10 +49,11 @@ public class EnemyBulletTest : MonoBehaviour {
         return isGrabby;
     }
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update()
+    {
         AttackDetection();
-	}
+    }
 
     protected virtual void BecomeProjectile()
     {
@@ -74,24 +77,24 @@ public class EnemyBulletTest : MonoBehaviour {
     {
         foreach (var collider in cols)
         {
-            if (collider.tag == "Player" && collider.gameObject.layer == LayerMask.GetMask("Player"))
+            if (collider.gameObject.tag == "HurtBox")
             {
                 Debug.Log("Player hit");
-                On_TransferDamage_Sent += collider.gameObject.GetComponent<PlayerStats>().TakeDamage;
+                On_TransferDamage_Sent += collider.gameObject.GetComponentInParent<PlayerStats>().TakeDamage;
                 On_TransferDamage_Sent(hitPoint);
-                On_TransferDamage_Sent -= collider.gameObject.GetComponent<PlayerStats>().TakeDamage;
+                On_TransferDamage_Sent -= collider.gameObject.GetComponentInParent<PlayerStats>().TakeDamage;
                 Destroy();
             }
         }
     }
 
-    void PlayerHit(Collider playerCollider)
-    {
-        On_TransferDamage_Sent += playerCollider.gameObject.GetComponent<PlayerStats>().TakeDamage;
-        On_TransferDamage_Sent(hitPoint);
-        On_TransferDamage_Sent -= playerCollider.gameObject.GetComponent<PlayerStats>().TakeDamage;
-        Destroy();
-    }
+    //void PlayerHit(Collider playerCollider)
+    //{
+    //    On_TransferDamage_Sent += playerCollider.gameObject.transform.parent.gameObject.GetComponent<PlayerStats>().TakeDamage;
+    //    On_TransferDamage_Sent(hitPoint);
+    //    On_TransferDamage_Sent -= playerCollider.gameObject.transform.parent.gameObject.GetComponent<PlayerStats>().TakeDamage;
+    //    Destroy();
+    //}
 
     /// <summary>
     /// "Destroys" body by setting the game object the script is attached to to inactive
@@ -103,7 +106,7 @@ public class EnemyBulletTest : MonoBehaviour {
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Bullet hit "+ other.tag);
+        //Debug.Log("Bullet hit "+ other.tag);
         if (other.tag == "Hand" && isGrabby)
         {
             BecomeProjectile();
@@ -111,9 +114,15 @@ public class EnemyBulletTest : MonoBehaviour {
 
         if (other.tag == "Player")
         {
-            PlayerHit(other);
+            //PlayerHit(other);
             Debug.Log("Enemy Projectile hit player!!");
+            other.gameObject.transform.root.gameObject.GetComponent<PlayerStats>().TakeDamage(hitPoint);
         }
+        //if (other.gameObject.tag == "HurtBox" )
+        //{
+        //    Debug.Log("Hit " + other.gameObject.transform.parent.gameObject.tag + " hurtbox");
+        //    PlayerHit(other);
+        //}
     }
 }
 #region TODO list, refactoring etc

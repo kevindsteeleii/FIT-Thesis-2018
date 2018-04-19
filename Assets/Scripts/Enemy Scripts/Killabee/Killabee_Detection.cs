@@ -10,7 +10,6 @@ public class Killabee_Detection : MonoBehaviour
     public EnStatsData enStats;
 
     int multiplier = 1; //used to start/stop the enemy
-    int modifier = 1;   // used to modify velocity upon player detection
 
     Rigidbody myRB;
 
@@ -27,7 +26,7 @@ public class Killabee_Detection : MonoBehaviour
         }
         else
         {
-            myRB = gameObject.GetComponent<Rigidbody>();
+            myRB = gameObject.GetComponentInParent<Rigidbody>();
         }
 
         if (visionCone != null)
@@ -40,13 +39,13 @@ public class Killabee_Detection : MonoBehaviour
         }
     }
 
-    void Turn()
+    protected virtual void Turn()
     {
         multiplier *= -1;
         gameObject.transform.rotation = currentRot;
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         RaycastHit hit;
         Ray ray = new Ray();
@@ -70,35 +69,16 @@ public class Killabee_Detection : MonoBehaviour
             }
         }
 
-        myRB.velocity = Vector3.right * Time.timeScale * enStats.speed*modifier * multiplier;
+        myRB.velocity = Vector3.right * Time.timeScale * enStats.speed * multiplier;
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
-        {
-            modifier = 0;
-        }
+        //Physics.IgnoreLayerCollision(9, 14);
 
-        if(other.tag == "Hand")
+        if (other.tag == "Hand" || other.tag == "Player" || other.tag == "HitBox")
         {
-            Physics.IgnoreCollision(other, visionCone, true);
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            modifier = 0;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            modifier = 1;
+            //Physics.IgnoreCollision(other, visionCone, true);
         }
     }
 }

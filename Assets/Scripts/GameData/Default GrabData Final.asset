@@ -8,13 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d59561229ffd7704f9c0fc8f9b27138d, type: 3}
-  m_Name: Enemy Stats Data(Test001)
+  m_Script: {fileID: 11500000, guid: ab69e44928077534d9e4f10cbf02d974, type: 3}
+  m_Name: Default GrabData Final
   m_EditorClassIdentifier: 
-  minDistance: 0.696
-  speed: 6.5
-  range: 0.399
-  detectPlayerRange: 3.49
-  fireRate: 1
-  shotForce: 0
-  whiffPunishWindow: 1.5
+  grabRange: 6.53
+  speed: 0.102
+  offSet: {x: 0.6, y: 0}

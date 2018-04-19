@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runSpeed: 8
   fallMultiplier: 4.89
-  lowJumpMultiplier: 3.74
-  jumpHeight: 7
+  lowJumpMultiplier: 3
+  jumpHeight: 8

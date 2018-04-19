@@ -34,7 +34,6 @@ public class Punch : BaseAttack {
         if (punchCapsule.enabled && normalTime > 0.2f )
         {
             int baseName = myAnim.GetCurrentAnimatorClipInfo(0).Rank;
-            AttackDetection();
         }
     }
 
@@ -44,12 +43,6 @@ public class Punch : BaseAttack {
         {
 
         }
-    }
-
-    public override void AttackDetection()
-    {
-        Collider[] cols = Physics.OverlapCapsule(punchCapsule.bounds.center, punchCapsule.bounds.extents, punchCapsule.radius, LayerMask.GetMask("Enemy"));
-        EnemyHit(cols);
     }
 }
 #region TODO list, refactoring etc

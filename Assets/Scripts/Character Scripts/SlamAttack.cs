@@ -38,13 +38,14 @@ public class SlamAttack : BaseAttack {
 
         if (slamArea.enabled && normalTime > 0.2f)  {
             //WelcomeToTheSlam();
-            AttackDetection();
         }
     }
-
-    public override void AttackDetection()
-    {
-        Collider[] cols = Physics.OverlapSphere(slamArea.bounds.center, slamArea.radius, LayerMask.GetMask("Enemy"), QueryTriggerInteraction.Collide);
-        EnemyHit(cols);
-    }
 }
+#region TODO list, refactoring etc
+/************TODO Refactoring********************************************************************//*
+ 1-
+ 2-
+ 3-
+ 4-
+ *************************************************************************************************/
+#endregion

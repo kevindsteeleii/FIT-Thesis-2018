@@ -50,8 +50,6 @@ public class ThrowController : Controller
                 try
                 {
                     myAnim.SetBool("toss", true);
-                    //TossNow();
-                    //canon.ThrowStraight();
                 }
                 catch (IndexOutOfRangeException e)
                 {

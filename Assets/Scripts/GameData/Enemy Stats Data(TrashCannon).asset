@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d59561229ffd7704f9c0fc8f9b27138d, type: 3}
-  m_Name: Enemy Stats Data(Test001)
+  m_Name: Enemy Stats Data(TrashCannon)
   m_EditorClassIdentifier: 
-  minDistance: 0.696
-  speed: 6.5
+  minDistance: 1.139
+  speed: 3.45
   range: 0.399
-  detectPlayerRange: 3.49
+  detectPlayerRange: 4.1
   fireRate: 1
   shotForce: 0
   whiffPunishWindow: 1.5

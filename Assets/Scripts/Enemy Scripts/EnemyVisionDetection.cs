@@ -4,36 +4,89 @@ using UnityEngine;
 
 public class EnemyVisionDetection : MonoBehaviour
 {
+    public EnStatsData enStats;
 
-    Rigidbody myRb;
-    MeshCollider coneCollider;
+    int multiplier = 1; //used to start/stop the enemy
+    int stopper = 1;
+    Rigidbody myRB;
+    public Animator enAnim;
+
+    public MeshCollider visionCone;
+
+    Quaternion currentRot;  //rotation to be set by the direction enemy moves in
+
     // Use this for initialization
     void Start()
     {
-        if (myRb == null)
+        if (myRB != null)
         {
-            var parent = gameObject.transform.parent;
-            myRb = parent.gameObject.GetComponent<Rigidbody>();
+            return;
+        }
+        else
+        {
+            myRB = gameObject.transform.root.GetComponent<Rigidbody>();
         }
 
-        if (coneCollider == null)
+        if (visionCone != null)
         {
-            coneCollider = gameObject.GetComponentInChildren<MeshCollider>();
+            return;
+        }
+        else
+        {
+            visionCone = gameObject.GetComponentInChildren<MeshCollider>();
         }
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    protected virtual void Turn()
     {
-        float rotation = 0f;
-        if (myRb.velocity.x > 0)
+        multiplier *= -1;
+        gameObject.transform.rotation = currentRot;
+    }
+
+    protected virtual void FixedUpdate()
+    {
+        enAnim.SetFloat("speed", myRB.velocity.x);
+        enAnim.SetFloat("vertSpeed", myRB.velocity.y);
+
+        RaycastHit hit;
+        Ray ray = new Ray();
+
+        if (myRB.velocity.x > 0)    //if the velocity is positive so is the ray's direction
         {
-            rotation = 0;
+            ray = new Ray(transform.position, Vector3.right);
+            currentRot = new Quaternion(0, 0, 0, 1);
         }
-        else if (myRb.velocity.x < 0)
+        else
         {
-            rotation = 180f;
+            ray = new Ray(transform.position, Vector3.left);
+            currentRot = new Quaternion(0, 180, 0, 1);
         }
-        gameObject.transform.rotation = new Quaternion(Vector3.up.x, Vector3.up.y * rotation, Vector3.up.z, 1);
+
+        if (Physics.Raycast(ray, out hit, enStats.minDistance))
+        {
+            if (hit.collider.tag == "EndPoint")
+            {
+                Turn();
+            }
+        }
+        Debug.DrawRay(gameObject.transform.root.position, ray.direction);
+        myRB.velocity = Vector3.right * Time.timeScale * enStats.speed * multiplier;
+    }
+
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            enAnim.SetBool("enemyDetected", true);
+        }
+        else
+        {
+            enAnim.SetBool("enemyDetected", false);
+        }
+    }
+    
+    void TriggerMe()
+    {
+           
     }
 }

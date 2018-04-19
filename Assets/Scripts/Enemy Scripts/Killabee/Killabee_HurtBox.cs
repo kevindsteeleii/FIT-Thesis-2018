@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Killabee_HurtBox : MonoBehaviour {
     public Enemy me;
-
 	// Use this for initialization
 	void Start () {
 		

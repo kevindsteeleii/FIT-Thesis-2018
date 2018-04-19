@@ -11,13 +11,13 @@ public class Projectile : Model
     Vector3 initPos;
 
     //damage the projectile causes
-    [Tooltip ("The timeout in seconds for the projectile life cycle")]
-    [Range (0f,15f)]
-    public float outTime = 3f;
+    //[Tooltip ("The timeout in seconds for the projectile life cycle")]
+    //[Range (0f,15f)]
+    //public float outTime = 3f;
 
-    [Tooltip("The zoneout in seconds for the projectile life cycle")]
-    [Range(0f, 30f)]
-    public float outOfBounds = 15f;
+    //[Tooltip("The zoneout in seconds for the projectile life cycle")]
+    //[Range(0f, 30f)]
+    //public float outOfBounds = 15f;
 
     [Tooltip("The amount of damage done by the projectile")]
     [Range(0, 15)]
@@ -45,52 +45,34 @@ public class Projectile : Model
         }
         On_BulletDestroyed_Sent += Ammo.instance.Reuse;
     }
-
-
-    //IEnumerator ProjectileTimeOut()
-    //{
-    //    if (gameObject.activeInHierarchy)
-    //    {
-    //        yield return new WaitForSeconds(outTime);
-    //        gameObject.SetActive(false);
-    //    }
-    //    yield return null;
-    //}
-
+    
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "HurtBox" || other.gameObject.tag == "DeathBox")
+        if (other.gameObject.tag == "HurtBox" || other.gameObject.tag == "DeathBox" || other.gameObject.tag == "ActiveBox")
         {
             On_BulletDestroyed_Sent(projectileObj);
         }
-        if (other.gameObject.tag == "VisionCone")
+        if (other.tag == "VisionCone")
         {
             Physics.IgnoreCollision(mySphere, other, true);
         }
+        //if (other.gameObject.tag != "Player" || other.gameObject.tag != "Checkpoint")
+        //{
+        //    gameObject.SetActive(false);
+        //}
     }
 
-    //private void Update()
+    //private void OnEnable()
     //{
-    //    if (gameObject.activeInHierarchy)
-    //    {
-    //        Debug.Log("Position is " + initPos);
-    //    }
-
-    //    float distance = Vector3.Distance(initPos, gameObject.transform.position);
-    //    if (Mathf.Abs(distance) >= outOfBounds)
-    //    {
-    //        gameObject.SetActive(false);
-    //    }
+    //    initPos = gameObject.transform.position;
     //}
 
-    private void OnEnable()
+    private void OnCollisionEnter(Collision collision)
     {
-        //StartCoroutine(ProjectileTimeOut());
-        initPos = gameObject.transform.position;
+        if (collision.gameObject.tag != "Player")
+        {
+            gameObject.SetActive(false);
+        }
     }
 
-    private void OnDisable()
-    {
-        StopAllCoroutines();
-    }
 }
