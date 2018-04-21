@@ -2,79 +2,72 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+/// <summary>
+/// Component to be attached to the GameObject for melee range detection
+/// refer to trashcannon for reference in how to set up the enemy for AI.
+/// </summary>
+public class EnemyMelee : MonoBehaviour {
 
-public class EnemyMelee : EnemyAI {
+    public Rigidbody myRB;
+    public Animator myAnim;
+    public event Action<int> On_ProximityAlert_Sent;
+    public EnemyVisionDetection trashVisionDetection;
 
-    // Use this for initialization
-    void Start () {
-        SetEnemyBehaviorState(EnemyBehavior.Patrolling);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        switch (enemyBehavior)
+    private void Start()
+    {
+        if (myRB != null)
         {
-            case EnemyBehavior.Stationary:
-                Idle();
-                break;
-            case EnemyBehavior.Patrolling:
-                Patrolling();
-                break;
-            case EnemyBehavior.Pursuing:
-                InPursuit();
-                break;
-            case EnemyBehavior.Attacking:
-                AttackPlayer();
-                break;
-            case EnemyBehavior.Shooting:
-                enemyBehavior = EnemyBehavior.Stationary;
-                break;
-            case EnemyBehavior.Turret:
-                enemyBehavior = EnemyBehavior.Stationary;
-                break;
-            case EnemyBehavior.Floating:
-                enemyBehavior = EnemyBehavior.Stationary;
-                break;
-            case EnemyBehavior.Dive_Bombing:
-                enemyBehavior = EnemyBehavior.Stationary;
-                break;
-            default:
-                break;
+            return;
+        }
+        else
+        {
+            myRB = gameObject.GetComponentInParent<Rigidbody>();
+        }
+
+        if (myAnim != null)
+        {
+            return;
+        }
+        else
+        {
+            myAnim = gameObject.transform.parent.gameObject.GetComponentInChildren<Animator>();
+        }
+
+        if (trashVisionDetection != null)
+        {
+            return;
+        }
+        else
+        {
+            trashVisionDetection = gameObject.transform.parent.gameObject.GetComponentInChildren<EnemyVisionDetection>(); 
+        }
+
+        On_ProximityAlert_Sent += trashVisionDetection.On_ProximityAlert_Received;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Debug.Log("Player within melee range");
+            On_ProximityAlert_Sent(0);
         }
     }
 
-    private void InPursuit()
+    private void OnTriggerStay(Collider other)
     {
-        throw new NotImplementedException();
+        if (other.gameObject.tag == "Player")
+        {
+            Debug.Log("Player within melee range");
+            On_ProximityAlert_Sent(0);
+        }
     }
 
-    private void Patrolling()
+    private void OnTriggerExit(Collider other)
     {
-        throw new NotImplementedException();
-    }
-
-    private void FixedUpdate()
-    {
-
-    }
-
-    protected override void SetEnemyBehaviorState(EnemyBehavior enemyState)
-    {
-        base.SetEnemyBehaviorState(enemyState);
-    }
-
-    public override void TookDamage()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void AttackPlayer()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void Idle()
-    {
-        Debug.Log("Enemy is in idle");
+        if (other.gameObject.tag == "Player")
+        {
+            Debug.Log("Player outside of melee range");
+            On_ProximityAlert_Sent(1);
+        }
     }
 }

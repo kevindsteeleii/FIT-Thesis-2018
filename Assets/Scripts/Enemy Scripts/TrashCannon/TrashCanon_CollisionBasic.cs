@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TrashCanon_CollisionBasic : MonoBehaviour {
+
     Animator enAnim;
+    Rigidbody myRB;
+
     public void Start()
     {
         if (enAnim != null)
@@ -13,6 +16,15 @@ public class TrashCanon_CollisionBasic : MonoBehaviour {
         else
         {
             enAnim = gameObject.GetComponentInChildren<Animator>();
+        }
+
+        if (myRB != null)
+        {
+            return;
+        }
+        else
+        {
+            myRB = gameObject.GetComponentInParent<Rigidbody>();
         }
     }
 
@@ -28,6 +40,6 @@ public class TrashCanon_CollisionBasic : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("Triggered by "+other.gameObject.tag);
+
     }
 }

@@ -45,7 +45,7 @@ public class EnemyVisionDetection : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        enAnim.SetFloat("speed", myRB.velocity.x);
+        enAnim.SetFloat("speed", Mathf.Abs(myRB.velocity.x));
         enAnim.SetFloat("vertSpeed", myRB.velocity.y);
 
         RaycastHit hit;
@@ -69,8 +69,13 @@ public class EnemyVisionDetection : MonoBehaviour
                 Turn();
             }
         }
-        Debug.DrawRay(gameObject.transform.root.position, ray.direction);
-        myRB.velocity = Vector3.right * Time.timeScale * enStats.speed * multiplier;
+        myRB.velocity = Vector3.right * Time.timeScale * stopper * enStats.speed * multiplier;
+        //myRB.velocity.Scale(Vector3.zero);
+    }
+
+    public void On_ProximityAlert_Received(int stop)
+    {
+        stopper = stop;
     }
 
     protected virtual void OnTriggerEnter(Collider other)
@@ -83,10 +88,5 @@ public class EnemyVisionDetection : MonoBehaviour
         {
             enAnim.SetBool("enemyDetected", false);
         }
-    }
-    
-    void TriggerMe()
-    {
-           
     }
 }
