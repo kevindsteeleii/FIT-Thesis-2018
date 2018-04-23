@@ -11,6 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59561229ffd7704f9c0fc8f9b27138d, type: 3}
   m_Name: Enemy Stats Data(TrashCannon)
   m_EditorClassIdentifier: 
+  dmg: 3
+  dmg2: 3
   minDistance: 1.139
   speed: 3.45
   range: 0.399

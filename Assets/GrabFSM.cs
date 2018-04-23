@@ -10,7 +10,7 @@ public class GrabFSM : StateMachineBehaviour {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         On_Grabbing_Sent(true);
-        Debug.Log("layer index is "+layerIndex+" and the stateInfo is "+stateInfo);
+        //Debug.Log("layer index is "+layerIndex+" and the stateInfo is "+stateInfo);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

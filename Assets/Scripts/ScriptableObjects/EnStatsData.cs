@@ -3,7 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "Enemy Stats Data", menuName = "DataAsset/Enemy Stats Data")]
 public class EnStatsData :ScriptableObject{
-    
+
+    [Header("Attack 1 Damage")]
+    [Range(1, 15)]
+    public int dmg = 5;
+
+    [Header("Attack 2 Damage")]
+    [Range(1, 15)]
+    public int dmg2 = 5;
+
     [Header("Closest Distance to Edge")]
     [Range(0.2f, 2f)]
     public float minDistance = 0.4f;

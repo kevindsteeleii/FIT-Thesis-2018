@@ -70,9 +70,13 @@ public class EnemyVisionDetection : MonoBehaviour
             }
         }
         myRB.velocity = Vector3.right * Time.timeScale * stopper * enStats.speed * multiplier;
-        //myRB.velocity.Scale(Vector3.zero);
     }
 
+    /// <summary>
+    /// Subscriber of event sent from the EnemyMelee class to change a 
+    /// multiplier for the enemy movement to 0 to effectively stop the enemy in place to trigger attack sequences
+    /// </summary>
+    /// <param name="stop"></param>
     public void On_ProximityAlert_Received(int stop)
     {
         stopper = stop;

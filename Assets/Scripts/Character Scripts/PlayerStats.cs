@@ -36,7 +36,7 @@ public class PlayerStats : Singleton<PlayerStats>
     /// </summary>
     public event Action<int> On_MoneyAmount_Sent;
 
-    public bool invincible { get; private set; }
+    public bool Invincible { get; private set; }
 
     /*To make parameter accessible outside of Singleton set up as a get and set parameter like so*/
     public int Wallet { get; private set; }
@@ -48,7 +48,7 @@ public class PlayerStats : Singleton<PlayerStats>
     void Start()
     {
         HP = stats.maxHP;
-        invincible = false;
+        Invincible = false;
         Wallet = 0;
         //assigns ResetHP() as subscriber of Restarting event
         GameManager.instance.On_RestartState_Sent += ResetHP;
@@ -81,7 +81,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
         //if (wallet > stats.maxMoney) { wallet = stats.maxMoney; }
 
-        if (invincible)
+        if (Invincible)
         {
             intervals = Mathf.RoundToInt((stats.duration * (1 / stats.waitTime)) / 2);
             StartCoroutine(IFramez());
@@ -143,7 +143,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     IEnumerator IFramez()
     {
-        invincible = true;
+        Invincible = true;
         hurtBox.enabled=false;
         for (int i = 0; i < intervals; i++)
         {
@@ -154,19 +154,19 @@ public class PlayerStats : Singleton<PlayerStats>
             yield return new WaitForSeconds(stats.waitTime/2);
             hurtBox.enabled = true;
         }
-        invincible = false;
+        Invincible = false;
         yield return null;
     }
 
     //handles damage taken by player character and its effects
     public void TakeDamage(int dmg)
     {
-        if (!invincible)
+        if (!Invincible)
         {
             HP -= dmg;
             if (HP > 0)
             {
-                invincible = true;
+                Invincible = true;
             }
         }
     }

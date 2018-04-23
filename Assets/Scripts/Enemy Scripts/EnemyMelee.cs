@@ -48,7 +48,8 @@ public class EnemyMelee : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Player within melee range");
+            //Debug.Log("Player within melee range");
+            myAnim.SetBool("meleeRange",true);
             On_ProximityAlert_Sent(0);
         }
     }
@@ -57,7 +58,8 @@ public class EnemyMelee : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Player within melee range");
+            //Debug.Log("Player within melee range");
+            myAnim.SetBool("meleeRange",true);
             On_ProximityAlert_Sent(0);
         }
     }
@@ -66,7 +68,8 @@ public class EnemyMelee : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Player outside of melee range");
+            //Debug.Log("Player outside of melee range");
+            myAnim.SetBool("meleeRange",false);
             On_ProximityAlert_Sent(1);
         }
     }
