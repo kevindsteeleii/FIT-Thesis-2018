@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
 /// Class used to control the TrashCannon cone of vision and some of its logic

@@ -93,4 +93,23 @@ public class EnemyVisionDetection : MonoBehaviour
             enAnim.SetBool("enemyDetected", false);
         }
     }
+    protected virtual void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            enAnim.SetBool("enemyDetected", true);
+            if (!enAnim.GetBool("meleeRange"))
+            {
+                On_ProximityAlert_Received(0);
+            }
+        }
+    }
+
+    protected virtual void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            On_ProximityAlert_Received(1);
+        }
+    }
 }

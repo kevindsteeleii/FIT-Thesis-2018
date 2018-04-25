@@ -40,6 +40,10 @@ public class EnStatsData :ScriptableObject{
     [Range(0f, 4f)]
     public float whiffPunishWindow = 1.5f;
 
+    [Header("Ammo clip")]
+    [Range(3, 12)]
+    public int bulletAmount;
+
     /// <summary>
     /// float that returns the time scaled attact interval in seconds
     /// </summary>

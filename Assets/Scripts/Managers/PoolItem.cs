@@ -29,10 +29,6 @@ public class PoolItem
         Populate();
     }
 
-    private void Start()
-    {
-    }
-
     public void Populate()
     {
         for (int i = 0; i < inititalAmount; i++)

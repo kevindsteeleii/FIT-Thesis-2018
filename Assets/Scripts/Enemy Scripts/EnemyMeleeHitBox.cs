@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public enum AnimatorParameter {enemyDetected, meleeRange, speed, vertSpeed};
 public enum ComparativeOperator { NA, EqualTo, NotEqualTo, LessThan, LessThanOrEqualTo, GreaterThan,GreaterThanOrEqualTo};
+
 [Serializable]
 public class EnemyMeleeHitBox : MonoBehaviour {
     public Animator myAnim; //animator's parameters used to determine the status of hitboxes
