@@ -1,35 +1,54 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class TrashCannon_Shooting : MonoBehaviour {
-    public GameObject enemyMeleeObject;
 
     public GameObject bullet;
     public GameObject gunBarrel;
+    GameObject gunSights;
     public EnStatsData enemyStats;
     int fullClip = 0;
     PoolItem poolBullets;
+    Rigidbody myRb;
+    int direction = 1;
 
 	// Use this for initialization
 	void Start () {
+        //if (myRb != null)
+        //{
+        //    return;
+        //}
+        //else
+        //{
+        //    myRb = gameObject.transform.root.gameObject.GetComponent<Rigidbody>();
+        //}
+        gunSights = gunBarrel.transform.GetChild(0).gameObject; //finds and identifies the child object as the "sight" used to figure out the direction character is facing
         fullClip = enemyStats.bulletAmount;
         poolBullets = new PoolItem(fullClip, bullet);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        direction = (gunSights.transform.position.x - gunBarrel.transform.position.x < 0) ? -1 : 1;
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            FireBall();
+        }
     }
 
-    void Firing()
+    public void Firing()
     {
-        Debug.Log("Shooting from TrashCannon");
+        FireBall();
+    }
+    void FireBall()
+    {
         if (fullClip > 0)
         {
             try
             {
                 GameObject temp = poolBullets.Get(gunBarrel.transform.position);
-                temp.GetComponent<Rigidbody>().velocity = Vector3.right * enemyStats.AttackInterval * Time.time;
+                temp.GetComponent<Rigidbody>().velocity = Vector3.right * direction * enemyStats.shotForce;
             }
             catch (System.NullReferenceException)
             {
@@ -39,7 +58,7 @@ public class TrashCannon_Shooting : MonoBehaviour {
         }
         else
         {
-            for(int i = 0; i < enemyStats.bulletAmount; i++)
+            for (int i = 0; i < enemyStats.bulletAmount; i++)
             {
                 poolBullets.ReUse();
                 fullClip++;

@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHurtBox : MonoBehaviour {
-    CapsuleCollider hurtBox;
 	// Use this for initialization
 	void Start () {
-        hurtBox = gameObject.GetComponent<CapsuleCollider>();
 	}
 	
 	// Update is called once per frame

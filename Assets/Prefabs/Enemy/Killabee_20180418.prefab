@@ -3402,6 +3402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a0429c1cef67bd49845b6be7a3f72fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myRB: {fileID: 54500215766610932}
   HP: 13
   randomDrop: 0
   saveHP: 13

@@ -23,6 +23,7 @@ public class PoolItem
     /// <param name="obj"></param>
     public PoolItem(int amount, GameObject obj)
     {
+        Debug.Log(String.Format("There are {0} of {1} being created", amount, obj));
         idKey = obj.GetInstanceID();
         inititalAmount = amount;
         pooledItem = obj;

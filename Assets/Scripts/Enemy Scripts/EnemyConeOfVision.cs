@@ -6,7 +6,6 @@ using UnityEngine;
 public class EnemyConeOfVision : MonoBehaviour {
 
     public Animator myAnim;
-    Ray ray = new Ray();
     Rigidbody myRB;
     float direction = 1;
 
@@ -23,20 +22,6 @@ public class EnemyConeOfVision : MonoBehaviour {
         else
         {
             myRB = gameObject.GetComponentInParent<Rigidbody>();
-        }
-    }
-
-    public void FixedUpdate()
-    {
-        RaycastHit hit;
-
-        if (myRB.velocity.x > 0)
-        {
-            ray = new Ray(transform.position, Vector3.right);
-        }
-        else
-        {
-            ray = new Ray(transform.position, Vector3.left);
         }
     }
 

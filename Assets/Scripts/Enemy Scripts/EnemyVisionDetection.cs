@@ -8,13 +8,13 @@ public class EnemyVisionDetection : MonoBehaviour
 
     int multiplier = 1; //used to start/stop the enemy
     int stopper = 1;
+    public bool distanceAttacker = true;
     Rigidbody myRB;
     public Animator enAnim;
-
+    bool facingRight = false;
     public MeshCollider visionCone;
 
     Quaternion currentRot;  //rotation to be set by the direction enemy moves in
-
     // Use this for initialization
     void Start()
     {
@@ -40,6 +40,7 @@ public class EnemyVisionDetection : MonoBehaviour
     protected virtual void Turn()
     {
         multiplier *= -1;
+        facingRight = !facingRight;
         gameObject.transform.rotation = currentRot;
     }
 
@@ -79,6 +80,7 @@ public class EnemyVisionDetection : MonoBehaviour
     /// <param name="stop"></param>
     public void On_ProximityAlert_Received(int stop)
     {
+        Debug.Log("Enemy has been detected at close distance");
         stopper = stop;
     }
 
@@ -88,17 +90,14 @@ public class EnemyVisionDetection : MonoBehaviour
         {
             enAnim.SetBool("enemyDetected", true);
         }
-        else
-        {
-            enAnim.SetBool("enemyDetected", false);
-        }
     }
+
     protected virtual void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
         {
             enAnim.SetBool("enemyDetected", true);
-            if (!enAnim.GetBool("meleeRange"))
+            if (!enAnim.GetBool("meleeRange") && distanceAttacker)
             {
                 On_ProximityAlert_Received(0);
             }
@@ -107,9 +106,10 @@ public class EnemyVisionDetection : MonoBehaviour
 
     protected virtual void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && distanceAttacker)
         {
             On_ProximityAlert_Received(1);
+            enAnim.SetBool("enemyDetected", false);
         }
     }
 }

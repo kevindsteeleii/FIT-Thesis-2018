@@ -44,13 +44,15 @@ public class EnemyMelee : MonoBehaviour {
 
         On_ProximityAlert_Sent += trashVisionDetection.On_ProximityAlert_Received;
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             //Debug.Log("Player within melee range");
             myAnim.SetBool("meleeRange",true);
-            On_ProximityAlert_Sent(0);
+            //On_ProximityAlert_Sent(0);
+            trashVisionDetection.On_ProximityAlert_Received(0);
         }
     }
 
@@ -60,7 +62,8 @@ public class EnemyMelee : MonoBehaviour {
         {
             //Debug.Log("Player within melee range");
             myAnim.SetBool("meleeRange",true);
-            On_ProximityAlert_Sent(0);
+            //On_ProximityAlert_Sent(0);
+            trashVisionDetection.On_ProximityAlert_Received(0);
         }
     }
 
@@ -70,7 +73,8 @@ public class EnemyMelee : MonoBehaviour {
         {
             //Debug.Log("Player outside of melee range");
             myAnim.SetBool("meleeRange",false);
-            On_ProximityAlert_Sent(1);
+            //On_ProximityAlert_Sent(1);
+            trashVisionDetection.On_ProximityAlert_Received(1);
         }
     }
 }

@@ -7,7 +7,9 @@ using UnityEngine;
 /// </summary>
 public enum AnimatorParameter {enemyDetected, meleeRange, speed, vertSpeed};
 public enum ComparativeOperator { NA, EqualTo, NotEqualTo, LessThan, LessThanOrEqualTo, GreaterThan,GreaterThanOrEqualTo};
-
+/// <summary>
+/// Manages the number of melee hitboxes to be enabled upon an attack sequence
+/// </summary>
 [Serializable]
 public class EnemyMeleeHitBox : MonoBehaviour {
     public Animator myAnim; //animator's parameters used to determine the status of hitboxes
@@ -39,7 +41,6 @@ public class EnemyMeleeHitBox : MonoBehaviour {
     {
         foreach (AnimParamComparer comper in animParams)
         {
-            Debug.Log(comper.myAnimParam);
             if (comper.GetArgument(myAnim))
             {
                 hitting = true;
@@ -50,7 +51,6 @@ public class EnemyMeleeHitBox : MonoBehaviour {
                 break;
             }
         }
-        Debug.Log("Hitting is " + hitting);
         SetColliders(hitting);
     }
 	// Update is called once per frame

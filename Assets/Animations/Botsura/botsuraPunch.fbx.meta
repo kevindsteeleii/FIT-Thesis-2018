@@ -1,0 +1,215 @@
+fileFormatVersion: 2
+guid: a6691f1832fb7c142bfa9cb5a586256e
+timeCreated: 1523977437
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Notsura_bn_arm_L
+    100004: Notsura_bn_arm_L_connector
+    100006: Notsura_bn_arm_L_elbow
+    100008: Notsura_bn_arm_L_forearm
+    100010: Notsura_bn_arm_L_shoulder
+    100012: Notsura_bn_arm_R_01
+    100014: Notsura_bn_arm_R_02
+    100016: Notsura_bn_arm_R_03
+    100018: Notsura_bn_arm_R_04
+    100020: Notsura_bn_arm_R_claw01
+    100022: Notsura_bn_arm_R_claw02
+    100024: Notsura_bn_arm_R_shoulder
+    100026: Notsura_bn_arm_R_wrist
+    100028: Notsura_bn_head
+    100030: Notsura_bn_leg_L_01
+    100032: Notsura_bn_leg_L_02
+    100034: Notsura_bn_leg_L_foot
+    100036: Notsura_bn_leg_L_toe
+    100038: Notsura_bn_leg_R
+    100040: Notsura_bn_leg_R_foot
+    100042: Notsura_bn_leg_R_knee
+    100044: Notsura_bn_leg_R_toe
+    100046: Notsura_bn_MASTER
+    100048: Notsura_bn_neck
+    100050: Notsura_bn_waist
+    100052: Notsura_cc_arm_L
+    100054: Notsura_cc_armcurl_R
+    100056: Notsura_cc_elbowL
+    100058: Notsura_cc_elbowL1
+    100060: Notsura_cc_foot_L
+    100062: Notsura_cc_foot_R
+    100064: Notsura_cc_hips
+    100066: Notsura_cc_knee_L
+    100068: Notsura_cc_knee_R
+    100070: Notsura_cc_MASTER
+    100072: Notsura_cc_shoulderL
+    100074: Notsura_cc_topBody
+    100076: Notsura_ik_arm_L
+    100078: Notsura_ik_leg_L
+    100080: Notsura_ik_leg_R
+    100082: Notsura_locus_elbow_L
+    100084: Notsura_locus_elbow_L 1
+    100086: Notsura_locus_elbow_R
+    100088: Notsura_locus_leg_L
+    100090: Notsura_locus_leg_R
+    100092: null_arm_R_01
+    100094: null_arm_R_02
+    100096: null_arm_R_03
+    100098: null_arm_R_04
+    400000: //RootNode
+    400002: Notsura_bn_arm_L
+    400004: Notsura_bn_arm_L_connector
+    400006: Notsura_bn_arm_L_elbow
+    400008: Notsura_bn_arm_L_forearm
+    400010: Notsura_bn_arm_L_shoulder
+    400012: Notsura_bn_arm_R_01
+    400014: Notsura_bn_arm_R_02
+    400016: Notsura_bn_arm_R_03
+    400018: Notsura_bn_arm_R_04
+    400020: Notsura_bn_arm_R_claw01
+    400022: Notsura_bn_arm_R_claw02
+    400024: Notsura_bn_arm_R_shoulder
+    400026: Notsura_bn_arm_R_wrist
+    400028: Notsura_bn_head
+    400030: Notsura_bn_leg_L_01
+    400032: Notsura_bn_leg_L_02
+    400034: Notsura_bn_leg_L_foot
+    400036: Notsura_bn_leg_L_toe
+    400038: Notsura_bn_leg_R
+    400040: Notsura_bn_leg_R_foot
+    400042: Notsura_bn_leg_R_knee
+    400044: Notsura_bn_leg_R_toe
+    400046: Notsura_bn_MASTER
+    400048: Notsura_bn_neck
+    400050: Notsura_bn_waist
+    400052: Notsura_cc_arm_L
+    400054: Notsura_cc_armcurl_R
+    400056: Notsura_cc_elbowL
+    400058: Notsura_cc_elbowL1
+    400060: Notsura_cc_foot_L
+    400062: Notsura_cc_foot_R
+    400064: Notsura_cc_hips
+    400066: Notsura_cc_knee_L
+    400068: Notsura_cc_knee_R
+    400070: Notsura_cc_MASTER
+    400072: Notsura_cc_shoulderL
+    400074: Notsura_cc_topBody
+    400076: Notsura_ik_arm_L
+    400078: Notsura_ik_leg_L
+    400080: Notsura_ik_leg_R
+    400082: Notsura_locus_elbow_L
+    400084: Notsura_locus_elbow_L 1
+    400086: Notsura_locus_elbow_R
+    400088: Notsura_locus_leg_L
+    400090: Notsura_locus_leg_R
+    400092: null_arm_R_01
+    400094: null_arm_R_02
+    400096: null_arm_R_03
+    400098: null_arm_R_04
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 180
+      lastFrame: 215
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

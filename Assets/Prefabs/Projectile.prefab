@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114775685181785648}
   - component: {fileID: 135444417495706698}
   - component: {fileID: 54419941001751776}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: Projectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -111,8 +111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1780a8672847084ba1ef16fa2043213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outTime: 15
-  outOfBounds: 30
   damage: 10
 --- !u!135 &135444417495706698
 SphereCollider:

@@ -283,6 +283,10 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
         {
             Die();
         }
+        else if (collision.gameObject.tag == "Enemy")
+        {
+            myRB.velocity = Vector3.zero;
+        }
     }
 
     void OnTriggerEnter(Collider other)

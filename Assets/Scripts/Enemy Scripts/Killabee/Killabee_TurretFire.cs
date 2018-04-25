@@ -4,7 +4,6 @@ using UnityEngine;
 /// <summary>
 /// The killabee turret firing script 
 /// </summary>
-public enum Facing { Left = -1, Right = 1 };
 
 public class Killabee_TurretFire : MonoBehaviour {
     //rigid body of the parent enemy element to be used to determine direction of shot
@@ -13,7 +12,6 @@ public class Killabee_TurretFire : MonoBehaviour {
     //the empty game object used to launch bullets from
     public GameObject gunBarrel;
     public GameObject bullet;
-    Facing enFacing = Facing.Left;
 
     PoolItem poolBullets;   //the pooled bullets
 

@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// Handles the enemy bullet Logic
+/// </summary>
 public class EnemyBulletTest : MonoBehaviour
 {
-
     public event Action On_BecomeAmmo_Sent;
+    public bool random = false;
     public bool isGrabby = false;   //bool that toggles on start the mesh/logic for a grabbable/non-grabbable projectile
     [SerializeField] GameObject grabModel;
     [SerializeField] GameObject shootModel;
-
-    [Tooltip("The life expectancy of the projectile gameobject")]
-    [Range(1f, 10f)]
-    float timeout = 3f;
 
     SphereCollider sphereCollider;
     [Tooltip("The amount of damage done by the projectile")]
@@ -35,8 +33,19 @@ public class EnemyBulletTest : MonoBehaviour
             sphereCollider = gameObject.GetComponent<SphereCollider>();
         }
 
-        grabModel.SetActive(isGrabby);
-        shootModel.SetActive(!isGrabby);
+        if (random)
+        {
+            MakeRandom();
+        }
+        
+            grabModel.SetActive(isGrabby);
+            shootModel.SetActive(!isGrabby);
+    }
+
+    private void MakeRandom()
+    {
+        int rando = Mathf.FloorToInt(UnityEngine.Random.Range(0.01f, 1f) * 101);
+        isGrabby = (rando %2 == 0) ? true:false ;
     }
 
     public void SetGrabbable(bool grabbable)

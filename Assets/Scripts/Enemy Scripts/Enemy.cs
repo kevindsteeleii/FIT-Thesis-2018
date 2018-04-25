@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     /// Event that transmits when the enemy becomes random loot on "destruction"
     /// </summary>
     public event Action<Vector3, Quaternion> On_RandomLootDropped_Sent;
+    public Rigidbody myRB;
 
     /// <summary>
     /// Event that transmits when the enemy becomes the default loot upon "destruction"
@@ -59,6 +60,8 @@ public class Enemy : MonoBehaviour
 
     public virtual void EnemyTakeDamage(int dam)  {
         HP -= dam;
+        if (HP <= 0)
+            Destroy();
         Debug.Log("Took damage "+ HP +" HP left");
     }
 
@@ -115,17 +118,22 @@ public class Enemy : MonoBehaviour
         Destroy();   
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            myRB.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         GameObject obj = other.gameObject;
-        //if (obj.tag == "Hand")
-        //{
-        //    EnemyTakeDamage(obj.GetComponent<Projectile>().damage); //refactor with hitbox/hurtbox paradigm 
-        //    if (HP <= 0)
-        //    {
-        //        BecomePickUp();
-        //    }
-        //}
+    
+        if (obj.tag == "Projectile" && obj.layer == 9)
+        {
+            EnemyTakeDamage(obj.GetComponent<Projectile>().damage);
+        }
     }
 }
 #region TODO list, refactoring etc

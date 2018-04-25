@@ -9,16 +9,8 @@ public class EnemyBulletBehavior : MonoBehaviour {
     [Tooltip("The time in seconds the bullets last")]
     [Range(.1f, 10f)]
     public float lifeTime = 0.5f;
-
-    [Tooltip("The maximum distance the projectile can be shot from until it becomes inactive and is recollected in the pool manager")]
-    [Range(.1f, 30f)]
-    public float fireDistance = 15f;
-
-    Vector3 initDistance;
-
     Rigidbody bulletRB;
 
-    float xDistance;    //used to measure relative distance
     #endregion
     
 	// Use this for initialization
@@ -34,17 +26,6 @@ public class EnemyBulletBehavior : MonoBehaviour {
 
         StartCoroutine(TimeOut());
 	}
-	
-	// Update is called once per frame
-	void Update () {
-
-        xDistance = Mathf.Abs(gameObject.transform.position.x - initDistance.x);
-
-        if( xDistance >= fireDistance)
-        {
-            Destroy();
-        }
-	}
 
     /// <summary>
     /// CoRoutine that times out the existence of the bullet so it doesn't go off forever
@@ -54,7 +35,7 @@ public class EnemyBulletBehavior : MonoBehaviour {
     {
         if (gameObject.activeInHierarchy)
         {
-            yield return new WaitForSecondsRealtime(lifeTime);
+            yield return new WaitForSeconds(lifeTime);
             Destroy();
         }
         yield return null;
@@ -65,14 +46,20 @@ public class EnemyBulletBehavior : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
-    private void OnEnable()
+    private void OnCollisionEnter(Collision collision)
     {
-        initDistance = gameObject.transform.position;
+        Destroy();
+        //if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Ground")
+        //{
+        //    Destroy();
+        //}
     }
-
-    private void OnDisable()
+    private void OnTriggerEnter(Collider other)
     {
-        xDistance = 0;
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Ground")
+        {
+            Destroy();
+        }
     }
 }
 #region TODO list, refactoring etc
