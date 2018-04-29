@@ -38,3 +38,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Inputs/TouchInputs.unity
     guid: 598750a67f162ae4680d5fb62e40164b
+  - enabled: 1
+    path: Assets/Scenes/demoAssembly/UI_StandAlone_20180413_MLCmod.unity
+    guid: 15ce73e4511dca94c87e56f983d0ca6f
+  - enabled: 1
+    path: Assets/Scenes/demoAssembly/20180416_level_001_MLC.unity
+    guid: b6758be7d067d1044bf2d68ee41402fc
+  - enabled: 1
+    path: Assets/Scenes/demoAssembly/20180418_level_001_Interactables_MLC.unity
+    guid: 9b0a8faccf019714aa23b9cb81a5574a
+  - enabled: 1
+    path: Assets/Scenes/demoAssembly/20180420_PlayerSetUp_Anims_KDS.unity
+    guid: b1bf98ddcab2d614c87810d5729aad27
+  - enabled: 1
+    path: Assets/Scenes/demoAssembly/20180426_level_001_Enemies.unity
+    guid: ecd5c1c408b17b545bb546ceaef833d4
