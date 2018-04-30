@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657683, g: 0.49641192, b: 0.5748182, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657642, g: 0.49641156, b: 0.5748181, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 22696959}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 38555445}
   m_Layer: 0
   m_Name: catwalk (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -581,6 +581,10 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -0.053
       objectReference: {fileID: 0}
+    - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
   m_IsPrefabParent: 0
@@ -680,15 +684,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.w
@@ -696,11 +700,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_RootOrder
-      value: 43
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_Name
       value: rocketBucketEmpty (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95005800884383188, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
@@ -727,15 +735,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.w
@@ -743,11 +751,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_RootOrder
-      value: 32
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_Name
       value: rocketBucketEmpty (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95005800884383188, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
@@ -1283,6 +1295,10 @@ Prefab:
       propertyPath: m_Name
       value: junkPlatform (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1941543190572052, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
   m_IsPrefabParent: 0
@@ -1593,7 +1609,7 @@ GameObject:
   - component: {fileID: 198938663}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2278,15 +2294,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.w
@@ -2294,11 +2310,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_Name
       value: rocketBucketEmpty (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95005800884383188, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
@@ -2354,6 +2374,11 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!4 &263849227 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4420382445628682, guid: 34cceff9f29d4854487fb7975ece9df5,
+    type: 2}
+  m_PrefabInternal: {fileID: 336684233}
 --- !u!1 &281519733
 GameObject:
   m_ObjectHideFlags: 0
@@ -2473,7 +2498,7 @@ GameObject:
   - component: {fileID: 291099711}
   m_Layer: 0
   m_Name: Mid Catwalk (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2507,7 +2532,7 @@ Transform:
   - {fileID: 1781712561}
   - {fileID: 2086092593}
   m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &291595958
 GameObject:
@@ -2771,7 +2796,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4302600826865324, guid: 45af44d53e5ef9847ad94ae03d3846e9, type: 2}
       propertyPath: m_RootOrder
-      value: 23
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 4054117619544182, guid: 45af44d53e5ef9847ad94ae03d3846e9, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2796,6 +2821,14 @@ Prefab:
     - target: {fileID: 1952230490787794, guid: 45af44d53e5ef9847ad94ae03d3846e9, type: 2}
       propertyPath: m_Name
       value: catwalk end (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952230490787794, guid: 45af44d53e5ef9847ad94ae03d3846e9, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1346301246542888, guid: 45af44d53e5ef9847ad94ae03d3846e9, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45af44d53e5ef9847ad94ae03d3846e9, type: 2}
@@ -2889,7 +2922,7 @@ GameObject:
   - component: {fileID: 326517205}
   m_Layer: 0
   m_Name: deathfloor (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2970,13 +3003,80 @@ Transform:
   m_LocalScale: {x: 183.19014, y: 1, z: 5.252507}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &331234723 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4283085254879166, guid: 84a4b7c7bc77a87469f56f19b59ee95f,
     type: 2}
   m_PrefabInternal: {fileID: 233148240}
+--- !u!1001 &336684233
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1144979325}
+    m_Modifications:
+    - target: {fileID: 4420382445628682, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -74.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420382445628682, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420382445628682, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -5.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420382445628682, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420382445628682, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420382445628682, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420382445628682, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420382445628682, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441661193596264, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23949474301955292, guid: 34cceff9f29d4854487fb7975ece9df5,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007407707363704, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.386
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007407707363704, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.094
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007407707363704, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 4.192503
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007407707363704, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.562854
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &338693159
 GameObject:
   m_ObjectHideFlags: 0
@@ -3949,7 +4049,7 @@ GameObject:
   - component: {fileID: 451420929}
   m_Layer: 0
   m_Name: catwalk (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3999,7 +4099,7 @@ GameObject:
   - component: {fileID: 452119127}
   m_Layer: 0
   m_Name: catwalk (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4486,6 +4586,10 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0.07
       objectReference: {fileID: 0}
+    - target: {fileID: 1941543190572052, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
   m_IsPrefabParent: 0
@@ -4682,7 +4786,7 @@ GameObject:
   - component: {fileID: 578800781}
   m_Layer: 0
   m_Name: catwalk (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5095,7 +5199,7 @@ GameObject:
   - component: {fileID: 634423734}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5112,7 +5216,7 @@ Transform:
   m_Children:
   - {fileID: 1653783390}
   m_Father: {fileID: 0}
-  m_RootOrder: 33
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &634685743
 GameObject:
@@ -5463,7 +5567,7 @@ GameObject:
   - component: {fileID: 691021815}
   m_Layer: 0
   m_Name: catwalk (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5651,6 +5755,10 @@ Prefab:
       propertyPath: m_Name
       value: rocketBucketEmpty (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95005800884383188, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
@@ -5676,15 +5784,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.w
@@ -5692,11 +5800,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_RootOrder
-      value: 38
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_Name
       value: rocketBucketEmpty (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95005800884383188, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
@@ -5965,7 +6077,7 @@ GameObject:
   - component: {fileID: 761772237}
   m_Layer: 0
   m_Name: Mid Catwalk
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5999,7 +6111,7 @@ Transform:
   - {fileID: 1525705910}
   - {fileID: 254951542}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &763451016
 GameObject:
@@ -6248,6 +6360,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -89.590004
       objectReference: {fileID: 0}
+    - target: {fileID: 1941543190572052, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
   m_IsPrefabParent: 0
@@ -6338,7 +6454,7 @@ GameObject:
   - component: {fileID: 808534784}
   m_Layer: 0
   m_Name: catwalk (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6411,7 +6527,7 @@ GameObject:
   - component: {fileID: 825232714}
   m_Layer: 0
   m_Name: polySurface2
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6490,7 +6606,7 @@ GameObject:
   - component: {fileID: 832647371}
   m_Layer: 0
   m_Name: catwalk (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6701,7 +6817,7 @@ GameObject:
   - component: {fileID: 836680002}
   m_Layer: 0
   m_Name: Mid Catwalk (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6736,7 +6852,7 @@ Transform:
   - {fileID: 1483199157}
   - {fileID: 1650087616}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &839778483
 GameObject:
@@ -6784,7 +6900,7 @@ GameObject:
   - component: {fileID: 843658217}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6945,7 +7061,7 @@ GameObject:
   - component: {fileID: 847438647}
   m_Layer: 0
   m_Name: polySurface2
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7052,7 +7168,7 @@ GameObject:
   - component: {fileID: 872772187}
   m_Layer: 0
   m_Name: polySurface1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7232,6 +7348,10 @@ Prefab:
       propertyPath: m_Name
       value: rocketBucketEmpty (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95005800884383188, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
@@ -7290,15 +7410,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.w
@@ -7306,11 +7426,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_RootOrder
-      value: 39
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_Name
       value: rocketBucketEmpty (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95005800884383188, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
@@ -7403,7 +7527,7 @@ GameObject:
   - component: {fileID: 917767438}
   m_Layer: 0
   m_Name: catwalk (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7753,7 +7877,7 @@ GameObject:
   - component: {fileID: 949487297}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8221,7 +8345,7 @@ GameObject:
   - component: {fileID: 1026975574}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8447,7 +8571,7 @@ GameObject:
   - component: {fileID: 1035601419}
   m_Layer: 0
   m_Name: polySurface1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8766,7 +8890,7 @@ GameObject:
   - component: {fileID: 1104171184}
   m_Layer: 0
   m_Name: catwalk (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8841,11 +8965,43 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4961973048001606, guid: c8780e3da6bb0e942bd2f0f81945f388, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4961973048001606, guid: c8780e3da6bb0e942bd2f0f81945f388, type: 2}
       propertyPath: m_LocalScale.y
       value: 0.84192634
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849911905828958, guid: c8780e3da6bb0e942bd2f0f81945f388, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050750554400964, guid: c8780e3da6bb0e942bd2f0f81945f388, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040634825289226, guid: c8780e3da6bb0e942bd2f0f81945f388, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870691011856042, guid: c8780e3da6bb0e942bd2f0f81945f388, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785481563770278, guid: c8780e3da6bb0e942bd2f0f81945f388, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417746516139470, guid: c8780e3da6bb0e942bd2f0f81945f388, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299271693380522, guid: c8780e3da6bb0e942bd2f0f81945f388, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254043371250956, guid: c8780e3da6bb0e942bd2f0f81945f388, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8780e3da6bb0e942bd2f0f81945f388, type: 2}
@@ -8908,6 +9064,10 @@ Prefab:
     - target: {fileID: 4302600826865324, guid: 45af44d53e5ef9847ad94ae03d3846e9, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.8717157
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952230490787794, guid: 45af44d53e5ef9847ad94ae03d3846e9, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45af44d53e5ef9847ad94ae03d3846e9, type: 2}
@@ -8999,7 +9159,7 @@ GameObject:
   - component: {fileID: 1127006866}
   m_Layer: 0
   m_Name: catwalk (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9225,6 +9385,36 @@ Transform:
   m_Father: {fileID: 1781712561}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+--- !u!1 &1144979324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1144979325}
+  m_Layer: 0
+  m_Name: Fixer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1144979325
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1144979324}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 82.13311, y: -0.09066501, z: 6.734375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 263849227}
+  - {fileID: 1665201437}
+  m_Father: {fileID: 0}
+  m_RootOrder: 33
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1147400533 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b,
@@ -9315,7 +9505,7 @@ GameObject:
   - component: {fileID: 1169089776}
   m_Layer: 0
   m_Name: Mid Catwalk (7)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9348,7 +9538,7 @@ Transform:
   - {fileID: 2116948799}
   - {fileID: 1457326217}
   m_Father: {fileID: 0}
-  m_RootOrder: 42
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1169765428
 GameObject:
@@ -9363,7 +9553,7 @@ GameObject:
   - component: {fileID: 1169765430}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9449,7 +9639,7 @@ GameObject:
   - component: {fileID: 1172505310}
   m_Layer: 0
   m_Name: catwalk (7)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9498,7 +9688,7 @@ Transform:
   - {fileID: 1764584431}
   - {fileID: 1638984066}
   m_Father: {fileID: 0}
-  m_RootOrder: 40
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1180651085
 GameObject:
@@ -9512,7 +9702,7 @@ GameObject:
   - component: {fileID: 1180651087}
   m_Layer: 0
   m_Name: catwalk (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9897,7 +10087,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4283085254879166, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1941543190572052, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
@@ -9993,7 +10187,7 @@ GameObject:
   - component: {fileID: 1233009492}
   m_Layer: 13
   m_Name: EndPoint
-  m_TagString: EndPoint
+  m_TagString: Ground
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10023,7 +10217,7 @@ Transform:
   m_LocalScale: {x: 1, y: 11.599999, z: 6}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 1, y: 0, z: 0}
 --- !u!4 &1233096429 stripped
 Transform:
@@ -10252,19 +10446,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.27534255
+      value: 0.27534246
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.w
@@ -10272,11 +10466,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_RootOrder
-      value: 24
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_Name
       value: rocketBucketEmpty (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95005800884383188, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
@@ -10291,7 +10489,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 27.47
+      value: 27.470001
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalPosition.y
@@ -10303,15 +10501,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.w
@@ -10319,7 +10517,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_RootOrder
-      value: 18
+      value: 43
       objectReference: {fileID: 0}
     - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_Name
@@ -10332,6 +10530,14 @@ Prefab:
     - target: {fileID: 4907725300720546, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0.266
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1181202120506218, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95005800884383188, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
@@ -10354,7 +10560,7 @@ GameObject:
   - component: {fileID: 1291100248}
   m_Layer: 0
   m_Name: Mid Catwalk (8)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10387,7 +10593,7 @@ Transform:
   - {fileID: 38555444}
   - {fileID: 1666677930}
   m_Father: {fileID: 0}
-  m_RootOrder: 45
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1318320387
 GameObject:
@@ -10508,7 +10714,7 @@ GameObject:
   - component: {fileID: 1326121995}
   m_Layer: 0
   m_Name: catwalk (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10559,7 +10765,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.95
+      value: -0.9499999
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -10583,44 +10789,20 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_RootOrder
-      value: 25
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_Name
       value: rocketBucketEmpty (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95005800884383188, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1336837076
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1336837077}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1336837077
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1336837076}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 60.48, y: 1.77, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 28
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1342833427
 GameObject:
   m_ObjectHideFlags: 0
@@ -10717,7 +10899,7 @@ GameObject:
   - component: {fileID: 1362471952}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10734,7 +10916,7 @@ Transform:
   m_Children:
   - {fileID: 136529324}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1363890503
 Prefab:
@@ -10907,7 +11089,7 @@ GameObject:
   - component: {fileID: 1416226918}
   m_Layer: 0
   m_Name: catwalk (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11009,7 +11191,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4283085254879166, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_RootOrder
-      value: 35
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1941543190572052, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_Name
@@ -11085,11 +11267,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4754183791756390, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4493687918724924, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4612173026771370, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_RootOrder
@@ -11097,11 +11279,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4874768541321888, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4127564997228310, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 65586559964750986, guid: 84a4b7c7bc77a87469f56f19b59ee95f,
         type: 2}
@@ -11127,6 +11309,10 @@ Prefab:
         type: 2}
       propertyPath: m_Center.z
       value: 0.049999956
+      objectReference: {fileID: 0}
+    - target: {fileID: 1941543190572052, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
@@ -11218,7 +11404,7 @@ GameObject:
   - component: {fileID: 1457326218}
   m_Layer: 0
   m_Name: catwalk (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11289,7 +11475,7 @@ GameObject:
   - component: {fileID: 1480323433}
   m_Layer: 0
   m_Name: pCylinder7
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11322,7 +11508,7 @@ GameObject:
   - component: {fileID: 1483199158}
   m_Layer: 0
   m_Name: catwalk (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11870,7 +12056,7 @@ GameObject:
   - component: {fileID: 1548623645}
   m_Layer: 0
   m_Name: catwalk (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11919,7 +12105,7 @@ Transform:
   - {fileID: 1480323433}
   - {fileID: 1606292462}
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1554472066
 GameObject:
@@ -12008,7 +12194,7 @@ GameObject:
   - component: {fileID: 1569900984}
   m_Layer: 0
   m_Name: catwalk (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12258,7 +12444,7 @@ GameObject:
   - component: {fileID: 1587286411}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12348,7 +12534,7 @@ GameObject:
   - component: {fileID: 1598158882}
   m_Layer: 0
   m_Name: catwalk (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12399,7 +12585,7 @@ GameObject:
   - component: {fileID: 1606292463}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12598,7 +12784,7 @@ Transform:
   - {fileID: 1051944437}
   - {fileID: 1198727083}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1634323892 stripped
 Transform:
@@ -12618,7 +12804,7 @@ GameObject:
   - component: {fileID: 1638984067}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12703,7 +12889,7 @@ GameObject:
   - component: {fileID: 1639149281}
   m_Layer: 0
   m_Name: concretePlatform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12737,7 +12923,7 @@ Transform:
   - {fileID: 325539998}
   - {fileID: 835944416}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1639316524
 GameObject:
@@ -12912,7 +13098,7 @@ GameObject:
   - component: {fileID: 1650087617}
   m_Layer: 0
   m_Name: catwalk (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13069,6 +13255,11 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!4 &1665201437 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4420382445628682, guid: 34cceff9f29d4854487fb7975ece9df5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1807816467}
 --- !u!1 &1666677929
 GameObject:
   m_ObjectHideFlags: 0
@@ -13081,7 +13272,7 @@ GameObject:
   - component: {fileID: 1666677931}
   m_Layer: 0
   m_Name: catwalk (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13156,11 +13347,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_RootOrder
-      value: 27
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_Name
       value: rocketBucketEmpty (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95005800884383188, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
@@ -13304,7 +13499,7 @@ GameObject:
   - component: {fileID: 1689821206}
   m_Layer: 0
   m_Name: Mid Catwalk (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13338,7 +13533,7 @@ Transform:
   - {fileID: 1271351841}
   - {fileID: 655763587}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1692795239
 GameObject:
@@ -13384,7 +13579,7 @@ GameObject:
   - component: {fileID: 1693061112}
   m_Layer: 0
   m_Name: Mid Catwalk (6)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13418,7 +13613,7 @@ Transform:
   - {fileID: 1180651086}
   - {fileID: 1987724691}
   m_Father: {fileID: 0}
-  m_RootOrder: 36
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1694086571
 GameObject:
@@ -13430,7 +13625,7 @@ GameObject:
   - component: {fileID: 1694086572}
   m_Layer: 0
   m_Name: GameObject (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13447,7 +13642,7 @@ Transform:
   m_Children:
   - {fileID: 1432745872}
   m_Father: {fileID: 0}
-  m_RootOrder: 44
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1703426453
 Prefab:
@@ -13486,7 +13681,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4894905137273818, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_RootOrder
-      value: 41
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 4894905137273818, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_LocalScale.y
@@ -13515,6 +13710,10 @@ Prefab:
     - target: {fileID: 4894905137273818, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0.089
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
@@ -13669,6 +13868,10 @@ Prefab:
       propertyPath: m_Name
       value: Long Catwalk (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1050750554400964, guid: c8780e3da6bb0e942bd2f0f81945f388, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8780e3da6bb0e942bd2f0f81945f388, type: 2}
   m_IsPrefabParent: 0
@@ -13764,7 +13967,7 @@ GameObject:
   - component: {fileID: 1730091069}
   m_Layer: 0
   m_Name: long Catwalk (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13800,7 +14003,7 @@ Transform:
   - {fileID: 451420928}
   - {fileID: 2060169987}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1732887965
 GameObject:
@@ -13914,7 +14117,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4283085254879166, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_RootOrder
-      value: 37
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 1941543190572052, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_Name
@@ -14015,11 +14218,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4493687918724924, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4754183791756390, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4612173026771370, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_LocalPosition.z
@@ -14057,6 +14260,10 @@ Prefab:
       propertyPath: m_LocalRotation.z
       value: 0.000000007450579
       objectReference: {fileID: 0}
+    - target: {fileID: 1941543190572052, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
   m_IsPrefabParent: 0
@@ -14072,7 +14279,7 @@ GameObject:
   - component: {fileID: 1738583334}
   m_Layer: 0
   m_Name: catwalk (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14147,11 +14354,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_RootOrder
-      value: 26
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_Name
       value: rocketBucketEmpty (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95005800884383188, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
@@ -14208,6 +14419,10 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0.266
       objectReference: {fileID: 0}
+    - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95005800884383188, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
@@ -14221,7 +14436,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 29.49
+      value: 29.489998
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalPosition.y
@@ -14233,15 +14448,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.w
@@ -14249,7 +14464,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_RootOrder
-      value: 20
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_Name
@@ -14262,6 +14477,10 @@ Prefab:
     - target: {fileID: 4907725300720546, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0.266
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95005800884383188, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
@@ -14311,7 +14530,7 @@ GameObject:
   - component: {fileID: 1764584431}
   m_Layer: 0
   m_Name: pCylinder7
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14625,7 +14844,7 @@ GameObject:
   - component: {fileID: 1781712562}
   m_Layer: 0
   m_Name: catwalk (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14738,6 +14957,81 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1799166930}
   m_Mesh: {fileID: 4300000, guid: a3aa36d689fa5ca4da55bbd384419139, type: 3}
+--- !u!1001 &1807816467
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1144979325}
+    m_Modifications:
+    - target: {fileID: 4420382445628682, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -51.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420382445628682, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420382445628682, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -5.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420382445628682, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420382445628682, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420382445628682, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420382445628682, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420382445628682, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441661193596264, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23949474301955292, guid: 34cceff9f29d4854487fb7975ece9df5,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007407707363704, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007407707363704, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007407707363704, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 3.2491891
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007407707363704, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.3517834
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202524217941788, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_Name
+      value: PlatformM (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420382445628682, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.5437502
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 34cceff9f29d4854487fb7975ece9df5, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &1817796596 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4183066728523670, guid: 1c45db08f964a6d4495f68901f77d612,
@@ -14755,7 +15049,7 @@ GameObject:
   - component: {fileID: 1837010577}
   m_Layer: 0
   m_Name: Mid Catwalk (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14789,7 +15083,7 @@ Transform:
   - {fileID: 452119126}
   - {fileID: 1569900983}
   m_Father: {fileID: 0}
-  m_RootOrder: 34
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1840156309
 GameObject:
@@ -15253,7 +15547,7 @@ GameObject:
   - component: {fileID: 1892722953}
   m_Layer: 0
   m_Name: catwalk (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15478,27 +15772,27 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.48
+      value: 0.48000336
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.05
+      value: 0.049999923
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.27534255
+      value: 0.27534246
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_LocalRotation.w
@@ -15506,7 +15800,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4946758177925354, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430456044716640, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f13c1b5a3aa3c944584b1ed68ef4c18b, type: 2}
@@ -15522,7 +15820,7 @@ GameObject:
   - component: {fileID: 1940334853}
   m_Layer: 0
   m_Name: pCylinder7
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15630,7 +15928,7 @@ GameObject:
   - component: {fileID: 1969706457}
   m_Layer: 0
   m_Name: Mid Catwalk (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15665,7 +15963,7 @@ Transform:
   - {fileID: 1892722952}
   - {fileID: 1598158881}
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1987724690
 GameObject:
@@ -15679,7 +15977,7 @@ GameObject:
   - component: {fileID: 1987724692}
   m_Layer: 0
   m_Name: catwalk (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15902,7 +16200,7 @@ GameObject:
   - component: {fileID: 2002847195}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16146,7 +16444,7 @@ GameObject:
   - component: {fileID: 2039931126}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16343,6 +16641,10 @@ Prefab:
       propertyPath: m_Center.z
       value: 0.050000012
       objectReference: {fileID: 0}
+    - target: {fileID: 1941543190572052, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
   m_IsPrefabParent: 0
@@ -16438,7 +16740,7 @@ GameObject:
   - component: {fileID: 2060169988}
   m_Layer: 0
   m_Name: catwalk (6)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16822,7 +17124,7 @@ GameObject:
   - component: {fileID: 2086092594}
   m_Layer: 0
   m_Name: catwalk (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16897,7 +17199,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4302600826865324, guid: 45af44d53e5ef9847ad94ae03d3846e9, type: 2}
       propertyPath: m_RootOrder
-      value: 21
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 4054117619544182, guid: 45af44d53e5ef9847ad94ae03d3846e9, type: 2}
       propertyPath: m_LocalPosition.x
@@ -16923,6 +17225,26 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.8717157
       objectReference: {fileID: 0}
+    - target: {fileID: 1069601006916082, guid: 45af44d53e5ef9847ad94ae03d3846e9, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1516689519878932, guid: 45af44d53e5ef9847ad94ae03d3846e9, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1346301246542888, guid: 45af44d53e5ef9847ad94ae03d3846e9, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952230490787794, guid: 45af44d53e5ef9847ad94ae03d3846e9, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1533176632412586, guid: 45af44d53e5ef9847ad94ae03d3846e9, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45af44d53e5ef9847ad94ae03d3846e9, type: 2}
   m_IsPrefabParent: 0
@@ -16938,7 +17260,7 @@ GameObject:
   - component: {fileID: 2116948800}
   m_Layer: 0
   m_Name: catwalk (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
