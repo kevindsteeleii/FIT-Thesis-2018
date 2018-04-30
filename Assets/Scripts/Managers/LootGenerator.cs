@@ -31,7 +31,16 @@ public class LootGenerator : Singleton<LootGenerator>
         {
             EnemySpawner.instance.On_EnemySpawns_Sent += On_EnemySpawns_Received;
         }
+
+        GameObject [] enemiesAll = GameObject.FindGameObjectsWithTag("Enemy");
+        enemiesPresent.AddRange(enemiesAll);
+        foreach (GameObject item in enemiesPresent)
+        {
+            MakeDrops(item);
+        }
+
     }
+
     private void Update()
     {
         if (initialized)
@@ -84,6 +93,12 @@ public class LootGenerator : Singleton<LootGenerator>
             default:
                 break;
         }
+    }
+
+    void MakeDrops(GameObject enObject)
+    {
+        Enemy myEnemy = enObject.GetComponentInChildren<Enemy>();
+        Debug.Log(String.Format("{0} was detected in {1}",myEnemy,enObject));
     }
 
     /// <summary>

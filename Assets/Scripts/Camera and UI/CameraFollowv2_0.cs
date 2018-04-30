@@ -54,8 +54,8 @@ public class CameraFollowv2_0 : MonoBehaviour {
             desiredPosition.y = target.transform.position.y + tempY;
         }
         Vector3 velocity = target.gameObject.GetComponent<Rigidbody>().velocity;
-        //Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);   //only good for non-warpy camera
-        Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition,ref velocity,smoothSpeed*Time.deltaTime);
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);   //only good for non-warpy camera
+        //Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition,ref velocity,smoothSpeed*Time.deltaTime);
         transform.position = smoothedPosition;
     }
 

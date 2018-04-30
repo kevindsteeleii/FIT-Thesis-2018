@@ -11,7 +11,6 @@ public class EnemyVisionDetection : MonoBehaviour
     public bool distanceAttacker = true;
     Rigidbody myRB;
     public Animator enAnim;
-    bool facingRight = false;
     public MeshCollider visionCone;
 
     Quaternion currentRot;  //rotation to be set by the direction enemy moves in
@@ -40,7 +39,6 @@ public class EnemyVisionDetection : MonoBehaviour
     protected virtual void Turn()
     {
         multiplier *= -1;
-        facingRight = !facingRight;
         gameObject.transform.rotation = currentRot;
     }
 
@@ -80,7 +78,7 @@ public class EnemyVisionDetection : MonoBehaviour
     /// <param name="stop"></param>
     public void On_ProximityAlert_Received(int stop)
     {
-        Debug.Log("Enemy has been detected at close distance");
+        //Debug.Log("Enemy has been detected at close distance");
         stopper = stop;
     }
 

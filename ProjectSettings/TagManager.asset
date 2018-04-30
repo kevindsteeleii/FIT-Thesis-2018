@@ -23,6 +23,7 @@ TagManager:
   - CheckPoint
   - Manager
   - EndOfLine
+  - Stationary
   layers:
   - Default
   - TransparentFX

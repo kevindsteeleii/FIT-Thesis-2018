@@ -15,14 +15,6 @@ public class TrashCannon_Shooting : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //if (myRb != null)
-        //{
-        //    return;
-        //}
-        //else
-        //{
-        //    myRb = gameObject.transform.root.gameObject.GetComponent<Rigidbody>();
-        //}
         gunSights = gunBarrel.transform.GetChild(0).gameObject; //finds and identifies the child object as the "sight" used to figure out the direction character is facing
         fullClip = enemyStats.bulletAmount;
         poolBullets = new PoolItem(fullClip, bullet);
