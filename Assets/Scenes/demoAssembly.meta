@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 9da09ab79353ea740bff075bf096232e
 folderAsset: yes
 timeCreated: 1525098781
+=======
+guid: d30af82cc44e128468deeb384423d969
+folderAsset: yes
+timeCreated: 1524756290
+>>>>>>> parent of ff7ad92... WIP
 licenseType: Free
 DefaultImporter:
   externalObjects: {}
