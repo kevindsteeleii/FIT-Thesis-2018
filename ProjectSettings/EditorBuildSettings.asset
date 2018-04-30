@@ -53,3 +53,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/demoAssembly/20180426_level_001_Enemies.unity
     guid: ecd5c1c408b17b545bb546ceaef833d4
+  - enabled: 1
+    path: Assets/Scenes/demoAssembly/20180425_level_002_MLC.unity
+    guid: 56701cdd6fd9b0a40b970a3fe96da1e8
+  - enabled: 1
+    path: Assets/Scenes/demoAssembly/20180427_level_002_Enemies.unity
+    guid: 3f86317ef09183448ad8e0d7d0d92a6e
+  - enabled: 1
+    path: Assets/Scenes/demoAssembly/20180427_level_002_Interactables.unity
+    guid: 7f18531cfb0e1b14ebea1dafb0f790cc
