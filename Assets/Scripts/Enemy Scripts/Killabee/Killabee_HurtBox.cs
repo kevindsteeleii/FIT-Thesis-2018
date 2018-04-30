@@ -29,7 +29,7 @@ public class Killabee_HurtBox : MonoBehaviour {
     {
         if (other.tag == "Hand")
         {
-            me.EnemyTakeDamage(other.gameObject.GetComponent<GrabModel>().damage);
+            me.EnemyTakeDamage(other.gameObject.GetComponent<GrabModel>().damage,other.tag);
 
             if (me.HP <= me.saveHP / 2)
             {

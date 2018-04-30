@@ -23,10 +23,10 @@ public class TrashCannon_Shooting : MonoBehaviour {
     private void FixedUpdate()
     {
         direction = (gunSights.transform.position.x - gunBarrel.transform.position.x < 0) ? -1 : 1;
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            FireBall();
-        }
+        //if (Input.GetKeyDown(KeyCode.M))
+        //{
+        //    FireBall();
+        //}
     }
 
     public void Firing()

@@ -17,6 +17,7 @@ public class TrashCannon_StationaryLogic : MonoBehaviour {
         {
             stationaryDetector = gameObject.transform.parent.gameObject.GetComponentInChildren<EnemyVisionDetection>();
         }
+
         On_StationaryAlert_Sent += stationaryDetector.On_ProximityAlert_Received;
     }
 

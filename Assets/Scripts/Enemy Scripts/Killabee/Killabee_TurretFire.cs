@@ -9,20 +9,23 @@ public class Killabee_TurretFire : MonoBehaviour {
     //rigid body of the parent enemy element to be used to determine direction of shot
     Rigidbody myRb;
 
+    [Tooltip("Scale size of bullets shot")]
+    [Range(0.1f, 6)]
+    public float scale;
+
     //the empty game object used to launch bullets from
     public GameObject gunBarrel;
     public GameObject bullet;
-
+    GameObject gunSight;
     PoolItem poolBullets;   //the pooled bullets
-
     int directionModifier = 1;
 
     //the number of shots that can be fired per second
     int fullClip = 0;
 
     //not in use atm, for the fire rate in seconds or 5 times a second .2 * 1.000 seconds
-    [Range(0, 2)]
-    public float fireRate = 0.2f;
+    [Range(0, 5)]
+    public float fireRate = 1f;
 
     [Range(0, 100)]
     public float fireForce = 30f;
@@ -45,6 +48,15 @@ public class Killabee_TurretFire : MonoBehaviour {
         else
         {
             myRb = gameObject.GetComponent<Rigidbody>(); //to be used to determine direction which should be determined in fixed update
+        }
+
+        if (gunSight != null)
+        {
+            return;
+        }
+        else
+        {
+            gunSight = gunBarrel.transform.GetChild(0).gameObject;
         }
 
         fullClip = Mathf.RoundToInt(1 / fireRate);
@@ -129,15 +141,16 @@ public class Killabee_TurretFire : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        directionModifier = (gunSight.transform.position.x - gunBarrel.transform.position.x < 0) ? -1 : 1;
         //this if-else block deteremines a directional modifier for the launch of projectiles
-        if (myRb.velocity.x > 0)
-        {
-            directionModifier = 1;
-        }
-        else if (myRb.velocity.x < 0)
-        {
-            directionModifier = -1;
-        }
+        //if (myRb.velocity.x > 0)
+        //{
+        //    directionModifier = 1;
+        //}
+        //else if (myRb.velocity.x < 0)
+        //{
+        //    directionModifier = -1;
+        //}
     }
 
     private void OnTriggerEnter(Collider other)
@@ -148,6 +161,10 @@ public class Killabee_TurretFire : MonoBehaviour {
             if (!poolBullets.IsEmpty())
             {
                 StartCoroutine(FireRoute());    //fires when player is detected
+            }else
+            {
+                StopAllCoroutines();
+                StartCoroutine("StopFire");
             }
         }
     }

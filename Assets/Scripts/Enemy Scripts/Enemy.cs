@@ -27,9 +27,10 @@ public class Enemy : MonoBehaviour
     [Range(0, 25)]
     public int HP;
     public bool randomDrop = false;
-
     //used to save max HP info for enemy
     public int saveHP;
+
+    string currentAttackType = "";
 
     public CapsuleCollider hurtBox;
     #endregion
@@ -38,6 +39,8 @@ public class Enemy : MonoBehaviour
     protected virtual void Start()
     {
         saveHP = HP;
+        On_RandomLootDropped_Sent += LootGenerator.instance.On_RandomLootDropped_Received;
+        On_DefaultLootDrop_Sent += LootGenerator.instance.On_DefaultLootDrop_Received;
     }
 
     protected virtual void Update()
@@ -55,13 +58,25 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private void DealDeath()
     {
+        if (currentAttackType == "HitBox")
+        {
+            BecomePickUp();
+        }
+        else if (currentAttackType == "Hand")
+        {
+            BecomeProjectile();
+        }
         Destroy();
     }
 
-    public virtual void EnemyTakeDamage(int dam)  {
+    public virtual void EnemyTakeDamage(int dam, string attacker)  {
         HP -= dam;
         if (HP <= 0)
-            Destroy();
+        {
+            currentAttackType = attacker;
+            Debug.Log(String.Format("Attacked by Player's {0}", attacker));
+            DealDeath();
+        }
         Debug.Log("Took damage "+ HP +" HP left");
     }
 
@@ -84,7 +99,7 @@ public class Enemy : MonoBehaviour
         {
             On_BecomeAmmo_Sent();
         }
-        Destroy(); 
+        //Destroy(); 
     }
 
     /// <summary>
@@ -94,6 +109,7 @@ public class Enemy : MonoBehaviour
     private void Destroy() {
 
         Debug.Log("Destroyed");
+        
         gameObject.transform.parent.gameObject.SetActive(false);
     }
 
@@ -107,15 +123,13 @@ public class Enemy : MonoBehaviour
         Debug.Log("Became PickUP");
         if (randomDrop)
         {
-            this.On_RandomLootDropped_Sent += LootGenerator.instance.On_RandomLootDropped_Received;
             On_RandomLootDropped_Sent(transform.position, transform.rotation);
         }
         else if (!randomDrop)
         {
-            this.On_DefaultLootDrop_Sent += LootGenerator.instance.On_DefaultLootDrop_Received ;
             On_DefaultLootDrop_Sent(transform.position, transform.rotation, PickupType.Health);
         }
-        Destroy();   
+        //Destroy();   
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -132,7 +146,7 @@ public class Enemy : MonoBehaviour
     
         if (obj.tag == "Projectile" && obj.layer == 9)
         {
-            EnemyTakeDamage(obj.GetComponent<Projectile>().damage);
+            EnemyTakeDamage(obj.GetComponent<Projectile>().damage,obj.tag);
         }
     }
 }

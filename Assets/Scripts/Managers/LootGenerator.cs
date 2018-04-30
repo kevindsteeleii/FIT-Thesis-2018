@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using System;
 
@@ -32,12 +31,12 @@ public class LootGenerator : Singleton<LootGenerator>
             EnemySpawner.instance.On_EnemySpawns_Sent += On_EnemySpawns_Received;
         }
 
-        GameObject [] enemiesAll = GameObject.FindGameObjectsWithTag("Enemy");
-        enemiesPresent.AddRange(enemiesAll);
-        foreach (GameObject item in enemiesPresent)
-        {
-            MakeDrops(item);
-        }
+        //GameObject [] enemiesAll = GameObject.FindGameObjectsWithTag("Enemy");
+        //enemiesPresent.AddRange(enemiesAll);
+        //foreach (GameObject item in enemiesPresent)
+        //{
+        //    MakeDrops(item);
+        //}
 
     }
 
@@ -95,11 +94,13 @@ public class LootGenerator : Singleton<LootGenerator>
         }
     }
 
-    void MakeDrops(GameObject enObject)
-    {
-        Enemy myEnemy = enObject.GetComponentInChildren<Enemy>();
-        Debug.Log(String.Format("{0} was detected in {1}",myEnemy,enObject));
-    }
+    //void MakeDrops(GameObject enObject)
+    //{
+    //    Enemy myEnemy = enObject.GetComponent<EnemyRecognition>().EnemyHere();
+    //    myEnemy.On_RandomLootDropped_Sent += On_RandomLootDropped_Received;
+    //    myEnemy.On_DefaultLootDrop_Sent += On_DefaultLootDrop_Received;
+    //    Debug.Log(String.Format("{0} was detected in {1} and both random and default loop drops events are now subscribed.",myEnemy,enObject));
+    //}
 
     /// <summary>
     /// Makes random loot drop when enemy is destroyed
@@ -125,25 +126,25 @@ public class LootGenerator : Singleton<LootGenerator>
         {
             currentTypeofItem = PickupType.Nothing;
         }
-
         //Debug.Log("Pick Up became " + currentTypeofItem + " !!");
     }
+
     /// <summary>
     /// Used in place of the enemy spawner dependent version,
     /// It populates a list with all the enemies. Used in the beginning at Start()
     /// </summary>
-    void LookForEnemies()
-    {
-        if (!initialized)
-        {
-            Enemy[] allMyEnemies = FindObjectsOfType<Enemy>();
-            foreach (var en in allMyEnemies)
-            {
-                //TODO
-                /*-add logic that adds the enemies found to a LootGenerator-specific list or collection
-                 * used to monitor the "vitals" of said enemies
-                 */
-            }
-        }
-    }
+    //void LookForEnemies()
+    //{
+    //    if (!initialized)
+    //    {
+    //        Enemy[] allMyEnemies = FindObjectsOfType<Enemy>();
+    //        foreach (var en in allMyEnemies)
+    //        {
+    //            //TODO
+    //            /*-add logic that adds the enemies found to a LootGenerator-specific list or collection
+    //             * used to monitor the "vitals" of said enemies
+    //             */
+    //        }
+    //    }
+    //}
 }

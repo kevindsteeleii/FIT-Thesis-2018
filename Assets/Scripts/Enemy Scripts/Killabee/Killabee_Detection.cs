@@ -9,8 +9,9 @@ public class Killabee_Detection : MonoBehaviour
 {
     public EnStatsData enStats;
 
-    int multiplier = 1; //used to start/stop the enemy
-
+    int multiplier = 1;     //used to start/stop the enemy
+    int stopper = 1;    //turns to zero to stop the enemy
+    public bool stationary;
     Rigidbody myRB;
 
     public MeshCollider visionCone;
@@ -20,6 +21,8 @@ public class Killabee_Detection : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        stopper = (stationary) ? 0 : 1;
+
         if (myRB != null)
         {
             return;
@@ -69,7 +72,7 @@ public class Killabee_Detection : MonoBehaviour
             }
         }
 
-        myRB.velocity = Vector3.right * Time.timeScale * enStats.speed * multiplier;
+        myRB.velocity = Vector3.right * Time.timeScale * enStats.speed * stopper * multiplier;
     }
 
     protected virtual void OnTriggerEnter(Collider other)
@@ -82,7 +85,6 @@ public class Killabee_Detection : MonoBehaviour
         }
     }
 }
-
 #region TODO list, refactoring etc
 /************TODO Refactoring********************************************************************//*
  1-resume patrol when player is out of line of sight not cone of vision, maybe
