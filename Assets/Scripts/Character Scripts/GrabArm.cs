@@ -65,7 +65,7 @@ public class GrabArm : BaseAttack {
                 }
                 else
                     Debug.Log("Hand hurt enemy");
-                target.EnemyTakeDamage(damage);
+                target.EnemyTakeDamage(damage,"Hand");
             }
         }
     }

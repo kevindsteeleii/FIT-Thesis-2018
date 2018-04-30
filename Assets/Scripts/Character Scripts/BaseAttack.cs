@@ -14,7 +14,7 @@ public abstract class BaseAttack : MonoBehaviour
     public Transform attachedObject;
     public Vector3 offset;
 
-    public event Action<int> On_TransferDamage_Sent;
+    public event Action<int,string> On_TransferDamage_Sent;
 
     public virtual void FixedUpdate()   //handles the movement and adjustments needed as necessary to match up the colliders for attacks etc.
     {
@@ -31,7 +31,7 @@ public abstract class BaseAttack : MonoBehaviour
         {
             Debug.Log("Hit the enemy hitbox");
             On_TransferDamage_Sent += other.gameObject.GetComponent<Enemy>().EnemyTakeDamage;
-            On_TransferDamage_Sent(dam);
+            On_TransferDamage_Sent(dam,gameObject.tag);
             On_TransferDamage_Sent -= other.gameObject.GetComponent<Enemy>().EnemyTakeDamage;
         }
     }

@@ -12,6 +12,7 @@ public enum ComparativeOperator { NA, EqualTo, NotEqualTo, LessThan, LessThanOrE
 /// </summary>
 [Serializable]
 public class EnemyMeleeHitBox : MonoBehaviour {
+
     public Animator myAnim; //animator's parameters used to determine the status of hitboxes
     public AnimParamComparer [] animParams;
     [Tooltip("All possible colliders associated with the attack script")]
