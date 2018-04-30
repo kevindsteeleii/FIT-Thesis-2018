@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 3687141}
   - component: {fileID: 3687143}
   - component: {fileID: 3687142}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,11 +248,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
@@ -334,11 +334,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
@@ -393,27 +401,51 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1033214944564994, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1906835992474314, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1995084520924260, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1355452473104732, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1590144312266812, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1083897146597476, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1906835992474314, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355452473104732, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590144312266812, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083897146597476, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1033214944564994, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995084520924260, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
@@ -429,7 +461,7 @@ GameObject:
   - component: {fileID: 58783779}
   - component: {fileID: 58783781}
   - component: {fileID: 58783780}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -504,7 +536,7 @@ GameObject:
   - component: {fileID: 64985056}
   - component: {fileID: 64985058}
   - component: {fileID: 64985057}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -579,7 +611,7 @@ GameObject:
   - component: {fileID: 65532564}
   - component: {fileID: 65532566}
   - component: {fileID: 65532565}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -653,7 +685,7 @@ GameObject:
   m_Component:
   - component: {fileID: 81885960}
   - component: {fileID: 81885961}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: concretePlatform (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -852,7 +884,7 @@ GameObject:
   - component: {fileID: 154596182}
   - component: {fileID: 154596184}
   - component: {fileID: 154596183}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -936,9 +968,9 @@ GameObject:
   m_Component:
   - component: {fileID: 192691946}
   - component: {fileID: 192691947}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: concretePlatform (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1026,11 +1058,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
@@ -1121,9 +1153,9 @@ GameObject:
   - component: {fileID: 249506872}
   - component: {fileID: 249506874}
   - component: {fileID: 249506873}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1230,27 +1262,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1522299306816300, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1663578026237136, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1300817903140718, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1207325173560486, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1418067667948418, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
@@ -1266,9 +1298,9 @@ GameObject:
   - component: {fileID: 273097539}
   - component: {fileID: 273097541}
   - component: {fileID: 273097540}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1371,27 +1403,51 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1207325173560486, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1418067667948418, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1663578026237136, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1522299306816300, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1300817903140718, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207325173560486, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663578026237136, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418067667948418, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300817903140718, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522299306816300, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
@@ -1412,7 +1468,7 @@ GameObject:
   - component: {fileID: 281286276}
   - component: {fileID: 281286278}
   - component: {fileID: 281286277}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1521,27 +1577,51 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1207325173560486, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1663578026237136, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1522299306816300, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1300817903140718, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1418067667948418, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418067667948418, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663578026237136, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300817903140718, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207325173560486, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522299306816300, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
@@ -1556,7 +1636,7 @@ GameObject:
   - component: {fileID: 305564366}
   m_Layer: 0
   m_Name: background junk
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1657,11 +1737,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_TagString
@@ -1853,27 +1933,51 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1527465824846272, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1913145672262742, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1941543190572052, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1167118602058718, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1896662528069614, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1922981024114518, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1167118602058718, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527465824846272, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922981024114518, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1896662528069614, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913145672262742, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1941543190572052, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
@@ -1947,11 +2051,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
@@ -2001,27 +2113,51 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1207325173560486, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1522299306816300, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1418067667948418, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1663578026237136, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1300817903140718, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207325173560486, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522299306816300, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300817903140718, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418067667948418, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663578026237136, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
@@ -2112,7 +2248,7 @@ GameObject:
   - component: {fileID: 404771848}
   - component: {fileID: 404771850}
   - component: {fileID: 404771849}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2245,11 +2381,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
@@ -2307,11 +2451,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
@@ -2451,27 +2603,51 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1301250985846096, guid: f610c7b2695a554478f82c2997ecf768, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1174428250142254, guid: f610c7b2695a554478f82c2997ecf768, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1145856833332674, guid: f610c7b2695a554478f82c2997ecf768, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1257952828971736, guid: f610c7b2695a554478f82c2997ecf768, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1647025535315692, guid: f610c7b2695a554478f82c2997ecf768, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1370196373809582, guid: f610c7b2695a554478f82c2997ecf768, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301250985846096, guid: f610c7b2695a554478f82c2997ecf768, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174428250142254, guid: f610c7b2695a554478f82c2997ecf768, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647025535315692, guid: f610c7b2695a554478f82c2997ecf768, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1257952828971736, guid: f610c7b2695a554478f82c2997ecf768, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370196373809582, guid: f610c7b2695a554478f82c2997ecf768, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145856833332674, guid: f610c7b2695a554478f82c2997ecf768, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f610c7b2695a554478f82c2997ecf768, type: 2}
@@ -2529,11 +2705,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1286859124234012, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1723760794066974, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1286859124234012, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1723760794066974, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
@@ -2554,7 +2738,7 @@ GameObject:
   - component: {fileID: 487119612}
   - component: {fileID: 487119614}
   - component: {fileID: 487119613}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2634,7 +2818,7 @@ GameObject:
   - component: {fileID: 494773148}
   - component: {fileID: 494773150}
   - component: {fileID: 494773149}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2709,7 +2893,7 @@ GameObject:
   - component: {fileID: 516859173}
   - component: {fileID: 516859175}
   - component: {fileID: 516859174}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2818,27 +3002,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1663578026237136, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1522299306816300, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1418067667948418, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1300817903140718, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1207325173560486, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_TagString
@@ -2972,27 +3156,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1207325173560486, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1300817903140718, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1663578026237136, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1522299306816300, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1418067667948418, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
@@ -3008,7 +3192,7 @@ GameObject:
   - component: {fileID: 576853426}
   - component: {fileID: 576853428}
   - component: {fileID: 576853427}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3137,11 +3321,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
@@ -3157,7 +3341,7 @@ GameObject:
   - component: {fileID: 582728707}
   - component: {fileID: 582728709}
   - component: {fileID: 582728708}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3231,9 +3415,9 @@ GameObject:
   m_Component:
   - component: {fileID: 595775383}
   - component: {fileID: 595775382}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: junkPlatform (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3324,11 +3508,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1723760794066974, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1286859124234012, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
@@ -3441,7 +3625,7 @@ GameObject:
   - component: {fileID: 617540083}
   - component: {fileID: 617540085}
   - component: {fileID: 617540084}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3663,7 +3847,7 @@ GameObject:
   m_Component:
   - component: {fileID: 683141338}
   - component: {fileID: 683141339}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: dirtPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3757,9 +3941,9 @@ GameObject:
   - component: {fileID: 702282544}
   - component: {fileID: 702282546}
   - component: {fileID: 702282545}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: junk cubeNew (6)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3951,27 +4135,51 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1995084520924260, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1590144312266812, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1355452473104732, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1033214944564994, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1906835992474314, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1083897146597476, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083897146597476, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1906835992474314, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355452473104732, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590144312266812, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1033214944564994, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995084520924260, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
@@ -4066,7 +4274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 805017021}
   - component: {fileID: 805017022}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: concretePlatform 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4171,11 +4379,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
@@ -4191,7 +4407,7 @@ GameObject:
   - component: {fileID: 810176699}
   - component: {fileID: 810176701}
   - component: {fileID: 810176700}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4270,7 +4486,7 @@ GameObject:
   m_Component:
   - component: {fileID: 824366473}
   - component: {fileID: 824366474}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: concretePlatform 2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4502,27 +4718,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1645286032935612, guid: c91308528356ec24b9685b7d3f1be186, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1110071196494090, guid: c91308528356ec24b9685b7d3f1be186, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1110268906079878, guid: c91308528356ec24b9685b7d3f1be186, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1240860576750688, guid: c91308528356ec24b9685b7d3f1be186, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1294482917905958, guid: c91308528356ec24b9685b7d3f1be186, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1199975453622802, guid: c91308528356ec24b9685b7d3f1be186, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c91308528356ec24b9685b7d3f1be186, type: 2}
@@ -4538,7 +4754,7 @@ GameObject:
   - component: {fileID: 873500154}
   - component: {fileID: 873500156}
   - component: {fileID: 873500155}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4849,11 +5065,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
@@ -4990,11 +5214,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1286859124234012, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1723760794066974, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1286859124234012, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1723760794066974, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
@@ -5015,7 +5247,7 @@ GameObject:
   - component: {fileID: 1012612033}
   - component: {fileID: 1012612035}
   - component: {fileID: 1012612034}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5323,7 +5555,7 @@ GameObject:
   - component: {fileID: 1049934313}
   - component: {fileID: 1049934315}
   - component: {fileID: 1049934314}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5398,9 +5630,9 @@ GameObject:
   - component: {fileID: 1052867610}
   - component: {fileID: 1052867612}
   - component: {fileID: 1052867611}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5472,7 +5704,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1057906555}
   - component: {fileID: 1057906556}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: concretePlatform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5679,27 +5911,51 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1896662528069614, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1167118602058718, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1913145672262742, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1922981024114518, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1941543190572052, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1527465824846272, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922981024114518, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1527465824846272, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913145672262742, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1167118602058718, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1941543190572052, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1896662528069614, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84a4b7c7bc77a87469f56f19b59ee95f, type: 2}
@@ -5889,9 +6145,9 @@ GameObject:
   - component: {fileID: 1153791084}
   - component: {fileID: 1153791086}
   - component: {fileID: 1153791085}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5961,7 +6217,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1167583969}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: chunk3
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -6043,27 +6299,51 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1522299306816300, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1418067667948418, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1207325173560486, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1663578026237136, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1300817903140718, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418067667948418, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300817903140718, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663578026237136, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522299306816300, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207325173560486, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
@@ -6082,7 +6362,7 @@ GameObject:
   - component: {fileID: 1174178791}
   m_Layer: 0
   m_Name: deathfloor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6259,11 +6539,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
@@ -6422,7 +6702,7 @@ GameObject:
   - component: {fileID: 1204338535}
   - component: {fileID: 1204338537}
   - component: {fileID: 1204338536}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6555,11 +6835,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
@@ -6584,7 +6864,7 @@ GameObject:
   - component: {fileID: 1222557091}
   m_Layer: 0
   m_Name: backdrop
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6746,11 +7026,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
@@ -6810,7 +7098,7 @@ GameObject:
   - component: {fileID: 1236905100}
   - component: {fileID: 1236905102}
   - component: {fileID: 1236905101}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6885,9 +7173,9 @@ GameObject:
   - component: {fileID: 1239459639}
   - component: {fileID: 1239459641}
   - component: {fileID: 1239459640}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: junk cubeNew (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6964,9 +7252,9 @@ GameObject:
   - component: {fileID: 1250936913}
   - component: {fileID: 1250936915}
   - component: {fileID: 1250936914}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7039,9 +7327,9 @@ GameObject:
   - component: {fileID: 1265120103}
   - component: {fileID: 1265120105}
   - component: {fileID: 1265120104}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: junk cubeNew (7)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7118,7 +7406,7 @@ GameObject:
   - component: {fileID: 1269107422}
   - component: {fileID: 1269107424}
   - component: {fileID: 1269107423}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7232,27 +7520,51 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1663578026237136, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1418067667948418, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1207325173560486, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1300817903140718, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1522299306816300, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207325173560486, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300817903140718, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522299306816300, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418067667948418, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663578026237136, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
@@ -7268,7 +7580,7 @@ GameObject:
   - component: {fileID: 1297564762}
   - component: {fileID: 1297564764}
   - component: {fileID: 1297564763}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7401,11 +7713,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_TagString
@@ -7622,27 +7934,51 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1355452473104732, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1590144312266812, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1995084520924260, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1033214944564994, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1083897146597476, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1906835992474314, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995084520924260, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355452473104732, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1906835992474314, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083897146597476, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590144312266812, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1033214944564994, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0a8e0327308a104e9968f8fdf70bb0b, type: 2}
@@ -7658,9 +7994,9 @@ GameObject:
   - component: {fileID: 1365420255}
   - component: {fileID: 1365420257}
   - component: {fileID: 1365420256}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7730,7 +8066,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1373668567}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: chunk5
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -7768,7 +8104,7 @@ GameObject:
   - component: {fileID: 1382225734}
   - component: {fileID: 1382225736}
   - component: {fileID: 1382225735}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7949,11 +8285,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1443284615840822, guid: c47255dbb4bb351459aff01d854e6259, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1645597984729698, guid: c47255dbb4bb351459aff01d854e6259, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c47255dbb4bb351459aff01d854e6259, type: 2}
@@ -8011,11 +8347,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1723760794066974, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1286859124234012, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1286859124234012, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1723760794066974, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
@@ -8452,11 +8796,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1723760794066974, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1286859124234012, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
@@ -8506,32 +8850,56 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1663578026237136, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1418067667948418, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1207325173560486, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1300817903140718, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1522299306816300, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 65441560790295428, guid: 1c45db08f964a6d4495f68901f77d612,
         type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522299306816300, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418067667948418, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300817903140718, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663578026237136, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207325173560486, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
@@ -8610,11 +8978,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
@@ -8627,7 +9003,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1590268956}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: chunk1
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -8785,11 +9161,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
@@ -8804,9 +9188,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1602309574}
   - component: {fileID: 1602309575}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: stoneCenterPlatform (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8861,7 +9245,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1627613594}
   - component: {fileID: 1627613595}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: dirtPlatform (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8906,7 +9290,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1629022134}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: chunk4
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -9230,9 +9614,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1641441196}
   - component: {fileID: 1641441197}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: concretePlatform (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9275,9 +9659,9 @@ GameObject:
   - component: {fileID: 1648825315}
   - component: {fileID: 1648825317}
   - component: {fileID: 1648825316}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: junk cubeNew (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9388,27 +9772,51 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1207325173560486, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1418067667948418, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1522299306816300, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1300817903140718, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1663578026237136, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207325173560486, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663578026237136, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300817903140718, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522299306816300, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418067667948418, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
@@ -9421,7 +9829,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1691439253}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: chunk2
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -9459,7 +9867,7 @@ GameObject:
   - component: {fileID: 1694189444}
   - component: {fileID: 1694189446}
   - component: {fileID: 1694189445}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9534,9 +9942,9 @@ GameObject:
   - component: {fileID: 1696873963}
   - component: {fileID: 1696873965}
   - component: {fileID: 1696873964}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9609,7 +10017,7 @@ GameObject:
   - component: {fileID: 1705822494}
   - component: {fileID: 1705822496}
   - component: {fileID: 1705822495}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9684,9 +10092,9 @@ GameObject:
   - component: {fileID: 1718665526}
   - component: {fileID: 1718665528}
   - component: {fileID: 1718665527}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9862,27 +10270,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1904985091042752, guid: 71cf2fa7efdf592418ffcc10a1944e15, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1884575866027684, guid: 71cf2fa7efdf592418ffcc10a1944e15, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1904655617317608, guid: 71cf2fa7efdf592418ffcc10a1944e15, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1924256096678514, guid: 71cf2fa7efdf592418ffcc10a1944e15, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1620253023412544, guid: 71cf2fa7efdf592418ffcc10a1944e15, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1818938638933882, guid: 71cf2fa7efdf592418ffcc10a1944e15, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1884575866027684, guid: 71cf2fa7efdf592418ffcc10a1944e15, type: 2}
       propertyPath: m_TagString
@@ -9907,7 +10315,7 @@ GameObject:
   - component: {fileID: 1760631657}
   - component: {fileID: 1760631659}
   - component: {fileID: 1760631658}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9982,7 +10390,7 @@ GameObject:
   - component: {fileID: 1767857264}
   - component: {fileID: 1767857266}
   - component: {fileID: 1767857265}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10224,11 +10632,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
@@ -10244,7 +10660,7 @@ GameObject:
   - component: {fileID: 1781834629}
   - component: {fileID: 1781834631}
   - component: {fileID: 1781834630}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10507,27 +10923,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1924256096678514, guid: 71cf2fa7efdf592418ffcc10a1944e15, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1620253023412544, guid: 71cf2fa7efdf592418ffcc10a1944e15, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1818938638933882, guid: 71cf2fa7efdf592418ffcc10a1944e15, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1884575866027684, guid: 71cf2fa7efdf592418ffcc10a1944e15, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1904985091042752, guid: 71cf2fa7efdf592418ffcc10a1944e15, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1904655617317608, guid: 71cf2fa7efdf592418ffcc10a1944e15, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1884575866027684, guid: 71cf2fa7efdf592418ffcc10a1944e15, type: 2}
       propertyPath: m_TagString
@@ -10547,7 +10963,7 @@ GameObject:
   - component: {fileID: 1805227319}
   - component: {fileID: 1805227321}
   - component: {fileID: 1805227320}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10622,9 +11038,9 @@ GameObject:
   - component: {fileID: 1805454995}
   - component: {fileID: 1805454997}
   - component: {fileID: 1805454996}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: junk cubeNew (9)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10705,7 +11121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1849205912}
   - component: {fileID: 1849205913}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: dirtPlatform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10826,27 +11242,51 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1522299306816300, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1300817903140718, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1663578026237136, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1418067667948418, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1207325173560486, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418067667948418, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663578026237136, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207325173560486, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300817903140718, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522299306816300, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
@@ -10934,7 +11374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1942338864}
   - component: {fileID: 1942338865}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: dirtPlatform (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11035,27 +11475,51 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1522299306816300, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1663578026237136, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1300817903140718, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1207325173560486, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1418067667948418, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482992628074852, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207325173560486, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663578026237136, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522299306816300, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418067667948418, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300817903140718, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c45db08f964a6d4495f68901f77d612, type: 2}
@@ -11150,7 +11614,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1977387894}
   - component: {fileID: 1977387895}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: dirtPlatform (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11200,9 +11664,9 @@ GameObject:
   - component: {fileID: 1981205858}
   - component: {fileID: 1981205860}
   - component: {fileID: 1981205859}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11321,11 +11785,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1286859124234012, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1723760794066974, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
@@ -11346,9 +11810,9 @@ GameObject:
   - component: {fileID: 2024939084}
   - component: {fileID: 2024939086}
   - component: {fileID: 2024939085}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11418,7 +11882,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2043508527}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: chunk6
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -11473,9 +11937,9 @@ GameObject:
   - component: {fileID: 2051999271}
   - component: {fileID: 2051999273}
   - component: {fileID: 2051999272}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: junk cubeNew (8)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11601,7 +12065,7 @@ GameObject:
   - component: {fileID: 2096755645}
   - component: {fileID: 2096755647}
   - component: {fileID: 2096755646}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11676,7 +12140,7 @@ GameObject:
   - component: {fileID: 2098672511}
   - component: {fileID: 2098672513}
   - component: {fileID: 2098672512}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: newDirtSammige (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11809,11 +12273,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323410236510034, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495225107766412, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ca5828cf68db614b8a757de31abfad3, type: 2}
@@ -11880,11 +12352,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1286859124234012, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1723760794066974, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1286859124234012, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1723760794066974, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd5e584c191f86a4184cdb91aa041055, type: 2}

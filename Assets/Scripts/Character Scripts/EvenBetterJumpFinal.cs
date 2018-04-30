@@ -59,13 +59,16 @@ public class EvenBetterJumpFinal : MonoBehaviour
             }
         }
 
-        myAnim.SetFloat("vertSpeed", myRB.velocity.y);
+        float vertSpeed = 0;
+        vertSpeed = (myAnim.GetBool("grounded")) ?0:myRB.velocity.y;
+        myAnim.SetFloat("vertSpeed", vertSpeed);
     }
 
     protected virtual void Jump()
     {
         myAnim.SetBool("grounded", false);
         //myAnim.SetBool("airborne", true);
+        //myAnim.SetFloat("vertSpeed", 0);
         myRB.velocity = new Vector3(myRB.velocity.x, jumpHeight, 0);
     }
 

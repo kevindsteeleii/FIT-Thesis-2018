@@ -94,6 +94,7 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
 
     protected virtual void Update()
     {
+       
         myPos = transform.position;
         if (On_PlayerPosition_Sent != null)
         {
