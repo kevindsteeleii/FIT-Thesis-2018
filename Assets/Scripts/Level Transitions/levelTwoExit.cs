@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class levelTwoExit : MonoBehaviour {
 
 	private void OnTriggerEnter(){
-		SceneManager.LoadScene ("20180425_Start Screen", LoadSceneMode.Single);
+		SceneManager.LoadScene ("End Credit", LoadSceneMode.Single);
 		Debug.Log("zip");
 
 	}

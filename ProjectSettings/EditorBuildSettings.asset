@@ -18,9 +18,6 @@ EditorBuildSettings:
     path: Assets/Scenes/DebuggingTools/ProxyController.unity
     guid: 656e297b46398f348b1ffa5076fc9b1e
   - enabled: 0
-    path: Assets/Scenes/Lighting.unity
-    guid: 6cbe4ebd75518dd4a83258f516a93a16
-  - enabled: 0
     path: Assets/Scenes/20171124_UNITY_GameSceneImplementation_v02_KDS.unity
     guid: 74d0b7c71389c994080a44519afb50ab
   - enabled: 0
@@ -45,23 +42,47 @@ EditorBuildSettings:
     path: Assets/Scenes/demoAssembly/UI_StandAlone_20180413_MLCmod.unity
     guid: 15ce73e4511dca94c87e56f983d0ca6f
   - enabled: 1
-    path: Assets/Scenes/demoAssembly/20180416_level_001_MLC.unity
-    guid: b6758be7d067d1044bf2d68ee41402fc
-  - enabled: 1
-    path: Assets/Scenes/demoAssembly/20180418_level_001_Interactables_MLC.unity
-    guid: 9b0a8faccf019714aa23b9cb81a5574a
-  - enabled: 1
     path: Assets/Scenes/demoAssembly/20180420_PlayerSetUp_Anims_KDS.unity
     guid: b1bf98ddcab2d614c87810d5729aad27
   - enabled: 1
+    path: Assets/Scenes/demoAssembly/20180501_level_001_MLC.unity
+    guid: 82ff4b62d59fdab459e441f1d1664cec
+  - enabled: 1
+    path: Assets/Scenes/demoAssembly/20180502_level_001_Enemies.unity
+    guid: 8b202014887096a44a140b180cbaaf87
+  - enabled: 1
+    path: Assets/Scenes/demoAssembly/20180502_level_001_Interactables_MLC.unity
+    guid: fe99fbd4c4a472348837cd20ffb0e304
+  - enabled: 0
+    path: Assets/Scenes/demoAssembly/20180416_level_001_MLC.unity
+    guid: b6758be7d067d1044bf2d68ee41402fc
+  - enabled: 0
+    path: Assets/Scenes/demoAssembly/20180418_level_001_Interactables_MLC.unity
+    guid: 9b0a8faccf019714aa23b9cb81a5574a
+  - enabled: 0
     path: Assets/Scenes/demoAssembly/20180426_level_001_Enemies.unity
     guid: ecd5c1c408b17b545bb546ceaef833d4
+  - enabled: 0
+    path: Assets/Scenes/Lighting.unity
+    guid: 6cbe4ebd75518dd4a83258f516a93a16
   - enabled: 1
+    path: Assets/Scenes/demoAssembly/End Credit.unity
+    guid: 10516135fe5293c45a35d24b76c80b11
+  - enabled: 1
+    path: Assets/Scenes/demoAssembly/20180502_level_002_Enemies.unity
+    guid: 9d62875dbb8c9f048925dc6e602d2ec2
+  - enabled: 1
+    path: Assets/Scenes/demoAssembly/20180502_level_002_Interactables.unity
+    guid: 0d9b431b153b219479df6bef9054b0c3
+  - enabled: 1
+    path: Assets/Scenes/demoAssembly/20180502_level_002_MLC.unity
+    guid: c6748a1ceb61073428d659460adab468
+  - enabled: 0
     path: Assets/Scenes/demoAssembly/20180425_level_002_MLC.unity
     guid: 56701cdd6fd9b0a40b970a3fe96da1e8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/demoAssembly/20180427_level_002_Enemies.unity
     guid: 3f86317ef09183448ad8e0d7d0d92a6e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/demoAssembly/20180427_level_002_Interactables.unity
     guid: 7f18531cfb0e1b14ebea1dafb0f790cc
