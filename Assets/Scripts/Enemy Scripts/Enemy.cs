@@ -7,6 +7,9 @@ using System;
 public class Enemy : MonoBehaviour
 {
     #region Global Variables
+
+    Vector3 startLocation; //used to warp the enemies back to their original positions upon restart
+
     /// <summary>
     /// Event that transmits from Enemy to trigger ammo stocking 
     /// </summary>
@@ -38,9 +41,11 @@ public class Enemy : MonoBehaviour
     // Use this for initialization
     protected virtual void Start()
     {
+        startLocation = gameObject.transform.root.gameObject.transform.position;
         saveHP = HP;
         On_RandomLootDropped_Sent += LootGenerator.instance.On_RandomLootDropped_Received;
         On_DefaultLootDrop_Sent += LootGenerator.instance.On_DefaultLootDrop_Received;
+        GameManager.instance.On_RestartState_Sent += On_RestartButton_Received;
     }
 
     protected virtual void Update()
@@ -130,6 +135,16 @@ public class Enemy : MonoBehaviour
             On_DefaultLootDrop_Sent(transform.position, transform.rotation, PickupType.Health);
         }
         //Destroy();   
+    }
+    /// <summary>
+    /// Resets the location of the enemies upon reset of the 
+    /// </summary>
+    protected virtual void On_RestartButton_Received()
+    {
+        gameObject.transform.root.gameObject.SetActive(true);
+        gameObject.transform.root.gameObject.transform.position = startLocation;
+        HP = saveHP;
+
     }
 
     private void OnCollisionEnter(Collision collision)

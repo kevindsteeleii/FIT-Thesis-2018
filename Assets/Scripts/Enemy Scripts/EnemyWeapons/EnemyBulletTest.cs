@@ -96,15 +96,7 @@ public class EnemyBulletTest : MonoBehaviour
             }
         }
     }
-
-    //void PlayerHit(Collider playerCollider)
-    //{
-    //    On_TransferDamage_Sent += playerCollider.gameObject.transform.parent.gameObject.GetComponent<PlayerStats>().TakeDamage;
-    //    On_TransferDamage_Sent(hitPoint);
-    //    On_TransferDamage_Sent -= playerCollider.gameObject.transform.parent.gameObject.GetComponent<PlayerStats>().TakeDamage;
-    //    Destroy();
-    //}
-
+   
     /// <summary>
     /// "Destroys" body by setting the game object the script is attached to to inactive
     /// </summary>
