@@ -4,6 +4,7 @@ using System;
 /// <summary>
 /// Enemy base class used to determine basic information and behavior of enemy class
 /// </summary>
+[RequireComponent(typeof (AudioSource))]
 public class Enemy : MonoBehaviour
 {
     #region Global Variables
@@ -25,7 +26,7 @@ public class Enemy : MonoBehaviour
     /// Event that transmits when the enemy becomes the default loot upon "destruction"
     /// </summary>
     public event Action<Vector3, Quaternion, PickupType> On_DefaultLootDrop_Sent;
-
+    AudioSource boomBox;
     //allows for adjustment of enemy health points
     [Range(0, 25)]
     public int HP;
@@ -41,6 +42,7 @@ public class Enemy : MonoBehaviour
     // Use this for initialization
     protected virtual void Start()
     {
+        boomBox = gameObject.GetComponent<AudioSource>();
         startLocation = gameObject.transform.root.gameObject.transform.position;
         saveHP = HP;
         On_RandomLootDropped_Sent += LootGenerator.instance.On_RandomLootDropped_Received;
@@ -76,6 +78,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void EnemyTakeDamage(int dam, string attacker)  {
         HP -= dam;
+        boomBox.Play();
         if (HP <= 0)
         {
             currentAttackType = attacker;
@@ -147,6 +150,11 @@ public class Enemy : MonoBehaviour
 
     }
 
+    private void OnDisable()
+    {
+        boomBox.Play();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -158,7 +166,7 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         GameObject obj = other.gameObject;
-    
+
         if (obj.tag == "Projectile" && obj.layer == 9)
         {
             EnemyTakeDamage(obj.GetComponent<Projectile>().damage,obj.tag);

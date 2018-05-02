@@ -6,15 +6,20 @@ using UnityEngine;
 /// </summary>
 public abstract class BaseAttack : MonoBehaviour
 {
-
     [Tooltip("The damage the this attack inflicts upon an enemy or destructible obstacle")]
     [Range(0, 20)]
     public int dam = 10;
     public SphereCollider myHitBox;
     public Transform attachedObject;
     public Vector3 offset;
-
+    /// <summary>
+    /// Sends the tag of attacking hitbox to determine what happens to enemy corpse
+    /// </summary>
     public event Action<int,string> On_TransferDamage_Sent;
+    /// <summary>
+    /// Sends just the string of the attack's game object tag to the chain of hitboxes to modify them on the fly
+    /// </summary>
+    public event Action<string> On_Attack_Sent;
 
     public virtual void FixedUpdate()   //handles the movement and adjustments needed as necessary to match up the colliders for attacks etc.
     {

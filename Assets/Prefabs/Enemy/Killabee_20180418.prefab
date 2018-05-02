@@ -3434,6 +3434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myRB: {fileID: 54500215766610932}
+  boomBox: {fileID: 0}
   HP: 13
   randomDrop: 0
   saveHP: 13
@@ -3450,7 +3451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enStats: {fileID: 11400000, guid: be33716213fe6474cb177157de8df365, type: 2}
-  stationary: 1
+  stationary: 0
   visionCone: {fileID: 64516857134684154}
 --- !u!114 &114666204525476716
 MonoBehaviour:
