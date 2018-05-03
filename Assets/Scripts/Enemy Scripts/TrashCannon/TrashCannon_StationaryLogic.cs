@@ -5,20 +5,20 @@ using UnityEngine;
 /// Makes the enemy stationary when inside of an appropriate trigger collider
 /// </summary>
 public class TrashCannon_StationaryLogic : MonoBehaviour {
-    public EnemyVisionDetection stationaryDetector;
+    //public EnemyVisionDetection stationaryDetector;
     public event Action<int> On_StationaryAlert_Sent;   //makes enemy stationary pending certain conditions
 	// Use this for initialization
 	void Start () {
-        if (stationaryDetector != null)
-        {
-            return;
-        }
-        else
-        {
-            stationaryDetector = gameObject.transform.parent.gameObject.GetComponentInChildren<EnemyVisionDetection>();
-        }
-
-        On_StationaryAlert_Sent += stationaryDetector.On_ProximityAlert_Received;
+        //if (stationaryDetector != null)
+        //{
+        //    return;
+        //}
+        //else
+        //{
+        //    stationaryDetector = gameObject.transform.parent.gameObject.GetComponentInChildren<EnemyVisionDetection>();
+        //}
+        On_StationaryAlert_Sent += gameObject.transform.root.gameObject.GetComponent<EnemyDetection>().On_Stopper_Received;
+        //On_StationaryAlert_Sent += stationaryDetector.On_ProximityAlert_Received;
     }
 
     private void OnTriggerEnter(Collider other)

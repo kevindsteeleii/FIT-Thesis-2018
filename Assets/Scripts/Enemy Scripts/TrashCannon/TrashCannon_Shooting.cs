@@ -10,9 +10,8 @@ public class TrashCannon_Shooting : MonoBehaviour {
     public EnStatsData enemyStats;
     int fullClip = 0;
     PoolItem poolBullets;
-    Rigidbody myRb;
     int direction = 1;
-
+    
 	// Use this for initialization
 	void Start () {
         gunSights = gunBarrel.transform.GetChild(0).gameObject; //finds and identifies the child object as the "sight" used to figure out the direction character is facing
@@ -23,10 +22,6 @@ public class TrashCannon_Shooting : MonoBehaviour {
     private void FixedUpdate()
     {
         direction = (gunSights.transform.position.x - gunBarrel.transform.position.x < 0) ? -1 : 1;
-        //if (Input.GetKeyDown(KeyCode.M))
-        //{
-        //    FireBall();
-        //}
     }
 
     public void Firing()

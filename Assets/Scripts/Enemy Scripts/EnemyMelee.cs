@@ -8,21 +8,21 @@ using UnityEngine;
 /// </summary>
 public class EnemyMelee : MonoBehaviour {
 
-    public Rigidbody myRB;
+    //public Rigidbody myRB;
     public Animator myAnim;
     public event Action<int> On_ProximityAlert_Sent;
     public EnemyVisionDetection trashVisionDetection;
 
     private void Start()
     {
-        if (myRB != null)
-        {
-            return;
-        }
-        else
-        {
-            myRB = gameObject.GetComponentInParent<Rigidbody>();
-        }
+        //if (myRB != null)
+        //{
+        //    return;
+        //}
+        //else
+        //{
+        //    myRB = gameObject.GetComponentInParent<Rigidbody>();
+        //}
 
         if (myAnim != null)
         {
@@ -41,8 +41,9 @@ public class EnemyMelee : MonoBehaviour {
         {
             trashVisionDetection = gameObject.transform.parent.gameObject.GetComponentInChildren<EnemyVisionDetection>(); 
         }
-
-        On_ProximityAlert_Sent += trashVisionDetection.On_ProximityAlert_Received;
+        On_ProximityAlert_Sent += gameObject.transform.root.gameObject.GetComponent<EnemyDetection>().On_Stopper_Received;
+        //to make the RB stopping possible uncomment line below!!!
+        //On_ProximityAlert_Sent += trashVisionDetection.On_ProximityAlert_Received;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -51,8 +52,8 @@ public class EnemyMelee : MonoBehaviour {
         {
             //Debug.Log("Player within melee range");
             myAnim.SetBool("meleeRange",true);
-            //On_ProximityAlert_Sent(0);
-            trashVisionDetection.On_ProximityAlert_Received(0);
+            On_ProximityAlert_Sent(0);
+            //trashVisionDetection.On_ProximityAlert_Received(0);
         }
     }
 
@@ -61,9 +62,9 @@ public class EnemyMelee : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             //Debug.Log("Player within melee range");
-            myAnim.SetBool("meleeRange",true);
-            //On_ProximityAlert_Sent(0);
-            trashVisionDetection.On_ProximityAlert_Received(0);
+            myAnim.SetBool("meleeRange", true);
+            On_ProximityAlert_Sent(0);
+            //trashVisionDetection.On_ProximityAlert_Received(0);
         }
     }
 

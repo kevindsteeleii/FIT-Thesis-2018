@@ -10,7 +10,7 @@ public class MovingPlatformv2_0 : MonoBehaviour {
     [Range(0.1f, 4)]
     public float speedMultiplier = 2;
     ///*public*/ MoveDirection direction = MoveDirection.Vertical;
-    Vector3 vecDirection = Vector3.up;
+    //Vector3 vecDirection = Vector3.up;
     public GameObject post1, post2;
     float progress = 0.0f;
     float multiplier = 1.0f;

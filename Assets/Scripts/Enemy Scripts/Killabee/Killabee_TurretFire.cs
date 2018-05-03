@@ -6,12 +6,6 @@ using UnityEngine;
 /// </summary>
 
 public class Killabee_TurretFire : MonoBehaviour {
-    //rigid body of the parent enemy element to be used to determine direction of shot
-    Rigidbody myRb;
-
-    [Tooltip("Scale size of bullets shot")]
-    [Range(0.1f, 6)]
-    public float scale;
 
     //the empty game object used to launch bullets from
     public GameObject gunBarrel;
@@ -19,7 +13,7 @@ public class Killabee_TurretFire : MonoBehaviour {
     GameObject gunSight;
     PoolItem poolBullets;   //the pooled bullets
     int directionModifier = 1;
-
+    public KillabeeAnimatorScript animEvent;
     //the number of shots that can be fired per second
     int fullClip = 0;
 
@@ -39,16 +33,8 @@ public class Killabee_TurretFire : MonoBehaviour {
     // Use this for initialization
     protected virtual void Start()
     {
+        
         percentFloat = percentage * 0.01f;  //converts percentage whole number to float form for weighted generation of bullets
-
-        if (myRb != null)
-        {
-            return;
-        }
-        else
-        {
-            myRb = gameObject.GetComponent<Rigidbody>(); //to be used to determine direction which should be determined in fixed update
-        }
 
         if (gunSight != null)
         {
@@ -63,6 +49,20 @@ public class Killabee_TurretFire : MonoBehaviour {
 
         poolBullets = new PoolItem(fullClip, bullet);
         ChangeBullets();
+        animEvent.On_Killabee_Shot += On_Firing_Received;
+    }
+
+    void On_Firing_Received()
+    {
+        if (!poolBullets.IsEmpty())
+        {
+            StartCoroutine(FireRoute());    //fires when player is detected
+        }
+        else
+        {
+            StopAllCoroutines();
+            StartCoroutine("StopFire");
+        }
     }
 
     private void ChangeBullets()    //changes the kind of bullets the turret fires based on a percentage
@@ -142,19 +142,11 @@ public class Killabee_TurretFire : MonoBehaviour {
     private void FixedUpdate()
     {
         directionModifier = (gunSight.transform.position.x - gunBarrel.transform.position.x < 0) ? -1 : 1;
-        //this if-else block deteremines a directional modifier for the launch of projectiles
-        //if (myRb.velocity.x > 0)
-        //{
-        //    directionModifier = 1;
-        //}
-        //else if (myRb.velocity.x < 0)
-        //{
-        //    directionModifier = -1;
-        //}
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(string.Format("{0} is the tag of the object {1} that was collided with",other.tag,other.gameObject));
         //Debug.Log(other.gameObject + " collider detected");
         if (other.tag == "Player")
         {
