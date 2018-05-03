@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a94e6e095295a704d897b7beb0c65c23, type: 3}
   m_Name: Final PlayerData
   m_EditorClassIdentifier: 
-  runSpeed: 8
+  runSpeed: 5.75
   fallMultiplier: 4.89
   lowJumpMultiplier: 3
   jumpHeight: 8

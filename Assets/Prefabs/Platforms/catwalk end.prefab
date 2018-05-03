@@ -85,7 +85,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4302600826865324}
-  - component: {fileID: 95864979549909670}
   m_Layer: 0
   m_Name: catwalk end
   m_TagString: Untagged
@@ -285,20 +284,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1533176632412586}
   m_Mesh: {fileID: 4300002, guid: a3aa36d689fa5ca4da55bbd384419139, type: 3}
---- !u!95 &95864979549909670
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1952230490787794}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: a3aa36d689fa5ca4da55bbd384419139, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
