@@ -74,8 +74,8 @@ public class EnemyMelee : MonoBehaviour {
         {
             //Debug.Log("Player outside of melee range");
             myAnim.SetBool("meleeRange",false);
-            //On_ProximityAlert_Sent(1);
-            trashVisionDetection.On_ProximityAlert_Received(1);
+            On_ProximityAlert_Sent(1);
+            //trashVisionDetection.On_ProximityAlert_Received(1);
         }
     }
 }

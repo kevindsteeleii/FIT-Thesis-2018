@@ -27,7 +27,7 @@ public class EnemyMeleeHitBox : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        SetColliders(false);
+        SetColliders(true);
     }
 
     void SetColliders( bool eval)
@@ -49,13 +49,14 @@ public class EnemyMeleeHitBox : MonoBehaviour {
             else
             {
                 hitting = false;
-                break;
+                //break;
             }
         }
+        Debug.Log(string.Format("Hitting is {0}", hitting));
         SetColliders(hitting);
     }
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         Hitting();
 
         if (On_HitBoxNumber_Sent != null)

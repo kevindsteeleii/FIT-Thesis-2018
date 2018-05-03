@@ -34,6 +34,25 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
     //respawn rotation
     Quaternion rot;
 
+    AudioSource myBoomBox;  //plays the audio based on input/output cues
+    
+    /// <summary>
+    /// Delegates used to speed up runtime of checking the parameters and buttons of a resulting
+    /// Animation/Action
+    /// </summary>
+    public delegate bool ActionTaken(String button, String state, bool flag, Animator myAnim);
+
+    /// <summary>
+    /// Combo Action taken is simply a a two-input version of Action Taken
+    /// </summary>
+    public delegate bool ComboActionTaken(String button1, String button2, String state, bool flag, Animator myAnim);
+
+    //have the delegates equal two specific generic functions that produce bools based on input and animator parameters
+    ActionTaken takeAction = ActionTook;
+    ComboActionTaken comboAction = ComboActionTake;
+    #endregion
+
+    #region Events
     /// <summary>
     /// Event that broadcasts the current location of the player character
     /// </summary>
@@ -53,23 +72,7 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
     /// Event that broadcasts when the animator's toss animation reaches a specific frame triggering when the throw happens
     /// </summary>
     public event Action On_TossNow_Sent;
-
-    /// <summary>
-    /// Delegates used to speed up runtime of checking the parameters and buttons of a resulting
-    /// Animation/Action
-    /// </summary>
-    public delegate bool ActionTaken(String button, String state, bool flag, Animator myAnim);
-
-    /// <summary>
-    /// Combo Action taken is simply a a two-input version of Action Taken
-    /// </summary>
-    public delegate bool ComboActionTaken(String button1, String button2, String state, bool flag, Animator myAnim);
-
-    //have the delegates equal two specific generic functions that produce bools based on input and animator parameters
-    ActionTaken takeAction = ActionTook;
-    ComboActionTaken comboAction = ComboActionTake;
     #endregion
-
     //establishes defaults and initiates variables/placeholders use Start over Awake for all singletons
     protected virtual void Start()
     {
@@ -80,6 +83,7 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
         rot = myRB.transform.rotation;
         targetCamera = GameObject.FindGameObjectWithTag("MainCamera");
         throwControlObject = GameObject.FindGameObjectWithTag("RootAim");
+        myBoomBox = gameObject.GetComponent<AudioSource>();
 
         //assigns ResetHP() as subscriber of Restarting event
         GameManager.instance.On_RestartState_Sent += On_ReStartState_Caught;
@@ -111,6 +115,8 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
         {
             if (Input.GetButtonDown("Punch") && myAnim.GetBool("grounded"))
             {
+                myBoomBox.Play();   //plays attack sound
+
                 myAnim.SetFloat("speed", 0f);
                 lastPressed = Time.time;
                 myAnim.SetBool("attacking", true);
@@ -143,11 +149,13 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
 
             if (Input.GetAxisRaw("JoystickVertical") == -1 || Input.GetButtonDown("Slam"))
             {
+                myBoomBox.Play();   //plays attack sound
                 myAnim.SetBool("slam", true);
             }
 
             if (Input.GetButton("Grab"))
             {
+                myBoomBox.Play();   //plays attack sound
                 myAnim.SetBool("grabbing", true);
                 StartCoroutine(GrabTime());
             }
