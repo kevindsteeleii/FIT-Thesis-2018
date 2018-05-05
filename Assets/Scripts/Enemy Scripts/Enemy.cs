@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour
     #region Global Variables
 
     Vector3 startLocation; //used to warp the enemies back to their original positions upon restart
-
     /// <summary>
     /// Event that transmits from Enemy to trigger ammo stocking 
     /// </summary>
@@ -65,6 +64,8 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private void DealDeath()
     {
+        boomBox.Play(); //plays the hurt sound
+
         if (currentAttackType == "HitBox")
         {
             BecomePickUp();
@@ -150,10 +151,11 @@ public class Enemy : MonoBehaviour
 
     }
 
-    private void OnDisable()
-    {
-        boomBox.Play();
-    }
+    //can't be used because of how enemy activity works
+    //private void OnDisable()
+    //{
+    //    boomBox.Play();
+    //}
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -163,14 +165,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
+
     private void OnTriggerEnter(Collider other)
     {
         GameObject obj = other.gameObject;
-
-        if (obj.tag == "Projectile" && obj.layer == 9)
-        {
-            EnemyTakeDamage(obj.GetComponent<Projectile>().damage,obj.tag);
-        }
+        
+            if (obj.tag == "Projectile" && obj.layer == 9)
+            {
+                EnemyTakeDamage(obj.GetComponent<Projectile>().damage, obj.tag);
+            }
     }
 }
 #region TODO list, refactoring etc

@@ -286,7 +286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1244046839515844
 GameObject:
   m_ObjectHideFlags: 1
@@ -1565,9 +1565,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4219091744822618}
+  - component: {fileID: 65752896235296418}
   m_Layer: 12
   m_Name: KillabeeMaster_20180502_v01
-  m_TagString: Untagged
+  m_TagString: ActiveBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3461,6 +3462,18 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: bca3a7f2da76cd64c8ef1015d06cf119, type: 2}
+--- !u!65 &65752896235296418
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1884678627658666}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.8, y: 2.36, z: 1}
+  m_Center: {x: 0, y: 0.66, z: 0}
 --- !u!82 &82905940023202640
 AudioSource:
   m_ObjectHideFlags: 1

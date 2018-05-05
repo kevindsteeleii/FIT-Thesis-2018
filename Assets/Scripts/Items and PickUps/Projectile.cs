@@ -48,7 +48,7 @@ public class Projectile : Model
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "HurtBox" || other.gameObject.tag == "DeathBox" || other.gameObject.tag == "ActiveBox")
+        if (other.gameObject.tag == "HurtBox" || other.gameObject.tag == "DeathBox" /*|| other.gameObject.tag == "ActiveBox"*/)
         {
             On_BulletDestroyed_Sent(projectileObj);
         }
@@ -56,10 +56,14 @@ public class Projectile : Model
         {
             Physics.IgnoreCollision(mySphere, other, true);
         }
-        //if (other.gameObject.tag != "Player" || other.gameObject.tag != "Checkpoint")
-        //{
-        //    gameObject.SetActive(false);
-        //}
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "ActiveBox")
+        {
+            On_BulletDestroyed_Sent(projectileObj);
+        }
     }
 
     //private void OnEnable()
@@ -76,3 +80,11 @@ public class Projectile : Model
     }
 
 }
+#region TODO list, refactoring etc
+/************TODO Refactoring********************************************************************//*
+ 1- 
+ 2-
+ 3-
+ 4-
+ *************************************************************************************************/
+#endregion

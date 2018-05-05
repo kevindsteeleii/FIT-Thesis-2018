@@ -52,7 +52,7 @@ public class EnemyMeleeHitBox : MonoBehaviour {
                 //break;
             }
         }
-        Debug.Log(string.Format("Hitting is {0}", hitting));
+        //Debug.Log(string.Format("Hitting is {0}", hitting));
         SetColliders(hitting);
     }
 	// Update is called once per frame

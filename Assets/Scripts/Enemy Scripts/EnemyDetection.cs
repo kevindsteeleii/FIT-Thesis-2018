@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The Real Enemy Patrol script
+/// </summary>
 public class EnemyDetection : MonoBehaviour {
     [Range(0.1f, 4)]
     public float speedMultiplier = 2;
