@@ -1405,9 +1405,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4346339179316810}
+  - component: {fileID: 65500746587510576}
   m_Layer: 12
   m_Name: KillabeeMaster_20180502_v03
-  m_TagString: Untagged
+  m_TagString: ActiveBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1436,11 +1437,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4827504552393274}
   - component: {fileID: 114820116905256688}
-  - component: {fileID: 114089950560601592}
-  - component: {fileID: 114308935368284520}
+  - component: {fileID: 114968552081551754}
   m_Layer: 12
   m_Name: Killabee_20180502mod
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1469,7 +1469,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4668361441648256}
   - component: {fileID: 136786483295341272}
-  - component: {fileID: 114001850863340800}
   - component: {fileID: 114255929565357294}
   - component: {fileID: 82049116463579818}
   m_Layer: 12
@@ -1733,7 +1732,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4037526767017654}
   - component: {fileID: 95520456189485290}
-  - component: {fileID: 114577831772143168}
+  - component: {fileID: 114702291502148444}
   m_Layer: 12
   m_Name: 20180214killaBee
   m_TagString: Enemy
@@ -1767,7 +1766,7 @@ GameObject:
   - component: {fileID: 33605836579697202}
   - component: {fileID: 64204739090941820}
   - component: {fileID: 114894501866550604}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: ConeOfVision
   m_TagString: VisionCone
   m_Icon: {fileID: 4660412927644837186, guid: 0000000000000000d000000000000000, type: 0}
@@ -2395,7 +2394,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1750743936921374}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.41, y: 3.09, z: 0}
+  m_LocalPosition: {x: 2.36, y: 0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4564599272237180}
@@ -2452,7 +2451,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1419470477712912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.81, y: 0, z: 0}
+  m_LocalPosition: {x: 1.4, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4346339179316810}
@@ -2781,7 +2780,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1470042506983616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.53, y: 0.6, z: 0}
+  m_LocalPosition: {x: -2.04, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4346339179316810}
@@ -3462,6 +3461,18 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: bca3a7f2da76cd64c8ef1015d06cf119, type: 2}
+--- !u!65 &65500746587510576
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1750743936921374}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 12.07, y: 9.3, z: 1}
+  m_Center: {x: 0.95, y: 0, z: 0}
 --- !u!82 &82049116463579818
 AudioSource:
   m_ObjectHideFlags: 1
@@ -3559,29 +3570,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114001850863340800
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1800998201704068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c58ffdc8f22b99d4c8dac5fecdfe9361, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  me: {fileID: 0}
---- !u!114 &114089950560601592
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1779491296217400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114255929565357294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3598,23 +3586,7 @@ MonoBehaviour:
   randomDrop: 0
   saveHP: 13
   hurtBox: {fileID: 0}
---- !u!114 &114308935368284520
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1779491296217400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3ebb10a206ec342945f9a9cf0f6640, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedMultiplier: 2
-  post1: {fileID: 0}
-  post2: {fileID: 0}
-  myAnim: {fileID: 0}
-  stationary: 0
---- !u!114 &114577831772143168
+--- !u!114 &114702291502148444
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -3622,7 +3594,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1949132352661032}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 9b7ba5ea19a61e641af17ab06603e6fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114820116905256688
@@ -3638,7 +3610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunBarrel: {fileID: 1143102319826258}
   bullet: {fileID: 1158135273269822, guid: bd90d6a4a36fd0a4abeed79c12949a43, type: 2}
-  animEvent: {fileID: 114577831772143168}
+  animEvent: {fileID: 114702291502148444}
   fireRate: 0.2
   fireForce: 30
   percentage: 50
@@ -3655,6 +3627,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myAnim: {fileID: 95520456189485290}
   distance: 2
+--- !u!114 &114968552081551754
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1779491296217400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d095989ad201c4ca9aa8e89da4efb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedMultiplier: 2
+  post1: {fileID: 1470042506983616}
+  post2: {fileID: 1419470477712912}
+  myAnim: {fileID: 95520456189485290}
+  stationary: 0
 --- !u!136 &136786483295341272
 CapsuleCollider:
   m_ObjectHideFlags: 1

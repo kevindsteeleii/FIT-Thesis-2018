@@ -66,8 +66,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4553399956527372}
-  - component: {fileID: 114174245752565500}
-  - component: {fileID: 114511794096588282}
+  - component: {fileID: 114209131290689472}
   m_Layer: 12
   m_Name: Trashcannon_20180502_mod2
   m_TagString: Enemy
@@ -225,9 +224,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4971996913271462}
+  - component: {fileID: 65828103482010474}
   m_Layer: 12
   m_Name: TrashCannonMaster_20180502v03
-  m_TagString: Untagged
+  m_TagString: ActiveBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2253,7 +2253,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1197767701775956}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 35.945538, y: 0.7189696, z: 0}
+  m_LocalPosition: {x: 12.98, y: -2.07, z: 0}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 4270008237839942}
@@ -2367,6 +2367,18 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: bca3a7f2da76cd64c8ef1015d06cf119, type: 2}
+--- !u!65 &65828103482010474
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1197767701775956}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.35, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95062097246162096
 Animator:
   serializedVersion: 3
@@ -2408,7 +2420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63e479dc13d22646b301a1b0630ab41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114174245752565500
+--- !u!114 &114209131290689472
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2416,9 +2428,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1071188731933226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: e2d095989ad201c4ca9aa8e89da4efb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedMultiplier: 2
+  post1: {fileID: 0}
+  post2: {fileID: 0}
+  myAnim: {fileID: 0}
+  stationary: 0
 --- !u!114 &114292712802064878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2461,22 +2478,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myAnim: {fileID: 95062097246162096}
   distance: 5.77
---- !u!114 &114511794096588282
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1071188731933226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3ebb10a206ec342945f9a9cf0f6640, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedMultiplier: 2
-  post1: {fileID: 0}
-  post2: {fileID: 0}
-  myAnim: {fileID: 0}
-  stationary: 0
 --- !u!114 &114555869617650916
 MonoBehaviour:
   m_ObjectHideFlags: 1

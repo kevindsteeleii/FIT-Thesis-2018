@@ -63,14 +63,6 @@ public class ScreenBarrier_v2_0 : MonoBehaviour {
             other.gameObject.transform.GetChild(2).gameObject.SetActive(false);
         }
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.tag == "ActiveBox" && collision.gameObject.layer == 12)
-    //    {
-    //        collision.gameObject.transform.GetChild(2).gameObject.SetActive(true);
-    //    }
-    //}
 }
 #region TODO list, refactoring etc
 /************TODO Refactoring********************************************************************//*

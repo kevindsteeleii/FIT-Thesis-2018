@@ -146,14 +146,15 @@ public class Killabee_TurretFire : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(string.Format("{0} is the tag of the object {1} that was collided with",other.tag,other.gameObject));
+        Debug.Log(string.Format("{0} is the tag of the object {1} that was collided with", other.tag, other.gameObject));
         //Debug.Log(other.gameObject + " collider detected");
         if (other.tag == "Player")
         {
             if (!poolBullets.IsEmpty())
             {
                 StartCoroutine(FireRoute());    //fires when player is detected
-            }else
+            }
+            else
             {
                 StopAllCoroutines();
                 StartCoroutine("StopFire");

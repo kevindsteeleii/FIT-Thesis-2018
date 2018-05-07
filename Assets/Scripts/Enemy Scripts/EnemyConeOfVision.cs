@@ -27,6 +27,7 @@ public class EnemyConeOfVision : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(string.Format("OnTriggerEnter of EnemyConeOfVision {0}, tagged-object", other.gameObject.tag));
         if (other.gameObject.tag == "Player")
         {
             myAnim.SetBool("enemyDetected",true);
@@ -35,6 +36,7 @@ public class EnemyConeOfVision : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
+        Debug.Log(string.Format("OnTriggerStay of EnemyConeOfVision {0}, tagged-object", other.gameObject.tag));
         if (other.gameObject.tag == "Player")
         {
             myAnim.SetBool("enemyDetected", true);
@@ -43,6 +45,7 @@ public class EnemyConeOfVision : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
+        Debug.Log(string.Format("OnTriggerExit of EnemyConeOfVision {0}, tagged-object", other.gameObject.tag));
         if (other.gameObject.tag == "Player")
         {
             myAnim.SetBool("enemyDetected",false);

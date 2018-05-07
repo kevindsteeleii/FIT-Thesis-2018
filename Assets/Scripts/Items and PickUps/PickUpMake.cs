@@ -14,7 +14,7 @@ public class PickUpMake : MonoBehaviour {
     // Use this for initialization making enum public allows for easier use outside of this class 
     public PickupType pickup;
     Renderer render;
-
+    public bool hasTimeout = false;
     //add randomness to create a range to be controlled on object attached not script itself
     [Tooltip("The amount added")]
     [Range(0, 1000)]
@@ -40,7 +40,8 @@ public class PickUpMake : MonoBehaviour {
     {
         render = this.gameObject.GetComponent<Renderer>();
         //destroys spawned pickup after a certain timeFrame
-        StartCoroutine(DestroyAfterTime());
+        if (hasTimeout)
+            StartCoroutine(DestroyAfterTime());
     }
 
     //destroys after N-seconds with a blinker to illustrate time running out
@@ -67,7 +68,7 @@ public class PickUpMake : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log( this.gameObject.name+ " was collected");
+            //Debug.Log( this.gameObject.name+ " was collected");
             OnPickUpCollected();
             Destroy(gameObject);
         }

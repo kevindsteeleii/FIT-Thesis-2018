@@ -937,9 +937,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4117066022271698}
+  - component: {fileID: 65939539279514812}
   m_Layer: 12
   m_Name: KillabeeMaster_20180502_v02
-  m_TagString: Untagged
+  m_TagString: ActiveBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1289,9 +1290,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4165049720245612}
-  - component: {fileID: 114405259438089002}
   - component: {fileID: 114729830925763646}
-  - component: {fileID: 114970747917865754}
   m_Layer: 12
   m_Name: Killabee_20180502mod
   m_TagString: Untagged
@@ -1323,7 +1322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4096528827975770}
   - component: {fileID: 95998815133147658}
-  - component: {fileID: 114317730877367390}
+  - component: {fileID: 114499745150702526}
   m_Layer: 12
   m_Name: 20180214killaBee
   m_TagString: Enemy
@@ -2143,7 +2142,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1682152374330458}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.15, y: -1.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4096528827975770}
@@ -3462,6 +3461,18 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: bca3a7f2da76cd64c8ef1015d06cf119, type: 2}
+--- !u!65 &65939539279514812
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1383668229216004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 12.07, y: 9.3, z: 1}
+  m_Center: {x: 0.95, y: 0, z: 0}
 --- !u!82 &82375206959632432
 AudioSource:
   m_ObjectHideFlags: 1
@@ -3559,17 +3570,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114317730877367390
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1689699463766850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114403770151522944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3582,20 +3582,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   me: {fileID: 0}
---- !u!114 &114405259438089002
+--- !u!114 &114499745150702526
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1682152374330458}
-  m_Enabled: 0
+  m_GameObject: {fileID: 1689699463766850}
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4b7230e19f0ccc40a41c3114df107c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b7ba5ea19a61e641af17ab06603e6fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enStats: {fileID: 11400000, guid: be33716213fe6474cb177157de8df365, type: 2}
-  stationary: 1
-  visionCone: {fileID: 64758149633939390}
 --- !u!114 &114729830925763646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3609,7 +3606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunBarrel: {fileID: 1950916221776232}
   bullet: {fileID: 1158135273269822, guid: bd90d6a4a36fd0a4abeed79c12949a43, type: 2}
-  animEvent: {fileID: 114317730877367390}
+  animEvent: {fileID: 114499745150702526}
   fireRate: 0.2
   fireForce: 30
   percentage: 50
@@ -3619,7 +3616,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1077562494414380}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52f841ac65b59894c91657bf576379f0, type: 3}
   m_Name: 
@@ -3642,17 +3639,6 @@ MonoBehaviour:
   randomDrop: 0
   saveHP: 13
   hurtBox: {fileID: 0}
---- !u!114 &114970747917865754
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1682152374330458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &136967269181847988
 CapsuleCollider:
   m_ObjectHideFlags: 1

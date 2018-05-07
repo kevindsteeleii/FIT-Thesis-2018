@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class KillabeeAnimatorScript : MonoBehaviour {
     public event Action On_Killabee_Shot;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     void KillabeeFire()
     {
