@@ -52,6 +52,7 @@ public class GameManager : Singleton<GameManager>
 
     public virtual void Update()
     {
+        //Debug.Log("Game State is " + gameState);
         //when game state is gameover an event is broadcast to the appropriate subscribers 
         if (gameState == GameState.gameOver && On_GameOverState_Sent != null)
         {

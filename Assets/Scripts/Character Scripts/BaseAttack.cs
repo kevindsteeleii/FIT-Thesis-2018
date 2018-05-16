@@ -35,9 +35,9 @@ public abstract class BaseAttack : MonoBehaviour
         if (other.tag == "HurtBox" /*&& other.gameObject.layer == 12*/ && myHitBox.enabled)
         {
             Debug.Log("Hit the enemy hitbox");
-            On_TransferDamage_Sent += other.gameObject.GetComponent<Enemy>().EnemyTakeDamage;
-            On_TransferDamage_Sent(dam,gameObject.tag);
-            On_TransferDamage_Sent -= other.gameObject.GetComponent<Enemy>().EnemyTakeDamage;
+            //On_TransferDamage_Sent += other.gameObject.GetComponent<Enemy>().EnemyTakeDamage;
+            other.gameObject.GetComponent<Enemy>().EnemyTakeDamage(dam,gameObject.tag);
+            //On_TransferDamage_Sent -= other.gameObject.GetComponent<Enemy>().EnemyTakeDamage;
         }
     }
 }

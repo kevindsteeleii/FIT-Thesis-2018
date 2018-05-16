@@ -14,6 +14,7 @@ public class checkpointRazleDazle : MonoBehaviour {
 	
 	private void OnTriggerEnter(Collider other)
 	{
+        Debug.Log("OnTriggerEntered " + other.gameObject);
 		if (other.tag == "Player")
 		{
 			pillarAnim.SetBool("Checkpoint", true);

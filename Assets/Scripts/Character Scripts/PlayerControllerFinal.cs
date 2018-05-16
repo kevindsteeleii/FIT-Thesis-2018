@@ -16,7 +16,7 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
     Rigidbody myRB;
     public static bool facingRight;
 
-    public GameObject throwControlObject;   //DO NOT DELETE!! this reference enables an action on an animation event to happen
+    public GameObject rootAim;   //DO NOT DELETE!! this reference enables an action on an animation event to happen
 
     [Tooltip("The punch chain time interval used to work")]
     [Range(0.1f, 4f)]
@@ -82,13 +82,13 @@ public class PlayerControllerFinal : Singleton<PlayerControllerFinal>
         respawnPos = myRB.transform.position;
         rot = myRB.transform.rotation;
         targetCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        throwControlObject = GameObject.FindGameObjectWithTag("RootAim");
+        rootAim = GameObject.FindGameObjectWithTag("RootAim");
         myBoomBox = gameObject.GetComponent<AudioSource>();
 
         //assigns ResetHP() as subscriber of Restarting event
         GameManager.instance.On_RestartState_Sent += On_ReStartState_Caught;
         On_GroundRayCasting_Sent += targetCamera.GetComponent<CameraFollowv2_0>().On_GroundRayCasting_Received;
-        On_TossNow_Sent += throwControlObject.GetComponent<ThrowController>().On_TossNow_Received; //heavily dependent on references do not delete throwControlObject
+        On_TossNow_Sent += rootAim.GetComponent<ThrowController>().On_TossNow_Received; //heavily dependent on references do not delete throwControlObject
     }
     //used to trigger an event that prompts the throw DO NOT DELETE!!!
     public void TossNow()

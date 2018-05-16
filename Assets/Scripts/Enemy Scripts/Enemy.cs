@@ -19,7 +19,6 @@ public class Enemy : MonoBehaviour
     /// Event that transmits when the enemy becomes random loot on "destruction"
     /// </summary>
     public event Action<Vector3, Quaternion> On_RandomLootDropped_Sent;
-    public Rigidbody myRB;
 
     /// <summary>
     /// Event that transmits when the enemy becomes the default loot upon "destruction"
@@ -74,10 +73,11 @@ public class Enemy : MonoBehaviour
         {
             BecomeProjectile();
         }
-        Destroy();
+        else
+            gameObject.transform.root.gameObject.SetActive(false);
     }
 
-    public virtual void EnemyTakeDamage(int dam, string attacker)  {
+    public void EnemyTakeDamage(int dam, string attacker)  {
         HP -= dam;
         boomBox.Play();
         if (HP <= 0)
@@ -107,19 +107,8 @@ public class Enemy : MonoBehaviour
         if (On_BecomeAmmo_Sent != null)
         {
             On_BecomeAmmo_Sent();
+            gameObject.transform.root.gameObject.SetActive(false);
         }
-        //Destroy(); 
-    }
-
-    /// <summary>
-    /// "Destroys" body by setting parent to inactive
-    /// </summary>
-    /// <param name="obj"></param>
-    private void Destroy() {
-
-        Debug.Log("Destroyed");
-        
-        gameObject.transform.parent.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -138,7 +127,7 @@ public class Enemy : MonoBehaviour
         {
             On_DefaultLootDrop_Sent(transform.position, transform.rotation, PickupType.Health);
         }
-        //Destroy();   
+        gameObject.transform.root.gameObject.SetActive(false);
     }
     /// <summary>
     /// Resets the location of the enemies upon reset of the 
@@ -151,27 +140,14 @@ public class Enemy : MonoBehaviour
 
     }
 
-    //can't be used because of how enemy activity works
-    //private void OnDisable()
-    //{
-    //    boomBox.Play();
-    //}
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            myRB.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        }
-    }
-
 
     private void OnTriggerEnter(Collider other)
     {
         GameObject obj = other.gameObject;
         
-            if (obj.tag == "Projectile" && obj.layer == 9)
+            if (obj.tag == "Projectile")
             {
+            Debug.Log("Projectile HIT!!");
                 EnemyTakeDamage(obj.GetComponent<Projectile>().damage, obj.tag);
             }
     }

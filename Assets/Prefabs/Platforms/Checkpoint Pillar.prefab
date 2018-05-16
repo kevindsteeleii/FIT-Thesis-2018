@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 4501973013996252}
   - component: {fileID: 65976945356305012}
   - component: {fileID: 114286148184755598}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: RespawnCheckpoint
   m_TagString: CheckPoint
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 4078290561576986}
   m_Layer: 0
   m_Name: Checkpoint Pillar
-  m_TagString: Untagged
+  m_TagString: CheckPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -387,7 +387,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1573144362709148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 43.51, y: -1.19, z: 0.82}
+  m_LocalPosition: {x: -0.5, y: 3.7052784, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4264930257522002}
@@ -681,8 +681,8 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1025520680411844}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 06ebe349acdb03b46b538d9c593b8ad1, type: 3}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 5f87556f860cf2e479291ed87ce036a4, type: 3}
+  m_Controller: {fileID: 9100000, guid: e69aaa36b121dd8468182f1ad88f4508, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -6,7 +6,6 @@ using UnityEngine;
 public class EnemyConeOfVision : MonoBehaviour {
 
     public Animator myAnim;
-    Rigidbody myRB;
     float direction = 1;
 
     [Tooltip("Float that determines the distance considered to be close quarters for melee attack")]
@@ -15,14 +14,7 @@ public class EnemyConeOfVision : MonoBehaviour {
 
     private void Start()
     {
-        if (myRB != null)
-        {
-            return;
-        }
-        else
-        {
-            myRB = gameObject.GetComponentInParent<Rigidbody>();
-        }
+        Physics.IgnoreLayerCollision(0, 13,true);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,22 +22,23 @@ public class EnemyConeOfVision : MonoBehaviour {
         Debug.Log(string.Format("OnTriggerEnter of EnemyConeOfVision {0}, tagged-object", other.gameObject.tag));
         if (other.gameObject.tag == "Player")
         {
+            Debug.Log("Player seen");
             myAnim.SetBool("enemyDetected",true);
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        Debug.Log(string.Format("OnTriggerStay of EnemyConeOfVision {0}, tagged-object", other.gameObject.tag));
-        if (other.gameObject.tag == "Player")
-        {
-            myAnim.SetBool("enemyDetected", true);
-        }
-    }
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    //Debug.Log(string.Format("OnTriggerStay of EnemyConeOfVision {0}, tagged-object", other.gameObject.tag));
+    //    if (other.gameObject.tag == "Player")
+    //    {
+    //        myAnim.SetBool("enemyDetected", true);
+    //    }
+    //}
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log(string.Format("OnTriggerExit of EnemyConeOfVision {0}, tagged-object", other.gameObject.tag));
+        //Debug.Log(string.Format("OnTriggerExit of EnemyConeOfVision {0}, tagged-object", other.gameObject.tag));
         if (other.gameObject.tag == "Player")
         {
             myAnim.SetBool("enemyDetected",false);

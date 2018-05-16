@@ -8,19 +8,10 @@ public class PlayerHurtBox : MonoBehaviour {
     /// </summary>
     public event Action<int> On_Damage_Received;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     //an attempt to clean up how enemies interact with player character in an attack context
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Hitting " + other.gameObject+" with tag "+ other.gameObject.tag);
         if (other.tag == "HitBox" && other.gameObject.layer == 12)
         {
             //Debug.Log("Enemy struck player!!"); //it works

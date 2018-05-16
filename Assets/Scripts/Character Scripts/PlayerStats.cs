@@ -70,6 +70,8 @@ public class PlayerStats : Singleton<PlayerStats>
         //if hp is  0 or less broadcasts the event that hp is zero to game manager to start gameover
         if (HP <= 0)
         {
+            Debug.Log("Currently Dead");
+
             if (On_ZeroHP_Sent != null)
             {
                 On_ZeroHP_Sent();
@@ -120,7 +122,7 @@ public class PlayerStats : Singleton<PlayerStats>
     /// </summary>
     void ResetHP()
     {
-        Debug.Log("HP is reset!!!");
+        //Debug.Log("HP is reset!!!");
         HP = stats.maxHP;
     }
 
@@ -173,6 +175,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     void OnTriggerEnter(Collider col)
     {
+        //Debug.Log(col.gameObject+" hit me, the player.");
         if (col.gameObject.tag == "Death Object")
         {
             HP = 0;
@@ -183,7 +186,7 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         if (collision.gameObject.tag == "Death Object")
         {
-            HP = 0;
+            //HP = 0;
         }
     }
 }

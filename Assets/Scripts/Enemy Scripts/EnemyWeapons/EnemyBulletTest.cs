@@ -116,7 +116,7 @@ public class EnemyBulletTest : MonoBehaviour
         if (other.tag == "Player")
         {
             //PlayerHit(other);
-            Debug.Log("Enemy Projectile hit player!!");
+            //Debug.Log("Enemy Projectile hit player!!");
             other.gameObject.transform.root.gameObject.GetComponent<PlayerStats>().TakeDamage(hitPoint);
         }
         //if (other.gameObject.tag == "HurtBox" )

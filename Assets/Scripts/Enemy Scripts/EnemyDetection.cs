@@ -56,7 +56,8 @@ public class EnemyDetection : MonoBehaviour {
         {
             stopper = 0;
         }
-        myAnim.SetInteger("stopper", stopper);
+        //myAnim.SetInteger("stopper", stopper);
+
     }
 
     protected virtual void Turn()
@@ -74,7 +75,7 @@ public class EnemyDetection : MonoBehaviour {
         {
             progress += Time.smoothDeltaTime *stopper * speedMultiplier * progressMultiplier;
 
-            Debug.Log(string.Format("Progress equals {0}, and progressMultiplier equals {1}", progress, progressMultiplier));
+            //Debug.Log(string.Format("Progress equals {0}, and progressMultiplier equals {1}", progress, progressMultiplier));
             if (progressMultiplier > 0)
             {
                 if (progress >= 1.0f)

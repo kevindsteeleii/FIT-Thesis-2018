@@ -8,81 +8,33 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Preloader.unity
     guid: 037732272f2079748bb4c6064b9cb014
-  - enabled: 0
-    path: Assets/Scenes/20171104_UNITY_GameSceneImplementation_v01_KDS.unity
-    guid: fee87e68e0eb473439b1f242af9711b0
-  - enabled: 0
-    path: Assets/Scenes/UI/UI_Standalone_fixed(noRestartYet...)_11-04-17_KDS.unity
-    guid: b734f97212a723d4fa85a82afa51fc14
-  - enabled: 0
-    path: Assets/Scenes/DebuggingTools/ProxyController.unity
-    guid: 656e297b46398f348b1ffa5076fc9b1e
-  - enabled: 0
-    path: Assets/Scenes/20171124_UNITY_GameSceneImplementation_v02_KDS.unity
-    guid: 74d0b7c71389c994080a44519afb50ab
-  - enabled: 0
-    path: Assets/Scenes/UI/UI_Standalone_11-14-17_KDS.unity
-    guid: b02642ca359fb564abd2152f35f1d846
-  - enabled: 0
-    path: Assets/Scenes/Inputs/Joystick Axis Inputs.unity
-    guid: a5a3bbdb3d1d92248b3ac2e9f1683830
-  - enabled: 0
-    path: Assets/Scenes/Inputs/KeyInputs.unity
-    guid: c230e0f449b486c42ab44912824160b3
-  - enabled: 0
-    path: Assets/Scenes/Inputs/MouseInputs.unity
-    guid: 7233b276852638743b1d2b5b3f4aac50
-  - enabled: 0
-    path: Assets/Scenes/Inputs/TouchInputs.unity
-    guid: 598750a67f162ae4680d5fb62e40164b
   - enabled: 1
-    path: Assets/Scenes/demoAssembly/20180428_Start Screen.unity
+    path: Assets/Scenes/demoAssembly/Current build/20180428_Start Screen.unity
     guid: 52008b4754b9bf34aae4c06afc57c11f
   - enabled: 1
-    path: Assets/Scenes/demoAssembly/UI_StandAlone_20180413_MLCmod.unity
+    path: Assets/Scenes/demoAssembly/Current build/UI_StandAlone_20180413_MLCmod.unity
     guid: 15ce73e4511dca94c87e56f983d0ca6f
   - enabled: 1
-    path: Assets/Scenes/demoAssembly/20180420_PlayerSetUp_Anims_KDS.unity
-    guid: b1bf98ddcab2d614c87810d5729aad27
-  - enabled: 1
-    path: Assets/Scenes/demoAssembly/20180501_level_001_MLC.unity
+    path: Assets/Scenes/demoAssembly/Current build/20180501_level_001_MLC.unity
     guid: 82ff4b62d59fdab459e441f1d1664cec
   - enabled: 1
-    path: Assets/Scenes/demoAssembly/20180502_level_001_Enemies.unity
+    path: Assets/Scenes/demoAssembly/Current build/20180502_level_001_Enemies.unity
     guid: 8b202014887096a44a140b180cbaaf87
   - enabled: 1
-    path: Assets/Scenes/demoAssembly/20180502_level_001_Interactables_MLC.unity
+    path: Assets/Scenes/demoAssembly/Current build/20180502_level_001_Interactables_MLC.unity
     guid: fe99fbd4c4a472348837cd20ffb0e304
-  - enabled: 0
-    path: Assets/Scenes/demoAssembly/20180416_level_001_MLC.unity
-    guid: b6758be7d067d1044bf2d68ee41402fc
-  - enabled: 0
-    path: Assets/Scenes/demoAssembly/20180418_level_001_Interactables_MLC.unity
-    guid: 9b0a8faccf019714aa23b9cb81a5574a
-  - enabled: 0
-    path: Assets/Scenes/demoAssembly/20180426_level_001_Enemies.unity
-    guid: ecd5c1c408b17b545bb546ceaef833d4
-  - enabled: 0
-    path: Assets/Scenes/Lighting.unity
-    guid: 6cbe4ebd75518dd4a83258f516a93a16
   - enabled: 1
-    path: Assets/Scenes/demoAssembly/End Credit.unity
+    path: Assets/Scenes/demoAssembly/Current build/End Credit.unity
     guid: 10516135fe5293c45a35d24b76c80b11
   - enabled: 1
-    path: Assets/Scenes/demoAssembly/20180502_level_002_Enemies.unity
+    path: Assets/Scenes/demoAssembly/Current build/20180502_level_002_Enemies.unity
     guid: 9d62875dbb8c9f048925dc6e602d2ec2
   - enabled: 1
-    path: Assets/Scenes/demoAssembly/20180502_level_002_Interactables.unity
+    path: Assets/Scenes/demoAssembly/Current build/20180502_level_002_Interactables.unity
     guid: 0d9b431b153b219479df6bef9054b0c3
   - enabled: 1
-    path: Assets/Scenes/demoAssembly/20180502_level_002_MLC.unity
+    path: Assets/Scenes/demoAssembly/Current build/20180502_level_002_MLC.unity
     guid: c6748a1ceb61073428d659460adab468
-  - enabled: 0
-    path: Assets/Scenes/demoAssembly/20180425_level_002_MLC.unity
-    guid: 56701cdd6fd9b0a40b970a3fe96da1e8
-  - enabled: 0
-    path: Assets/Scenes/demoAssembly/20180427_level_002_Enemies.unity
-    guid: 3f86317ef09183448ad8e0d7d0d92a6e
-  - enabled: 0
-    path: Assets/Scenes/demoAssembly/20180427_level_002_Interactables.unity
-    guid: 7f18531cfb0e1b14ebea1dafb0f790cc
+  - enabled: 1
+    path: Assets/Scenes/demoAssembly/Current build/20170507_PlayerSetup.unity
+    guid: 3628079e66adc764cb386fa1c68b1320

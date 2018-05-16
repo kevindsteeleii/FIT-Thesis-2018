@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 33765807270849632}
   - component: {fileID: 64656943660584974}
   - component: {fileID: 114396930777670714}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: ConeOfVision
   m_TagString: VisionCone
   m_Icon: {fileID: 0}
@@ -508,6 +508,7 @@ GameObject:
   - component: {fileID: 114082403379311932}
   - component: {fileID: 136572169453186452}
   - component: {fileID: 114301341232684914}
+  - component: {fileID: 82734311609971562}
   m_Layer: 12
   m_Name: HurtBox
   m_TagString: HurtBox
@@ -1451,7 +1452,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1534892599649098}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.53699994, y: 0, z: 0}
+  m_LocalPosition: {x: 0.031, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4971996913271462}
@@ -2253,7 +2254,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1197767701775956}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.98, y: -2.07, z: 0}
+  m_LocalPosition: {x: 98.26, y: 0.36, z: 0}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 4270008237839942}
@@ -2261,7 +2262,7 @@ Transform:
   - {fileID: 4553399956527372}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4975142725454616
 Transform:
   m_ObjectHideFlags: 1
@@ -2379,6 +2380,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.35, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &82734311609971562
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1487703573233318}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 16d1d9203d8ce0f41ab3f0471186e5a3, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95062097246162096
 Animator:
   serializedVersion: 3
@@ -2431,11 +2512,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d095989ad201c4ca9aa8e89da4efb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMultiplier: 2
-  post1: {fileID: 0}
-  post2: {fileID: 0}
+  speedMultiplier: 0.56
+  post1: {fileID: 1534892599649098}
+  post2: {fileID: 1096787663776382}
   myAnim: {fileID: 0}
-  stationary: 0
+  stationary: 1
 --- !u!114 &114292712802064878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2460,7 +2541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a0429c1cef67bd49845b6be7a3f72fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myRB: {fileID: 0}
   HP: 12
   randomDrop: 0
   saveHP: 0

@@ -7,7 +7,7 @@ public class KillabeeAnimatorScript : MonoBehaviour {
 
     void KillabeeFire()
     {
-        Debug.Log("Killabee Firing");
+        //Debug.Log("Killabee Firing");
         if (On_Killabee_Shot != null)
         {
             On_Killabee_Shot();
