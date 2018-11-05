@@ -1,11 +1,21 @@
-# FIT-Thesis-2018
+# FIT-Thesis-2018 (SPITE)
 
-Change notes -Artem- 7/8/2017
--- I removed the entire Assets/UI folder.
--- Please be sure to put UI fonts in the Assets/Fonts folder,
-== and the UI Boxes and Icons into the Assets/Sprites folder.
+## Spite: Spark-techus' Revenge
 
--- Also, you will find comments on the EnemyPace.cs and backAndFoth.cs files.
+### Description:
+A vertical slice of a  2.5d Action-Platformer created by Kevin Steele, 
 
--- Lastly, please organize the Assets folder and make sure to put
--- things into their respective folders before submitting changes.
+### Credits
+Background Designer: Gabriel Rios
+
+Key/ Lead Programmer: Kevin Steele
+
+UI/ Level Design: Mitchell Turner
+
+Main Animator: Mitchell Turner
+
+Main Character Designer: Kevin Steele
+
+Key Rigger: Kevin Steele
+
+Additional Rigging, animation, and modeling by: Gabriel Rios and Mitchell Turner
