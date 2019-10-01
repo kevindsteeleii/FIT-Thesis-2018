@@ -10,12 +10,12 @@ Background Designer: Gabriel Rios
 
 Key/ Lead Programmer: Kevin Steele
 
-UI/ Level Design: Mitchell Turner
+UI/ Level Design: Mitchell Cooper
 
-Main Animator: Mitchell Turner
+Main Animator: Mitchell Cooper
 
 Main Character Designer: Kevin Steele
 
 Key Rigger: Kevin Steele
 
-Additional Rigging, animation, and modeling by: Gabriel Rios and Mitchell Turner
+Additional Rigging, animation, and modeling by: Gabriel Rios and Mitchell Cooper
